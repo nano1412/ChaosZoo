@@ -41,27 +41,25 @@ public class CharacterMovementKeyBoard : MonoBehaviour
 
     private bool IsGrounded()
     {
-        // Raycast downwards to check if the character is grounded
+
         return Physics.Raycast(transform.position, Vector3.down, 1.1f);
     }
 
     private void LookAtDummy()
     {
-        // Calculate direction to the dummy in the X-axis
-        Vector3 directionToDummy = dummy.position - transform.position;
-        directionToDummy.y = 0; // Ignore vertical component
 
-        // Store current scale
+        Vector3 directionToDummy = dummy.position - transform.position;
+        directionToDummy.y = 0;
+
         Vector3 currentScale = transform.localScale;
 
-        // Set scale based on direction to dummy
         if (directionToDummy.x > 0)
         {
-            transform.localScale = new Vector3(Mathf.Abs(currentScale.x), currentScale.y, currentScale.z); // Face right
+            transform.localScale = new Vector3(Mathf.Abs(currentScale.x), currentScale.y, currentScale.z); 
         }
         else if (directionToDummy.x < 0)
         {
-            transform.localScale = new Vector3(-Mathf.Abs(currentScale.x), currentScale.y, currentScale.z); // Face left
+            transform.localScale = new Vector3(-Mathf.Abs(currentScale.x), currentScale.y, currentScale.z); 
         }
     }
 }

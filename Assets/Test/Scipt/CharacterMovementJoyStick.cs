@@ -19,17 +19,13 @@ public class CharacterMovementJoyStick : MonoBehaviour
 
     void Update()
     {
-        // Get joystick axis input
         float horizontal = Input.GetAxis("Horizontal_Joystick");
         float vertical = Input.GetAxisRaw("Vertical_Joystick");
 
-        // Get button input
         bool moveLeft = Input.GetButton("MoveLeft");
         bool moveRight = Input.GetButton("MoveRight");
         bool jump = Input.GetButton("Jump");
         bool crouch = Input.GetButton("Crouch");
-
-        // Move left or right based on joystick or button input
         if (horizontal != 0)
         {
             transform.Translate(Vector3.right * horizontal * moveSpeed * Time.deltaTime);
@@ -43,7 +39,6 @@ public class CharacterMovementJoyStick : MonoBehaviour
             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
         }
 
-        // Jump if vertical joystick input is up or jump button is pressed, and character is grounded
         if ((vertical > 0 || jump) && IsGrounded() && !jumpInitiated)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -54,7 +49,7 @@ public class CharacterMovementJoyStick : MonoBehaviour
             jumpInitiated = false;
         }
 
-        // Crouch if vertical joystick input is down or crouch button is pressed
+
         if (vertical < 0 || crouch)
         {
             Debug.Log("Crouch");
@@ -65,27 +60,26 @@ public class CharacterMovementJoyStick : MonoBehaviour
 
     private bool IsGrounded()
     {
-        // Use Raycast to check if the character is grounded
+
         return Physics.Raycast(transform.position, Vector3.down, 1.1f);
     }
 
     private void LookAtDummy()
     {
-        // Calculate direction to the dummy on the X-axis
-        Vector3 directionToDummy = dummy.position - transform.position;
-        directionToDummy.y = 0; // Ignore vertical component
 
-        // Store current scale
+        Vector3 directionToDummy = dummy.position - transform.position;
+        directionToDummy.y = 0; 
+
         Vector3 currentScale = transform.localScale;
 
-        // Set scale based on direction to dummy
+  
         if (directionToDummy.x > 0)
         {
-            transform.localScale = new Vector3(Mathf.Abs(currentScale.x), currentScale.y, currentScale.z); // Face right
+            transform.localScale = new Vector3(Mathf.Abs(currentScale.x), currentScale.y, currentScale.z); 
         }
         else if (directionToDummy.x < 0)
         {
-            transform.localScale = new Vector3(-Mathf.Abs(currentScale.x), currentScale.y, currentScale.z); // Face left
+            transform.localScale = new Vector3(-Mathf.Abs(currentScale.x), currentScale.y, currentScale.z); 
         }
     }
 }
