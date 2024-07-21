@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovementKeyBoard : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float jumpForce = 7f;
-    public Transform dummy; // Drag the dummy GameObject here in the Inspector
+    public Transform dummy;
 
     private Rigidbody rb;
     private bool isGrounded;
@@ -18,35 +18,24 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        // Keyboard input for movement
-        float horizontalInput = Input.GetAxis("Horizontal"); // Get horizontal axis input (-1 to 1)
-        float verticalInput = Input.GetAxis("Vertical"); // Get vertical axis input (-1 to 1)
 
-        // Joystick input for movement
-        float joystickHorizontal = Input.GetAxis("Horizontal_Joystick"); // Example: replace with your actual joystick axis name
-        float joystickVertical = Input.GetAxis("Vertical_Joystick"); // Example: replace with your actual joystick axis name
-
-        // Combine keyboard and joystick inputs
-        float moveHorizontal = Mathf.Abs(horizontalInput) > Mathf.Abs(joystickHorizontal) ? horizontalInput : joystickHorizontal;
-        float moveVertical = Mathf.Abs(verticalInput) > Mathf.Abs(joystickVertical) ? verticalInput : joystickVertical;
-
-        // Movement
-        Vector3 moveDirection = new Vector3(moveHorizontal, 0, moveVertical).normalized;
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
-
-        // Crouching
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+        }
         if (Input.GetKeyDown(KeyCode.S))
         {
             Debug.Log("Crouch");
         }
-
-        // Jumping
         if ((Input.GetKeyDown(KeyCode.W) && IsGrounded()))
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
-        // Look at Dummy
         LookAtDummy();
     }
 
