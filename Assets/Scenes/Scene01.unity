@@ -137,6 +137,8 @@ GameObject:
   - component: {fileID: 127326921}
   - component: {fileID: 127326920}
   - component: {fileID: 127326919}
+  - component: {fileID: 127326926}
+  - component: {fileID: 127326925}
   m_Layer: 0
   m_Name: Dummy
   m_TagString: Dummy
@@ -183,11 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a611c77d57416f4b91496646688d720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 7
-  dummy: {fileID: 0}
-  rb: {fileID: 0}
-  isGrounded: 0
 --- !u!65 &127326921
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -275,6 +272,36 @@ Transform:
   - {fileID: 1443624888}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &127326925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127326918}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88c25e9fdbf65bd4a80d3cd9b65c8611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  jumpForce: 7
+  dummy: {fileID: 1785807797}
+--- !u!114 &127326926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127326918}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc3a596824ebd644b2ed39e545de637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  jumpForce: 7
+  dummy: {fileID: 1785807797}
 --- !u!1 &271182163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,7 +1550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 10
+  jumpForce: 7
   dummy: {fileID: 127326924}
 --- !u!114 &1785807801
 MonoBehaviour:

@@ -73,11 +73,11 @@ public class CharacterMovementJoyStick : MonoBehaviour
         Vector3 currentScale = transform.localScale;
 
   
-        if (directionToDummy.x > 0)
+        if (directionToDummy.x > 0 && IsGrounded())
         {
             transform.localScale = new Vector3(Mathf.Abs(currentScale.x), currentScale.y, currentScale.z); 
         }
-        else if (directionToDummy.x < 0)
+        else if (directionToDummy.x < 0 && IsGrounded())
         {
             transform.localScale = new Vector3(-Mathf.Abs(currentScale.x), currentScale.y, currentScale.z); 
         }
