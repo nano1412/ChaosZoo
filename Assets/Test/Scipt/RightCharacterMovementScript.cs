@@ -1,9 +1,8 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovementKeyBoard : MonoBehaviour
+public class RightCharacterMovementScript : MonoBehaviour
 {
     public float walkSpeed = 5f;
     public float runSpeed = 10f;
@@ -17,7 +16,7 @@ public class CharacterMovementKeyBoard : MonoBehaviour
     private float lastTapTimeD = 0;
     private float lastTapTimeA = 0;
     private bool isRunning = false;
-    private bool facingRight = true;
+    public bool facingLeft = true;
 
     void Start()
     {
@@ -35,87 +34,82 @@ public class CharacterMovementKeyBoard : MonoBehaviour
     {
         float currentSpeed = walkSpeed;
 
-        if(facingRight)
+        if(facingLeft == true)
         {
-            if (Input.GetKeyDown(KeyCode.D))
+            if(Input.GetKeyDown(KeyCode.A))
             {
-                if (Time.time - lastTapTimeD < doubleTapTime)
+                if(Time.time - lastTapTimeA < doubleTapTime)
                 {
                     isRunning = true;
                 }
-                lastTapTimeD = Time.time;
+                lastTapTimeA = Time.time;
             }
-
-            if (Input.GetKey(KeyCode.D))
+            if(Input.GetKey(KeyCode.A))
             {
-                if (isRunning)
+                if(isRunning)
                 {
                     currentSpeed = runSpeed;
                     Debug.Log("Run");
                 }
                 transform.Translate(Vector3.right * currentSpeed * Time.deltaTime);
             }
-            if (Input.GetKeyUp(KeyCode.D))
+            if(Input.GetKeyUp(KeyCode.A))
             {
                 isRunning = false;
             }
-            // เช็คการ double-tap สำหรับ A
-            if (Input.GetKeyDown(KeyCode.A))
+            if(Input.GetKeyDown(KeyCode.D))
             {
-                if (Time.time - lastTapTimeA < doubleTapTime)
+                if(Time.time - lastTapTimeD < doubleTapTime)
+                {
+                    JumpBackward();
+                }
+                lastTapTimeD = Time.time;
+            }
+            if(Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(Vector3.left * walkSpeed * Time.deltaTime);
+            }
+        }
+        
+        else if(facingLeft == false)
+        {
+            if(Input.GetKeyDown(KeyCode.D))
+            {
+                if(Time.time - lastTapTimeD < doubleTapTime)
+                {
+                    isRunning = true;
+                }
+                lastTapTimeD = Time.time;
+            }
+            if(Input.GetKey(KeyCode.D))
+            {
+                if(isRunning)
+                {
+                    currentSpeed = runSpeed;
+                    Debug.Log("Run");
+                }
+                transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
+            }
+            if(Input.GetKeyUp(KeyCode.D))
+            {
+                isRunning = false;
+            }
+            if(Input.GetKeyDown(KeyCode.A))
+            {
+                if(Time.time - lastTapTimeA < doubleTapTime)
                 {
                     JumpBackward();
                 }
                 lastTapTimeA = Time.time;
             }
-
+            if(Input.GetKey(KeyCode.A))
+            {
+                transform.Translate(Vector3.right * walkSpeed * Time.deltaTime);
+            }
         }
-       else if(!facingRight)
-       {
-            if (Input.GetKeyDown(KeyCode.A))
-                {
-                    if (Time.time - lastTapTimeD < doubleTapTime)
-                    {
-                        isRunning = true;
-                    }
-                    lastTapTimeD = Time.time;
-                }
-
-                if (Input.GetKey(KeyCode.A))
-                {
-                    if (isRunning)
-                    {
-                        currentSpeed = runSpeed;
-                        Debug.Log("Run");
-                    }
-                    transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
-                }
-                if (Input.GetKeyUp(KeyCode.A))
-                {
-                    isRunning = false;
-                }
-                // เช็คการ double-tap สำหรับ A
-                if (Input.GetKeyDown(KeyCode.D))
-                {
-                    if (Time.time - lastTapTimeA < doubleTapTime)
-                    {
-                        Debug.Log("JumpBackward");
-                        JumpBackward();
-                    }
-                    lastTapTimeA = Time.time;
-                }
-       }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(Vector3.left * walkSpeed * Time.deltaTime);
-        }
-
-        // การย่อตัวเมื่อกดปุ่ม S
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) && IsGrounded())
         {
             Debug.Log("Crouch");
-            // โค้ดย่อตัวตัวละครสามารถเพิ่มตรงนี้
         }
     }
 
@@ -131,7 +125,7 @@ public class CharacterMovementKeyBoard : MonoBehaviour
     {
         if (IsGrounded())
         {
-            Vector3 jumpDirection = facingRight ? Vector3.left : Vector3.right;
+            Vector3 jumpDirection = facingLeft ? Vector3.right : Vector3.left;
             rb.AddForce(jumpDirection * jumpBackForce + Vector3.up * jumpForce / 2, ForceMode.Impulse); // กระโดดถอยหลังเล็กน้อย
         }
     }
@@ -150,15 +144,17 @@ public class CharacterMovementKeyBoard : MonoBehaviour
 
         if (IsGrounded())
         {
-            if (directionToDummy.x > 0 && !facingRight)
+            if (directionToDummy.x < 0 && !facingLeft)
             {
-                facingRight = true;
+                facingLeft = true;
                 Flip();
+                Debug.Log("Right");
             }
-            else if (directionToDummy.x < 0 && facingRight)
+            else if (directionToDummy.x > 0 && facingLeft)
             {
-                facingRight = false;
+                facingLeft = false;
                 Flip();
+                Debug.Log("Left");
             }
         }
     }

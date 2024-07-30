@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SelectController : MonoBehaviour
 {
-    public CharacterMovementKeyBoard characterMovementKeyboard; 
+    public LeftCharacterMovementKeyBoard leftCharacterMovementKeyBoard; 
     public CharacterMovementJoyStick characterMovementJoystick; 
     public GameObject panel; 
 
@@ -19,9 +19,9 @@ public class SelectController : MonoBehaviour
             characterMovementJoystick.enabled = false;
         }
 
-        if (characterMovementKeyboard != null)
+        if (leftCharacterMovementKeyBoard != null)
         {
-            characterMovementKeyboard.enabled = true;
+            leftCharacterMovementKeyBoard.enabled = true;
         }
     }
 
@@ -30,13 +30,13 @@ public class SelectController : MonoBehaviour
         Debug.Log("SelectJoystick called");
         panel.SetActive(false);
 
-        if (characterMovementKeyboard != null)
+        if (leftCharacterMovementKeyBoard != null)
         {
-            characterMovementKeyboard.enabled = false;
+            leftCharacterMovementKeyBoard.enabled = false;
         }
         if (characterMovementJoystick != null)
         {
-            characterMovementJoystick.enabled = true;
+            leftCharacterMovementKeyBoard.enabled = true;
         }
     }
 }
