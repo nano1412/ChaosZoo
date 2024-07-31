@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class LeftCharacterMovementKeyBoard : MonoBehaviour
 {
-     public float walkSpeed = 5f;
+    public float walkSpeed = 5f;
     public float runSpeed = 10f;
     public float jumpForce = 7f;
     public float jumpBackForce = 7f;
-    public Transform dummy;
-    public float doubleTapTime = 0.3f; // เวลาในการจับ double tap
+    public float doubleTapTime = 0.3f;
+    public bool facingRight = true;
 
     private Rigidbody rb;
-    private bool isGrounded;
     private float lastTapTimeD = 0;
     private float lastTapTimeA = 0;
     private bool isRunning = false;
-    private bool facingRight = true;
+
+    public LeftLookEnemy leftLookEnemy;
 
     void Start()
     {
@@ -27,14 +27,13 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
     {
         HandleMovement();
         HandleJump();
-        LookAtDummy();
     }
 
     private void HandleMovement()
     {
         float currentSpeed = walkSpeed;
 
-        if(facingRight)
+        if (facingRight)
         {
             if (Input.GetKeyDown(KeyCode.D))
             {
@@ -71,44 +70,44 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
                 transform.Translate(Vector3.left * walkSpeed * Time.deltaTime);
             }
         }
-       else if(!facingRight)
-       {
+        else
+        {
             if (Input.GetKeyDown(KeyCode.A))
+            {
+                if (Time.time - lastTapTimeA < doubleTapTime)
                 {
-                    if (Time.time - lastTapTimeA < doubleTapTime)
-                    {
-                        isRunning = true;
-                    }
-                    lastTapTimeA = Time.time;
+                    isRunning = true;
                 }
+                lastTapTimeA = Time.time;
+            }
 
-                if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A))
+            {
+                if (isRunning)
                 {
-                    if (isRunning)
-                    {
-                        currentSpeed = runSpeed;
-                        Debug.Log("Run");
-                    }
-                    transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
+                    currentSpeed = runSpeed;
+                    Debug.Log("Run");
                 }
-                if (Input.GetKeyUp(KeyCode.A))
+                transform.Translate(Vector3.right * currentSpeed * Time.deltaTime);
+            }
+            if (Input.GetKeyUp(KeyCode.A))
+            {
+                isRunning = false;
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                if (Time.time - lastTapTimeD < doubleTapTime)
                 {
-                    isRunning = false;
+                    Debug.Log("JumpBackward");
+                    JumpBackward();
                 }
-                if (Input.GetKeyDown(KeyCode.D))
-                {
-                    if (Time.time - lastTapTimeD < doubleTapTime)
-                    {
-                        Debug.Log("JumpBackward");
-                        JumpBackward();
-                    }
-                    lastTapTimeD = Time.time;
-                }
-                if (Input.GetKey(KeyCode.D))
-                {
-                    transform.Translate(Vector3.right * walkSpeed * Time.deltaTime);
-                }
-       }
+                lastTapTimeD = Time.time;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(Vector3.left * walkSpeed * Time.deltaTime);
+            }
+        }
 
         if (Input.GetKey(KeyCode.S) && IsGrounded())
         {
@@ -136,34 +135,5 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, 1.1f);
-    }
-
-    private void LookAtDummy()
-    {
-        Vector3 directionToDummy = dummy.position - transform.position;
-        directionToDummy.y = 0;
-
-        Vector3 currentScale = transform.localScale;
-
-        if (IsGrounded())
-        {
-            if (directionToDummy.x > 0 && !facingRight)
-            {
-                facingRight = true;
-                Flip();
-            }
-            else if (directionToDummy.x < 0 && facingRight)
-            {
-                facingRight = false;
-                Flip();
-            }
-        }
-    }
-
-    private void Flip()
-    {
-        Vector3 currentScale = transform.localScale;
-        currentScale.x *= -1;
-        transform.localScale = currentScale;
     }
 }

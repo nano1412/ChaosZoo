@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RightCharacterMovementScript : MonoBehaviour
+public class RightCharacterMovementKeyBoard : MonoBehaviour
 {
     public float walkSpeed = 5f;
     public float runSpeed = 10f;
     public float jumpForce = 7f;
     public float jumpBackForce = 7f;
-    public Transform dummy;
-    public float doubleTapTime = 0.3f; // เวลาในการจับ double tap
+    public float doubleTapTime = 0.3f;
+    public bool facingLeft = true;
 
     private Rigidbody rb;
-    private bool isGrounded;
     private float lastTapTimeD = 0;
     private float lastTapTimeA = 0;
     private bool isRunning = false;
-    public bool facingLeft = true;
+
+    public RightLookEnemy  rightLookEnemy;
 
     void Start()
     {
@@ -27,86 +27,88 @@ public class RightCharacterMovementScript : MonoBehaviour
     {
         HandleMovement();
         HandleJump();
-        LookAtDummy();
     }
 
     private void HandleMovement()
     {
         float currentSpeed = walkSpeed;
 
-        if(facingLeft == true)
+        if (!facingLeft)
         {
-            if(Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.D))
             {
-                if(Time.time - lastTapTimeA < doubleTapTime)
+                if (Time.time - lastTapTimeD < doubleTapTime)
                 {
                     isRunning = true;
                 }
-                lastTapTimeA = Time.time;
+                lastTapTimeD = Time.time;
             }
-            if(Input.GetKey(KeyCode.A))
+
+            if (Input.GetKey(KeyCode.D))
             {
-                if(isRunning)
+                if (isRunning)
                 {
                     currentSpeed = runSpeed;
                     Debug.Log("Run");
                 }
                 transform.Translate(Vector3.right * currentSpeed * Time.deltaTime);
             }
-            if(Input.GetKeyUp(KeyCode.A))
+            if (Input.GetKeyUp(KeyCode.D))
             {
                 isRunning = false;
             }
-            if(Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.A))
             {
-                if(Time.time - lastTapTimeD < doubleTapTime)
-                {
-                    JumpBackward();
-                }
-                lastTapTimeD = Time.time;
-            }
-            if(Input.GetKey(KeyCode.D))
-            {
-                transform.Translate(Vector3.left * walkSpeed * Time.deltaTime);
-            }
-        }
-        
-        else if(facingLeft == false)
-        {
-            if(Input.GetKeyDown(KeyCode.D))
-            {
-                if(Time.time - lastTapTimeD < doubleTapTime)
-                {
-                    isRunning = true;
-                }
-                lastTapTimeD = Time.time;
-            }
-            if(Input.GetKey(KeyCode.D))
-            {
-                if(isRunning)
-                {
-                    currentSpeed = runSpeed;
-                    Debug.Log("Run");
-                }
-                transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
-            }
-            if(Input.GetKeyUp(KeyCode.D))
-            {
-                isRunning = false;
-            }
-            if(Input.GetKeyDown(KeyCode.A))
-            {
-                if(Time.time - lastTapTimeA < doubleTapTime)
+                if (Time.time - lastTapTimeA < doubleTapTime)
                 {
                     JumpBackward();
                 }
                 lastTapTimeA = Time.time;
             }
-            if(Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A))
             {
-                transform.Translate(Vector3.right * walkSpeed * Time.deltaTime);
+                transform.Translate(Vector3.left * walkSpeed * Time.deltaTime);
             }
         }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                if (Time.time - lastTapTimeA < doubleTapTime)
+                {
+                    isRunning = true;
+                }
+                lastTapTimeA = Time.time;
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                if (isRunning)
+                {
+                    currentSpeed = runSpeed;
+                    Debug.Log("Run");
+                }
+                transform.Translate(Vector3.right * currentSpeed * Time.deltaTime);
+            }
+            if (Input.GetKeyUp(KeyCode.A))
+            {
+                isRunning = false;
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                if (Time.time - lastTapTimeD < doubleTapTime)
+                {
+                    Debug.Log("JumpBackward");
+                    JumpBackward();
+                }
+                lastTapTimeD = Time.time;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(Vector3.left * walkSpeed * Time.deltaTime);
+            }
+        }
+
         if (Input.GetKey(KeyCode.S) && IsGrounded())
         {
             Debug.Log("Crouch");
@@ -133,36 +135,5 @@ public class RightCharacterMovementScript : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, 1.1f);
-    }
-
-    private void LookAtDummy()
-    {
-        Vector3 directionToDummy = dummy.position - transform.position;
-        directionToDummy.y = 0;
-
-        Vector3 currentScale = transform.localScale;
-
-        if (IsGrounded())
-        {
-            if (directionToDummy.x < 0 && !facingLeft)
-            {
-                facingLeft = true;
-                Flip();
-                Debug.Log("Right");
-            }
-            else if (directionToDummy.x > 0 && facingLeft)
-            {
-                facingLeft = false;
-                Flip();
-                Debug.Log("Left");
-            }
-        }
-    }
-
-    private void Flip()
-    {
-        Vector3 currentScale = transform.localScale;
-        currentScale.x *= -1;
-        transform.localScale = currentScale;
     }
 }

@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 127326922}
   - component: {fileID: 127326921}
   - component: {fileID: 127326919}
+  - component: {fileID: 127326926}
   - component: {fileID: 127326925}
   m_Layer: 0
   m_Name: Dummy
@@ -265,18 +266,32 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127326918}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5f78f6ef5c8d87498392c3ad78ead9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 5
   runSpeed: 10
-  jumpForce: 0.5
+  jumpForce: 7
   jumpBackForce: 7
-  dummy: {fileID: 1785807797}
   doubleTapTime: 0.3
   facingLeft: 1
+  rightLookEnemy: {fileID: 127326926}
+--- !u!114 &127326926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127326918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145bf6e1bfeb1fe43be557e4500e0bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dummy: {fileID: 1785807797}
+  rightCharacterMovementKeyBoard: {fileID: 127326925}
 --- !u!1 &271182163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,6 +1387,7 @@ GameObject:
   - component: {fileID: 1785807796}
   - component: {fileID: 1785807795}
   - component: {fileID: 1785807801}
+  - component: {fileID: 1785807803}
   - component: {fileID: 1785807794}
   - component: {fileID: 1785807798}
   - component: {fileID: 1785807802}
@@ -1524,7 +1540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f12c4afcfd004b4c8adc2e179912c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterMovementKeyboard: {fileID: 0}
+  leftCharacterMovementKeyBoard: {fileID: 0}
   characterMovementJoystick: {fileID: 1785807800}
   panel: {fileID: 709429423}
 --- !u!114 &1785807802
@@ -1543,8 +1559,23 @@ MonoBehaviour:
   runSpeed: 10
   jumpForce: 0.5
   jumpBackForce: 7
-  dummy: {fileID: 127326924}
   doubleTapTime: 0.3
+  facingRight: 1
+  leftLookEnemy: {fileID: 1785807803}
+--- !u!114 &1785807803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785807792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d532ed3a424ed514f887de78e3acf273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dummy: {fileID: 127326924}
+  movementScript: {fileID: 1785807802}
 --- !u!1 &1881495588
 GameObject:
   m_ObjectHideFlags: 0
