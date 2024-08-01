@@ -11,6 +11,12 @@ public class RightCharacterMovementKeyBoard : MonoBehaviour
     public float doubleTapTime = 0.3f;
     public bool facingLeft = true;
 
+    private bool canDash = true;
+    public bool isDashing;
+    public float dashingPower = 10f;
+    public float dashingTime = 0.2f;
+    public bool facingRight = true;
+
     private Rigidbody rb;
     private float lastTapTimeD = 0;
     private float lastTapTimeA = 0;
@@ -46,7 +52,7 @@ public class RightCharacterMovementKeyBoard : MonoBehaviour
 
             if (Input.GetKey(KeyCode.D))
             {
-                if (isRunning)
+                if (isRunning && IsGrounded())
                 {
                     currentSpeed = runSpeed;
                     Debug.Log("Run");
@@ -59,9 +65,10 @@ public class RightCharacterMovementKeyBoard : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.A))
             {
-                if (Time.time - lastTapTimeA < doubleTapTime)
+                if (Time.time - lastTapTimeA < doubleTapTime && canDash == true)
                 {
-                    JumpBackward();
+                    StartCoroutine(Dash(Vector3.left));
+                    Debug.Log("Dash left");
                 }
                 lastTapTimeA = Time.time;
             }
@@ -83,7 +90,7 @@ public class RightCharacterMovementKeyBoard : MonoBehaviour
 
             if (Input.GetKey(KeyCode.A))
             {
-                if (isRunning)
+                if (isRunning && IsGrounded())
                 {
                     currentSpeed = runSpeed;
                     Debug.Log("Run");
@@ -96,10 +103,10 @@ public class RightCharacterMovementKeyBoard : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
-                if (Time.time - lastTapTimeD < doubleTapTime)
+                if (Time.time - lastTapTimeD < doubleTapTime && canDash == true)
                 {
-                    Debug.Log("JumpBackward");
-                    JumpBackward();
+                    StartCoroutine(Dash(Vector3.right));
+                    Debug.Log("Dash right");
                 }
                 lastTapTimeD = Time.time;
             }
@@ -135,5 +142,22 @@ public class RightCharacterMovementKeyBoard : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, 1.1f);
+    }
+
+    private IEnumerator Dash(Vector3 direction)
+    {
+        canDash = false;
+        isDashing = true;
+
+        Vector3 dashForce = direction * dashingPower;
+
+        rb.useGravity = false;
+        rb.velocity = dashForce;
+
+        yield return new WaitForSeconds(dashingTime);
+
+        rb.useGravity = true;
+        isDashing = false;
+        canDash = true;
     }
 }

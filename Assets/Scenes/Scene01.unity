@@ -266,17 +266,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127326918}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5f78f6ef5c8d87498392c3ad78ead9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 5
   runSpeed: 10
-  jumpForce: 7
+  jumpForce: 0.5
   jumpBackForce: 7
   doubleTapTime: 0.3
   facingLeft: 1
+  isDashing: 0
+  dashingPower: 5
+  dashingTime: 0.2
+  facingRight: 1
   rightLookEnemy: {fileID: 127326926}
 --- !u!114 &127326926
 MonoBehaviour:
@@ -1550,7 +1554,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785807792}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d64091cff5528844aa08f36c866103ee, type: 3}
   m_Name: 
@@ -1560,6 +1564,9 @@ MonoBehaviour:
   jumpForce: 0.5
   jumpBackForce: 7
   doubleTapTime: 0.3
+  isDashing: 0
+  dashingPower: 5
+  dashingTime: 0.2
   facingRight: 1
   leftLookEnemy: {fileID: 1785807803}
 --- !u!114 &1785807803
