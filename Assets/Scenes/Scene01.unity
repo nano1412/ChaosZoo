@@ -266,7 +266,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127326918}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5f78f6ef5c8d87498392c3ad78ead9d, type: 3}
   m_Name: 
@@ -282,6 +282,8 @@ MonoBehaviour:
   dashingTime: 0.2
   facingRight: 1
   rightLookEnemy: {fileID: 127326926}
+  airtime: 5
+  dashStartTime: 0
 --- !u!114 &127326926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1569,6 +1571,8 @@ MonoBehaviour:
   dashingTime: 0.2
   facingRight: 1
   leftLookEnemy: {fileID: 1785807803}
+  airtime: 5
+  dashStartTime: 0
 --- !u!114 &1785807803
 MonoBehaviour:
   m_ObjectHideFlags: 0

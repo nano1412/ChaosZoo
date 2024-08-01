@@ -10,9 +10,9 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
     public float jumpBackForce = 7f;
     public float doubleTapTime = 0.3f;
 
-
     private bool canDash = true;
     public bool isDashing;
+    public bool IsDashing => isDashing;
     public float dashingPower = 10f;
     public float dashingTime = 0.2f;
     public bool facingRight = true;
@@ -23,6 +23,9 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
     private bool isRunning = false;
 
     public LeftLookEnemy leftLookEnemy;
+
+    public float airtime = 5f; // ระยะเวลาที่ตัวละครอยู่กลางอากาศ
+    public float dashStartTime; // เวลาที่ Dash เริ่มต้น
 
     void Start()
     {
@@ -45,6 +48,11 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
             {
                 if (Time.time - lastTapTimeD < doubleTapTime)
                 {
+                    if(!IsGrounded() && canDash == true)
+                    {
+                        StartCoroutine(Dash(Vector3.right)); // Dash left when facing right and in the air
+                        Debug.Log("Dash air right"); 
+                    }
                     isRunning = true;
                 }
                 lastTapTimeD = Time.time;
@@ -67,7 +75,7 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
             {
                 if (Time.time - lastTapTimeA < doubleTapTime && canDash == true)
                 {
-                    StartCoroutine(Dash(Vector3.left));
+                    StartCoroutine(Dash(Vector3.left)); // Dash right when facing right and in the air
                     Debug.Log("Dash left");
                 }
                 lastTapTimeA = Time.time;
@@ -83,6 +91,11 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
             {
                 if (Time.time - lastTapTimeA < doubleTapTime)
                 {
+                    if(!IsGrounded() && canDash == true)
+                    {
+                        StartCoroutine(Dash(Vector3.left)); // Dash right when facing left and in the air
+                        Debug.Log("Dash air left");
+                    }
                     isRunning = true;
                 }
                 lastTapTimeA = Time.time;
@@ -105,7 +118,7 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
             {
                 if (Time.time - lastTapTimeD < doubleTapTime && canDash == true)
                 {
-                    StartCoroutine(Dash(Vector3.right));
+                    StartCoroutine(Dash(Vector3.right)); // Dash left when facing left and in the air
                     Debug.Log("Dash right");
                 }
                 lastTapTimeD = Time.time;
@@ -139,15 +152,27 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
+        dashStartTime = Time.time; // บันทึกเวลาที่ Dash เริ่มต้น
 
-        Vector3 dashForce = direction * dashingPower;
+        // Save the original gravity status
+        bool originalUseGravity = rb.useGravity;
 
+        // Temporarily disable gravity
         rb.useGravity = false;
+
+        // Apply the dash force
+        Vector3 dashForce = direction * dashingPower;
         rb.velocity = dashForce;
 
+        // Wait for the dash duration
         yield return new WaitForSeconds(dashingTime);
 
-        rb.useGravity = true;
+        // Restore the original gravity status
+        rb.useGravity = originalUseGravity;
+
+        // Optionally reset the velocity if needed
+        // rb.velocity = Vector3.zero;
+
         isDashing = false;
         canDash = true;
     }

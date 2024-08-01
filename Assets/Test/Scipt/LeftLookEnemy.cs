@@ -5,7 +5,7 @@ using UnityEngine;
 public class LeftLookEnemy : MonoBehaviour
 {
     public Transform dummy;
-    public LeftCharacterMovementKeyBoard movementScript; // อ้างอิงถึงสคริปต์ LeftCharacterMovementKeyBoard
+    public LeftCharacterMovementKeyBoard movementScript;
 
     private Rigidbody rb;
 
@@ -16,7 +16,10 @@ public class LeftLookEnemy : MonoBehaviour
 
     void Update()
     {
-        LookAtDummy();
+        if (IsGrounded() || movementScript.IsDashing) 
+        {
+            LookAtDummy();
+        }
     }
 
     private void LookAtDummy()
@@ -24,14 +27,37 @@ public class LeftLookEnemy : MonoBehaviour
         Vector3 directionToDummy = dummy.position - transform.position;
         directionToDummy.y = 0;
 
-        if (IsGrounded())
+        Vector3 directionToUse = directionToDummy;
+        bool shouldFlip = false;
+
+        if (movementScript.IsDashing)
         {
-            if (directionToDummy.x > 0 && !movementScript.facingRight)
+            float airtime = movementScript.airtime;
+            float dashElapsedTime = Time.time - movementScript.dashStartTime;
+
+            // คำนวณทิศทางเมื่อ Dash
+            float additionalDistance = 1f;
+            directionToUse = directionToDummy.normalized * (directionToDummy.magnitude + additionalDistance);
+
+            // ตรวจสอบว่าตัวละครอยู่กลางอากาศในช่วง airtime
+            if (dashElapsedTime < airtime)
+            {
+                shouldFlip = true;
+            }
+        }
+        else if (IsGrounded())
+        {
+            shouldFlip = true;
+        }
+
+        if (shouldFlip)
+        {
+            if (directionToUse.x > 0 && !movementScript.facingRight)
             {
                 movementScript.facingRight = true;
                 Flip();
             }
-            else if (directionToDummy.x < 0 && movementScript.facingRight)
+            else if (directionToUse.x < 0 && movementScript.facingRight)
             {
                 movementScript.facingRight = false;
                 Flip();

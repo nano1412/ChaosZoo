@@ -15,7 +15,10 @@ public class RightLookEnemy : MonoBehaviour
 
     void Update()
     {
-        LookAtDummy();
+        if(IsGrounded() || rightCharacterMovementKeyBoard.IsDashing)
+        {
+            LookAtDummy();
+        }
     }
 
     private void LookAtDummy()
@@ -23,7 +26,29 @@ public class RightLookEnemy : MonoBehaviour
         Vector3 directionToDummy = dummy.position - transform.position;
         directionToDummy.y = 0;
 
-        if (IsGrounded())
+        Vector3 directionToUse = directionToDummy;
+        bool shouldFlip = false;
+
+        if(rightCharacterMovementKeyBoard.IsDashing)
+        {
+            float airtime = rightCharacterMovementKeyBoard.airtime;
+            float dashElapsedTime = Time.time - rightCharacterMovementKeyBoard.dashStartTime;
+
+            float additionalDistance = 1f;
+            directionToUse = directionToDummy.normalized * (directionToDummy.magnitude + additionalDistance);
+            
+            if(dashElapsedTime < airtime)
+            {
+                shouldFlip = true;
+            }
+        }
+        else if(IsGrounded())
+        {
+            shouldFlip = true;
+        }
+
+
+        if (shouldFlip)
         {
             if (directionToDummy.x < 0 && !rightCharacterMovementKeyBoard.facingLeft)
             {

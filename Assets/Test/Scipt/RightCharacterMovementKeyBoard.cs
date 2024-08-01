@@ -13,6 +13,7 @@ public class RightCharacterMovementKeyBoard : MonoBehaviour
 
     private bool canDash = true;
     public bool isDashing;
+    public bool IsDashing => isDashing;
     public float dashingPower = 10f;
     public float dashingTime = 0.2f;
     public bool facingRight = true;
@@ -23,6 +24,9 @@ public class RightCharacterMovementKeyBoard : MonoBehaviour
     private bool isRunning = false;
 
     public RightLookEnemy  rightLookEnemy;
+
+    public float airtime = 5f; // ระยะเวลาที่ตัวละครอยู่กลางอากาศ
+    public float dashStartTime; // เวลาที่ Dash เริ่มต้น
 
     void Start()
     {
@@ -45,6 +49,11 @@ public class RightCharacterMovementKeyBoard : MonoBehaviour
             {
                 if (Time.time - lastTapTimeD < doubleTapTime)
                 {
+                    if(!IsGrounded() && canDash == true)
+                    {
+                        StartCoroutine(Dash(Vector3.right));
+                        Debug.Log("Dash air right"); 
+                    }
                     isRunning = true;
                 }
                 lastTapTimeD = Time.time;
@@ -82,7 +91,12 @@ public class RightCharacterMovementKeyBoard : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A))
             {
                 if (Time.time - lastTapTimeA < doubleTapTime)
-                {
+                {   
+                    if(!IsGrounded() && canDash == true)
+                    {
+                        StartCoroutine(Dash(Vector3.left));
+                        Debug.Log("Dash air left"); 
+                    }
                     isRunning = true;
                 }
                 lastTapTimeA = Time.time;
@@ -148,15 +162,27 @@ public class RightCharacterMovementKeyBoard : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
+        dashStartTime = Time.time; // บันทึกเวลาที่ Dash เริ่มต้น
 
-        Vector3 dashForce = direction * dashingPower;
+        // Save the original gravity status
+        bool originalUseGravity = rb.useGravity;
 
+        // Temporarily disable gravity
         rb.useGravity = false;
+
+        // Apply the dash force
+        Vector3 dashForce = direction * dashingPower;
         rb.velocity = dashForce;
 
+        // Wait for the dash duration
         yield return new WaitForSeconds(dashingTime);
 
-        rb.useGravity = true;
+        // Restore the original gravity status
+        rb.useGravity = originalUseGravity;
+
+        // Optionally reset the velocity if needed
+        // rb.velocity = Vector3.zero;
+
         isDashing = false;
         canDash = true;
     }
