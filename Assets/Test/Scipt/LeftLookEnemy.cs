@@ -6,6 +6,7 @@ public class LeftLookEnemy : MonoBehaviour
 {
     public Transform dummy;
     public LeftCharacterMovementKeyBoard movementScript;
+    public LeftCharacterActionKeyBoard leftCharacterActionKeyBoard;
 
     private Rigidbody rb;
 
@@ -55,11 +56,13 @@ public class LeftLookEnemy : MonoBehaviour
             if (directionToUse.x > 0 && !movementScript.facingRight)
             {
                 movementScript.facingRight = true;
+                leftCharacterActionKeyBoard.facingRight = true;
                 Flip();
             }
             else if (directionToUse.x < 0 && movementScript.facingRight)
             {
                 movementScript.facingRight = false;
+                leftCharacterActionKeyBoard.facingRight = false;
                 Flip();
             }
         }
