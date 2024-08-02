@@ -6,6 +6,7 @@ public class RightLookEnemy : MonoBehaviour
 {
     public Transform dummy;
     public RightCharacterMovementKeyBoard rightCharacterMovementKeyBoard;
+    public RightCharacterActionKeyBoard rightCharacterActionKeyBoard;
     private Rigidbody rb;
 
     void Start()
@@ -53,11 +54,13 @@ public class RightLookEnemy : MonoBehaviour
             if (directionToDummy.x < 0 && !rightCharacterMovementKeyBoard.facingLeft)
             {
                 rightCharacterMovementKeyBoard.facingLeft = true;
+                rightCharacterActionKeyBoard.facingLeft = true;
                 Flip();
             }
             else if (directionToDummy.x > 0 && rightCharacterMovementKeyBoard.facingLeft)
             {
                 rightCharacterMovementKeyBoard.facingLeft = false;
+                rightCharacterActionKeyBoard.facingLeft = false;
                 Flip();
             }
         }

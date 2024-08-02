@@ -132,7 +132,7 @@ public class RightCharacterMovementKeyBoard : MonoBehaviour
 
         if (Input.GetKey(KeyCode.S) && IsGrounded())
         {
-            Debug.Log("Crouch");
+            //Debug.Log("Crouch");
         }
     }
 
