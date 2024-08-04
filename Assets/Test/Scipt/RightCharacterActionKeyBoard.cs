@@ -7,144 +7,108 @@ public class RightCharacterActionKeyBoard : MonoBehaviour
     public RightLookEnemy rightLookEnemy;
     public bool facingLeft = true;
 
+    private bool isPerformingAction = false;
+    private float actionCooldown = 0.1f;
+
+    private enum InputState { None, Down, Forward }
+    private InputState inputState = InputState.None;
+
+
     void Update()
     {
+        if(isPerformingAction)
+        {
+            return;
+        }
+        HandleQCF();
+
         if(Input.GetKeyDown(KeyCode.U))
         {
-            if(Input.GetKey(KeyCode.S))
-            {
-                Debug.Log("Crouch and Punch");
-            }
-            else if(!IsGrounded())
-            {
-                Debug.Log("Airbone Punch");
-            }
-            else if(facingLeft)
-            {
-                if(Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.U))
-                {
-                    Debug.Log("Special Punch");
-                }
-                else
-                {
-                    Debug.Log("Punch");
-                }
-            }
-            else if(!facingLeft)
-            {
-                if(Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.U))
-                {
-                    Debug.Log("Speacial Punch");
-                }
-                else
-                {
-                    Debug.Log("Punch");
-                }
-            }
+            PerformAction("Punch",KeyCode.U);
         }
-        if(Input.GetKeyDown(KeyCode.I))
+        else if(Input.GetKeyDown(KeyCode.I))
         {
-            if(Input.GetKey(KeyCode.S))
-            {
-                Debug.Log("Crouch and Kick");
-            }
-            else if(!IsGrounded())
-            {
-                Debug.Log("Airbone Kick");
-            }
-            else if(facingLeft)
-            {
-                if(Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.I))
-                {
-                    Debug.Log("Speacial Kick");
-                }
-                else
-                {
-                    Debug.Log("Kick");
-                }
-            }
-            else if(!facingLeft)
-            {
-                if(Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.I))
-                {
-                    Debug.Log("Special Kick");
-                }
-                else
-                {
-                    Debug.Log("Kick");
-                }
-            }
+            PerformAction("Kick",KeyCode.I);
         }
-        if(Input.GetKeyDown(KeyCode.O))
+        else if(Input.GetKeyDown(KeyCode.O))
         {
-            if(Input.GetKey(KeyCode.S))
-            {
-                Debug.Log("Crouch and slash");
-            }
-            else if(!IsGrounded())
-            {
-                Debug.Log("Airbone slash");
-            }
-            else if(facingLeft)
-            {
-                if(Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.O))
-                {
-                    Debug.Log("Speacial slash");
-                }
-                else
-                {
-                    Debug.Log("slash");
-                }
-            }
-            else if(!facingLeft)
-            {
-                if(Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.O))
-                {
-                    Debug.Log("Special slash");
-                }
-                else
-                {
-                    Debug.Log("slash");
-                }
-            }
+            PerformAction("Slash",KeyCode.O);
         }
-        if(Input.GetKeyDown(KeyCode.P))
+        else if(Input.GetKeyDown(KeyCode.P))
         {
-            if(Input.GetKey(KeyCode.S))
+            PerformAction("Heavily Slash",KeyCode.P);
+        }
+    }
+    private void HandleQCF()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            inputState = InputState.Down;
+        }
+        else if (Input.GetKey(KeyCode.S) && Input.GetKeyDown(facingLeft ? KeyCode.A : KeyCode.D))
+        {
+            inputState = InputState.Forward;
+        }
+        else if (Input.GetKeyUp(facingLeft ? KeyCode.A : KeyCode.D) && inputState == InputState.Forward)
+        {
+            if (Input.GetKeyDown(KeyCode.U))
             {
-                Debug.Log("Crouch and heavly slash");
+                Debug.Log("QCF " + (facingLeft ? "Left" : "Right") + " Special Action");
+                // ทำการกระทำพิเศษที่ต้องการ
             }
-            else if(!IsGrounded())
+            inputState = InputState.None; // รีเซ็ตสถานะ
+        }
+        else
+        {
+            inputState = InputState.None; // รีเซ็ตสถานะหากไม่ตรงตามลำดับ
+        }
+    }
+
+    private void PerformAction(string actionName, KeyCode actionKey)
+    {
+        isPerformingAction = true;
+
+        if(Input.GetKey(KeyCode.S))
+        {
+            Debug.Log("Crounch and" + actionName);
+        }
+        else if(!IsGrounded())
+        {
+            Debug.Log("Airbone" + actionName);
+        }
+        else if(facingLeft)
+        {
+            if(Input.GetKey(KeyCode.A))
             {
-                Debug.Log("Airbone heavly slash");
+                Debug.Log("Special" + actionName);
             }
-            else if(facingLeft)
+            else
             {
-                if(Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.P))
-                {
-                    Debug.Log("Speacial heavly slash");
-                }
-                else
-                {
-                    Debug.Log("heavly slash");
-                }
-            }
-            else if(!facingLeft)
-            {
-                if(Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.P))
-                {
-                    Debug.Log("Special heavly slash");
-                }
-                else
-                {
-                    Debug.Log("heavly slash");
-                }
+                Debug.Log(actionName);
             }
         }
-            
+        else if(!facingLeft)
+        {
+            if(Input.GetKey(KeyCode.D))
+            {
+                Debug.Log("Special" + actionName);
+            }
+            else
+            {
+                Debug.Log(actionName);
+            }
+        }
+
+        StartCoroutine(ResetActionFlag());
     }
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, 1.1f);
+    }
+
+    private IEnumerator ResetActionFlag()
+    {
+        yield return new WaitForSeconds(actionCooldown); // ปรับเวลาตามที่ต้องการ
+        isPerformingAction = false; // รีเซ็ตตัวแปรหลังจากเวลาที่กำหนด
     }
 }
