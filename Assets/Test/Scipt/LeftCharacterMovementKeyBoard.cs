@@ -16,6 +16,7 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
     public float dashingPower = 10f;
     public float dashingTime = 0.2f;
     public bool facingRight = true;
+    public bool isPerformingAction = false;
 
     private Rigidbody rb;
     private float lastTapTimeD = 0;
@@ -38,6 +39,7 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
 
     void Update()
     {
+        if(isPerformingAction) return;
         HandleMovement();
         HandleJump();
     }

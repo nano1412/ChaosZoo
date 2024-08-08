@@ -5,12 +5,13 @@ using UnityEngine;
 public class LeftCharacterActionKeyBoard : MonoBehaviour
 {
     public LeftLookEnemy leftLookEnemy;
+    public LeftCharacterMovementKeyBoard leftCharacterMovementKeyBoard;
     public Animator animator;
     public bool facingRight = true;
     public int specialMoveEnergy = 100;
 
     public bool isPerformingAction = false;
-    private float actionCooldown = 0.1f;
+    private float actionCooldown = 1f;
     public bool isQCInProgress = false;
     public bool isHCBFInProgress = false;
 
@@ -250,12 +251,13 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
     private void PerformAction(string actionName, KeyCode actionKey)
     {
         isPerformingAction = true;
+        leftCharacterMovementKeyBoard.isPerformingAction = true;
 
         if (Input.GetKey(KeyCode.S))
         {
             Debug.Log("Crouch" + actionName);
             animator.SetTrigger("Crouch" + actionName + "Trigger");
-            ResetCrouchAnimation(actionName);
+            StartCoroutine(ResetCrouchAnimation(actionName));
         }
         else if (!IsGrounded())
         {
@@ -267,13 +269,13 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
             {
                 Debug.Log("Special" + actionName);
                 animator.SetTrigger("Special" + actionName + "Trigger");
-                ResetSpecialAnimation(actionName);
+                StartCoroutine(ResetSpecialAnimation(actionName));
             }
             else
             {
                 Debug.Log(actionName);
                 animator.SetTrigger(actionName + "Trigger");
-                ResetActionAnimation(actionName);
+                StartCoroutine(ResetActionAnimation(actionName));
             }
         }
         else
@@ -282,13 +284,13 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
             {
                 Debug.Log("Special" + actionName);
                 animator.SetTrigger("Special" + actionName + "Trigger");
-                ResetSpecialAnimation(actionName);
+                StartCoroutine(ResetSpecialAnimation(actionName));
             }
             else
             {
                 Debug.Log(actionName);
                 animator.SetTrigger(actionName + "Trigger");
-                ResetActionAnimation(actionName);
+                StartCoroutine(ResetActionAnimation(actionName));
             }
         }
 
@@ -323,18 +325,22 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
     private IEnumerator ResetCrouchAnimation(string actionName)
     {
         yield return new WaitForSeconds(actionCooldown);
+        Debug.Log("Reset");
         animator.ResetTrigger("Crouch" + actionName + "Trigger");
+        leftCharacterMovementKeyBoard.isPerformingAction = false;
     }
 
     private IEnumerator ResetActionAnimation(string actionName)
     {
         yield return new WaitForSeconds(actionCooldown);
         animator.ResetTrigger(actionName + "Trigger");
+        leftCharacterMovementKeyBoard.isPerformingAction = false;
     }
 
     private IEnumerator ResetSpecialAnimation(string actionName)
     {
         yield return new WaitForSeconds(actionCooldown);
-        animator.SetTrigger("Special" + actionName + "Trigger");
+        animator.ResetTrigger("Special" + actionName + "Trigger");
+        leftCharacterMovementKeyBoard.isPerformingAction = false;
     }
 }
