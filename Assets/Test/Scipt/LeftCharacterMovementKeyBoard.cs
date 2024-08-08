@@ -190,12 +190,12 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
         {
             //Debug.Log("Crouch");
             animetionCouch = true;
-            animator.SetBool("Couch", true);
+            animator.SetBool("Crouch", true);
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
             animetionCouch = false;
-            animator.SetBool("Couch", false);
+            animator.SetBool("Crouch", false);
         }
 
         // อัพเดทค่า Speed ใน Animator

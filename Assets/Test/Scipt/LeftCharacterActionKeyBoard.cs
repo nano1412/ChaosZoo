@@ -5,6 +5,7 @@ using UnityEngine;
 public class LeftCharacterActionKeyBoard : MonoBehaviour
 {
     public LeftLookEnemy leftLookEnemy;
+    public Animator animator;
     public bool facingRight = true;
     public int specialMoveEnergy = 100;
 
@@ -252,32 +253,42 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
 
         if (Input.GetKey(KeyCode.S))
         {
-            Debug.Log("Crouch and " + actionName);
+            Debug.Log("Crouch" + actionName);
+            animator.SetTrigger("Crouch" + actionName + "Trigger");
+            ResetCrouchAnimation(actionName);
         }
         else if (!IsGrounded())
         {
-            Debug.Log("Airborne " + actionName);
+            Debug.Log("Airborne" + actionName);
         }
         else if (facingRight)
         {
             if (Input.GetKey(KeyCode.D))
             {
-                Debug.Log("Special " + actionName);
+                Debug.Log("Special" + actionName);
+                animator.SetTrigger("Special" + actionName + "Trigger");
+                ResetSpecialAnimation(actionName);
             }
             else
             {
                 Debug.Log(actionName);
+                animator.SetTrigger(actionName + "Trigger");
+                ResetActionAnimation(actionName);
             }
         }
         else
         {
             if (Input.GetKey(KeyCode.A))
             {
-                Debug.Log("Special " + actionName);
+                Debug.Log("Special" + actionName);
+                animator.SetTrigger("Special" + actionName + "Trigger");
+                ResetSpecialAnimation(actionName);
             }
             else
             {
                 Debug.Log(actionName);
+                animator.SetTrigger(actionName + "Trigger");
+                ResetActionAnimation(actionName);
             }
         }
 
@@ -307,5 +318,23 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
         yield return new WaitForSeconds(actionCooldown);
         inputState = InputState.None;
         isHCBFInProgress = false;
+    }
+
+    private IEnumerator ResetCrouchAnimation(string actionName)
+    {
+        yield return new WaitForSeconds(actionCooldown);
+        animator.ResetTrigger("Crouch" + actionName + "Trigger");
+    }
+
+    private IEnumerator ResetActionAnimation(string actionName)
+    {
+        yield return new WaitForSeconds(actionCooldown);
+        animator.ResetTrigger(actionName + "Trigger");
+    }
+
+    private IEnumerator ResetSpecialAnimation(string actionName)
+    {
+        yield return new WaitForSeconds(actionCooldown);
+        animator.SetTrigger("Special" + actionName + "Trigger");
     }
 }
