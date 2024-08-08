@@ -71,7 +71,7 @@ public class LeftLookEnemy : MonoBehaviour
     private void Flip()
     {
         Vector3 rotation = transform.eulerAngles;
-        rotation.y = movementScript.facingRight ? 0 : 180;
+        rotation.y = movementScript.facingRight ? 90 : 270;
         transform.eulerAngles = rotation;
     }
 
