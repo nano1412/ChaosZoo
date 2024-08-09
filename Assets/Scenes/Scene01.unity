@@ -1335,6 +1335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftLookEnemy: {fileID: 1349358423}
+  leftCharacterMovementKeyBoard: {fileID: 1349358422}
   animator: {fileID: 1349358426}
   facingRight: 1
   specialMoveEnergy: 100
@@ -1362,6 +1363,7 @@ MonoBehaviour:
   dashingPower: 10
   dashingTime: 0.2
   facingRight: 1
+  isPerformingAction: 0
   airtime: 5
   dashStartTime: 0
 --- !u!114 &1349358423
@@ -1795,6 +1797,7 @@ MonoBehaviour:
   dashingPower: 5
   dashingTime: 0.2
   facingRight: 1
+  isPerformingAction: 0
   airtime: 5
   dashStartTime: 0
 --- !u!114 &1785807803
@@ -1825,6 +1828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftLookEnemy: {fileID: 1785807803}
+  leftCharacterMovementKeyBoard: {fileID: 0}
   animator: {fileID: 0}
   facingRight: 1
   specialMoveEnergy: 100
