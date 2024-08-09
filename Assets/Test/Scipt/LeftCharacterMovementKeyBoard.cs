@@ -26,7 +26,6 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
     private Animator animator;
     private bool animetionCouch = false;
     private bool canJump = true;
-    
 
     public float airtime = 5f; // ระยะเวลาที่ตัวละครอยู่กลางอากาศ
     public float dashStartTime; // เวลาที่ Dash เริ่มต้น
@@ -35,17 +34,36 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>(); // เริ่มต้น Animator
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
     }
 
     void Update()
     {
-        if(isPerformingAction) return;
+        if (isPerformingAction) return;
+        HandleCrouch(); // Handle crouch state early
         HandleMovement();
         HandleJump();
     }
 
+    private void HandleCrouch()
+    {
+        if (Input.GetKey(KeyCode.S) && IsGrounded())
+        {
+            animetionCouch = true;
+            animator.SetBool("Crouch", true);
+        }
+        else
+        {
+            animetionCouch = false;
+            animator.SetBool("Crouch", false);
+        }
+    }
+
     private void HandleMovement()
     {
+        if (animetionCouch) return; // Skip movement handling if crouching
+
         float currentSpeed = 0f; // เริ่มต้นที่ความเร็วเป็น 0
         walkanimation = 0f; // ตั้งค่า walkanimation เป็น 0 ก่อนตรวจสอบการกดปุ่ม
 
@@ -53,8 +71,6 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.D))
             {
-                if(animetionCouch)  return;
-                
                 if (Time.time - lastTapTimeD < doubleTapTime)
                 {
                     if (!IsGrounded() && canDash)
@@ -69,8 +85,6 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
 
             if (Input.GetKey(KeyCode.D))
             {
-                if(animetionCouch)  return;
-
                 if (isRunning && IsGrounded())
                 {
                     currentSpeed = runSpeed;
@@ -82,21 +96,18 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
                     currentSpeed = walkSpeed;
                     walkanimation = walkSpeed;
                 }
-                animator.SetBool("canWalk",true);
+                animator.SetBool("canWalk", true);
                 transform.Translate(-transform.right * currentSpeed * Time.deltaTime);
             }
             if (Input.GetKeyUp(KeyCode.D))
             {
-                if(animetionCouch)  return;
-
                 isRunning = false;
                 walkanimation = 0f;
                 animator.SetBool("canWalk", false);
             }
+
             if (Input.GetKeyDown(KeyCode.A))
             {
-                if(animetionCouch)  return;
-
                 if (Time.time - lastTapTimeA < doubleTapTime && canDash)
                 {
                     StartCoroutine(Dash(Vector3.left)); // Dash ไปด้านซ้ายเมื่อหันขวาและอยู่กลางอากาศ
@@ -104,13 +115,12 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
                 }
                 lastTapTimeA = Time.time;
             }
+
             if (Input.GetKey(KeyCode.A))
             {
-                if(animetionCouch)  return;
-
                 currentSpeed = walkSpeed;
                 walkanimation = -walkSpeed;
-                animator.SetBool("canWalk",true);
+                animator.SetBool("canWalk", true);
                 transform.Translate(transform.right * walkSpeed * Time.deltaTime);
             }
             if (Input.GetKeyUp(KeyCode.A))
@@ -123,8 +133,6 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                if(animetionCouch)  return;
-
                 if (Time.time - lastTapTimeA < doubleTapTime)
                 {
                     if (!IsGrounded() && canDash)
@@ -139,8 +147,6 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
 
             if (Input.GetKey(KeyCode.A))
             {
-                if(animetionCouch)  return;
-
                 if (isRunning && IsGrounded())
                 {
                     currentSpeed = runSpeed;
@@ -152,19 +158,17 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
                     currentSpeed = walkSpeed;
                     walkanimation = walkSpeed;
                 }
-                animator.SetBool("canWalk",true);
+                animator.SetBool("canWalk", true);
                 transform.Translate(transform.right * currentSpeed * Time.deltaTime);
             }
             if (Input.GetKeyUp(KeyCode.A))
             {
                 isRunning = false;
-                animator.SetBool("canWalk",false);
-                walkanimation = 0f; // ตั้งค่า walkanimation เป็น 0 เมื่อปล่อยปุ่ม
+                animator.SetBool("canWalk", false);
             }
+
             if (Input.GetKeyDown(KeyCode.D))
             {
-                if(animetionCouch)  return;
-
                 if (Time.time - lastTapTimeD < doubleTapTime && canDash)
                 {
                     StartCoroutine(Dash(Vector3.right)); // Dash ไปด้านขวาเมื่อหันซ้ายและอยู่กลางอากาศ
@@ -172,32 +176,18 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
                 }
                 lastTapTimeD = Time.time;
             }
+
             if (Input.GetKey(KeyCode.D))
             {
-                if(animetionCouch)  return;
-
                 currentSpeed = walkSpeed;
                 walkanimation = -walkSpeed;
-                animator.SetBool("canWalk",true);
+                animator.SetBool("canWalk", true);
                 transform.Translate(-transform.right * walkSpeed * Time.deltaTime);
             }
             if (Input.GetKeyUp(KeyCode.D))
             {
-                animator.SetBool("canWalk",false);
-                walkanimation = 0f; // ตั้งค่า walkanimation เป็น 0 เมื่อปล่อยปุ่ม
+                animator.SetBool("canWalk", false);
             }
-        }
-
-        if (Input.GetKey(KeyCode.S) && IsGrounded())
-        {
-            //Debug.Log("Crouch");
-            animetionCouch = true;
-            animator.SetBool("Crouch", true);
-        }
-        else if (Input.GetKeyUp(KeyCode.S))
-        {
-            animetionCouch = false;
-            animator.SetBool("Crouch", false);
         }
 
         // อัพเดทค่า Speed ใน Animator
@@ -247,7 +237,7 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
         rb.useGravity = originalUseGravity;
 
         // อาจจะรีเซ็ตความเร็วหากจำเป็น
-        // rb.velocity = Vector3.zero;
+        rb.velocity = Vector3.zero;
 
         isDashing = false;
         canDash = true;

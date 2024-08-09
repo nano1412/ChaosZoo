@@ -15,6 +15,10 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
     public bool isQCInProgress = false;
     public bool isHCBFInProgress = false;
 
+    public List<SpecialMove> qcfMoves = new List<SpecialMove>();
+    public List<SpecialMove> qcbMoves = new List<SpecialMove>();
+    public List<SpecialMove> hcbfMoves = new List<SpecialMove>();
+
     private enum InputState { None, Down, Forward, Backward, ForwardAgain }
     private InputState inputState = InputState.None;
     private float lastInputTime;
@@ -24,9 +28,9 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
     {
         inputState = InputState.None;
     }
+
     void Update()
     {
-
         HandleQCF();
         HandleQCB();
         HandleHCBF();
@@ -36,8 +40,6 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
             return;
         }
 
-
-        // ตรวจสอบ QCF และ HCBF ก่อนการตรวจสอบปุ่มพื้นฐาน
         // ตรวจสอบการกดปุ่ม U, I, O, P
         if (Input.GetKeyDown(KeyCode.U))
         {
@@ -59,7 +61,7 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
 
     private void HandleQCF()
     {
-        if(isPerformingAction || isHCBFInProgress)
+        if (isPerformingAction || isHCBFInProgress)
         {
             return;
         }
@@ -79,22 +81,22 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
         }
         else if (inputState == InputState.Forward && Time.time - lastInputTime <= inputBufferTime)
         {
-            if (Input.GetKeyDown(KeyCode.U))
+            if (Input.GetKeyDown(KeyCode.U) && qcfMoves.Contains(SpecialMove.QCF_Punch))
             {
                 Debug.Log("QCF " + (facingRight ? "Right" : "Left") + " Punch Special Action");
                 StartCoroutine(ResetQCState());
             }
-            else if (Input.GetKeyDown(KeyCode.I))
+            else if (Input.GetKeyDown(KeyCode.I) && qcfMoves.Contains(SpecialMove.QCF_Kick))
             {
                 Debug.Log("QCF " + (facingRight ? "Right" : "Left") + " Kick Special Action");
                 StartCoroutine(ResetQCState());
             }
-            else if (Input.GetKeyDown(KeyCode.O))
+            else if (Input.GetKeyDown(KeyCode.O) && qcfMoves.Contains(SpecialMove.QCF_Slash))
             {
                 Debug.Log("QCF " + (facingRight ? "Right" : "Left") + " Slash Special Action");
                 StartCoroutine(ResetQCState());
             }
-            else if (Input.GetKeyDown(KeyCode.P))
+            else if (Input.GetKeyDown(KeyCode.P) && qcfMoves.Contains(SpecialMove.QCF_HeavySlash))
             {
                 Debug.Log("QCF " + (facingRight ? "Right" : "Left") + " Heavily Slash Special Action");
                 StartCoroutine(ResetQCState());
@@ -109,7 +111,7 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
 
     private void HandleQCB()
     {
-        if(isPerformingAction || isHCBFInProgress)
+        if (isPerformingAction || isHCBFInProgress)
         {
             return;
         }
@@ -129,22 +131,22 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
         }
         else if (inputState == InputState.Backward && Time.time - lastInputTime <= inputBufferTime)
         {
-            if (Input.GetKeyDown(KeyCode.U))
+            if (Input.GetKeyDown(KeyCode.U) && qcbMoves.Contains(SpecialMove.QCB_Punch))
             {
                 Debug.Log("QCB " + (facingRight ? "Right" : "Left") + " Punch Special Action");
                 StartCoroutine(ResetQCState());
             }
-            else if (Input.GetKeyDown(KeyCode.I))
+            else if (Input.GetKeyDown(KeyCode.I) && qcbMoves.Contains(SpecialMove.QCB_Kick))
             {
                 Debug.Log("QCB " + (facingRight ? "Right" : "Left") + " Kick Special Action");
                 StartCoroutine(ResetQCState());
             }
-            else if (Input.GetKeyDown(KeyCode.O))
+            else if (Input.GetKeyDown(KeyCode.O) && qcbMoves.Contains(SpecialMove.QCB_Slash))
             {
                 Debug.Log("QCB " + (facingRight ? "Right" : "Left") + " Slash Special Action");
                 StartCoroutine(ResetQCState());
             }
-            else if (Input.GetKeyDown(KeyCode.P))
+            else if (Input.GetKeyDown(KeyCode.P) && qcbMoves.Contains(SpecialMove.QCB_HeavySlash))
             {
                 Debug.Log("QCB " + (facingRight ? "Right" : "Left") + " Heavily Slash Special Action");
                 StartCoroutine(ResetQCState());
@@ -159,7 +161,7 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
 
     private void HandleHCBF()
     {
-        if(isQCInProgress)
+        if (isQCInProgress)
         {
             return;
         }
@@ -211,28 +213,28 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
 
         if (inputState == InputState.ForwardAgain && Time.time - lastInputTime <= inputBufferTime)
         {
-            if (Input.GetKeyDown(KeyCode.U))
+            if (Input.GetKeyDown(KeyCode.U) && hcbfMoves.Contains(SpecialMove.HCBF_Punch))
             {
                 Debug.Log("HCBF " + (facingRight ? "Right" : "Left") + " Punch Special Action");
                 specialMoveEnergy = 0;
                 StartCoroutine(ResetHCBFState());
                 return;
             }
-            else if (Input.GetKeyDown(KeyCode.I))
+            else if (Input.GetKeyDown(KeyCode.I) && hcbfMoves.Contains(SpecialMove.HCBF_Kick))
             {
                 Debug.Log("HCBF " + (facingRight ? "Right" : "Left") + " Kick Special Action");
                 specialMoveEnergy = 0;
                 StartCoroutine(ResetHCBFState());
                 return;
             }
-            else if (Input.GetKeyDown(KeyCode.O))
+            else if (Input.GetKeyDown(KeyCode.O) && hcbfMoves.Contains(SpecialMove.HCBF_Slash))
             {
                 Debug.Log("HCBF " + (facingRight ? "Right" : "Left") + " Slash Special Action");
                 specialMoveEnergy = 0;
                 StartCoroutine(ResetHCBFState());
                 return;
             }
-            else if (Input.GetKeyDown(KeyCode.P))
+            else if (Input.GetKeyDown(KeyCode.P) && hcbfMoves.Contains(SpecialMove.HCBF_HeavySlash))
             {
                 Debug.Log("HCBF " + (facingRight ? "Right" : "Left") + " Heavily Slash Special Action");
                 specialMoveEnergy = 0;
