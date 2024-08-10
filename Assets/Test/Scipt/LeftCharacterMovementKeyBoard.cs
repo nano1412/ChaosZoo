@@ -196,8 +196,8 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
 
     private void HandleJump()
     {
-        if (animetionCouch) return;
-        if (Input.GetKey(KeyCode.W) && IsGrounded() && canJump)
+       
+        if (Input.GetKey(KeyCode.W) && IsGrounded() && canJump && !animetionCouch)
         {
             animator.SetTrigger("Jump");
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
