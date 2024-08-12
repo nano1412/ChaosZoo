@@ -358,7 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 5
   runSpeed: 10
-  jumpForce: 7
+  jumpForce: 0.2
   doubleTapTime: 0.3
   walkanimation: 0
   isDashing: 0
@@ -512,7 +512,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c53b91850e3e00d4e99340e53c952757,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: c53b91850e3e00d4e99340e53c952757,
         type: 3}
@@ -2197,7 +2197,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 330747d8608b3774c994bdc0fa8dd1b3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 330747d8608b3774c994bdc0fa8dd1b3,
         type: 3}
