@@ -255,7 +255,7 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
         isPerformingAction = true;
         leftCharacterMovementKeyBoard.isPerformingAction = true;
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S)) 
         {
             Debug.Log("Crouch" + actionName);
             animator.SetTrigger("Crouch" + actionName + "Trigger");
