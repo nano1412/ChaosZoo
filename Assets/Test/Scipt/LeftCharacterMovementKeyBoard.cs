@@ -201,6 +201,7 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
         {
             animator.SetTrigger("Jump");
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            StartCoroutine(Resetjump());
             canJump = false;
         }
 
@@ -242,5 +243,11 @@ public class LeftCharacterMovementKeyBoard : MonoBehaviour
 
         isDashing = false;
         canDash = true;
+    }
+
+    private IEnumerator Resetjump()
+    {
+        yield return new WaitForSeconds(1f);
+        animator.ResetTrigger("Jump");
     }
 }
