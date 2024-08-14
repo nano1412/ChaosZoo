@@ -247,13 +247,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64091cff5528844aa08f36c866103ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  walkSpeed: 2
   runSpeed: 10
-  jumpForce: 0.3
+  jumpForce: 0.2
   doubleTapTime: 0.3
   walkanimation: 0
   isDashing: 0
-  dashingPower: 10
+  dashingPower: 5
   dashingTime: 0.2
   facingRight: 1
   isPerformingAction: 0
@@ -1190,7 +1190,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 330747d8608b3774c994bdc0fa8dd1b3,
         type: 3}
       propertyPath: m_Name
-      value: SharkTpose (1)
+      value: LeftSharkTpose
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 330747d8608b3774c994bdc0fa8dd1b3,
         type: 3}
@@ -1313,7 +1313,7 @@ Transform:
   m_GameObject: {fileID: 2032369673}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.12, z: -3.14}
+  m_LocalPosition: {x: 0, y: 1.57, z: -4.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
