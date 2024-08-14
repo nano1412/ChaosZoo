@@ -70,9 +70,15 @@ public class LeftLookEnemy : MonoBehaviour
 
     private void Flip()
     {
+        // พลิกการหมุนของตัวละคร
         Vector3 rotation = transform.eulerAngles;
         rotation.y = movementScript.facingRight ? 90 : 270;
         transform.eulerAngles = rotation;
+
+        // พลิกขนาด (scale) ของตัวละครในแกน X
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
     private bool IsGrounded()
