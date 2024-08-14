@@ -23,6 +23,7 @@ public class Player01Move : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
+        StartCoroutine(FaceRight());
     }
 
     void Update()
@@ -132,11 +133,15 @@ public class Player01Move : MonoBehaviour
             FaceingLeft = true;
             FaceingRight = false;
             yield return new WaitForSeconds(0.15f);
+
             // Flip the character by inverting the scale on the X axis
             Vector3 newScale = transform.localScale;
-            newScale.x = Mathf.Abs(newScale.x); // Ensure it's positive before multiplying
-            newScale.x *= -1;  // Invert the X scale to face left
+            newScale.x = Mathf.Abs(newScale.x) * -1;  // Invert the X scale to face left
             transform.localScale = newScale;
+
+            // Set weights: RightLayer = 0, LeftLayer = 1
+            anim.SetLayerWeight(1, 0);  // RightLayer
+            anim.SetLayerWeight(2, 1);  // LeftLayer
         }
     }
 
@@ -147,10 +152,15 @@ public class Player01Move : MonoBehaviour
             FaceingRight = true;
             FaceingLeft = false;
             yield return new WaitForSeconds(0.15f);
-            // Flip the character by inverting the scale on the X axis
+
+            // Reset the character scale to face right
             Vector3 newScale = transform.localScale;
-            newScale.x = Mathf.Abs(newScale.x); // Ensure it's positive before multiplying
+            newScale.x = Mathf.Abs(newScale.x);  // Ensure the X scale is positive
             transform.localScale = newScale;
+
+            // Set weights: RightLayer = 1, LeftLayer = 0
+            anim.SetLayerWeight(1, 1);  // RightLayer
+            anim.SetLayerWeight(2, 0);  // LeftLayer
         }
     }
 }
