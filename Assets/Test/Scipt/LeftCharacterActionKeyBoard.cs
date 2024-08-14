@@ -217,28 +217,30 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
             {
                 Debug.Log("HCBF " + (facingRight ? "Right" : "Left") + " Punch Special Action");
                 specialMoveEnergy = 0;
-                StartCoroutine(ResetHCBFState());
+                StartCoroutine(ResetHCBFState("Punch"));
                 return;
             }
             else if (Input.GetKeyDown(KeyCode.I) && hcbfMoves.Contains(SpecialMove.HCBF_Kick))
             {
                 Debug.Log("HCBF " + (facingRight ? "Right" : "Left") + " Kick Special Action");
+                animator.SetTrigger("HCBF_" + "Kick" + "Trigger");
+                animator.SetBool("HCBF",true);
                 specialMoveEnergy = 0;
-                StartCoroutine(ResetHCBFState());
+                StartCoroutine(ResetHCBFState("Kick"));
                 return;
             }
             else if (Input.GetKeyDown(KeyCode.O) && hcbfMoves.Contains(SpecialMove.HCBF_Slash))
             {
                 Debug.Log("HCBF " + (facingRight ? "Right" : "Left") + " Slash Special Action");
                 specialMoveEnergy = 0;
-                StartCoroutine(ResetHCBFState());
+                StartCoroutine(ResetHCBFState("Slash"));
                 return;
             }
             else if (Input.GetKeyDown(KeyCode.P) && hcbfMoves.Contains(SpecialMove.HCBF_HeavySlash))
             {
                 Debug.Log("HCBF " + (facingRight ? "Right" : "Left") + " Heavily Slash Special Action");
                 specialMoveEnergy = 0;
-                StartCoroutine(ResetHCBFState());
+                StartCoroutine(ResetHCBFState("HeavilySlash"));
                 return;
             }
         }
@@ -317,10 +319,13 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
         isQCInProgress = false;
     }
 
-    private IEnumerator ResetHCBFState()
+    private IEnumerator ResetHCBFState(string actionHCBF)
     {
         yield return new WaitForSeconds(actionCooldown);
         inputState = InputState.None;
+        yield return new WaitForSeconds(2f);
+        animator.ResetTrigger("HCBF_" + actionHCBF + "Trigger");
+        animator.SetBool("HCBF", false);
         isHCBFInProgress = false;
     }
 

@@ -68,7 +68,7 @@ public class RightLookEnemy : MonoBehaviour
     private void Flip()
     {
         Vector3 rotation = transform.eulerAngles;
-        rotation.y = rightCharacterMovementKeyBoard.facingLeft ? 180 : 0;
+        rotation.y = rightCharacterMovementKeyBoard.facingLeft ? 270 : 90;
         transform.eulerAngles = rotation;
     }
 
