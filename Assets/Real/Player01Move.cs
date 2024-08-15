@@ -6,6 +6,7 @@ public class Player01Move : MonoBehaviour
 {
     public float walkSpeed = 0.0015f;
     public float JumpSpeed = 0.02f;
+    public Player01Action player01Action;
     public GameObject player01;
     public GameObject opponent;
     public Vector3 oppPosition;
@@ -89,10 +90,12 @@ public class Player01Move : MonoBehaviour
         else if (Input.GetAxis("Vertical") < 0)
         {
             anim.SetBool("Crouch", true);
+            player01Action.IsCrouch = true;
         }
         else
         {
             anim.SetBool("Crouch", false);
+            player01Action.IsCrouch = false;
         }
     }
 

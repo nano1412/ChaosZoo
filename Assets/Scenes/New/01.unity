@@ -365,6 +365,7 @@ MonoBehaviour:
   player01: {fileID: 1432987827}
   opponent: {fileID: 395574034}
   oppPosition: {x: 0, y: 0, z: 0}
+  player01Action: {fileID: 1432987831}
 --- !u!136 &1275467118
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2904,7 +2905,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Jumpspeed: 0.06
-  Player01: {fileID: 0}
+  IsCrouch: 0
+  Player01: {fileID: 1275467116}
 --- !u!1001 &1706445645
 PrefabInstance:
   m_ObjectHideFlags: 0
