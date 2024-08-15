@@ -56,6 +56,8 @@ public class Player01Move : MonoBehaviour
         {
             horizontalInput = "HorizontalJoyStick";
             verticalInput = "VerticalJoystick";
+            walkThreshold = 0.99f;
+
         }
 
         // Horizontal walking left and right with sensitivity threshold
@@ -80,14 +82,15 @@ public class Player01Move : MonoBehaviour
         }
 
         // Vertical Jump and Crouch
-        if (Input.GetAxis(verticalInput) > 0 && !IsJumping)
+        float verticalAxis = Input.GetAxis(verticalInput);
+        if (verticalAxis > 0.5f && !IsJumping)  // เพิ่มเกณฑ์เพื่อป้องกันการกระโดดแบบไม่ตั้งใจ
         {
             IsJumping = true;
             anim.SetTrigger("Jump");
             rb.AddForce(Vector3.up * JumpSpeed, ForceMode.Impulse);
             StartCoroutine(JumpPause());
         }
-        else if (Input.GetAxis(verticalInput) < 0)
+        else if (verticalAxis < -0.5f)  // ใช้เกณฑ์ที่ต่ำกว่าเพื่อให้เกิดการย่อตัว
         {
             anim.SetBool("Crouch", true);
         }
