@@ -5,8 +5,12 @@ using UnityEngine;
 public class Player01Action : MonoBehaviour
 {
     public float Jumpspeed = 0.01f;
-    public bool IsCrouch = false;
+    public float actionCooldown = 1f;
     public GameObject Player01;
+    public Player01Move player01Move;
+    public SelectController selectController; // อ้างอิงไปยัง SelectController script
+    public bool isPerformingAction = false;
+
     private Animator anim;
     private AnimatorStateInfo Player01Layer0;
     
@@ -15,28 +19,56 @@ public class Player01Action : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+
     
     void Update()
     {
         Player01Layer0 = anim.GetCurrentAnimatorStateInfo(0);
 
-        if(Player01Layer0.IsTag("Motion"))
+        if (isPerformingAction) return;
+
+        // ตรวจสอบว่าเป็น Joystick หรือ Keyboard
+        if (Player01Layer0.IsTag("Motion"))
         {
-            if(Input.GetButtonDown("Player01Bt01"))
+            if (selectController.Selectjoystick)
             {
-                PerformAction("Punch");
+                // สำหรับ Joystick
+                if (Input.GetButtonDown("Player01Joystick01"))
+                {
+                    PerformAction("Punch");
+                }
+                if (Input.GetButtonDown("Player01Joystick02"))
+                {
+                    PerformAction("Kick");
+                }
+                if (Input.GetButtonDown("Player01Joystick03"))
+                {
+                    PerformAction("Slash");
+                }
+                if (Input.GetButtonDown("Player01Joystick04"))
+                {
+                    // PerformAction("HeavySlash");
+                }
             }
-            if(Input.GetButtonDown("Player01Bt02"))
+            else
             {
-                PerformAction("Kick");
-            }
-            if (Input.GetButtonDown("Player01Bt03"))
-            {
-                PerformAction("Slash");
-            }
-            if (Input.GetButtonDown("Player01Bt04"))
-            {
-                //PerformAction("HeavySlash");
+                // สำหรับ Keyboard
+                if (Input.GetButtonDown("Player01Bt01"))
+                {
+                    PerformAction("Punch");
+                }
+                if (Input.GetButtonDown("Player01Bt02"))
+                {
+                    PerformAction("Kick");
+                }
+                if (Input.GetButtonDown("Player01Bt03"))
+                {
+                    PerformAction("Slash");
+                }
+                if (Input.GetButtonDown("Player01Bt04"))
+                {
+                    // PerformAction("HeavySlash");
+                }
             }
         }
     }
@@ -47,8 +79,14 @@ public class Player01Action : MonoBehaviour
     }
 
     private void PerformAction(string actionName)
-    {
-        if(Input.GetAxis("Vertical") < 0)
+    {   
+        isPerformingAction = true;
+        player01Move.isPerformingAction = true;
+
+        // ตรวจสอบการควบคุม Vertical ขึ้นอยู่กับการใช้ Joystick หรือ Keyboard
+        string verticalInput = selectController.Selectjoystick ? "VerticalJoystick" : "Vertical";
+
+        if (Input.GetAxis(verticalInput) < 0)
         {
             anim.SetTrigger("Crouch" + actionName + "Trigger");
         }
@@ -56,5 +94,15 @@ public class Player01Action : MonoBehaviour
         {
             anim.SetTrigger(actionName + "Trigger");
         }
+
+        StartCoroutine(ResetIsPerformingAction());
+    }
+
+    IEnumerator ResetIsPerformingAction()
+    {
+        yield return new WaitForSeconds(actionCooldown);
+        isPerformingAction = false;
+        player01Move.isPerformingAction = false;
     }
 }
+

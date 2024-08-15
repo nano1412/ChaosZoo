@@ -6,10 +6,12 @@ public class Player01Move : MonoBehaviour
 {
     public float walkSpeed = 0.0015f;
     public float JumpSpeed = 0.02f;
+    public float walkThreshold = 0.1f; // เพิ่มตัวแปรเกณฑ์ความไว
     public Player01Action player01Action;
     public GameObject player01;
     public GameObject opponent;
     public Vector3 oppPosition;
+    public bool isPerformingAction = false;
 
     private bool IsJumping = false;
     private Rigidbody rb;
@@ -31,26 +33,11 @@ public class Player01Move : MonoBehaviour
     {
         Player01Layer0 = anim.GetCurrentAnimatorStateInfo(0);
 
-        //Vector3 ScreenBounds = Camera.main.WorldToScreenPoint(this.transform.position);
-
-        /*if(ScreenBounds.x > Screen.width)
-        {
-            canWalkright = false;
-        }
-        if(ScreenBounds.x < 0)
-        {
-            canWalkleft = false;
-        }
-        else
-        {
-            canWalkleft = true;
-            canWalkright = true;
-        }*/ 
-
-        //Get the oppenet position
+        // Get the opponent position
         oppPosition = opponent.transform.position;
-        //Facing left or right
-         if (oppPosition.x > player01.transform.position.x && !FaceingRight)
+
+        // Facing left or right
+        if (oppPosition.x > player01.transform.position.x && !FaceingRight)
         {
             StartCoroutine(FaceRight());
         }
@@ -59,15 +46,28 @@ public class Player01Move : MonoBehaviour
             StartCoroutine(FaceLeft());
         }
 
-        // Horizontal walking left and right
+        if (isPerformingAction) return;
+
+        // Checking which control method is selected
+        string horizontalInput = "Horizontal";
+        string verticalInput = "Vertical";
+
+        if (FindObjectOfType<SelectController>().Selectjoystick)
+        {
+            horizontalInput = "HorizontalJoyStick";
+            verticalInput = "VerticalJoystick";
+        }
+
+        // Horizontal walking left and right with sensitivity threshold
+        float horizontalAxis = Input.GetAxis(horizontalInput);
         if (Player01Layer0.IsTag("Motion"))
         {
-            if (Input.GetAxis("Horizontal") > 0 && canWalkright)
+            if (horizontalAxis > walkThreshold && canWalkright)
             {
                 anim.SetBool("Forward", true);
                 transform.Translate(walkSpeed, 0, 0);
             }
-            else if (Input.GetAxis("Horizontal") < 0 && canWalkleft)
+            else if (horizontalAxis < -walkThreshold && canWalkleft)
             {
                 anim.SetBool("Backward", true);
                 transform.Translate(-walkSpeed, 0, 0);
@@ -80,22 +80,20 @@ public class Player01Move : MonoBehaviour
         }
 
         // Vertical Jump and Crouch
-        if (Input.GetAxis("Vertical") > 0 && !IsJumping)
+        if (Input.GetAxis(verticalInput) > 0 && !IsJumping)
         {
             IsJumping = true;
             anim.SetTrigger("Jump");
             rb.AddForce(Vector3.up * JumpSpeed, ForceMode.Impulse);
             StartCoroutine(JumpPause());
         }
-        else if (Input.GetAxis("Vertical") < 0)
+        else if (Input.GetAxis(verticalInput) < 0)
         {
             anim.SetBool("Crouch", true);
-            player01Action.IsCrouch = true;
         }
         else
         {
             anim.SetBool("Crouch", false);
-            player01Action.IsCrouch = false;
         }
     }
 
