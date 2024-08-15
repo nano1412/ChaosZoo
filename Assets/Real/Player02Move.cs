@@ -32,6 +32,15 @@ public class Player02Move : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "LeftAttackBox" || other.tag == "RightAttackBox" || other.tag == "LeftFit" || other.tag == "RightFit")
+        {
+            Debug.Log("1");
+            anim.SetTrigger("Hurt");
+        }
+    }
+
     IEnumerator FaceLeft()
     {
         if (!FaceingLeft)

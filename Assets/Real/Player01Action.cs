@@ -10,6 +10,7 @@ public class Player01Action : MonoBehaviour
     public Player01Move player01Move;
     public SelectController selectController; // อ้างอิงไปยัง SelectController script
     public bool isPerformingAction = false;
+    public static bool Hits = false;
 
     private Animator anim;
     private AnimatorStateInfo Player01Layer0;
@@ -36,18 +37,22 @@ public class Player01Action : MonoBehaviour
                 if (Input.GetButtonDown("Player01Joystick01"))
                 {
                     PerformAction("Punch");
+                    Hits = false;
                 }
                 if (Input.GetButtonDown("Player01Joystick02"))
                 {
                     PerformAction("Kick");
+                    Hits = false;
                 }
                 if (Input.GetButtonDown("Player01Joystick03"))
                 {
                     PerformAction("Slash");
+                    Hits = false;
                 }
                 if (Input.GetButtonDown("Player01Joystick04"))
                 {
-                    // PerformAction("HeavySlash");
+                    PerformAction("HeavySlash");
+                    Hits = false;
                 }
             }
             else
@@ -56,18 +61,22 @@ public class Player01Action : MonoBehaviour
                 if (Input.GetButtonDown("Player01Bt01"))
                 {
                     PerformAction("Punch");
+                    Hits = false;
                 }
                 if (Input.GetButtonDown("Player01Bt02"))
                 {
                     PerformAction("Kick");
+                    Hits = false;
                 }
                 if (Input.GetButtonDown("Player01Bt03"))
                 {
                     PerformAction("Slash");
+                    Hits = false;
                 }
                 if (Input.GetButtonDown("Player01Bt04"))
                 {
-                    // PerformAction("HeavySlash");
+                    PerformAction("HeavySlash");
+                    Hits = false;
                 }
             }
         }
@@ -78,6 +87,11 @@ public class Player01Action : MonoBehaviour
         //Player01.transform.Translate(0, Jumpspeed, 0);
     }
 
+    public void AttackBox()
+    {
+
+    }
+
     private void PerformAction(string actionName)
     {   
         isPerformingAction = true;
@@ -85,9 +99,10 @@ public class Player01Action : MonoBehaviour
 
         // ตรวจสอบการควบคุม Vertical ขึ้นอยู่กับการใช้ Joystick หรือ Keyboard
         string verticalInput = selectController.Selectjoystick ? "VerticalJoystick" : "Vertical";
-
+        
         if (Input.GetAxis(verticalInput) < 0)
         {
+            Debug.Log(verticalInput);
             anim.SetTrigger("Crouch" + actionName + "Trigger");
         }
         else
