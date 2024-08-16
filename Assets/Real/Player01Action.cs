@@ -119,5 +119,11 @@ public class Player01Action : MonoBehaviour
         isPerformingAction = false;
         player01Move.isPerformingAction = false;
     }
+
+    public void OnHits()
+    {
+        StopCoroutine(ResetIsPerformingAction());
+        isPerformingAction = false;
+    }
 }
 
