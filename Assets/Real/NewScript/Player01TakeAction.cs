@@ -76,14 +76,32 @@ public class Player01TakeAction : MonoBehaviour
         player01Movement.isPerformingAction = true;
 
         string verticalInput = selectController.Selectjoystick ? "VerticalJoystick" : "Vertical";
-        
+        string horizontalInput = selectController.Selectjoystick ? "HorizontalJoyStick" : "Horizontal";
         if (Input.GetAxis(verticalInput) < 0)
         {
             anim.SetTrigger("Crouch" + actionName + "Trigger");
         }
-        else
+        else if(player01Movement.faceRight)
         {
-            anim.SetTrigger(actionName + "Trigger");
+            if(Input.GetAxis(horizontalInput) > 0)
+            {
+                anim.SetTrigger("Special" + actionName + "Trigger");
+            }
+            else
+            {
+                anim.SetTrigger(actionName + "Trigger");
+            }
+        }
+        else if(player01Movement.faceLeft)
+        {
+            if(Input.GetAxis(horizontalInput) < 0)
+            {
+                anim.SetTrigger("Special" + actionName + "Trigger");
+            }
+            else
+            {
+                anim.SetTrigger(actionName + "Trigger");
+            }
         }
 
         StartCoroutine(ResetIsPerformingAction());
