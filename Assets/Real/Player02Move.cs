@@ -11,6 +11,7 @@ public class Player02Move : MonoBehaviour
     private Rigidbody rb;
     private bool FaceingLeft = true;
     private bool FaceingRight = false;
+    public bool faceLeft => FaceingLeft;
 
     void Start()
     {
