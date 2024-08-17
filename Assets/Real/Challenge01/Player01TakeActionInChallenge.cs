@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class AnimationFrameConfig
+public class AnimationFrameConfigInChallenge
 {
     public string animationName;
     public int frameCount;  // จำนวนเฟรม
 }
 
-public class Player01TakeAction : MonoBehaviour
+public class Player01TakeActionInChallenge : MonoBehaviour
 {
     public float defaultActionCooldown = 0.5f; // เวลา default
     public List<AnimationFrameConfig> animationFrameConfigs;
     public GameObject player01;
-    public Player01Movement player01Movement;
-    public SelectController selectController;
+    public Player01MovementChallenge player01Movement;
+    public SelectControllerInChallenge selectControllerInChallenge;
     public bool isPerformingAction = false;
     public static bool Hits = false;
     public bool hits => Hits;
@@ -32,7 +32,7 @@ public class Player01TakeAction : MonoBehaviour
     {
         if (isPerformingAction) return;
 
-        if (selectController.Selectjoystick)
+        if (selectControllerInChallenge.Selectjoystick)
         {
             if (Input.GetButtonDown("Player01Joystick01"))
             {
@@ -85,8 +85,8 @@ public class Player01TakeAction : MonoBehaviour
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
 
-        string verticalInput = selectController.Selectjoystick ? "VerticalJoystick" : "Vertical";
-        string horizontalInput = selectController.Selectjoystick ? "HorizontalJoyStick" : "Horizontal";
+        string verticalInput = selectControllerInChallenge.Selectjoystick ? "VerticalJoystick" : "Vertical";
+        string horizontalInput = selectControllerInChallenge.Selectjoystick ? "HorizontalJoyStick" : "Horizontal";
 
         if (Input.GetAxis(verticalInput) < 0)
         {

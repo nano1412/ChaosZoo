@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player01Movement : MonoBehaviour
+public class Player01MovementChallenge : MonoBehaviour
 {
     public float walkspeed = 0.5f;
     public float  jumpForce = 0.2f;
@@ -190,3 +190,4 @@ public class Player01Movement : MonoBehaviour
         }
     }
 }
+
