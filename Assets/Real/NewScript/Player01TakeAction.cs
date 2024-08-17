@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class AnimationFrameConfig
+{
+    public string animationName;
+    public int frameCount;  // จำนวนเฟรม
+}
+
 public class Player01TakeAction : MonoBehaviour
 {
-    public float actionCooldown = 1f;
+    public float defaultActionCooldown = 0.5f; // เวลา default
+    public List<AnimationFrameConfig> animationFrameConfigs;
     public GameObject player01;
     public Player01Movement player01Movement;
     public SelectController selectController;
     public bool isPerformingAction = false;
     public static bool Hits = false;
+    public bool hits => Hits;
 
     private Animator anim;
-    
+    private float fps = 60f;  // จำนวนเฟรมต่อวินาทีของเกม (สามารถปรับให้เหมาะสม)
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -20,9 +30,9 @@ public class Player01TakeAction : MonoBehaviour
 
     void Update()
     {
-        if(isPerformingAction) return;
+        if (isPerformingAction) return;
 
-        if(selectController.Selectjoystick)
+        if (selectController.Selectjoystick)
         {
             if (Input.GetButtonDown("Player01Joystick01"))
             {
@@ -77,13 +87,14 @@ public class Player01TakeAction : MonoBehaviour
 
         string verticalInput = selectController.Selectjoystick ? "VerticalJoystick" : "Vertical";
         string horizontalInput = selectController.Selectjoystick ? "HorizontalJoyStick" : "Horizontal";
+
         if (Input.GetAxis(verticalInput) < 0)
         {
             anim.SetTrigger("Crouch" + actionName + "Trigger");
         }
-        else if(player01Movement.faceRight)
+        else if (player01Movement.faceRight)
         {
-            if(Input.GetAxis(horizontalInput) > 0)
+            if (Input.GetAxis(horizontalInput) > 0)
             {
                 anim.SetTrigger("Special" + actionName + "Trigger");
             }
@@ -92,9 +103,9 @@ public class Player01TakeAction : MonoBehaviour
                 anim.SetTrigger(actionName + "Trigger");
             }
         }
-        else if(player01Movement.faceLeft)
+        else if (player01Movement.faceLeft)
         {
-            if(Input.GetAxis(horizontalInput) < 0)
+            if (Input.GetAxis(horizontalInput) < 0)
             {
                 anim.SetTrigger("Special" + actionName + "Trigger");
             }
@@ -104,19 +115,32 @@ public class Player01TakeAction : MonoBehaviour
             }
         }
 
-        StartCoroutine(ResetIsPerformingAction());
+        float actionCooldown = GetFrameDelay(actionName);
+        StartCoroutine(ResetIsPerformingAction(actionCooldown));
     }
 
-     IEnumerator ResetIsPerformingAction()
+    private float GetFrameDelay(string actionName)
     {
-        yield return new WaitForSeconds(actionCooldown);
+        foreach (var config in animationFrameConfigs)
+        {
+            if (config.animationName == actionName)
+            {
+                return config.frameCount / fps;
+            }
+        }
+        return defaultActionCooldown;
+    }
+
+    IEnumerator ResetIsPerformingAction(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         isPerformingAction = false;
         player01Movement.isPerformingAction = false;
     }
 
     public void OnHits()
     {
-        StopCoroutine(ResetIsPerformingAction());
+        StopCoroutine(ResetIsPerformingAction(0));
         isPerformingAction = false;
     }
 }

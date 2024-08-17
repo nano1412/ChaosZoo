@@ -5,21 +5,18 @@ using UnityEngine;
 public class Player01Trigger : MonoBehaviour
 {
     public Collider Col;
+    public bool Check = false;
+
     void Start()
     {
-        
+        // คุณอาจต้องการรีเซ็ตค่าเริ่มต้นของ Collider ที่นี่
+        Col.enabled = true;
     }
 
     void Update()
     {
-        if(Player01Action.Hits == false)
-        {
-            Col.enabled = true;
-        }
-        else
-        {
-            Col.enabled = false;
-        }
+        // เปิดใช้งาน Collider ถ้า Player01Action.Hits เป็น false
+        Col.enabled = !Player01Action.Hits;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,7 +24,19 @@ public class Player01Trigger : MonoBehaviour
         if(other.tag == "Player02")
         {
             Player01TakeAction.Hits = true;
-            GetComponentInParent<Player01TakeAction>().OnHits();
+            if(Check)
+            {
+                GetComponentInParent<Player01TakeAction>().OnHits();
+            }
+
+            // คุณอาจต้องการรีเซ็ตค่า Hits หลังจากช่วงเวลาหนึ่ง
+            StartCoroutine(ResetHits());
         }
+    }
+
+    private IEnumerator ResetHits()
+    {
+        yield return new WaitForSeconds(1f); // รอ 1 วินาที (หรือเวลาที่คุณต้องการ)
+        Player01TakeAction.Hits = false;
     }
 }

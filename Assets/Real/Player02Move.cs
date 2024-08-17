@@ -35,9 +35,10 @@ public class Player02Move : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "LeftAttackBox" || other.tag == "RightAttackBox" || other.tag == "LeftFit" || other.tag == "RightFit")
+        if(other.tag == "5P_AttackBox" || other.tag == "5K_AttackBox" || other.tag == "5S_AttackBox" || other.tag == "5HS_AttackBox" ||
+        other.tag == "2P_AttackBox" || other.tag == "2K_AttackBox" || other.tag == "2S_AttackBox" || other.tag == "2HS_AttackBox" || other.tag == "6P_AttackBox" ||
+        other.tag == "6K_AttackBox" || other.tag == "6S_AttackBox" || other.tag == "6HS_AttackBox")
         {
-            Debug.Log("1");
             anim.SetTrigger("Hurt");
         }
     }
