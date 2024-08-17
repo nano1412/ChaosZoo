@@ -26,8 +26,8 @@ public class Player01Trigger : MonoBehaviour
     {
         if(other.tag == "Player02")
         {
-            Player01Action.Hits = true;
-            GetComponentInParent<Player01Action>().OnHits();
+            Player01TakeAction.Hits = true;
+            GetComponentInParent<Player01TakeAction>().OnHits();
         }
     }
 }
