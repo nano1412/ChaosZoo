@@ -7,6 +7,7 @@ public class Player01MovementChallenge : MonoBehaviour
     public float walkspeed = 0.5f;
     public float  jumpForce = 0.2f;
     public float walkThreshold = 0.1f;
+    public float verticalThreshold = 0.1f;
     public float walkanimation;
     public GameObject player01;
     public GameObject oppenent;
@@ -53,11 +54,13 @@ public class Player01MovementChallenge : MonoBehaviour
         horizontalInput = "Horizontal";
         verticalInput = "Vertical";
         walkThreshold = 0.1f;
+        verticalThreshold = 0.1f;
         if(FindObjectOfType<SelectControllerInChallenge>().Selectjoystick)
         {
             horizontalInput = "HorizontalJoyStick";
             verticalInput = "VerticalJoystick";
             walkThreshold = 0.99f;
+            verticalThreshold = 0.4f;
         }
 
         HandleCrouch();
@@ -68,7 +71,7 @@ public class Player01MovementChallenge : MonoBehaviour
     public void HandleCrouch()
     {
         float verticalAxis = Input.GetAxis(verticalInput);
-        if(verticalAxis < -0.5f && IsGrounded())
+        if(verticalAxis < -verticalThreshold && IsGrounded())
         {
             animationCouch = true;
             anim.SetBool("Crouch", true);
@@ -108,7 +111,7 @@ public class Player01MovementChallenge : MonoBehaviour
     {
         float verticalAxis = Input.GetAxis(verticalInput);
 
-        if(verticalAxis > 0.5f && !IsJumping && !animationCouch)
+        if(verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
         {
             IsJumping = true;
             anim.SetTrigger("Jump");
