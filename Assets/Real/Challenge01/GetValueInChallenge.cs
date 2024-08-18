@@ -37,7 +37,7 @@ public class GetValueInChallenge : MonoBehaviour
         {
             StartCoroutine(ChangelayoutToJoyStick());
         }
-        else if(challlengeScripttable.CurrentRound == 5)
+        else if(challlengeScripttable.CurrentRound == 10)
         {
             StartCoroutine(ChangelayoutToArcadeStrick());
         }
