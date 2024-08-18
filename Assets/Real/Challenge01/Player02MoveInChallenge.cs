@@ -5,7 +5,10 @@ using UnityEngine;
 public class Player02MoveInChallenge : MonoBehaviour
 {
     public GameObject player02;
+    public GameObject player01;
     public GameObject opponent;
+    public Player01MovementChallenge movementScript;
+    public Player01TakeActionInChallenge  actionScript;
     public Vector3 oppPosition;
     private Animator anim;
     private Rigidbody rb;
@@ -13,7 +16,7 @@ public class Player02MoveInChallenge : MonoBehaviour
     private bool FaceingRight = false;
     public bool faceLeft => FaceingLeft;
     [SerializeField] private List<string> validTags = new List<string>();
-    [SerializeField] private ChalllengeScripttable challengeData; // Removed 'ง' here
+    [SerializeField] private ChalllengeScripttable challengeData;
     public SelectControllerInChallenge selectControllerInChallenge;
 
     private int currentTagIndex = 0;
@@ -23,7 +26,6 @@ public class Player02MoveInChallenge : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         StartCoroutine(FaceLeft());
-
     }
 
     void Update()
@@ -40,32 +42,61 @@ public class Player02MoveInChallenge : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
+{
+    if (currentTagIndex < validTags.Count)
     {
-        if (currentTagIndex < validTags.Count)
+        if (other.tag == validTags[currentTagIndex])
         {
-            if (other.tag == validTags[currentTagIndex])
+            anim.SetTrigger("Hurt");
+            currentTagIndex++;
+            if (currentTagIndex >= validTags.Count)
             {
-                anim.SetTrigger("Hurt");
-                currentTagIndex++;
-                if (currentTagIndex >= validTags.Count)
-                {
-                    challengeData.boolList.Add(true);
-                    challengeData.CurrentRound++;
-                    currentTagIndex = 0; // Reset tag index for the next round
-                    selectControllerInChallenge.ResetScene();
-                }
-            }
-            else
-            {
-                Debug.Log("Tag mismatch: " + other.tag + ". Expected: " + validTags[currentTagIndex]);
-                challengeData.boolList.Add(false);
+                challengeData.boolList.Add(true);
                 challengeData.CurrentRound++;
                 currentTagIndex = 0; // Reset tag index for the next round
+
+                Time.timeScale = 0;
+                DisablePlayerControls(); // Disable player controls
+                selectControllerInChallenge.DisableScripts();
                 selectControllerInChallenge.ResetScene();
             }
         }
-    }
+        else
+        {
+            Debug.Log("Tag mismatch: " + other.tag + ". Expected: " + validTags[currentTagIndex]);
+            challengeData.boolList.Add(false);
+            challengeData.CurrentRound++;
+            currentTagIndex = 0; // Reset tag index for the next round
 
+            Time.timeScale = 0;
+            DisablePlayerControls(); // Disable player controls
+            selectControllerInChallenge.DisableScripts();
+            selectControllerInChallenge.ResetScene();
+        }
+    }
+}
+
+    private void DisablePlayerControls()
+    {
+
+        if (movementScript != null)
+        {
+            movementScript.enabled = false;
+        }
+
+        if (actionScript != null)
+        {
+            actionScript.enabled = false;
+        }
+
+        Player02MoveInChallenge player02MovementScript = player02.GetComponent<Player02MoveInChallenge>();
+        if (player02MovementScript != null)
+        {
+            player02MovementScript.enabled = false;
+        }
+
+        // Disable any other scripts or controls as needed
+    }
     IEnumerator FaceLeft()
     {
         if (!FaceingLeft)
@@ -93,6 +124,4 @@ public class Player02MoveInChallenge : MonoBehaviour
             transform.localScale = newScale;
         }
     }
-
-    
 }
