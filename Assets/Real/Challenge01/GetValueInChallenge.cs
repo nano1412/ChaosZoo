@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 [System.Serializable]
@@ -11,6 +12,8 @@ public class RedGreenValue
 public class GetValueInChallenge : MonoBehaviour
 {
     public List<RedGreenValue> ValueGreenRed;
+    public GameObject keyboardInputTutorial;
+    public GameObject stickInputTutorial;
     public GameObject KeyBoardGroup;
     public GameObject JoyStickGroup;
     public GameObject ArcadeStickGroup;
@@ -32,6 +35,8 @@ public class GetValueInChallenge : MonoBehaviour
             KeyBoard.SetActive(true);
             JoyStick.SetActive(false);
             ArcadeStick.SetActive(false);
+            keyboardInputTutorial.SetActive(true);
+            stickInputTutorial.SetActive(false);
         }
         else if(challlengeScripttable.CurrentRound == 5)
         {
@@ -83,6 +88,8 @@ public class GetValueInChallenge : MonoBehaviour
         KeyBoard.SetActive(false);
         JoyStick.SetActive(true);
         ArcadeStick.SetActive(false);
+        keyboardInputTutorial.SetActive(false);
+        stickInputTutorial.SetActive(true);
     }
 
     IEnumerator ChangelayoutToArcadeStrick()
