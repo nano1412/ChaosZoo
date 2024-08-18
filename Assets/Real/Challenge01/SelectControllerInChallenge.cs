@@ -102,7 +102,7 @@ public class SelectControllerInChallenge : MonoBehaviour
 
     IEnumerator  WaitForMovePlayers()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         EnabledScripts();
         MovePlayersToPositions();
     }

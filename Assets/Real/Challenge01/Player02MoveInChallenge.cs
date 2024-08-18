@@ -18,6 +18,7 @@ public class Player02MoveInChallenge : MonoBehaviour
     [SerializeField] private List<string> validTags = new List<string>();
     [SerializeField] private ChalllengeScripttable challengeData;
     public SelectControllerInChallenge selectControllerInChallenge;
+    public GetValueInChallenge getValueInChallenge;
 
     private int currentTagIndex = 0;
 
@@ -54,6 +55,7 @@ public class Player02MoveInChallenge : MonoBehaviour
                 challengeData.boolList.Add(true);
                 challengeData.CurrentRound++;
                 currentTagIndex = 0; // Reset tag index for the next round
+                getValueInChallenge.GreenUpdate();
 
                 Time.timeScale = 0;
                 DisablePlayerControls(); // Disable player controls
@@ -67,6 +69,7 @@ public class Player02MoveInChallenge : MonoBehaviour
             challengeData.boolList.Add(false);
             challengeData.CurrentRound++;
             currentTagIndex = 0; // Reset tag index for the next round
+            getValueInChallenge.RedUpdate();
 
             Time.timeScale = 0;
             DisablePlayerControls(); // Disable player controls
