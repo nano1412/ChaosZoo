@@ -16,6 +16,9 @@ public class GetValueInChallenge : MonoBehaviour
     public GameObject ArcadeStickGroup;
     public GameObject Success;
     public GameObject Failed;
+    public GameObject KeyBoard;
+    public GameObject JoyStick;
+    public GameObject ArcadeStick;
     public int CurrentIndex = 0;
     public ChalllengeScripttable challlengeScripttable;
 
@@ -26,18 +29,17 @@ public class GetValueInChallenge : MonoBehaviour
             KeyBoardGroup.SetActive(true);
             JoyStickGroup.SetActive(false);
             ArcadeStickGroup.SetActive(false);
+            KeyBoard.SetActive(true);
+            JoyStick.SetActive(false);
+            ArcadeStick.SetActive(false);
         }
         else if(challlengeScripttable.CurrentRound == 5)
         {
-            KeyBoardGroup.SetActive(false);
-            JoyStickGroup.SetActive(true);
-            ArcadeStickGroup.SetActive(false);
+            StartCoroutine(ChangelayoutToJoyStick());
         }
-        else if(challlengeScripttable.CurrentRound == 10)
+        else if(challlengeScripttable.CurrentRound == 5)
         {
-            KeyBoardGroup.SetActive(false);
-            JoyStickGroup.SetActive(false);
-            ArcadeStickGroup.SetActive(true);
+            StartCoroutine(ChangelayoutToArcadeStrick());
         }
     }
 
@@ -70,5 +72,27 @@ public class GetValueInChallenge : MonoBehaviour
         Failed.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         Failed.SetActive(false);
+    }
+
+    IEnumerator ChangelayoutToJoyStick()
+    {
+        yield return new WaitForSeconds(2f);
+        KeyBoardGroup.SetActive(false);
+        JoyStickGroup.SetActive(true);
+        ArcadeStickGroup.SetActive(false);
+        KeyBoard.SetActive(false);
+        JoyStick.SetActive(true);
+        ArcadeStick.SetActive(false);
+    }
+
+    IEnumerator ChangelayoutToArcadeStrick()
+    {
+        yield return new WaitForSeconds(2f);
+        KeyBoardGroup.SetActive(false);
+        JoyStickGroup.SetActive(false);
+        ArcadeStickGroup.SetActive(true);
+        KeyBoard.SetActive(false);
+        JoyStick.SetActive(false);
+        ArcadeStick.SetActive(true);
     }
 }
