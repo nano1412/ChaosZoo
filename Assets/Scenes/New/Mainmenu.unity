@@ -224,6 +224,12 @@ MonoBehaviour:
   sceneToLoadInChallenge01: Challenge01
   sceneToLoadInChallenge02: Challenge02
   sceneToLoadInChallenge03: Challenge03
+  challlengeScripttable01: {fileID: 11400000, guid: 48c3d9db23d8bd0478be61746491810a,
+    type: 2}
+  challlengeScripttable02: {fileID: 11400000, guid: 9dc0d5317b77f124db59fcd090b54c97,
+    type: 2}
+  challlengeScripttable03: {fileID: 11400000, guid: fb3802f99b546a4458bc716af035dd7f,
+    type: 2}
   selectlevel: {fileID: 1383683023}
 --- !u!4 &226224952
 Transform:
@@ -476,7 +482,7 @@ RectTransform:
   m_GameObject: {fileID: 394429635}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0585177, y: 4.234071, z: 4.234071}
+  m_LocalScale: {x: 1.8071015, y: 7.228406, z: 7.228406}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1295111978}
@@ -484,7 +490,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -368.38293, y: -101.91927}
+  m_AnchoredPosition: {x: -646.6, y: -204.71}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &394429637
@@ -742,14 +748,14 @@ RectTransform:
   m_GameObject: {fileID: 542046393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.7072, y: 1.7072, z: 1.7072}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1383683026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -242, y: 111}
+  m_AnchoredPosition: {x: -430.83, y: 158.8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542046395
@@ -781,7 +787,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -969,7 +975,7 @@ RectTransform:
   m_GameObject: {fileID: 621750956}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0585177, y: 4.234071, z: 4.234071}
+  m_LocalScale: {x: 1.8071015, y: 7.228406, z: 7.228406}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1993094105}
@@ -977,7 +983,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17.191198, y: -101.91927}
+  m_AnchoredPosition: {x: 11.673, y: -204.71}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &621750958
@@ -1102,7 +1108,7 @@ RectTransform:
   m_GameObject: {fileID: 1026410426}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4876803, y: 1.9507211, z: 1.9507211}
+  m_LocalScale: {x: 0.8325678, y: 3.3302712, z: 3.3302712}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1919779121}
@@ -1110,7 +1116,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 590, y: 223}
+  m_AnchoredPosition: {x: 837, y: 467}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1026410428
@@ -2188,7 +2194,7 @@ RectTransform:
   m_GameObject: {fileID: 1756777471}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0585177, y: 4.234071, z: 4.234071}
+  m_LocalScale: {x: 1.8071015, y: 7.228406, z: 7.228406}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1072363404}
@@ -2196,7 +2202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 422.41238, y: -101.91927}
+  m_AnchoredPosition: {x: 703.49, y: -204.71}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1756777473

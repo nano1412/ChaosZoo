@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.IO;
+using System.Text;
+using TMPro;
 
 public class SelectControllerInChallenge : MonoBehaviour
 {
@@ -18,8 +22,17 @@ public class SelectControllerInChallenge : MonoBehaviour
     private Player01MovementChallenge movementScript;
     private Player01TakeActionInChallenge actionScript;
 
+    public GameObject FinalResult;
+    public TextMeshProUGUI scoreKeyBoard;
+    public TextMeshProUGUI scoreJoystick;
+    public TextMeshProUGUI scoreAcradestick;
+    [SerializeField] public string sceneToLoad = "01";
+    [SerializeField] public string Mainmenu = "Mainmenu";
+
+
     void Start()
     {
+        Time.timeScale = 1;
         // ตั้งค่าควบคุมเริ่มต้น
         UpdateControlSettings();
 
@@ -30,8 +43,14 @@ public class SelectControllerInChallenge : MonoBehaviour
 
     void Update()
     {
-        
-        UpdateControlSettings(); 
+        UpdateControlSettings();
+
+        if (challlengeScripttable.CurrentRound == 15)
+        {
+            Time.timeScale = 0;
+            FinalResult.SetActive(true);
+            UpdateScores();
+        }
     }
 
     public void ResetScene()
@@ -45,12 +64,12 @@ public class SelectControllerInChallenge : MonoBehaviour
 
     private void UpdateControlSettings()
     {
-        if (challlengeScripttable.CurrentRound <= 5)
+        if (challlengeScripttable.CurrentRound < 5)
         {
             SelectKeyBoard = true;
             Selectjoystick = false;
         }
-        else if (challlengeScripttable.CurrentRound > 5)
+        else if (challlengeScripttable.CurrentRound >= 5)
         {
             SelectKeyBoard = false;
             Selectjoystick = true;
@@ -100,10 +119,44 @@ public class SelectControllerInChallenge : MonoBehaviour
         Debug.Log("Players moved to new positions");
     }
 
-    IEnumerator  WaitForMovePlayers()
+    IEnumerator WaitForMovePlayers()
     {
         yield return new WaitForSeconds(2f);
         EnabledScripts();
         MovePlayersToPositions();
+    }
+
+   private void UpdateScores()
+    {
+        int keyboardScore = CountTrueValues(0, 4);
+        int joystickScore = CountTrueValues(5, 9);
+        int acradeStickScore = CountTrueValues(10, 14);
+
+        scoreKeyBoard.text = "KeyBoard : " + keyboardScore.ToString() + "/5";
+        scoreJoystick.text = "JoyStick : " + joystickScore.ToString() + "/5";
+        scoreAcradestick.text = "AcradeStick : " + acradeStickScore.ToString() + "/5";
+    }
+
+    private int CountTrueValues(int startIndex, int endIndex)
+    {
+        int count = 0;
+        for (int i = startIndex; i <= endIndex; i++)
+        {
+            if (challlengeScripttable.boolList[i])
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public void ChangeSceneToMainmenu()
+    {
+        SceneManager.LoadScene(Mainmenu);
+    }
+
+    public void ChangeSceneToChallengeNext()
+    {
+        SceneManager.LoadScene(sceneToLoad);
     }
 }
