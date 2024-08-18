@@ -53,9 +53,9 @@ public class Player02MoveInChallenge : MonoBehaviour
             if (currentTagIndex >= validTags.Count)
             {
                 challengeData.boolList.Add(true);
-                challengeData.CurrentRound++;
                 currentTagIndex = 0; // Reset tag index for the next round
                 getValueInChallenge.GreenUpdate();
+                challengeData.CurrentRound++;
 
                 Time.timeScale = 0;
                 DisablePlayerControls(); // Disable player controls
@@ -67,7 +67,6 @@ public class Player02MoveInChallenge : MonoBehaviour
         {
             Debug.Log("Tag mismatch: " + other.tag + ". Expected: " + validTags[currentTagIndex]);
             challengeData.boolList.Add(false);
-            challengeData.CurrentRound++;
             currentTagIndex = 0; // Reset tag index for the next round
             getValueInChallenge.RedUpdate();
 
@@ -75,6 +74,7 @@ public class Player02MoveInChallenge : MonoBehaviour
             DisablePlayerControls(); // Disable player controls
             selectControllerInChallenge.DisableScripts();
             selectControllerInChallenge.ResetScene();
+            challengeData.CurrentRound++;
         }
     }
 }
