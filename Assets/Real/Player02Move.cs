@@ -43,6 +43,52 @@ public class Player02Move : MonoBehaviour
         {
             StartCoroutine(FaceLeft());
         }
+
+        string horizontalInput = "Horizontal";
+        string verticalInput = "Vertical";
+
+        if(FindObjectOfType<SelectController>().Selectjoystick)
+        {
+            horizontalInput = "HorizontalJoystick";
+            verticalInput = "VecticalJoystick";
+            walkThreshold = 0.99f;
+        }
+
+        float horizontalAxis = Input.GetAxis(horizontalInput);
+        
+        if(horizontalAxis > walkThreshold && canWalkright)
+        {
+            //anim.SetBool("Forward", true);
+            transform.Translate(walkSpeed, 0, 0);
+        }
+        else if (horizontalAxis < -walkThreshold && canWalkleft)
+        {
+            //anim.SetBool("Backward", true);
+            transform.Translate(-walkSpeed, 0, 0);
+        }
+        else
+        {
+            //anim.SetBool("Forward", false);
+            //anim.SetBool("Backward", false);
+        }
+        
+
+        float verticalAxis = Input.GetAxis(verticalInput);
+        if(verticalAxis > 0.5f && !IsJumping)
+        {
+            IsJumping = true;
+            //anim.SetTrigger("Jump");
+            rb.AddForce(Vector3.up * Jumpspeed, ForceMode.Impulse);
+            StartCoroutine(JumpPause());
+        }
+        else if (verticalAxis < -0.5f)
+        {
+            //anim.SetBool("Crouch", true);
+        }
+        else
+        {
+            //anim.SetBool("Crouch", false);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -69,6 +115,12 @@ public class Player02Move : MonoBehaviour
         }
     }
 
+    IEnumerator JumpPause()
+    {
+        yield return new WaitForSeconds(1.0f);
+        IsJumping = false;
+    }
+
     IEnumerator FaceLeft()
     {
         if (!FaceingLeft)
@@ -77,14 +129,14 @@ public class Player02Move : MonoBehaviour
             FaceingRight = false;
             yield return new WaitForSeconds(0.15f);
 
-            // Flip the character by inverting the scale on the X axis
+            
             Vector3 newScale = transform.localScale;
-            newScale.x = Mathf.Abs(newScale.x) * -1;  // Invert the X scale to face left
+            newScale.x = Mathf.Abs(newScale.x) * -1;  
             transform.localScale = newScale;
 
-            // Set weights: RightLayer = 0, LeftLayer = 1
-            anim.SetLayerWeight(1, 0);  // RightLayer
-            anim.SetLayerWeight(2, 1);  // LeftLayer
+            
+            anim.SetLayerWeight(1, 0);  
+            anim.SetLayerWeight(2, 1);  
         }
     }
 
@@ -96,14 +148,14 @@ public class Player02Move : MonoBehaviour
             FaceingLeft = false;
             yield return new WaitForSeconds(0.15f);
 
-            // Reset the character scale to face right
+            
             Vector3 newScale = transform.localScale;
-            newScale.x = Mathf.Abs(newScale.x);  // Ensure the X scale is positive
+            newScale.x = Mathf.Abs(newScale.x);
             transform.localScale = newScale;
 
-            // Set weights: RightLayer = 1, LeftLayer = 0
-            anim.SetLayerWeight(1, 1);  // RightLayer
-            anim.SetLayerWeight(2, 0);  // LeftLayer
+            
+            anim.SetLayerWeight(1, 1);
+            anim.SetLayerWeight(2, 0);
         }
     }
 }
