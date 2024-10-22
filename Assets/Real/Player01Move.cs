@@ -6,7 +6,7 @@ public class Player01Move : MonoBehaviour
 {
     public float walkSpeed = 0.0015f;
     public float JumpSpeed = 0.02f;
-    public float walkThreshold = 0.1f; // เพิ่มตัวแปรเกณฑ์ความไว
+    public float walkThreshold = 0.1f;
     public Player01Action player01Action;
     public GameObject player01;
     public GameObject opponent;

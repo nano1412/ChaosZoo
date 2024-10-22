@@ -16,16 +16,16 @@ public class Player02TakeAction : MonoBehaviour
         rb = player02.GetComponent<Rigidbody>(); // รับการอ้างอิงไปยัง Rigidbody
     }
 
-    public void MoveBack()
+    /*public void MoveBack()
     {
         if (player02Move.faceLeft)
         {
-            rb.AddForce(Vector3.right * forceAmount, ForceMode.Impulse); // ผลักไปทางขวา
+            rb.AddForce(Vector3.right * forceAmount, ForceMode.Impulse);
         }
         else
         {
-            rb.AddForce(Vector3.left * forceAmount, ForceMode.Impulse); // ผลักไปทางซ้าย
+            rb.AddForce(Vector3.left * forceAmount, ForceMode.Impulse); 
         }
-    }
+    }*/
 }
 

@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class Player02Move : MonoBehaviour
 {   
+    public float walkSpeed = 0.0015f;
+    public float Jumpspeed = 0f;
+    public float walkThreshold = 0.1f;
+    //public Player02Action player02Action;
     public GameObject player02;
     public GameObject opponent;
     public Vector3 oppPosition;
-    private Animator anim;
+    //public bool isPerformingAction = false;
+
+    private bool IsJumping = false;
     private Rigidbody rb;
+    private Animator anim;
+    private AnimatorStateInfo Player02Layer0;
+    private bool canWalkleft = true;
+    private bool canWalkright = true;
     private bool FaceingLeft = true;
     private bool FaceingRight = false;
-    public bool faceLeft => FaceingLeft;
 
     void Start()
     {
@@ -22,24 +31,41 @@ public class Player02Move : MonoBehaviour
 
     void Update()
     {
+        Player02Layer0 = anim.GetCurrentAnimatorStateInfo(0);
+
         oppPosition = opponent.transform.position;
-        if (oppPosition.x > player02.transform.position.x && !FaceingRight)
+
+        if (oppPosition.x < player02.transform.position.x && !FaceingRight)
         {
             StartCoroutine(FaceRight());
         }
-        else if (oppPosition.x < player02.transform.position.x && !FaceingLeft)
+        else if (oppPosition.x > player02.transform.position.x && !FaceingLeft)
         {
             StartCoroutine(FaceLeft());
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.tag == "5P_AttackBox" || other.tag == "5K_AttackBox" || other.tag == "5S_AttackBox" || other.tag == "5HS_AttackBox" ||
-        other.tag == "2P_AttackBox" || other.tag == "2K_AttackBox" || other.tag == "2S_AttackBox" || other.tag == "2HS_AttackBox" || other.tag == "6P_AttackBox" ||
-        other.tag == "6K_AttackBox" || other.tag == "6S_AttackBox" || other.tag == "6HS_AttackBox")
+        if(collision.gameObject.tag == "WalkLeft")
         {
-            anim.SetTrigger("Hurt");
+            canWalkleft = false;
+        }
+        if(collision.gameObject.tag == "WalkRight")
+        {
+            canWalkright = false;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "WallLeft")
+        {
+            canWalkleft = true;
+        }
+        if (collision.gameObject.tag == "WallRight")
+        {
+            canWalkright = true;
         }
     }
 
@@ -57,8 +83,8 @@ public class Player02Move : MonoBehaviour
             transform.localScale = newScale;
 
             // Set weights: RightLayer = 0, LeftLayer = 1
-            // anim.SetLayerWeight(1, 0);  // RightLayer
-            // anim.SetLayerWeight(2, 1);  // LeftLayer
+            anim.SetLayerWeight(1, 0);  // RightLayer
+            anim.SetLayerWeight(2, 1);  // LeftLayer
         }
     }
 
@@ -76,9 +102,9 @@ public class Player02Move : MonoBehaviour
             transform.localScale = newScale;
 
             // Set weights: RightLayer = 1, LeftLayer = 0
-            // anim.SetLayerWeight(1, 1);  // RightLayer
-            // anim.SetLayerWeight(2, 0);  // LeftLayer
+            anim.SetLayerWeight(1, 1);  // RightLayer
+            anim.SetLayerWeight(2, 0);  // LeftLayer
         }
     }
-
 }
+
