@@ -4,20 +4,30 @@ using UnityEngine;
 
 public class SelectController : MonoBehaviour
 {
-    public GameObject player01;
-    public bool SelectKeyBoard = true; // ค่าเริ่มต้นเป็นการใช้คีย์บอร์ด
-    public bool Selectjoystick = false;
+    public bool SelectKeyBoard01 = true;
+    public bool Selectjoystick01 = false;
+
+    public bool Selectjoystick02 = true;
+    public bool SelectKeyBoard02 = false;
 
     void Start()
     {
         // ตั้งค่าควบคุมเริ่มต้น
-        if (SelectKeyBoard)
+        if (SelectKeyBoard01)
         {
-            Selectjoystick = false;
+            Selectjoystick01 = false;
         }
-        else if (Selectjoystick)
+        else if (Selectjoystick01)
         {
-            SelectKeyBoard = false;
+            SelectKeyBoard01 = false;
+        }
+        else if(SelectKeyBoard02)
+        {
+            Selectjoystick02 = false;
+        }
+        else if(Selectjoystick02)
+        {
+            SelectKeyBoard02 = false;
         }
     }
 
@@ -26,15 +36,27 @@ public class SelectController : MonoBehaviour
         // สลับการควบคุมระหว่างคีย์บอร์ดและจอยสติ๊ก
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            SelectKeyBoard = true;
-            Selectjoystick = false;
-            Debug.Log("Switched to Keyboard control");
+            SelectKeyBoard01 = true;
+            Selectjoystick01 = false;
+            Debug.Log("Switched to Keyboard control player01");
         }
         else if (Input.GetKeyDown(KeyCode.F2))
         {
-            SelectKeyBoard = false;
-            Selectjoystick = true;
-            Debug.Log("Switched to Joystick control");
+            SelectKeyBoard01 = false;
+            Selectjoystick01 = true;
+            Debug.Log("Switched to Joystick control player01");
+        }
+        else if (Input.GetKeyDown(KeyCode.F3))
+        {
+            SelectKeyBoard02 = true;
+            Selectjoystick02 = false;
+            Debug.Log("Switched to Keyboard control player02");
+        }
+        else if (Input.GetKeyDown(KeyCode.F4))
+        {
+            SelectKeyBoard02 = false;
+            Selectjoystick02 = true;
+            Debug.Log("Switched to Joystick control player02");
         }
     }
 }

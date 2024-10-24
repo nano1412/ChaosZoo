@@ -32,7 +32,7 @@ public class Player01TakeAction : MonoBehaviour
     {
         if (isPerformingAction) return;
 
-        if (selectController.Selectjoystick)
+        if (selectController.Selectjoystick01)
         {
             if (Input.GetButtonDown("Player01Joystick01"))
             {
@@ -85,8 +85,8 @@ public class Player01TakeAction : MonoBehaviour
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
 
-        string verticalInput = selectController.Selectjoystick ? "VerticalJoystick" : "Vertical";
-        string horizontalInput = selectController.Selectjoystick ? "HorizontalJoyStick" : "Horizontal";
+        string verticalInput = selectController.Selectjoystick01 ? "VerticalJoystick" : "Vertical";
+        string horizontalInput = selectController.Selectjoystick01 ? "HorizontalJoyStick" : "Horizontal";
 
         if (Input.GetAxis(verticalInput) < -0.4f)
         {

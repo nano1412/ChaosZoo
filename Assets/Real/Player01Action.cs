@@ -31,7 +31,7 @@ public class Player01Action : MonoBehaviour
         // ตรวจสอบว่าเป็น Joystick หรือ Keyboard
         if (Player01Layer0.IsTag("Motion"))
         {
-            if (selectController.Selectjoystick)
+            if (selectController.Selectjoystick01)
             {
                 // สำหรับ Joystick
                 if (Input.GetButtonDown("Player01Joystick01"))
@@ -98,7 +98,7 @@ public class Player01Action : MonoBehaviour
         player01Move.isPerformingAction = true;
 
         // ตรวจสอบการควบคุม Vertical ขึ้นอยู่กับการใช้ Joystick หรือ Keyboard
-        string verticalInput = selectController.Selectjoystick ? "VerticalJoystick" : "Vertical";
+        string verticalInput = selectController.Selectjoystick01 ? "VerticalJoystick" : "Vertical";
         
         if (Input.GetAxis(verticalInput) < 0)
         {

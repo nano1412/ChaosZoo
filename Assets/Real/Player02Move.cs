@@ -47,7 +47,7 @@ public class Player02Move : MonoBehaviour
         string horizontalInput = "Horizontal";
         string verticalInput = "Vertical";
 
-        if(FindObjectOfType<SelectController>().Selectjoystick)
+        if(FindObjectOfType<SelectController>().Selectjoystick02)
         {
             horizontalInput = "HorizontalJoystick";
             verticalInput = "VecticalJoystick";
