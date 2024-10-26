@@ -57,8 +57,8 @@ public class Player02Movement : MonoBehaviour
         verticalThreshold = 0.1f;
         if(FindObjectOfType<SelectController>().Selectjoystick02)
         {
-            horizontalInput = "HorizontalJoyStick";
-            verticalInput = "VerticalJoystick";
+            horizontalInput = "LeftAnalogX2";
+            verticalInput = "LeftAnalogY2";
             walkThreshold = 0.99f;
             verticalThreshold = 0.4f;
         }
