@@ -59,7 +59,7 @@ public class Player02Movement : MonoBehaviour
         {
             horizontalInput = "LeftAnalogX2";
             verticalInput = "LeftAnalogY2";
-            walkThreshold = 0.99f;
+            walkThreshold = 0.4f;
             verticalThreshold = 0.4f;
         }
 
@@ -71,7 +71,7 @@ public class Player02Movement : MonoBehaviour
     public void HandleCrouch()
     {
         float verticalAxis = Input.GetAxis(verticalInput);
-        if(verticalAxis < -verticalThreshold && IsGrounded())
+        if(-verticalAxis < -verticalThreshold && IsGrounded())
         {
             animationCouch = true;
             //anim.SetBool("Crouch", true);
@@ -112,7 +112,7 @@ public class Player02Movement : MonoBehaviour
     {
         float verticalAxis = Input.GetAxis(verticalInput);
 
-        if(verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+        if(-verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
         {
             IsJumping = true;
             //anim.SetTrigger("Jump");
