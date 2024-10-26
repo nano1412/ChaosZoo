@@ -22,6 +22,7 @@ public class Player02Movement : MonoBehaviour
     private bool FaceingRight = false;
     private bool animationCouch = false;
     private bool IsJumping = false;
+    public bool Joystick = false;
 
     public bool faceLeft => FaceingLeft;
     public bool faceRight => FaceingRight;
@@ -51,16 +52,22 @@ public class Player02Movement : MonoBehaviour
             StartCoroutine(FaceLeft());
         }
 
-        horizontalInput = "Horizontal";
-        verticalInput = "Vertical";
-        walkThreshold = 0.1f;
-        verticalThreshold = 0.1f;
+        if(FindObjectOfType<SelectController>().SelectKeyBoard02)
+        {
+            horizontalInput = "Horizontal";
+            verticalInput = "Vertical";
+            walkThreshold = 0.1f;
+            verticalThreshold = 0.1f;
+            Joystick = false;
+            
+        }
         if(FindObjectOfType<SelectController>().Selectjoystick02)
         {
             horizontalInput = "LeftAnalogX2";
             verticalInput = "LeftAnalogY2";
             walkThreshold = 0.4f;
             verticalThreshold = 0.4f;
+            Joystick = true;
         }
 
         HandleCrouch();
@@ -71,15 +78,31 @@ public class Player02Movement : MonoBehaviour
     public void HandleCrouch()
     {
         float verticalAxis = Input.GetAxis(verticalInput);
-        if(-verticalAxis < -verticalThreshold && IsGrounded())
+        if(Joystick)
         {
-            animationCouch = true;
-            //anim.SetBool("Crouch", true);
+            if(-verticalAxis < -verticalThreshold && IsGrounded())
+            {
+                animationCouch = true;
+                //anim.SetBool("Crouch", true);
+            }
+            else
+            {
+                animationCouch = false;
+                //anim.SetBool("Crouch", false);
+            }
         }
         else
         {
-            animationCouch = false;
-            //anim.SetBool("Crouch", false);
+             if(verticalAxis < -verticalThreshold && IsGrounded())
+            {
+                animationCouch = true;
+                //anim.SetBool("Crouch", true);
+            }
+            else
+            {
+                animationCouch = false;
+                //anim.SetBool("Crouch", false);
+            }
         }
     }
 
@@ -91,33 +114,45 @@ public class Player02Movement : MonoBehaviour
         if(horizontalAxis > walkThreshold && canWalkright)
         {
             walkanimation = walkspeed;
-            //anim.SetBool("canWalk", true);
+            anim.SetBool("canWalk", true);
             transform.Translate(transform.right * walkspeed * Time.deltaTime);
         }
         else if(horizontalAxis < -walkThreshold && canWalkleft)
         {
             walkanimation = -walkspeed;
-            //anim.SetBool("canWalk", true);
+            anim.SetBool("canWalk", true);
             transform.Translate(-transform.right * walkspeed * Time.deltaTime);
         }
         else
         {
             walkanimation = 0f;
-            //anim.SetBool("canWalk", false);
+            anim.SetBool("canWalk", false);
         }
-        //anim.SetFloat("Speed", walkanimation);
+        anim.SetFloat("Speed", walkanimation);
     }
 
     private void HandleJump()
     {
         float verticalAxis = Input.GetAxis(verticalInput);
-
-        if(-verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+        if(Joystick)
         {
-            IsJumping = true;
-            //anim.SetTrigger("Jump");
-            //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            StartCoroutine(JumpPause());
+            if(-verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+            {
+                IsJumping = true;
+                //anim.SetTrigger("Jump");
+                //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                StartCoroutine(JumpPause());
+            }
+        }
+        else
+        {
+            if(verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+            {
+                IsJumping = true;
+                //anim.SetTrigger("Jump");
+                //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                StartCoroutine(JumpPause());
+            }
         }
     }
 
@@ -172,6 +207,7 @@ public class Player02Movement : MonoBehaviour
             // Set weights: RightLayer = 0, LeftLayer = 1
             anim.SetLayerWeight(1, 0);  // RightLayer
             anim.SetLayerWeight(2, 1);  // LeftLayer
+            Debug.Log("Left");
         }
     }
 
@@ -191,6 +227,7 @@ public class Player02Movement : MonoBehaviour
             // Set weights: RightLayer = 1, LeftLayer = 0
             anim.SetLayerWeight(1, 1);  // RightLayer
             anim.SetLayerWeight(2, 0);  // LeftLayer
+            Debug.Log("Right");
         }
     }
 }

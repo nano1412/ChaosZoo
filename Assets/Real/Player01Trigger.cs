@@ -9,7 +9,6 @@ public class Player01Trigger : MonoBehaviour
 
     void Start()
     {
-        // คุณอาจต้องการรีเซ็ตค่าเริ่มต้นของ Collider ที่นี่
         Col.enabled = true;
     }
 
