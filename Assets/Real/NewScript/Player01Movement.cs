@@ -22,12 +22,14 @@ public class Player01Movement : MonoBehaviour
     private bool FaceingRight = true;
     private bool animationCouch = false;
     private bool IsJumping = false;
+    public bool Joystick = false;
 
     public bool faceLeft => FaceingLeft;
     public bool faceRight => FaceingRight;
 
     public string horizontalInput = "Horizontal";
     public string verticalInput = "Vertical";
+
 
     void Start()
     {
@@ -51,16 +53,22 @@ public class Player01Movement : MonoBehaviour
             StartCoroutine(FaceLeft());
         }
 
-        horizontalInput = "Horizontal";
-        verticalInput = "Vertical";
-        walkThreshold = 0.1f;
-        verticalThreshold = 0.1f;
+        if(FindObjectOfType<SelectController>().SelectKeyBoard01)
+        {
+            horizontalInput = "Horizontal";
+            verticalInput = "Vertical";
+            walkThreshold = 0.1f;
+            verticalThreshold = 0.1f;
+            Joystick = false;
+            
+        }
         if(FindObjectOfType<SelectController>().Selectjoystick01)
         {
             horizontalInput = "LeftAnalogX1";
             verticalInput = "LeftAnalogY1";
             walkThreshold = 0.4f;
             verticalThreshold = 0.4f;
+            Joystick = true;
         }
 
         HandleCrouch();
@@ -71,16 +79,33 @@ public class Player01Movement : MonoBehaviour
     public void HandleCrouch()
     {
         float verticalAxis = Input.GetAxis(verticalInput);
-        if(-verticalAxis < -verticalThreshold && IsGrounded())
+
+        if(Joystick)
         {
-            animationCouch = true;
-            anim.SetBool("Crouch", true);
+            if(-verticalAxis < -verticalThreshold && IsGrounded())
+            {
+                animationCouch = true;
+                anim.SetBool("Crouch", true);
+            }
+            else
+            {
+                animationCouch = false;
+                anim.SetBool("Crouch", false);
+            }
         }
         else
         {
-            animationCouch = false;
-            anim.SetBool("Crouch", false);
-        }
+             if(verticalAxis < -verticalThreshold && IsGrounded())
+            {
+                animationCouch = true;
+                anim.SetBool("Crouch", true);
+            }
+            else
+            {
+                animationCouch = false;
+                anim.SetBool("Crouch", false);
+            }
+        }      
     }
 
     public void HandleMovement()
@@ -110,13 +135,25 @@ public class Player01Movement : MonoBehaviour
     private void HandleJump()
     {
         float verticalAxis = Input.GetAxis(verticalInput);
-
-        if(-verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+        if(Joystick)
         {
-            IsJumping = true;
-            anim.SetTrigger("Jump");
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            StartCoroutine(JumpPause());
+            if(-verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+            {
+                IsJumping = true;
+                anim.SetTrigger("Jump");
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                StartCoroutine(JumpPause());
+            }
+        }
+        else
+        {
+            if(verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+            {
+                IsJumping = true;
+                anim.SetTrigger("Jump");
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                StartCoroutine(JumpPause());
+            }
         }
     } 
 
