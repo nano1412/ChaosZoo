@@ -43,11 +43,11 @@ public class Player02Movement : MonoBehaviour
         if(isPerformingAction) return;
 
         oppPosition = oppenent.transform.position;
-        if (oppPosition.x < player02.transform.position.x && !FaceingRight)
+        if (oppPosition.x > player02.transform.position.x && !FaceingRight)
         {
             StartCoroutine(FaceRight());
         }
-        else if (oppPosition.x > player02.transform.position.x && !FaceingLeft)
+        else if (oppPosition.x < player02.transform.position.x && !FaceingLeft)
         {
             StartCoroutine(FaceLeft());
         }
@@ -83,12 +83,12 @@ public class Player02Movement : MonoBehaviour
             if(-verticalAxis < -verticalThreshold && IsGrounded())
             {
                 animationCouch = true;
-                //anim.SetBool("Crouch", true);
+                anim.SetBool("Crouch", true);
             }
             else
             {
                 animationCouch = false;
-                //anim.SetBool("Crouch", false);
+                anim.SetBool("Crouch", false);
             }
         }
         else
@@ -96,12 +96,12 @@ public class Player02Movement : MonoBehaviour
              if(verticalAxis < -verticalThreshold && IsGrounded())
             {
                 animationCouch = true;
-                //anim.SetBool("Crouch", true);
+                anim.SetBool("Crouch", true);
             }
             else
             {
                 animationCouch = false;
-                //anim.SetBool("Crouch", false);
+                anim.SetBool("Crouch", false);
             }
         }
     }
@@ -139,8 +139,8 @@ public class Player02Movement : MonoBehaviour
             if(-verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
             {
                 IsJumping = true;
-                //anim.SetTrigger("Jump");
-                //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                anim.SetTrigger("Jump");
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 StartCoroutine(JumpPause());
             }
         }
@@ -149,8 +149,8 @@ public class Player02Movement : MonoBehaviour
             if(verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
             {
                 IsJumping = true;
-                //anim.SetTrigger("Jump");
-                //rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                anim.SetTrigger("Jump");
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 StartCoroutine(JumpPause());
             }
         }
@@ -191,7 +191,7 @@ public class Player02Movement : MonoBehaviour
         IsJumping = false;
     }
 
-    IEnumerator FaceLeft()
+   IEnumerator FaceLeft()
     {
         if (!FaceingLeft)
         {
@@ -205,8 +205,10 @@ public class Player02Movement : MonoBehaviour
             transform.localScale = newScale;
 
             // Set weights: RightLayer = 0, LeftLayer = 1
-            anim.SetLayerWeight(1, 0);  // RightLayer
-            anim.SetLayerWeight(2, 1);  // LeftLayer
+            //anim.SetLayerWeight(1, 0);  // RightLayer
+            //anim.SetLayerWeight(2, 1);  // LeftLayer
+            anim.SetBool("FaceLeft", true);
+            anim.SetBool("FaceRight", false);
             
         }
     }
@@ -225,8 +227,10 @@ public class Player02Movement : MonoBehaviour
             transform.localScale = newScale;
 
             // Set weights: RightLayer = 1, LeftLayer = 0
-            anim.SetLayerWeight(1, 1);  // RightLayer
-            anim.SetLayerWeight(2, 0);  // LeftLayer
+            //anim.SetLayerWeight(1, 1);  // RightLayer
+            //anim.SetLayerWeight(2, 0);  // LeftLayer
+            anim.SetBool("FaceLeft", false);
+            anim.SetBool("FaceRight", true);
             
         }
     }

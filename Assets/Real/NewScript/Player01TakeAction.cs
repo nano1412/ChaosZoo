@@ -144,7 +144,7 @@ public class Player01TakeAction : MonoBehaviour
             }
         }
 
-        StartCoroutine(ResetIsPerformingAction(1f));
+        StartCoroutine(ResetIsPerformingAction(0.5f));
     }
     IEnumerator ResetIsPerformingAction(float delay)
     {
