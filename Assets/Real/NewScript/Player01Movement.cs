@@ -206,8 +206,9 @@ public class Player01Movement : MonoBehaviour
             transform.localScale = newScale;
 
             // Set weights: RightLayer = 0, LeftLayer = 1
-            anim.SetLayerWeight(1, 0);  // RightLayer
-            anim.SetLayerWeight(2, 1);  // LeftLayer
+            //anim.SetLayerWeight(1, 0);  // RightLayer
+            //anim.SetLayerWeight(2, 1);  // LeftLayer
+            Debug.Log("Left");
         }
     }
 
@@ -225,8 +226,9 @@ public class Player01Movement : MonoBehaviour
             transform.localScale = newScale;
 
             // Set weights: RightLayer = 1, LeftLayer = 0
-            anim.SetLayerWeight(1, 1);  // RightLayer
-            anim.SetLayerWeight(2, 0);  // LeftLayer
+            //anim.SetLayerWeight(1, 1);  // RightLayer
+            //anim.SetLayerWeight(2, 0);  // LeftLayer
+            Debug.Log("Right");
         }
     }
 }

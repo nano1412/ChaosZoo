@@ -12,7 +12,7 @@ public class AnimationFrameConfigInChallenge
 public class Player01TakeActionInChallenge : MonoBehaviour
 {
     public float defaultActionCooldown = 0.5f; // เวลา default
-    public List<AnimationFrameConfig> animationFrameConfigs;
+    public List<AnimationFrameConfigInChallenge> animationFrameConfigInChallenge;
     public GameObject player01;
     public Player01MovementChallenge player01Movement;
     public SelectControllerInChallenge selectControllerInChallenge;
@@ -121,7 +121,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
 
     private float GetFrameDelay(string actionName)
     {
-        foreach (var config in animationFrameConfigs)
+        foreach (var config in animationFrameConfigInChallenge)
         {
             if (config.animationName == actionName)
             {

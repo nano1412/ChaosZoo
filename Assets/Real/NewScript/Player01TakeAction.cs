@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class AnimationFrameConfig
-{
-    public string animationName;
-    public int frameCount;  // จำนวนเฟรม
-}
-
 public class Player01TakeAction : MonoBehaviour
 {
     public float defaultActionCooldown = 0.5f; // เวลา default
-    public List<AnimationFrameConfig> animationFrameConfigs;
     public GameObject player01;
     public Player01Movement player01Movement;
     public SelectController selectController;
@@ -21,7 +13,6 @@ public class Player01TakeAction : MonoBehaviour
     public bool hits => Hits;
 
     private Animator anim;
-    private float fps = 60f;  // จำนวนเฟรมต่อวินาทีของเกม (สามารถปรับให้เหมาะสม)
 
     void Start()
     {
@@ -91,7 +82,7 @@ public class Player01TakeAction : MonoBehaviour
         
         if(Joystick)
         {
-             if (-Input.GetAxis(verticalInput) < -0.4f)
+            if (-Input.GetAxis(verticalInput) < -0.4f)
             {
                 anim.SetTrigger("Crouch" + actionName + "Trigger");
             }
@@ -124,12 +115,14 @@ public class Player01TakeAction : MonoBehaviour
             if (Input.GetAxis(verticalInput) < -0.4f)
             {
                 anim.SetTrigger("Crouch" + actionName + "Trigger");
+                Debug.Log($"Crouch {actionName}");
             }
             else if (player01Movement.faceRight)
             {
                 if (Input.GetAxis(horizontalInput) > 0.4f)
                 {
                     anim.SetTrigger("Special" + actionName + "Trigger");
+                    Debug.Log($"Special {actionName}");
                 }
                 else
                 {
@@ -138,9 +131,11 @@ public class Player01TakeAction : MonoBehaviour
             }
             else if (player01Movement.faceLeft)
             {
-                if (Input.GetAxis(horizontalInput) < -0.1f)
+                if (Input.GetAxis(horizontalInput) < 0f)
                 {
                     anim.SetTrigger("Special" + actionName + "Trigger");
+                    Debug.Log($"Special {actionName}");
+                    
                 }
                 else
                 {
@@ -149,22 +144,8 @@ public class Player01TakeAction : MonoBehaviour
             }
         }
 
-        float actionCooldown = GetFrameDelay(actionName);
-        StartCoroutine(ResetIsPerformingAction(actionCooldown));
+        StartCoroutine(ResetIsPerformingAction(1f));
     }
-
-    private float GetFrameDelay(string actionName)
-    {
-        foreach (var config in animationFrameConfigs)
-        {
-            if (config.animationName == actionName)
-            {
-                return config.frameCount / fps;
-            }
-        }
-        return defaultActionCooldown;
-    }
-
     IEnumerator ResetIsPerformingAction(float delay)
     {
         yield return new WaitForSeconds(delay);
