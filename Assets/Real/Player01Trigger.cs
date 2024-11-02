@@ -5,37 +5,39 @@ using UnityEngine;
 public class Player01Trigger : MonoBehaviour
 {
     public Collider Col;
+    public int damage = 10;
     public bool Check = false;
+    public Player02Health player02Health;
 
     void Start()
     {
         Col.enabled = true;
+        player02Health = GameObject.FindGameObjectWithTag("Player02").GetComponent<Player02Health>();
     }
 
     void Update()
     {
-        // เปิดใช้งาน Collider ถ้า Player01Action.Hits เป็น false
         Col.enabled = !Player01Action.Hits;
     }
 
-    private void OnTriggerEnter(Collider other)
+     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player02")
         {
             Player01TakeAction.Hits = true;
+            player02Health.TakeDamage(damage);
             if(Check)
             {
                 GetComponentInParent<Player01TakeAction>().OnHits();
             }
 
-            // คุณอาจต้องการรีเซ็ตค่า Hits หลังจากช่วงเวลาหนึ่ง
             StartCoroutine(ResetHits());
         }
     }
 
     private IEnumerator ResetHits()
     {
-        yield return new WaitForSeconds(1f); // รอ 1 วินาที (หรือเวลาที่คุณต้องการ)
+        yield return new WaitForSeconds(1f);
         Player01TakeAction.Hits = false;
     }
 }

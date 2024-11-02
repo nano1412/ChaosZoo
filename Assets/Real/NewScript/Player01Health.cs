@@ -19,6 +19,8 @@ public class Player01Health : MonoBehaviour
            col.tag == "2P_AttackBox" || col.tag == "2K_AttackBox" || col.tag == "2S_AttackBox" || col.tag == "2HS_AttackBox" ||
            col.tag == "6P_AttackBox" || col.tag == "6K_AttackBox" || col.tag == "6S_AttackBox" || col.tag == "6HS_AttackBox")
         {
+            
+
             //anim.SetTrigger("Hurt");
             Debug.Log("Attack");
         }

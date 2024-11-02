@@ -6,6 +6,7 @@ public class Player02Health : MonoBehaviour
 {
     private Rigidbody rb;
     private Animator anim;
+    public ScriptableHealth scriptableHealth;
 
     void Start()
     {
@@ -18,9 +19,18 @@ public class Player02Health : MonoBehaviour
         col.tag == "2P_AttacKBox" || col.tag == "2K_AttackBox" || col.tag == "2S_AttackBox" || col.tag == "2HS_AttackBox" ||
         col.tag == "6P_AttackBox" || col.tag == "6K_AttackBox" || col.tag == "6S_AttackBox" || col.tag == "6HS_AttackBox")
         {
-            //anim.SetTrigger("Hurt");
-            Debug.Log("Attack");
+            if(scriptableHealth.currentHealth > 0)
+            {
+                anim.SetTrigger("Hurt");
+            }
+
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        scriptableHealth.currentHealth -= damage;
+        Debug.Log("damage");    
     }
 
 }
