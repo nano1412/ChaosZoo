@@ -22,7 +22,7 @@ public class Player02Trigger : MonoBehaviour
 
      private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player02")
+        if(other.tag == "Player01")
         {
             Player02TakeAction.Hits = true;
             player01Health.TakeDamage(damage);

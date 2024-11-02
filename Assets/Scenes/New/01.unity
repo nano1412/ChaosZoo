@@ -3705,7 +3705,7 @@ GameObject:
   - component: {fileID: 791110719}
   - component: {fileID: 791110722}
   - component: {fileID: 791110721}
-  - component: {fileID: 791110720}
+  - component: {fileID: 791110723}
   m_Layer: 14
   m_Name: 2HSAttackBox
   m_TagString: 2HS_AttackBox
@@ -3728,22 +3728,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1421366628}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &791110720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791110718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 791110721}
-  damage: 0
-  Check: 1
-  player02Health: {fileID: 0}
 --- !u!136 &791110721
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3775,6 +3759,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791110718}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &791110723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791110718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db88876c4b2714fbc2d7d9fab70c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 791110721}
+  damage: 10
+  Check: 0
+  player01Health: {fileID: 0}
 --- !u!1 &820433965
 GameObject:
   m_ObjectHideFlags: 0
