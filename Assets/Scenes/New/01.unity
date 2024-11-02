@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 17804199}
   - component: {fileID: 17804202}
   - component: {fileID: 17804201}
-  - component: {fileID: 17804200}
+  - component: {fileID: 17804203}
   m_Layer: 14
   m_Name: Cube
   m_TagString: 2K_AttackBox
@@ -157,22 +157,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 254485285}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &17804200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17804198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 17804201}
-  damage: 0
-  Check: 1
-  player02Health: {fileID: 0}
 --- !u!65 &17804201
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -202,6 +186,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 17804198}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &17804203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17804198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db88876c4b2714fbc2d7d9fab70c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 17804201}
+  damage: 10
+  Check: 0
+  player01Health: {fileID: 0}
 --- !u!1 &24108759
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 24108760}
   - component: {fileID: 24108763}
   - component: {fileID: 24108762}
-  - component: {fileID: 24108761}
+  - component: {fileID: 24108764}
   m_Layer: 14
   m_Name: Cube
   m_TagString: 5P_AttackBox
@@ -236,22 +236,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1663025817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &24108761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24108759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 24108762}
-  damage: 0
-  Check: 1
-  player02Health: {fileID: 0}
 --- !u!65 &24108762
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -281,6 +265,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24108759}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &24108764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24108759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db88876c4b2714fbc2d7d9fab70c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 24108762}
+  damage: 10
+  Check: 0
+  player01Health: {fileID: 0}
 --- !u!1 &101893466
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce2ae27ac52ef840adbe4575a341ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scriptableHealth: {fileID: 11400000, guid: fd4d6887480d82d45a3ac42a6f62404c, type: 2}
+  player01Movement: {fileID: 235794196}
 --- !u!4 &254485285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1345432051226033693, guid: 330747d8608b3774c994bdc0fa8dd1b3,
@@ -731,7 +733,7 @@ GameObject:
   - component: {fileID: 321200384}
   - component: {fileID: 321200387}
   - component: {fileID: 321200386}
-  - component: {fileID: 321200385}
+  - component: {fileID: 321200388}
   m_Layer: 14
   m_Name: Cube
   m_TagString: 5K_AttackBox
@@ -754,22 +756,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1421366628}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &321200385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321200383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 321200386}
-  damage: 0
-  Check: 1
-  player02Health: {fileID: 0}
 --- !u!65 &321200386
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -799,6 +785,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321200383}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &321200388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321200383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db88876c4b2714fbc2d7d9fab70c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 321200386}
+  damage: 10
+  Check: 0
+  player01Health: {fileID: 0}
 --- !u!1 &335042404
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +891,7 @@ GameObject:
   - component: {fileID: 394223654}
   - component: {fileID: 394223657}
   - component: {fileID: 394223656}
-  - component: {fileID: 394223655}
+  - component: {fileID: 394223658}
   m_Layer: 14
   m_Name: 5SAttackBox
   m_TagString: 5S_AttackBox
@@ -912,22 +914,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1663025817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &394223655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394223653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 394223656}
-  damage: 0
-  Check: 1
-  player02Health: {fileID: 0}
 --- !u!65 &394223656
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -957,6 +943,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394223653}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &394223658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394223653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db88876c4b2714fbc2d7d9fab70c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 394223656}
+  damage: 10
+  Check: 0
+  player01Health: {fileID: 0}
 --- !u!1 &408659320
 GameObject:
   m_ObjectHideFlags: 0
@@ -3360,7 +3362,7 @@ GameObject:
   - component: {fileID: 551791096}
   - component: {fileID: 551791099}
   - component: {fileID: 551791098}
-  - component: {fileID: 551791097}
+  - component: {fileID: 551791100}
   m_Layer: 14
   m_Name: 6SAttackBox
   m_TagString: 6S_AttackBox
@@ -3383,22 +3385,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2110138642}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &551791097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 551791095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 551791098}
-  damage: 0
-  Check: 1
-  player02Health: {fileID: 0}
 --- !u!65 &551791098
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3428,6 +3414,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551791095}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &551791100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551791095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db88876c4b2714fbc2d7d9fab70c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 551791098}
+  damage: 10
+  Check: 0
+  player01Health: {fileID: 0}
 --- !u!1 &565574207
 GameObject:
   m_ObjectHideFlags: 0
@@ -3784,7 +3786,7 @@ GameObject:
   - component: {fileID: 820433966}
   - component: {fileID: 820433969}
   - component: {fileID: 820433968}
-  - component: {fileID: 820433967}
+  - component: {fileID: 820433970}
   m_Layer: 14
   m_Name: 2SAttackBox
   m_TagString: 2S_AttackBox
@@ -3807,22 +3809,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1663025817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &820433967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 820433965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 820433968}
-  damage: 0
-  Check: 1
-  player02Health: {fileID: 0}
 --- !u!65 &820433968
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3852,6 +3838,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820433965}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &820433970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820433965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db88876c4b2714fbc2d7d9fab70c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 820433968}
+  damage: 10
+  Check: 0
+  player01Health: {fileID: 0}
 --- !u!1 &823034258
 GameObject:
   m_ObjectHideFlags: 0
@@ -4171,6 +4173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scriptableHealth: {fileID: 11400000, guid: 48fe774ed5876fb4fbe55f849c7d81fa, type: 2}
+  player02Movement: {fileID: 917601035}
 --- !u!1 &948899483
 GameObject:
   m_ObjectHideFlags: 0
@@ -7110,7 +7113,7 @@ GameObject:
   - component: {fileID: 1230267002}
   - component: {fileID: 1230267005}
   - component: {fileID: 1230267004}
-  - component: {fileID: 1230267003}
+  - component: {fileID: 1230267006}
   m_Layer: 14
   m_Name: 6KAttackBox
   m_TagString: 6K_AttackBox
@@ -7133,22 +7136,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1421366628}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1230267003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230267001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 1230267004}
-  damage: 0
-  Check: 1
-  player02Health: {fileID: 0}
 --- !u!65 &1230267004
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7178,6 +7165,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230267001}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1230267006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230267001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db88876c4b2714fbc2d7d9fab70c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 1230267004}
+  damage: 10
+  Check: 0
+  player01Health: {fileID: 0}
 --- !u!1 &1233521598
 GameObject:
   m_ObjectHideFlags: 0
@@ -7189,7 +7192,7 @@ GameObject:
   - component: {fileID: 1233521599}
   - component: {fileID: 1233521602}
   - component: {fileID: 1233521601}
-  - component: {fileID: 1233521600}
+  - component: {fileID: 1233521603}
   m_Layer: 14
   m_Name: 6HSAttackBox
   m_TagString: 6HS_AttackBox
@@ -7212,22 +7215,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1421366628}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1233521600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1233521598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 1233521601}
-  damage: 0
-  Check: 1
-  player02Health: {fileID: 0}
 --- !u!65 &1233521601
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7257,6 +7244,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1233521598}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1233521603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233521598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db88876c4b2714fbc2d7d9fab70c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 1233521601}
+  damage: 10
+  Check: 0
+  player01Health: {fileID: 0}
 --- !u!1 &1273618007
 GameObject:
   m_ObjectHideFlags: 0
@@ -7268,7 +7271,7 @@ GameObject:
   - component: {fileID: 1273618008}
   - component: {fileID: 1273618011}
   - component: {fileID: 1273618010}
-  - component: {fileID: 1273618009}
+  - component: {fileID: 1273618012}
   m_Layer: 14
   m_Name: Cube
   m_TagString: 2P_AttackBox
@@ -7291,22 +7294,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2110138642}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1273618009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273618007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 1273618010}
-  damage: 0
-  Check: 1
-  player02Health: {fileID: 0}
 --- !u!65 &1273618010
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7336,6 +7323,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273618007}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1273618012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273618007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db88876c4b2714fbc2d7d9fab70c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 1273618010}
+  damage: 10
+  Check: 0
+  player01Health: {fileID: 0}
 --- !u!1 &1275467116
 GameObject:
   m_ObjectHideFlags: 0
@@ -11821,7 +11824,7 @@ GameObject:
   - component: {fileID: 1918536704}
   - component: {fileID: 1918536707}
   - component: {fileID: 1918536706}
-  - component: {fileID: 1918536705}
+  - component: {fileID: 1918536708}
   m_Layer: 14
   m_Name: 5HSAttackBox
   m_TagString: 5HS_AttackBox
@@ -11844,22 +11847,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 254485285}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1918536705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918536703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 1918536706}
-  damage: 0
-  Check: 1
-  player02Health: {fileID: 0}
 --- !u!65 &1918536706
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11889,6 +11876,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1918536703}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1918536708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918536703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db88876c4b2714fbc2d7d9fab70c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 1918536706}
+  damage: 10
+  Check: 0
+  player01Health: {fileID: 0}
 --- !u!1 &1934042305
 GameObject:
   m_ObjectHideFlags: 0
@@ -14637,7 +14640,7 @@ GameObject:
   - component: {fileID: 2046326163}
   - component: {fileID: 2046326166}
   - component: {fileID: 2046326165}
-  - component: {fileID: 2046326164}
+  - component: {fileID: 2046326167}
   m_Layer: 14
   m_Name: 6PAttackBox
   m_TagString: 5S_AttackBox
@@ -14660,22 +14663,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1663025817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2046326164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046326162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 2046326165}
-  damage: 0
-  Check: 1
-  player02Health: {fileID: 0}
 --- !u!65 &2046326165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14705,6 +14692,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046326162}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2046326167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046326162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db88876c4b2714fbc2d7d9fab70c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 2046326165}
+  damage: 10
+  Check: 0
+  player01Health: {fileID: 0}
 --- !u!1 &2080948807
 GameObject:
   m_ObjectHideFlags: 0

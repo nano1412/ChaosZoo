@@ -7,6 +7,7 @@ public class Player02Health : MonoBehaviour
     private Rigidbody rb;
     private Animator anim;
     public ScriptableHealth scriptableHealth;
+    public Player02Movement player02Movement;
 
     void Start()
     {
@@ -21,9 +22,15 @@ public class Player02Health : MonoBehaviour
         {
             if(scriptableHealth.currentHealth > 0)
             {
-                anim.SetTrigger("Hurt");
+                if(player02Movement.animCrouch)
+                {
+                    anim.SetTrigger("HurtCrouch");
+                }
+                else
+                {
+                    anim.SetTrigger("Hurt");
+                }
             }
-
         }
     }
 
@@ -31,6 +38,11 @@ public class Player02Health : MonoBehaviour
     {
         scriptableHealth.currentHealth -= damage;
         Debug.Log("damage");    
+        if(scriptableHealth.currentHealth <= 0)
+        {
+            anim.SetTrigger("Dead");
+        }
     }
+
 
 }
