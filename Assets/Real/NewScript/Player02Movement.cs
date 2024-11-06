@@ -12,6 +12,7 @@ public class Player02Movement : MonoBehaviour
     public GameObject player02;
     public GameObject oppenent;
     public Vector3 oppPosition;
+    public Player02Health player02Health;
     public bool isPerformingAction = false;
 
     private Rigidbody rb;
@@ -116,6 +117,7 @@ public class Player02Movement : MonoBehaviour
         {
             walkanimation = walkspeed;
             anim.SetBool("canWalk", true);
+            //player02Health.block = true;
             transform.Translate(transform.right * walkspeed * Time.deltaTime);
         }
         else if(horizontalAxis < -walkThreshold && canWalkleft)
@@ -128,6 +130,7 @@ public class Player02Movement : MonoBehaviour
         {
             walkanimation = 0f;
             anim.SetBool("canWalk", false);
+            //player02Health.block = false;
         }
         anim.SetFloat("Speed", walkanimation);
     }

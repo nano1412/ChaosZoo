@@ -12,6 +12,7 @@ public class Player01Movement : MonoBehaviour
     public GameObject player01;
     public GameObject oppenent;
     public Vector3 oppPosition;
+    public Player01Health player01Health;
     public bool isPerformingAction = false;
 
     private Rigidbody rb;
@@ -124,12 +125,14 @@ public class Player01Movement : MonoBehaviour
         {
             walkanimation = -walkspeed;
             anim.SetBool("canWalk", true);
+            //player01Health.block = true;
             transform.Translate(-transform.right * walkspeed * Time.deltaTime);
         }
         else
         {
             walkanimation = 0f;
             anim.SetBool("canWalk", false);
+            //player01Health.block = false;
         }
         anim.SetFloat("Speed", walkanimation);
     }  
