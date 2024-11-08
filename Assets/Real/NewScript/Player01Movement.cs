@@ -17,8 +17,6 @@ public class Player01Movement : MonoBehaviour
 
     private Rigidbody rb;
     private Animator anim;
-    private bool canWalkleft = true;
-    private bool canWalkright = true;
     private bool FaceingLeft = false;
     private bool FaceingRight = true;
     private bool animationCouch = false;
@@ -81,6 +79,7 @@ public class Player01Movement : MonoBehaviour
     public void HandleCrouch()
     {
         float verticalAxis = Input.GetAxis(verticalInput);
+        float horizontalAxis = Input.GetAxis(horizontalInput);
 
         if(Joystick)
         {
@@ -88,24 +87,53 @@ public class Player01Movement : MonoBehaviour
             {
                 animationCouch = true;
                 anim.SetBool("Crouch", true);
+                if(horizontalAxis < -walkThreshold && FaceingRight)
+                {
+                    player01Health.block = true;
+                }
+                else if(horizontalAxis > walkThreshold && FaceingLeft)
+                {
+                    player01Health.block = true;
+                }
+                else if(horizontalAxis == 0)
+                {
+                    player01Health.block = false;
+
+                }
             }
             else
             {
                 animationCouch = false;
                 anim.SetBool("Crouch", false);
+                player01Health.block = false;
+
             }
         }
         else
         {
-             if(verticalAxis < -verticalThreshold && IsGrounded())
+            if(verticalAxis < -verticalThreshold && IsGrounded())
             {
                 animationCouch = true;
                 anim.SetBool("Crouch", true);
+                if(horizontalAxis < -walkThreshold && FaceingRight)
+                {
+                    player01Health.block = true;
+                }
+                else if(horizontalAxis > walkThreshold && FaceingLeft)
+                {
+                    player01Health.block = true;
+                }
+                else if(horizontalAxis == 0)
+                {
+                    player01Health.block = false;
+
+                }
             }
             else
             {
                 animationCouch = false;
                 anim.SetBool("Crouch", false);
+                player01Health.block = false;
             }
         }      
     }
@@ -115,24 +143,31 @@ public class Player01Movement : MonoBehaviour
         if(animationCouch) return;
         
         float horizontalAxis = Input.GetAxis(horizontalInput);
-        if(horizontalAxis > walkThreshold && canWalkright)
+        if(horizontalAxis > walkThreshold)
         {
             walkanimation = walkspeed;
             anim.SetBool("canWalk", true);
+            if(FaceingLeft)
+            {
+                player01Health.block = true;
+            }
             transform.Translate(transform.right * walkspeed * Time.deltaTime);
         }
-        else if(horizontalAxis < -walkThreshold && canWalkleft)
+        else if(horizontalAxis < -walkThreshold)
         {
             walkanimation = -walkspeed;
             anim.SetBool("canWalk", true);
-            //player01Health.block = true;
+            if(FaceingRight)
+            {
+                player01Health.block = true;
+            }
             transform.Translate(-transform.right * walkspeed * Time.deltaTime);
         }
         else
         {
             walkanimation = 0f;
             anim.SetBool("canWalk", false);
-            //player01Health.block = false;
+            player01Health.block = false;
         }
         anim.SetFloat("Speed", walkanimation);
     }  
@@ -166,30 +201,7 @@ public class Player01Movement : MonoBehaviour
         return Physics.Raycast(transform.position, Vector3.down, 1.1f);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "WallLeft")
-        {
-            canWalkleft = false;
-        }
-        if (collision.gameObject.tag == "WallRight")
-        {
-            canWalkright = false;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "WallLeft")
-        {
-            canWalkleft = true;
-        }
-        if (collision.gameObject.tag == "WallRight")
-        {
-            canWalkright = true;
-        }
-    }
-
+    
     IEnumerator JumpPause()
     {
         yield return new WaitForSeconds(1.0f);
