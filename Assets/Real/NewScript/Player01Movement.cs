@@ -98,7 +98,6 @@ public class Player01Movement : MonoBehaviour
                 else if(horizontalAxis == 0)
                 {
                     player01Health.block = false;
-
                 }
             }
             else

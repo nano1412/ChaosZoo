@@ -12,6 +12,7 @@ public class Player02Health : MonoBehaviour
     public bool block = false;
     public bool knockout = false;
     public int currentdamage = 0;
+    public float time;
 
     void Start()
     {
@@ -19,9 +20,21 @@ public class Player02Health : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
     }
 
+    void Update()
+    {
+        if(currentdamage > 1)
+        {
+            time += Time.deltaTime;
+            if(time > 4)
+            {
+                currentdamage = 0;
+                time = 0;
+            }
+        }
+    }
+
     public void TakeDamage(int damage)
     {
-        scriptableHealth.currentHealth -= damage;
         if(scriptableHealth.currentHealth > 5 && !knockout)
         {
             if(player02Movement.animCrouch)
@@ -33,7 +46,19 @@ public class Player02Health : MonoBehaviour
                 else
                 {
                     scriptableHealth.currentHealth -= damage;
-                    anim.SetTrigger("HurtCrouch");
+                    currentdamage += damage;
+                    if(currentdamage >= 30)
+                    {
+                        anim.SetTrigger("KnockCrouch");
+                        currentdamage = 0;
+                        StartCoroutine(recovery());
+                        knockout = true;
+                        time = 0;
+                    }
+                    else
+                    {
+                        anim.SetTrigger("HurtCrouch");
+                    }
                 }
             }
             else
@@ -68,7 +93,6 @@ public class Player02Health : MonoBehaviour
             anim.SetTrigger("Dead");
         }
     }
-
     IEnumerator resetHurt()
     {
         yield return new WaitForSeconds(0.5f);
