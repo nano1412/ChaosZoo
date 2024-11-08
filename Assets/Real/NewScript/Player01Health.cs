@@ -11,6 +11,7 @@ public class Player01Health : MonoBehaviour
     public Player01Movement player01Movement;
     public Player01TakeAction player01TakeAction;
     public bool block = false;
+    public bool knockout = false;
     public int currentdamage = 0;
 
     void Start()
@@ -20,7 +21,7 @@ public class Player01Health : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        if(scriptableHealth.currentHealth > 5)
+        if(scriptableHealth.currentHealth > 5 && !knockout)
         {
             if(player01Movement.animCrouch)
             {
@@ -49,6 +50,7 @@ public class Player01Health : MonoBehaviour
                         anim.SetTrigger("Knock");
                         currentdamage = 0;
                         StartCoroutine(recovery());
+                        knockout = true;
                     }
                     else
                     {
@@ -77,5 +79,6 @@ public class Player01Health : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         anim.SetTrigger("recove");
+        knockout = false;
     }
 }   
