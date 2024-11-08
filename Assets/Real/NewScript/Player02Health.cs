@@ -10,31 +10,13 @@ public class Player02Health : MonoBehaviour
     public Player02Movement player02Movement;
     public Player02TakeAction player02TakeAction;
     public bool block = false;
+    public int currentdamage = 0;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
     }
-    // public void OnTriggerEnter(Collider col)
-    // {
-    //     if(col.tag == "5P_AttackBox" || col.tag == "5K_AttackBox " || col.tag == "5S_AttackBox" || col.tag == "5HS_AttackBox" ||
-    //     col.tag == "2P_AttacKBox" || col.tag == "2K_AttackBox" || col.tag == "2S_AttackBox" || col.tag == "2HS_AttackBox" ||
-    //     col.tag == "6P_AttackBox" || col.tag == "6K_AttackBox" || col.tag == "6S_AttackBox" || col.tag == "6HS_AttackBox")
-    //     {
-    //         if(scriptableHealth.currentHealth > 0)
-    //         {
-    //             if(player02Movement.animCrouch)
-    //             {
-    //                 anim.SetTrigger("HurtCrouch");
-    //             }
-    //             else
-    //             {
-    //                 anim.SetTrigger("Hurt");
-    //             }
-    //         }
-    //     }
-    // }
 
     public void TakeDamage(int damage)
     {
@@ -62,7 +44,17 @@ public class Player02Health : MonoBehaviour
                 else
                 {
                     scriptableHealth.currentHealth -= damage;
-                    anim.SetTrigger("Hurt");
+                    currentdamage += damage;
+                    if(currentdamage >= 30)
+                    {
+                        anim.SetTrigger("Knock");
+                        currentdamage = 0;
+                        StartCoroutine(recovery());
+                    }
+                    else
+                    {
+                        anim.SetTrigger("Hurt");
+                    }
                 }
             }
             player02Movement.isPerformingAction = true;
@@ -82,4 +74,9 @@ public class Player02Health : MonoBehaviour
         player02TakeAction.isPerformingAction = false;
     }
 
+    IEnumerator recovery()
+    {
+        yield return new WaitForSeconds(1f);
+        anim.SetTrigger("recove");
+    }
 }

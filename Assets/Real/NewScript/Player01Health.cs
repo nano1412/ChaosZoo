@@ -11,32 +11,13 @@ public class Player01Health : MonoBehaviour
     public Player01Movement player01Movement;
     public Player01TakeAction player01TakeAction;
     public bool block = false;
+    public int currentdamage = 0;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
     }
-    // public void OnTriggerEnter(Collider col)
-    // {
-    //     if(col.tag == "5P_AttackBox" || col.tag == "5K_AttackBox" || col.tag == "5S_AttackBox" || col.tag == "5HS_AttackBox" ||
-    //        col.tag == "2P_AttackBox" || col.tag == "2K_AttackBox" || col.tag == "2S_AttackBox" || col.tag == "2HS_AttackBox" ||
-    //        col.tag == "6P_AttackBox" || col.tag == "6K_AttackBox" || col.tag == "6S_AttackBox" || col.tag == "6HS_AttackBox")
-    //     {
-    //         if(scriptableHealth.currentHealth > 0)
-    //         {
-    //             if(player01Movement.animCrouch)
-    //             {
-    //                 anim.SetTrigger("HurtCrouch");
-    //             }
-    //             else
-    //             {
-    //                 anim.SetTrigger("Hurt");
-    //             }
-    //         }
-    //     }
-    // }
-
     public void TakeDamage(int damage)
     {
         if(scriptableHealth.currentHealth > 5)
@@ -62,7 +43,17 @@ public class Player01Health : MonoBehaviour
                 else
                 {
                     scriptableHealth.currentHealth -= damage;
-                    anim.SetTrigger("Hurt");
+                    currentdamage += damage;
+                    if(currentdamage >= 30)
+                    {
+                        anim.SetTrigger("Knock");
+                        currentdamage = 0;
+                        StartCoroutine(recovery());
+                    }
+                    else
+                    {
+                        anim.SetTrigger("Hurt");
+                    }
                 }
             }
             player01Movement.isPerformingAction = true;
@@ -80,5 +71,11 @@ public class Player01Health : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         player01Movement.isPerformingAction = false;
         player01TakeAction.isPerformingAction = false;
+    }
+
+    IEnumerator recovery()
+    {
+        yield return new WaitForSeconds(1f);
+        anim.SetTrigger("recove");
     }
 }   
