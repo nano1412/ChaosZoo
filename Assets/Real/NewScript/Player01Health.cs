@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player01Health : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Player01Health : MonoBehaviour
     public ScriptableHealth scriptableHealth;
     public Player01Movement player01Movement;
     public Player01TakeAction player01TakeAction;
+    public Slider HPSlider;
     public bool block = false;
     public bool knockout = false;
     public int currentdamage = 0;
@@ -19,6 +21,7 @@ public class Player01Health : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
+        scriptableHealth.currentHealth = scriptableHealth.maxHealth;
     }
 
     void Update()
@@ -32,6 +35,8 @@ public class Player01Health : MonoBehaviour
                 time = 0;
             }
         }
+
+        HPSliderLink();
     }
     public void TakeDamage(int damage)
     {
@@ -91,6 +96,14 @@ public class Player01Health : MonoBehaviour
         if(scriptableHealth.currentHealth <= 0)
         {
             anim.SetTrigger("Dead");
+        }
+    }
+
+    public void HPSliderLink()
+    {
+        if(HPSlider.value != scriptableHealth.currentHealth)
+        {
+            HPSlider.value = scriptableHealth.currentHealth;
         }
     }
 
