@@ -5,7 +5,7 @@ using UnityEditorInternal;
 [CustomEditor(typeof(LeftCharacterActionKeyBoard))]
 public class CharacterActionKeyBoardEditor : Editor
 {
-   private ReorderableList qcfList;
+    private ReorderableList qcfList;
     private ReorderableList qcbList;
     private ReorderableList hcbfList;
 
@@ -59,7 +59,7 @@ public class CharacterActionKeyBoardEditor : Editor
     }
 }
 
-public enum SpecialMove
+public enum SpecialMoveInGame
 {
     QCF_Punch,
     QCF_Kick,

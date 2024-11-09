@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LeftCharacterActionKeyBoard : MonoBehaviour
 {
-    public LeftLookEnemy leftLookEnemy;
+    /*public LeftLookEnemy leftLookEnemy;
     public LeftCharacterMovementKeyBoard leftCharacterMovementKeyBoard;
     public Animator animator;
     public bool facingRight = true;
@@ -213,14 +213,14 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
 
         if (inputState == InputState.ForwardAgain && Time.time - lastInputTime <= inputBufferTime)
         {
-            if (Input.GetKeyDown(KeyCode.U) && hcbfMoves.Contains(SpecialMove.HCBF_Punch))
+            if (Input.GetKeyDown(KeyCode.U) && hcbfMoves.Contains(SpecialMoveInGame.HCBF_Punch))
             {
                 Debug.Log("HCBF " + (facingRight ? "Right" : "Left") + " Punch Special Action");
                 specialMoveEnergy = 0;
                 StartCoroutine(ResetHCBFState("Punch"));
                 return;
             }
-            else if (Input.GetKeyDown(KeyCode.I) && hcbfMoves.Contains(SpecialMove.HCBF_Kick))
+            else if (Input.GetKeyDown(KeyCode.I) && hcbfMoves.Contains(SpecialMoveInGame.HCBF_Kick))
             {
                 Debug.Log("HCBF " + (facingRight ? "Right" : "Left") + " Kick Special Action");
                 animator.SetTrigger("HCBF_" + "Kick" + "Trigger");
@@ -229,14 +229,14 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
                 StartCoroutine(ResetHCBFState("Kick"));
                 return;
             }
-            else if (Input.GetKeyDown(KeyCode.O) && hcbfMoves.Contains(SpecialMove.HCBF_Slash))
+            else if (Input.GetKeyDown(KeyCode.O) && hcbfMoves.Contains(SpecialMoveInGame.HCBF_Slash))
             {
                 Debug.Log("HCBF " + (facingRight ? "Right" : "Left") + " Slash Special Action");
                 specialMoveEnergy = 0;
                 StartCoroutine(ResetHCBFState("Slash"));
                 return;
             }
-            else if (Input.GetKeyDown(KeyCode.P) && hcbfMoves.Contains(SpecialMove.HCBF_HeavySlash))
+            else if (Input.GetKeyDown(KeyCode.P) && hcbfMoves.Contains(SpecialMoveInGame.HCBF_HeavySlash))
             {
                 Debug.Log("HCBF " + (facingRight ? "Right" : "Left") + " Heavily Slash Special Action");
                 specialMoveEnergy = 0;
@@ -349,5 +349,5 @@ public class LeftCharacterActionKeyBoard : MonoBehaviour
         yield return new WaitForSeconds(actionCooldown);
         animator.ResetTrigger("Special" + actionName + "Trigger");
         leftCharacterMovementKeyBoard.isPerformingAction = false;
-    }
+    }*/
 }

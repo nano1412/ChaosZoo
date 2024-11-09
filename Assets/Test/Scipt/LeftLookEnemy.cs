@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LeftLookEnemy : MonoBehaviour
 {
-    public Transform dummy;
+    /*public Transform dummy;
     public LeftCharacterMovementKeyBoard movementScript;
     public LeftCharacterActionKeyBoard leftCharacterActionKeyBoard;
 
@@ -84,5 +84,5 @@ public class LeftLookEnemy : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, 1.1f);
-    }
+    }*/
 }
