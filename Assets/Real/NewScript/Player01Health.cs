@@ -24,6 +24,7 @@ public class Player01Health : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
         scriptableHealth.currentHealth = scriptableHealth.maxHealth;
+        knockout = false;
     }
 
     void Update()
@@ -95,9 +96,10 @@ public class Player01Health : MonoBehaviour
             player01TakeAction.isPerformingAction = true;
             StartCoroutine(resetHurt());
         }    
-        if(scriptableHealth.currentHealth <= 0)
+        if(scriptableHealth.currentHealth <= 0 && !knockout)
         {
             anim.SetTrigger("Dead");
+            knockout = true;
         }
     }
 
