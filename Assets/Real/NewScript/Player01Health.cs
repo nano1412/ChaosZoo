@@ -11,7 +11,9 @@ public class Player01Health : MonoBehaviour
     public ScriptableHealth scriptableHealth;
     public Player01Movement player01Movement;
     public Player01TakeAction player01TakeAction;
-    public Slider HPSlider;
+    public Slider hpMainSlider;
+    //public Slider hpEaseSlider;
+    //private float lerpSpeed = 0.05f;
     public bool block = false;
     public bool knockout = false;
     public int currentdamage = 0;
@@ -101,10 +103,15 @@ public class Player01Health : MonoBehaviour
 
     public void HPSliderLink()
     {
-        if(HPSlider.value != scriptableHealth.currentHealth)
+        if(hpMainSlider.value != scriptableHealth.currentHealth)
         {
-            HPSlider.value = scriptableHealth.currentHealth;
+            hpMainSlider.value = scriptableHealth.currentHealth;
         }
+
+        /*if(hpMainSlider.value != hpEaseSlider.value)
+        {
+            hpEaseSlider.value = Mathf.Lerp(hpEaseSlider.value, scriptableHealth.currentHealth, lerpSpeed);
+        }*/
     }
 
     IEnumerator resetHurt()
