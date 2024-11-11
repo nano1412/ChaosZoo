@@ -22,10 +22,11 @@ public class Player01TakeAction : MonoBehaviour
     public float lastInputTime;
     public float inputBufferTime = 0.2f;
     public int specialMoveEnergy = 100;
-    private float holdDownStartTime = -1f; // ตัวแปรใหม่เพื่อเก็บเวลาที่เริ่มกด 'ย่อ' ค้าง
     private const float holdThreshold = 0.4f;
-    public bool holdbutton = false;
-    public float holdTime;
+    public bool holdbuttonVertical = false;
+    public bool holdbuttonHorizontal = false;
+    public float holdTimeVertical;
+    public float holdTimeHorizontal;
 
     [Header("Enable/Disable Actions")]
     public List<SpecialMoveToggle> specialMoveToggles = new List<SpecialMoveToggle>()
@@ -55,23 +56,45 @@ public class Player01TakeAction : MonoBehaviour
         bool Joystick = selectController.Selectjoystick01 ? true : false;
 
         HandleQCF();
-        HandleQCB();
-        //HandleHCBF();
+        //HandleQCB();
+        HandleHCBF();
         
         if(Input.GetAxis(verticalInput) < -0.4f)
         {
-            holdTime += Time.deltaTime;
-            if(holdTime > 0.2f)
+            holdTimeVertical += Time.deltaTime;
+            if(holdTimeVertical > 0.2f)
             {
                 isQCInProgress = false;
                 isHCBFInProgress = false;
-                holdbutton = true;
+                holdbuttonVertical = true;
             }
         }
-        else if (Input.GetAxis(verticalInput) == 0)
+        if(Input.GetAxis(horizontalInput) > 0.4f && player01Movement.faceRight)
         {
-            holdbutton = false;
-            holdTime = 0;
+            holdTimeHorizontal += Time.deltaTime;
+            if(holdTimeHorizontal > 0.2f)
+            {
+                isQCInProgress = false;
+                isHCBFInProgress = false;
+                holdbuttonHorizontal = true;
+            } 
+        }
+        if(Input.GetAxis(horizontalInput) < -0.4f && !player01Movement.faceRight)
+        {
+            holdTimeHorizontal += Time.deltaTime;
+            if(holdTimeHorizontal > 0.2f)
+            {
+                isQCInProgress = false;
+                isHCBFInProgress = false;
+                holdbuttonHorizontal = true;
+            } 
+        }
+        else if (Input.GetAxis(verticalInput) == 0 && Input.GetAxis(horizontalInput) == 0)
+        {
+            holdbuttonVertical = false;
+            holdbuttonHorizontal = false;
+            holdTimeVertical = 0;
+            holdTimeHorizontal = 0;
         }
 
 
@@ -133,14 +156,14 @@ public class Player01TakeAction : MonoBehaviour
         string horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
         bool Joystick = selectController.Selectjoystick01 ? true : false;
 
-        if(Input.GetAxis(verticalInput) < -0.4f && !holdbutton)
+        if(Input.GetAxis(verticalInput) < -0.4f && !holdbuttonVertical && !isQCInProgress)
         {
             inputState = InputState.Down;
             lastInputTime = Time.time;
             isQCInProgress = true;
         }
 
-        else if(inputState == InputState.Down && Time.time - lastInputTime <= inputBufferTime)
+        else if(inputState == InputState.Down && Time.time - lastInputTime <= inputBufferTime && isQCInProgress)
         {
             if(player01Movement.faceRight)
             {
@@ -159,7 +182,7 @@ public class Player01TakeAction : MonoBehaviour
                 }
             }
         }
-        else if (inputState == InputState.Forward && Time.time - lastInputTime <= inputBufferTime)
+        else if (inputState == InputState.Forward && Time.time - lastInputTime <= inputBufferTime && isQCInProgress)
         {
             if(Input.GetButtonDown("Player01Bt01") && specialMoveToggles[0].isEnabled)
             {
@@ -199,13 +222,13 @@ public class Player01TakeAction : MonoBehaviour
         string horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
         bool Joystick = selectController.Selectjoystick01 ? true : false;
 
-        if(Input.GetAxis(verticalInput) < -0.4f && !holdbutton)
+        if(Input.GetAxis(verticalInput) < -0.4f && !holdbuttonVertical && !isQCInProgress)
         {
             inputState = InputState.Down;
             lastInputTime = Time.time;
             isQCInProgress = true;
         }
-        else if(inputState == InputState.Down && Time.time - lastInputTime <= inputBufferTime)
+        else if(inputState == InputState.Down && Time.time - lastInputTime <= inputBufferTime && isQCInProgress)
         {
             if(player01Movement.faceRight)
             {
@@ -224,7 +247,7 @@ public class Player01TakeAction : MonoBehaviour
                 }
             }
         }
-        else if (inputState == InputState.Backward && Time.time - lastInputTime <= inputBufferTime)
+        else if (inputState == InputState.Backward && Time.time - lastInputTime <= inputBufferTime && isQCInProgress)
         {
             if(Input.GetButtonDown("Player01Bt01") && specialMoveToggles[4].isEnabled)
             {
@@ -254,7 +277,7 @@ public class Player01TakeAction : MonoBehaviour
         }
     }
 
-    /*private void HandleHCBF()
+    private void HandleHCBF()
     {
         if(isQCInProgress)
         {
@@ -269,71 +292,107 @@ public class Player01TakeAction : MonoBehaviour
         string horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
         bool Joystick = selectController.Selectjoystick01 ? true : false;
 
-        if(inputState == InputState.None || inputState == InputState.ForwardAgain)
+        if(inputState == InputState.None || inputState == InputState.ForwardAgain && !isHCBFInProgress)
         {
-            if(Input.GetAxis(horizontalInput) > 0.4f)
+            if(player01Movement.faceRight)
             {
-                inputState = InputState.Forward;
-                lastInputTime = Time.time;
-                isHCBFInProgress = true;
-                return;
+                if(Input.GetAxis(horizontalInput) > 0.4f && !holdbuttonHorizontal)
+                {
+                    inputState = InputState.Forward;
+                    lastInputTime = Time.time;
+                    isHCBFInProgress = true;
+                    return;
+                }
+            }
+            else
+            {
+                if(Input.GetAxis(horizontalInput) < -0.4f && !holdbuttonHorizontal)
+                {
+                    inputState = InputState.Forward;
+                    lastInputTime = Time.time;
+                    isHCBFInProgress = true;
+                    return;
+                }
             }
         }
-
-        if(inputState == InputState.Forward && Time.time - lastInputTime <= inputBufferTime)
+        if(inputState == InputState.Forward && Time.time - lastInputTime <= inputBufferTime && isHCBFInProgress)
         {
-            if(Input.GetAxis(verticalInput) < -0.4f)
+            if(Input.GetAxis(verticalInput) < -0.4f && !holdbuttonVertical)
             {
                 inputState = InputState.Down;
                 lastInputTime = Time.time;
+                isHCBFInProgress = true;
+                Debug.Log("Down");
                 return;
             }
         }
-        if(inputState == InputState.Down && Time.time - lastInputTime <= inputBufferTime)
-        { 
-            if(Input.GetAxis(horizontalInput) < -0.4f)
-            {
-                inputState = InputState.Backward;
-                lastInputTime = Time.time;
-                return;
-            }
-        }
-        if(inputState == InputState.Backward && Time.time - lastInputTime <= inputBufferTime)
+        if(inputState == InputState.Down && Time.time - lastInputTime <= inputBufferTime && isHCBFInProgress)
         {
-            if(Input.GetAxis(horizontalInput) > 0.4f)
+            if(player01Movement.faceRight)
             {
-                inputState = InputState.ForwardAgain;
-                lastInputTime = Time.time;
-                return;
+                if(Input.GetAxis(horizontalInput) < -0.4f)
+                {
+                    inputState = InputState.Backward;
+                    lastInputTime = Time.time;
+                    isHCBFInProgress = true;
+                    return;
+                }
+            }
+            else
+            {
+                if(Input.GetAxis(horizontalInput) > 0.4f)
+                {
+                    inputState = InputState.Backward;
+                    lastInputTime = Time.time;
+                    isHCBFInProgress = true;
+                }
             }
         }
-        if (inputState == InputState.ForwardAgain && Time.time - lastInputTime <= inputBufferTime)
+        if(inputState == InputState.Backward && Time.time - lastInputTime <= inputBufferTime && isHCBFInProgress)
+        {
+            if(player01Movement.faceRight)
+            {
+                if(Input.GetAxis(horizontalInput) > 0.4f && !holdbuttonHorizontal)
+                {
+                    inputState = InputState.Forward;
+                    lastInputTime = Time.time;
+                    isHCBFInProgress = true;
+                    return;
+                }
+            }
+            else
+            {
+                if(Input.GetAxis(horizontalInput) < -0.4f && !holdbuttonHorizontal)
+                {
+                    inputState = InputState.Forward;
+                    lastInputTime = Time.time;
+                    isHCBFInProgress = true;
+                }
+            }
+        }
+        if(inputState == InputState.Forward && Time.time - lastInputTime <= inputBufferTime && isHCBFInProgress)
         {
             if(Input.GetButtonDown("Player01Bt01") && specialMoveToggles[8].isEnabled)
             {
                 Debug.Log("HCBF " + (player01Movement.faceRight ? "Right" : "Left") + " " + "Punch" + "Special Action");
-                specialMoveEnergy = 0;
                 StartCoroutine(ResetHCBFState());
                 return;
             }
             else if(Input.GetButtonDown("Player01Bt02") && specialMoveToggles[9].isEnabled)
             {
                 Debug.Log("HCBF " + (player01Movement.faceRight ? "Right" : "Left") + " " + "Kick" + "Special Action");
-                specialMoveEnergy = 0;
                 StartCoroutine(ResetHCBFState());
                 return;
             }
             else if(Input.GetButtonDown("Player01Bt03") && specialMoveToggles[10].isEnabled)
             {
                 Debug.Log("HCBF " + (player01Movement.faceRight ? "Right" : "Left") + " " + "Slash" + "Special Action");
-                specialMoveEnergy = 0;
                 StartCoroutine(ResetHCBFState());
                 return;
             }
             else if(Input.GetButtonDown("Player01Bt04") && specialMoveToggles[11].isEnabled)
             {
                 Debug.Log("HCBF " + (player01Movement.faceRight ? "Right" : "Left") + " " + "HeavySlash" + "Special Action");
-                specialMoveEnergy = 0;
                 StartCoroutine(ResetHCBFState());
                 return;
             }
@@ -343,8 +402,7 @@ public class Player01TakeAction : MonoBehaviour
             inputState = InputState.None;
             isHCBFInProgress = false;
         }
-
-    }*/
+    }
     private void PerformAction(string actionName)
     {   
         isPerformingAction = true;
