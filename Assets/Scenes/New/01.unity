@@ -363,6 +363,50 @@ MonoBehaviour:
   player02Movement: {fileID: 917601035}
   selectController: {fileID: 1934042306}
   isPerformingAction: 0
+  inputState: 0
+  isQCInProgress: 0
+  isHCBInProgress: 0
+  actionCooldown: 0.1
+  lastInputTime: 0
+  inputBufferTime: 0.2
+  specialMoveEnergy: 100
+  holdbuttonVertical: 0
+  holdbuttonHorizontal: 0
+  holdTimeVertical: 0
+  holdTimeHorizontal: 0
+  specialMoveToggles:
+  - moveName: 0
+    isEnabled: 1
+  - moveName: 1
+    isEnabled: 1
+  - moveName: 2
+    isEnabled: 1
+  - moveName: 3
+    isEnabled: 1
+  - moveName: 4
+    isEnabled: 1
+  - moveName: 5
+    isEnabled: 1
+  - moveName: 6
+    isEnabled: 1
+  - moveName: 7
+    isEnabled: 1
+  - moveName: 8
+    isEnabled: 1
+  - moveName: 9
+    isEnabled: 1
+  - moveName: 10
+    isEnabled: 1
+  - moveName: 11
+    isEnabled: 1
+  - moveName: 12
+    isEnabled: 1
+  - moveName: 13
+    isEnabled: 1
+  - moveName: 14
+    isEnabled: 1
+  - moveName: 15
+    isEnabled: 1
 --- !u!1 &235794195
 GameObject:
   m_ObjectHideFlags: 0
@@ -7487,7 +7531,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012605531}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e43ea0ca7da54e141a1568844e7ec150, type: 3}
   m_Name: 
@@ -7717,6 +7761,42 @@ MonoBehaviour:
   player02Movement: {fileID: 2127874366}
   selectController: {fileID: 1934042306}
   isPerformingAction: 0
+  inputState: 0
+  isQCInProgress: 0
+  isHCBInProgress: 0
+  actionCooldown: 0.1
+  lastInputTime: 0
+  inputBufferTime: 0.2
+  specialMoveEnergy: 100
+  holdbuttonVertical: 0
+  holdbuttonHorizontal: 0
+  holdTimeVertical: 0
+  holdTimeHorizontal: 0
+  specialMoveToggles:
+  - moveName: 0
+    isEnabled: 1
+  - moveName: 1
+    isEnabled: 1
+  - moveName: 2
+    isEnabled: 1
+  - moveName: 3
+    isEnabled: 1
+  - moveName: 4
+    isEnabled: 1
+  - moveName: 5
+    isEnabled: 1
+  - moveName: 6
+    isEnabled: 1
+  - moveName: 7
+    isEnabled: 1
+  - moveName: 12
+    isEnabled: 1
+  - moveName: 13
+    isEnabled: 1
+  - moveName: 14
+    isEnabled: 1
+  - moveName: 15
+    isEnabled: 1
 --- !u!1 &1101138917
 GameObject:
   m_ObjectHideFlags: 0
@@ -13379,10 +13459,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8e116b28ca37c4082877f08650d8da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectKeyBoard01: 1
-  Selectjoystick01: 0
-  Selectjoystick02: 1
-  SelectKeyBoard02: 0
+  SelectKeyBoard01: 0
+  Selectjoystick01: 1
+  Selectjoystick02: 0
+  SelectKeyBoard02: 1
 --- !u!4 &1934042307
 Transform:
   m_ObjectHideFlags: 0
