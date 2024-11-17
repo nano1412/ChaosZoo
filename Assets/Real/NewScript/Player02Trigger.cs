@@ -12,7 +12,7 @@ public class Player02Trigger : MonoBehaviour
     void Start()
     {
         Col.enabled = true;
-        player01Health = GameObject.FindGameObjectWithTag("Player01").GetComponent<Player01Health>();
+        player01Health = GameObject.FindGameObjectWithTag("Player01Health").GetComponent<Player01Health>();
     }
 
     void Update()
@@ -22,7 +22,7 @@ public class Player02Trigger : MonoBehaviour
 
      private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player01")
+        if(other.tag == "Player01Health")
         {
             Player02TakeAction.Hits = true;
             player01Health.TakeDamage(damage);

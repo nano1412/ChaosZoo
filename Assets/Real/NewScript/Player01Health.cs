@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Player01Health : MonoBehaviour
 {
 
-    private Rigidbody rb;
+    public Rigidbody rb;
     private Animator anim;
     public ScriptableHealth scriptableHealth;
     public Player01Movement player01Movement;
@@ -21,8 +21,7 @@ public class Player01Health : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        anim = GetComponentInChildren<Animator>();
+        anim = transform.parent.GetComponent<Animator>();
         scriptableHealth.currentHealth = scriptableHealth.maxHealth;
         knockout = false;
     }

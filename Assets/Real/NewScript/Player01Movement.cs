@@ -21,6 +21,7 @@ public class Player01Movement : MonoBehaviour
     private bool FaceingRight = true;
     private bool animationCouch = false;
     private bool IsJumping = false;
+    private bool IsDash = false;
     public bool Joystick = false;
 
     public bool faceLeft => FaceingLeft;
@@ -74,6 +75,7 @@ public class Player01Movement : MonoBehaviour
         HandleCrouch();
         HandleMovement();
         HandleJump();
+        HandleDash();
     }
 
     public void HandleCrouch()
@@ -193,6 +195,38 @@ public class Player01Movement : MonoBehaviour
                 StartCoroutine(JumpPause());
             }
         }
+    }
+    private void HandleDash()
+    {
+        float horizontalAxis = Input.GetAxis(horizontalInput);
+        if(FaceingRight)
+        {
+            if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player01Bt05") && !IsDash)
+            {
+                anim.SetTrigger("DashForward");
+                IsDash = true;
+                StartCoroutine(DashPause());
+            }
+            else if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player01Bt05") && !IsDash)
+            {
+                anim.SetTrigger("DashBackward");
+                IsDash = true;
+                StartCoroutine(DashPause());
+            }
+        }
+        else
+        {
+            if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player01Bt05") && !IsDash)
+            {
+                anim.SetTrigger("DashForward");
+                StartCoroutine(DashPause());
+            }
+            else if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player01Bt05") && !IsDash)
+            {
+                anim.SetTrigger("DashBackward");
+                StartCoroutine(DashPause());
+            }
+        }
     } 
 
     private bool IsGrounded()
@@ -206,7 +240,11 @@ public class Player01Movement : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         IsJumping = false;
     }
-
+    IEnumerator DashPause()
+    {
+        yield return new WaitForSeconds(1.0f);
+        IsDash = false;
+    }
     IEnumerator FaceLeft()
     {
         if (!FaceingLeft)
@@ -215,14 +253,10 @@ public class Player01Movement : MonoBehaviour
             FaceingRight = false;
             yield return new WaitForSeconds(0.15f);
 
-            // Flip the character by inverting the scale on the X axis
             Vector3 newScale = transform.localScale;
-            newScale.x = Mathf.Abs(newScale.x) * -1;  // Invert the X scale to face left
+            newScale.x = Mathf.Abs(newScale.x) * -1;  
             transform.localScale = newScale;
 
-            // Set weights: RightLayer = 0, LeftLayer = 1
-            //anim.SetLayerWeight(1, 0);  // RightLayer
-            //anim.SetLayerWeight(2, 1);  // LeftLayer
             anim.SetBool("FaceLeft", true);
             anim.SetBool("FaceRight", false);
             
@@ -237,14 +271,10 @@ public class Player01Movement : MonoBehaviour
             FaceingLeft = false;
             yield return new WaitForSeconds(0.15f);
 
-            // Reset the character scale to face right
             Vector3 newScale = transform.localScale;
-            newScale.x = Mathf.Abs(newScale.x);  // Ensure the X scale is positive
+            newScale.x = Mathf.Abs(newScale.x);
             transform.localScale = newScale;
 
-            // Set weights: RightLayer = 1, LeftLayer = 0
-            //anim.SetLayerWeight(1, 1);  // RightLayer
-            //anim.SetLayerWeight(2, 0);  // LeftLayer
             anim.SetBool("FaceLeft", false);
             anim.SetBool("FaceRight", true);
             
