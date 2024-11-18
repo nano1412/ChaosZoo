@@ -6,6 +6,7 @@ public class Player01Trigger : MonoBehaviour
 {
     public Collider Col;
     public int damage = 10;
+    public float force;
     public bool Check = false;
     public Player02Health player02Health;
 
@@ -25,7 +26,7 @@ public class Player01Trigger : MonoBehaviour
         if(other.tag == "Player02Health")
         {
             Player01TakeAction.Hits = true;
-            player02Health.TakeDamage(damage);
+            player02Health.TakeDamage(damage, force);
             if(Check)
             {
                 GetComponentInParent<Player01TakeAction>().OnHits();

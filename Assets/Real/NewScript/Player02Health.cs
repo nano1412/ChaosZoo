@@ -10,6 +10,7 @@ public class Player02Health : MonoBehaviour
     public ScriptableHealth scriptableHealth;
     public Player02Movement player02Movement;
     public Player02TakeAction player02TakeAction;
+    public Player02EventAnimation player02EventAnimation;
     //public Slider hpMainSlider;
     //public Slider hpEaseSlider;
     //private float lerpSpeed = 0.05f;
@@ -17,6 +18,7 @@ public class Player02Health : MonoBehaviour
     public bool knockout = false;
     public int currentdamage = 0;
     public float time;
+
 
     void Start()
     {
@@ -40,7 +42,7 @@ public class Player02Health : MonoBehaviour
         //HPSliderLink();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, float force)
     {
         if(scriptableHealth.currentHealth > 5 && !knockout)
         {
@@ -49,6 +51,7 @@ public class Player02Health : MonoBehaviour
                 if(block)
                 {
                     anim.SetTrigger("BlockCrouch");
+                    player02EventAnimation.Hurt(force);
                 }
                 else
                 {
@@ -65,6 +68,7 @@ public class Player02Health : MonoBehaviour
                     else
                     {
                         anim.SetTrigger("HurtCrouch");
+                        player02EventAnimation.Hurt(force);
                     }
                 }
             }
@@ -73,6 +77,7 @@ public class Player02Health : MonoBehaviour
                 if(block)
                 {
                     anim.SetTrigger("Block");
+                    player02EventAnimation.Hurt(force);
                 }
                 else
                 {
@@ -88,6 +93,7 @@ public class Player02Health : MonoBehaviour
                     else
                     {
                         anim.SetTrigger("Hurt");
+                        player02EventAnimation.Hurt(force);
                     }
                 }
             }

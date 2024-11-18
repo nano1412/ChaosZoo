@@ -459,7 +459,6 @@ MonoBehaviour:
   QCFHS_force: 1.75
   dashforce: 1
   dashBackforce: 0.75
-  HurtForce: 0.75
 --- !u!1 &207955714
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,6 +822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Col: {fileID: 311186122}
   damage: 10
+  force: 0
   Check: 0
   player02Health: {fileID: 0}
 --- !u!65 &311186122
@@ -981,6 +981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Col: {fileID: 335042407}
   damage: 10
+  force: 0
   Check: 0
   player02Health: {fileID: 0}
 --- !u!65 &335042407
@@ -1477,6 +1478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Col: {fileID: 538636535}
   damage: 10
+  force: 0
   Check: 0
   player02Health: {fileID: 0}
 --- !u!136 &538636535
@@ -1558,6 +1560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Col: {fileID: 543895940}
   damage: 20
+  force: 0
   Check: 0
   player02Health: {fileID: 0}
 --- !u!65 &543895940
@@ -1769,6 +1772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Col: {fileID: 599967140}
   damage: 10
+  force: 0
   Check: 0
   player02Health: {fileID: 0}
 --- !u!65 &599967140
@@ -1936,6 +1940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Col: {fileID: 632979243}
   damage: 10
+  force: 0
   Check: 0
   player02Health: {fileID: 0}
 --- !u!65 &632979243
@@ -2430,6 +2435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Col: {fileID: 823034261}
   damage: 10
+  force: 0
   Check: 0
   player02Health: {fileID: 0}
 --- !u!65 &823034261
@@ -2806,6 +2812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Col: {fileID: 948899486}
   damage: 10
+  force: 0
   Check: 0
   player02Health: {fileID: 0}
 --- !u!1001 &1012605530
@@ -7122,6 +7129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Col: {fileID: 1101138920}
   damage: 10
+  force: 1.5
   Check: 0
   player02Health: {fileID: 0}
 --- !u!65 &1101138920
@@ -7277,6 +7285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Col: {fileID: 1223770547}
   damage: 10
+  force: 0
   Check: 0
   player02Health: {fileID: 0}
 --- !u!65 &1223770547
@@ -7593,6 +7602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Col: {fileID: 1290132569}
   damage: 20
+  force: 0
   Check: 0
   player02Health: {fileID: 0}
 --- !u!65 &1290132569
@@ -10479,6 +10489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Col: {fileID: 1425691456}
   damage: 10
+  force: 0
   Check: 0
   player02Health: {fileID: 0}
 --- !u!65 &1425691456
@@ -10750,6 +10761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Col: {fileID: 1565539476}
   damage: 10
+  force: 0
   Check: 0
   player02Health: {fileID: 0}
 --- !u!65 &1565539476
@@ -12085,6 +12097,7 @@ MonoBehaviour:
   scriptableHealth: {fileID: 11400000, guid: 48fe774ed5876fb4fbe55f849c7d81fa, type: 2}
   player02Movement: {fileID: 917601035}
   player02TakeAction: {fileID: 187303738}
+  player02EventAnimation: {fileID: 187303740}
   block: 0
   knockout: 0
   currentdamage: 0
@@ -12485,6 +12498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Col: {fileID: 1985278473}
   damage: 10
+  force: 0
   Check: 0
   player02Health: {fileID: 0}
 --- !u!65 &1985278473

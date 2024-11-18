@@ -65,7 +65,7 @@ public class Player01EventAnimation : MonoBehaviour
         }
     }
 
-    public void HurtEvent()
+    /*public void HurtEvent()
     {
         if(player01Movement.faceRight)
         {
@@ -75,7 +75,19 @@ public class Player01EventAnimation : MonoBehaviour
         {
             rb.AddForce(Vector3.right * HurtForce, ForceMode.Impulse);
         }
-    }
+    }*/
 
+    public void Hurt(float Hurtforce)
+    {
+         if(player01Movement.faceRight)
+        {
+            rb.AddForce(Vector3.left * Hurtforce, ForceMode.Impulse);
+            Debug.Log(Hurtforce);
+        }
+        else
+        {
+            rb.AddForce(Vector3.right * Hurtforce, ForceMode.Impulse);
+        }
+    }
 
 }
