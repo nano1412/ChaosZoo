@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player01Movement : MonoBehaviour
 {
-    public float walkspeed = 0.5f;
+    public float walkspeed = 0.2f;
     public float  jumpForce = 0.2f;
     public float walkThreshold = 0.1f;
     public float verticalThreshold = 0.1f;
@@ -183,6 +183,7 @@ public class Player01Movement : MonoBehaviour
                 IsJumping = true;
                 anim.SetTrigger("Jump");
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                walkspeed = 0.6f;
                 StartCoroutine(JumpPause());
             }
         }
@@ -193,6 +194,7 @@ public class Player01Movement : MonoBehaviour
                 IsJumping = true;
                 anim.SetTrigger("Jump");
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                walkspeed = 0.6f;
                 StartCoroutine(JumpPause());
             }
         }
@@ -276,6 +278,7 @@ public class Player01Movement : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         IsJumping = false;
+        walkspeed = 0.2f;
     }
     IEnumerator DashPause()
     {

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Player01Health : MonoBehaviour
 {
-
     public Rigidbody rb;
     private Animator anim;
     public ScriptableHealth scriptableHealth;
