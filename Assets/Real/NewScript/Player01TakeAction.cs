@@ -187,7 +187,7 @@ public class Player01TakeAction : MonoBehaviour
             }
             else if (inputState == InputState.Forward && Time.time - lastInputTime <= inputBufferTime && isQCInProgress)
             {
-                if(Input.GetButtonDown("Player01JoyStick01") && specialMoveToggles[0].isEnabled)
+                if(Input.GetButtonDown("Player01Joystick01") && specialMoveToggles[0].isEnabled)
                 {
                     ActionQCF("Punch");
                     Hits = false;
@@ -481,22 +481,22 @@ public class Player01TakeAction : MonoBehaviour
         {
             if(Joystick)
             {
-                if(Input.GetButtonDown("Player01JoyStick01") && specialMoveToggles[8].isEnabled)
+                if(Input.GetButtonDown("Player01Joystick01") && specialMoveToggles[8].isEnabled)
                 {
                     ActionHCB("Punch");
                     return;
                 }
-                else if(Input.GetButtonDown("Player01JoyStick02") && specialMoveToggles[9].isEnabled)
+                else if(Input.GetButtonDown("Player01Joystick02") && specialMoveToggles[9].isEnabled)
                 {
                     ActionHCB("Kick");
                     return;
                 }
-                else if(Input.GetButtonDown("Player01JoyStick03") && specialMoveToggles[10].isEnabled)
+                else if(Input.GetButtonDown("Player01Joystick03") && specialMoveToggles[10].isEnabled)
                 {
                    ActionHCB("Slash");
                     return;
                 }
-                else if(Input.GetButtonDown("Player01JoyStick04") && specialMoveToggles[11].isEnabled)
+                else if(Input.GetButtonDown("Player01Joystick04") && specialMoveToggles[11].isEnabled)
                 {
                     ActionHCB("HeavySlash");
                     return;
@@ -642,22 +642,22 @@ public class Player01TakeAction : MonoBehaviour
         {
             if(Joystick)
             {
-                if(Input.GetButtonDown("Player01JoyStick01") && specialMoveToggles[12].isEnabled)
+                if(Input.GetButtonDown("Player01Joystick01") && specialMoveToggles[12].isEnabled)
                 {
                     ActionHCBF("Punch");
                     return;
                 }
-                else if(Input.GetButtonDown("Player01JoyStick02") && specialMoveToggles[13].isEnabled)
+                else if(Input.GetButtonDown("Player01Joystick02") && specialMoveToggles[13].isEnabled)
                 {
                     ActionHCBF("Kick");
                     return;
                 }
-                else if(Input.GetButtonDown("Player01JoyStick03") && specialMoveToggles[14].isEnabled)
+                else if(Input.GetButtonDown("Player01Joystick03") && specialMoveToggles[14].isEnabled)
                 {
                     ActionHCBF("Slash");
                     return;
                 }
-                else if(Input.GetButtonDown("Player01JoyStick04") && specialMoveToggles[15].isEnabled)
+                else if(Input.GetButtonDown("Player01Joystick04") && specialMoveToggles[15].isEnabled)
                 {
                     ActionHCBF("HeavySlash");
                     return;
