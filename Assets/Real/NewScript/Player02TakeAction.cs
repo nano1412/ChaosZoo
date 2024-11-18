@@ -479,22 +479,22 @@ public class Player02TakeAction : MonoBehaviour
         {
             if(Joystick)
             {
-                if(Input.GetButtonDown("Player02JoyStick01") && specialMoveToggles[8].isEnabled)
+                if(Input.GetButtonDown("Player02Joystick01") && specialMoveToggles[8].isEnabled)
                 {
                     ActionHCB("Punch");
                     return;
                 }
-                else if(Input.GetButtonDown("Player02JoyStick02") && specialMoveToggles[9].isEnabled)
+                else if(Input.GetButtonDown("Player02Joystick02") && specialMoveToggles[9].isEnabled)
                 {
                     ActionHCB("Kick");
                     return;
                 }
-                else if(Input.GetButtonDown("Player02JoyStick03") && specialMoveToggles[10].isEnabled)
+                else if(Input.GetButtonDown("Player02Joystick03") && specialMoveToggles[10].isEnabled)
                 {
                    ActionHCB("Slash");
                     return;
                 }
-                else if(Input.GetButtonDown("Player02JoyStick04") && specialMoveToggles[11].isEnabled)
+                else if(Input.GetButtonDown("Player02Joystick04") && specialMoveToggles[11].isEnabled)
                 {
                     ActionHCB("HeavySlash");
                     return;
@@ -640,22 +640,22 @@ public class Player02TakeAction : MonoBehaviour
         {
             if(Joystick)
             {
-                if(Input.GetButtonDown("Player02JoyStick01") && specialMoveToggles[12].isEnabled)
+                if(Input.GetButtonDown("Player02Joystick01") && specialMoveToggles[12].isEnabled)
                 {
                     ActionHCBF("Punch");
                     return;
                 }
-                else if(Input.GetButtonDown("Player02JoyStick02") && specialMoveToggles[13].isEnabled)
+                else if(Input.GetButtonDown("Player02Joystick02") && specialMoveToggles[13].isEnabled)
                 {
                     ActionHCBF("Kick");
                     return;
                 }
-                else if(Input.GetButtonDown("Player02JoyStick03") && specialMoveToggles[14].isEnabled)
+                else if(Input.GetButtonDown("Player02Joystick03") && specialMoveToggles[14].isEnabled)
                 {
                     ActionHCBF("Slash");
                     return;
                 }
-                else if(Input.GetButtonDown("Player02JoyStick04") && specialMoveToggles[15].isEnabled)
+                else if(Input.GetButtonDown("Player02Joystick04") && specialMoveToggles[15].isEnabled)
                 {
                     ActionHCBF("HeavySlash");
                     return;
