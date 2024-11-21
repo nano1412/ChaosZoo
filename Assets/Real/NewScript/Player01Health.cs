@@ -57,13 +57,21 @@ public class Player01Health : MonoBehaviour
                     currentdamage += damage;
                     if(currentdamage >= 30)
                     {
-                        anim.SetTrigger("KnockCrouch");
-                        currentdamage = 0;
-                        StartCoroutine(recovery());
-                        knockout = true;
-                        time = 0;
+                        if(scriptableHealth.currentHealth > 0)
+                        {
+                            anim.SetTrigger("KnockCrouch");
+                            currentdamage = 0;
+                            StartCoroutine(recovery());
+                            knockout = true;
+                            time = 0;
+                        }
+                        else
+                        {
+                            anim.SetTrigger("Dead");
+                            knockout = true;
+                        }
                     }
-                    else
+                    else if(scriptableHealth.currentHealth > 0 && !knockout)
                     {
                         anim.SetTrigger("HurtCrouch");
                         player01EventAnimation.Hurt(force);
@@ -83,12 +91,20 @@ public class Player01Health : MonoBehaviour
                     currentdamage += damage;
                     if(currentdamage >= 30)
                     {
-                        anim.SetTrigger("Knock");
-                        currentdamage = 0;
-                        StartCoroutine(recovery());
-                        knockout = true;
+                        if(scriptableHealth.currentHealth > 0)
+                        {
+                            anim.SetTrigger("Knock");
+                            currentdamage = 0;
+                            StartCoroutine(recovery());
+                            knockout = true;
+                        }
+                        else
+                        {
+                            anim.SetTrigger("Dead");
+                            knockout = true;
+                        }
                     }
-                    else
+                    else if(scriptableHealth.currentHealth > 0 && !knockout)
                     {
                         anim.SetTrigger("Hurt");
                         player01EventAnimation.Hurt(force);
