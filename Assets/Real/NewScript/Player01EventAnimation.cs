@@ -82,7 +82,6 @@ public class Player01EventAnimation : MonoBehaviour
          if(player01Movement.faceRight)
         {
             rb.AddForce(Vector3.left * Hurtforce, ForceMode.Impulse);
-            Debug.Log(Hurtforce);
         }
         else
         {
