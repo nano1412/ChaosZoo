@@ -42,81 +42,94 @@ public class Player02Health : MonoBehaviour
         //HPSliderLink();
     }
 
-    public void TakeDamage(int damage, float force)
+    public void TakeDamage(int damage, float force, string actionGrabName)
     {
         if(scriptableHealth.currentHealth > 5 && !knockout)
         {
-            if(player02Movement.animCrouch)
+            if(actionGrabName == "no")
             {
-                if(block)
+                if(player02Movement.animCrouch)
                 {
-                    anim.SetTrigger("BlockCrouch");
-                    player02EventAnimation.Hurt(force);
+                    if(block)
+                    {
+                        anim.SetTrigger("BlockCrouch");
+                        player02EventAnimation.Hurt(force);
+                    }
+                    else
+                    {
+                        scriptableHealth.currentHealth -= damage;
+                        currentdamage += damage;
+                        if(currentdamage >= 30)
+                        {
+                            if(scriptableHealth.currentHealth > 0)
+                            {
+                                anim.SetTrigger("KnockCrouch");
+                                currentdamage = 0;
+                                StartCoroutine(recovery());
+                                knockout = true;
+                                time = 0;
+                            }
+                            else
+                            {
+                                anim.SetTrigger("Dead");
+                                knockout = true;
+                            }
+                        }
+                        else if(scriptableHealth.currentHealth > 0 && !knockout)
+                        {
+                            anim.SetTrigger("HurtCrouch");
+                            player02EventAnimation.Hurt(force);
+                        }
+                    }
                 }
                 else
                 {
-                    scriptableHealth.currentHealth -= damage;
-                    currentdamage += damage;
-                    if(currentdamage >= 30)
+                    if(block)
                     {
-                        if(scriptableHealth.currentHealth > 0)
-                        {
-                            anim.SetTrigger("KnockCrouch");
-                            currentdamage = 0;
-                            StartCoroutine(recovery());
-                            knockout = true;
-                            time = 0;
-                        }
-                        else
-                        {
-                            anim.SetTrigger("Dead");
-                            knockout = true;
-                        }
-                    }
-                    else if(scriptableHealth.currentHealth > 0 && !knockout)
-                    {
-                        anim.SetTrigger("HurtCrouch");
+                        anim.SetTrigger("Block");
                         player02EventAnimation.Hurt(force);
                     }
+                    else
+                    {
+                        scriptableHealth.currentHealth -= damage;
+                        currentdamage += damage;
+                        if(currentdamage >= 30)
+                        {
+                            if(scriptableHealth.currentHealth > 0)
+                            {
+                                anim.SetTrigger("Knock");
+                                currentdamage = 0;
+                                StartCoroutine(recovery());
+                                knockout = true;
+                            }
+                            else
+                            {
+                                anim.SetTrigger("Dead");
+                                knockout = true;
+                            }
+                        }
+                        else if(scriptableHealth.currentHealth > 0 && !knockout)
+                        {
+                            anim.SetTrigger("Hurt");
+                            player02EventAnimation.Hurt(force);
+                        }
+                    }
                 }
+                player02Movement.isPerformingAction = true;
+                player02TakeAction.isPerformingAction = true;
+                StartCoroutine(resetHurt());
             }
-            else
+            if(actionGrabName == "63214P_Shark")
             {
-                if(block)
+                if(scriptableHealth.currentHealth > 0)
                 {
-                    anim.SetTrigger("Block");
-                    player02EventAnimation.Hurt(force);
+                    anim.SetTrigger("Shark_grab_HCB");
+                    StartCoroutine(resetGrapHCB(damage));
+                    player02Movement.isPerformingAction = true;
+                    player02TakeAction.isPerformingAction = true;
                 }
-                else
-                {
-                    scriptableHealth.currentHealth -= damage;
-                    currentdamage += damage;
-                    if(currentdamage >= 30)
-                    {
-                        if(scriptableHealth.currentHealth > 0)
-                        {
-                            anim.SetTrigger("Knock");
-                            currentdamage = 0;
-                            StartCoroutine(recovery());
-                            knockout = true;
-                        }
-                        else
-                        {
-                            anim.SetTrigger("Dead");
-                            knockout = true;
-                        }
-                    }
-                    else if(scriptableHealth.currentHealth > 0 && !knockout)
-                    {
-                        anim.SetTrigger("Hurt");
-                        player02EventAnimation.Hurt(force);
-                    }
-                }
-            }
-            player02Movement.isPerformingAction = true;
-            player02TakeAction.isPerformingAction = true;
-            StartCoroutine(resetHurt());
-        }    
+            }    
+        }
         if(scriptableHealth.currentHealth <= 0 && !knockout)
         {
             anim.SetTrigger("Dead");
@@ -149,5 +162,20 @@ public class Player02Health : MonoBehaviour
         yield return new WaitForSeconds(1f);
         anim.SetTrigger("recove");
         knockout = false;
+    }
+    IEnumerator resetGrapHCB(int damage)
+    {
+        yield return new WaitForSeconds(2f);
+        scriptableHealth.currentHealth -= damage;
+        if(scriptableHealth.currentHealth > 0)
+        {
+            anim.SetBool("DeadGrap", false);
+        }
+        else
+        {
+            anim.SetBool("DeadGrap", true);
+            knockout = true;
+        }
+
     }
 }

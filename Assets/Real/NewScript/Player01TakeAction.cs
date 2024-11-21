@@ -794,6 +794,14 @@ public class Player01TakeAction : MonoBehaviour
         isPerformingAction = false;
         player01Movement.isPerformingAction = true;
     }
+    public void GrapHCBShark()
+    {
+        Debug.Log("Grap");
+        anim.SetTrigger("Grap_HCB");
+        isPerformingAction = true;
+        player01Movement.isPerformingAction = true;
+        StartCoroutine(ResetGrap());
+    }
     IEnumerator ResetIsPerformingAction(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -813,6 +821,12 @@ public class Player01TakeAction : MonoBehaviour
         yield return new WaitForSeconds(actionCooldown);
         inputState = InputState.None;
         isHCBInProgress = false;
+    }
+    IEnumerator ResetGrap()
+    {
+        yield return new WaitForSeconds(actionCooldown);
+        isPerformingAction = false;
+        player01Movement.isPerformingAction = false;
     }
 }
     

@@ -8,7 +8,10 @@ public class Player01Trigger : MonoBehaviour
     public int damage = 10;
     public float force;
     public bool Check = false;
+    public bool Grab = false;
+    public string animationNameGrab;
     public Player02Health player02Health;
+
 
     void Start()
     {
@@ -26,8 +29,19 @@ public class Player01Trigger : MonoBehaviour
         if(other.tag == "Player02Health")
         {
             Player01TakeAction.Hits = true;
-            player02Health.TakeDamage(damage, force);
-            if(Check)
+            if(Grab)
+            {
+                if(animationNameGrab == "63214P_Shark")
+                {
+                    GetComponentInParent<Player01TakeAction>().GrapHCBShark();
+                    player02Health.TakeDamage(damage, force, animationNameGrab);
+                }
+            }
+            else if(!Grab)
+            {
+                player02Health.TakeDamage(damage, force, "no");
+            }
+            else if(Check)
             {
                 GetComponentInParent<Player01TakeAction>().OnHits();
             }
