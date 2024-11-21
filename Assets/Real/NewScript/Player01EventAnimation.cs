@@ -12,6 +12,7 @@ public class Player01EventAnimation : MonoBehaviour
     public float dashforce = 0;
     public float dashBackforce = 0;
     public float HurtForce = 0;
+    public float forcehurt;
     public void JumpEvent()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -77,15 +78,15 @@ public class Player01EventAnimation : MonoBehaviour
         }
     }*/
 
-    public void Hurt(float Hurtforce)
+    public void Hurt()
     {
-         if(player01Movement.faceRight)
+        if(player01Movement.faceRight)
         {
-            rb.AddForce(Vector3.left * Hurtforce, ForceMode.Impulse);
+            rb.AddForce(Vector3.left * forcehurt, ForceMode.Impulse);
         }
         else
         {
-            rb.AddForce(Vector3.right * Hurtforce, ForceMode.Impulse);
+            rb.AddForce(Vector3.right * forcehurt, ForceMode.Impulse);
         }
     }
 

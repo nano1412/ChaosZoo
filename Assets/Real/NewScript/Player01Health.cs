@@ -51,7 +51,7 @@ public class Player01Health : MonoBehaviour
                     if(block)
                     {
                         anim.SetTrigger("BlockCrouch");
-                        player01EventAnimation.Hurt(force);
+                        player01EventAnimation.forcehurt = force;
                     }
                     else
                     {
@@ -76,7 +76,7 @@ public class Player01Health : MonoBehaviour
                         else if(scriptableHealth.currentHealth > 0 && !knockout)
                         {
                             anim.SetTrigger("HurtCrouch");
-                            player01EventAnimation.Hurt(force);
+                            player01EventAnimation.forcehurt = force;
                         }
                     }
                 }
@@ -85,7 +85,7 @@ public class Player01Health : MonoBehaviour
                     if(block)
                     {
                         anim.SetTrigger("Block");
-                        player01EventAnimation.Hurt(force);
+                        player01EventAnimation.forcehurt = force;
                     }
                     else
                     {
@@ -109,7 +109,7 @@ public class Player01Health : MonoBehaviour
                         else if(scriptableHealth.currentHealth > 0 && !knockout)
                         {
                             anim.SetTrigger("Hurt");
-                            player01EventAnimation.Hurt(force);
+                            player01EventAnimation.forcehurt = force;
                         }
                     }
                 }
@@ -121,6 +121,7 @@ public class Player01Health : MonoBehaviour
             {
                 if(scriptableHealth.currentHealth > 0)
                 {
+                    player01EventAnimation.forcehurt = force;
                     anim.SetTrigger("Shark_grab_HCB");
                     StartCoroutine(resetGrapHCB(damage));
                     player01Movement.isPerformingAction = true;
@@ -154,6 +155,7 @@ public class Player01Health : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         player01Movement.isPerformingAction = false;
         player01TakeAction.isPerformingAction = false;
+        player01EventAnimation.forcehurt = 0;
     }
 
     IEnumerator recovery()
@@ -166,6 +168,7 @@ public class Player01Health : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         scriptableHealth.currentHealth -= damage;
+        player01EventAnimation.forcehurt = 0;
         if(scriptableHealth.currentHealth > 0)
         {
             StartCoroutine(recovery());
