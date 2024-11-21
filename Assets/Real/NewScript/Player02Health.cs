@@ -169,11 +169,10 @@ public class Player02Health : MonoBehaviour
         scriptableHealth.currentHealth -= damage;
         if(scriptableHealth.currentHealth > 0)
         {
-            anim.SetBool("DeadGrap", false);
+            StartCoroutine(recovery());
         }
         else
         {
-            anim.SetBool("DeadGrap", true);
             knockout = true;
         }
 
