@@ -802,6 +802,13 @@ public class Player01TakeAction : MonoBehaviour
         player01Movement.isPerformingAction = true;
         StartCoroutine(ResetGrap());
     }
+    public void GrapHCBFShark()
+    {
+        Debug.Log("Grap");
+        anim.SetTrigger("Grap_HCBF");
+        player01Movement.isPerformingAction = true;
+        StartCoroutine(ResetGrap());
+    }
     IEnumerator ResetIsPerformingAction(float delay)
     {
         yield return new WaitForSeconds(delay);
