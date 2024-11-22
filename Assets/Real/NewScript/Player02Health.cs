@@ -121,7 +121,7 @@ public class Player02Health : MonoBehaviour
             }
             else if(actionGrabName == "63214P_Shark")
             {
-                if(scriptableHealth.currentHealth > 0)
+                if(scriptableHealth.currentHealth > 0  && !knockout)
                 {
                     player02EventAnimation.forcehurt = force;
                     anim.SetTrigger("Shark_grab_HCB");
@@ -132,7 +132,7 @@ public class Player02Health : MonoBehaviour
             }
             else if(actionGrabName == "632146S_Shark")
             {
-                if(scriptableHealth.currentHealth > 0)
+                if(scriptableHealth.currentHealth > 0  && !knockout)
                 {
                     player02EventAnimation.forcehurt = force;
                     anim.SetTrigger("Shark_grab_HCBF");
@@ -196,7 +196,7 @@ public class Player02Health : MonoBehaviour
 
     IEnumerator resetGrapHCBF(int damage)
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         scriptableHealth.currentHealth -= damage;
         player02EventAnimation.forcehurt = 0;
         knockout = true;

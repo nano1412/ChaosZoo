@@ -848,7 +848,7 @@ public class Player01TakeAction : MonoBehaviour
     }
     IEnumerator ResetGrap()
     {
-        yield return new WaitForSeconds(actionCooldown);
+        yield return new WaitForSeconds(2f);
         isPerformingAction = false;
         player01Movement.isPerformingAction = false;
     }
