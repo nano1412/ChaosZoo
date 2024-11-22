@@ -482,21 +482,25 @@ public class Player02TakeAction : MonoBehaviour
                 if(Input.GetButtonDown("Player02Joystick01") && specialMoveToggles[8].isEnabled)
                 {
                     ActionHCB("Punch");
+                    Hits = false;
                     return;
                 }
                 else if(Input.GetButtonDown("Player02Joystick02") && specialMoveToggles[9].isEnabled)
                 {
                     ActionHCB("Kick");
+                    Hits = false;
                     return;
                 }
                 else if(Input.GetButtonDown("Player02Joystick03") && specialMoveToggles[10].isEnabled)
                 {
                    ActionHCB("Slash");
+                   Hits = false;
                     return;
                 }
                 else if(Input.GetButtonDown("Player02Joystick04") && specialMoveToggles[11].isEnabled)
                 {
                     ActionHCB("HeavySlash");
+                    Hits = false;
                     return;
                 }
             }
@@ -505,21 +509,25 @@ public class Player02TakeAction : MonoBehaviour
                 if(Input.GetButtonDown("Player02Bt01") && specialMoveToggles[8].isEnabled)
                 {
                     ActionHCB("Punch");
+                    Hits = false;
                     return;
                 }
                 else if(Input.GetButtonDown("Player02Bt02") && specialMoveToggles[9].isEnabled)
                 {
                     ActionHCB("Kick");
+                    Hits = false;
                     return;
                 }
                 else if(Input.GetButtonDown("Player02Bt03") && specialMoveToggles[10].isEnabled)
                 {
                     ActionHCB("Slash");
+                    Hits = false;
                     return;
                 }
                 else if(Input.GetButtonDown("Player02Bt04") && specialMoveToggles[11].isEnabled)
                 {
                     ActionHCB("HeavySlash");
+                    Hits = false;
                     return;
                 }
                 }
@@ -643,21 +651,25 @@ public class Player02TakeAction : MonoBehaviour
                 if(Input.GetButtonDown("Player02Joystick01") && specialMoveToggles[12].isEnabled)
                 {
                     ActionHCBF("Punch");
+                    Hits = false;
                     return;
                 }
                 else if(Input.GetButtonDown("Player02Joystick02") && specialMoveToggles[13].isEnabled)
                 {
                     ActionHCBF("Kick");
+                    Hits = false;
                     return;
                 }
                 else if(Input.GetButtonDown("Player02Joystick03") && specialMoveToggles[14].isEnabled)
                 {
                     ActionHCBF("Slash");
+                    Hits = false;
                     return;
                 }
                 else if(Input.GetButtonDown("Player02Joystick04") && specialMoveToggles[15].isEnabled)
                 {
                     ActionHCBF("HeavySlash");
+                    Hits = false;
                     return;
                 }
             }
@@ -666,21 +678,25 @@ public class Player02TakeAction : MonoBehaviour
                 if(Input.GetButtonDown("Player02Bt01") && specialMoveToggles[12].isEnabled)
                 {
                     ActionHCBF("Punch");
+                    Hits = false;
                     return;
                 }
                 else if(Input.GetButtonDown("Player02Bt02") && specialMoveToggles[13].isEnabled)
                 {
                     ActionHCBF("Kick");
+                    Hits = false;
                     return;
                 }
                 else if(Input.GetButtonDown("Player02Bt03") && specialMoveToggles[14].isEnabled)
                 {
                     ActionHCBF("Slash");
+                    Hits = false;
                     return;
                 }
                 else if(Input.GetButtonDown("Player02Bt04") && specialMoveToggles[15].isEnabled)
                 {
                     ActionHCBF("HeavySlash");
+                    Hits = false;
                     return;
                 }
             }
@@ -810,6 +826,13 @@ public class Player02TakeAction : MonoBehaviour
         Debug.Log("Grap");
         anim.SetTrigger("Grap_HCB");
         isPerformingAction = true;
+        player02Movement.isPerformingAction = true;
+        StartCoroutine(ResetGrap());
+    }
+    public void GrapHCBFShark()
+    {
+        Debug.Log("Grap");
+        anim.SetTrigger("Grap_HCBF");
         player02Movement.isPerformingAction = true;
         StartCoroutine(ResetGrap());
     }

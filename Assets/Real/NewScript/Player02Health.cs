@@ -181,6 +181,8 @@ public class Player02Health : MonoBehaviour
         yield return new WaitForSeconds(2f);
         scriptableHealth.currentHealth -= damage;
         player02EventAnimation.forcehurt = 0;
+        player02Movement.isPerformingAction = false;
+        player02TakeAction.isPerformingAction = false;
         if(scriptableHealth.currentHealth > 0)
         {
             StartCoroutine(recovery());

@@ -23,13 +23,17 @@ public class Player02Trigger : MonoBehaviour
         Col.enabled = !Player02TakeAction.Hits;
     }
 
-     private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player01Health")
         {
             Player02TakeAction.Hits = true;
             if(Grap)
             {
+                if(animationNameGrap == "632146S_Shark")
+                {
+                    GetComponentInParent<Player02TakeAction>().GrapHCBFShark();
+                }
                 if(animationNameGrap == "63214P_Shark")
                 {
                     GetComponentInParent<Player02TakeAction>().GrapHCBShark();
