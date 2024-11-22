@@ -119,13 +119,24 @@ public class Player02Health : MonoBehaviour
                 player02TakeAction.isPerformingAction = true;
                 StartCoroutine(resetHurt());
             }
-            if(actionGrabName == "63214P_Shark")
+            else if(actionGrabName == "63214P_Shark")
             {
-                if(scriptableHealth.currentHealth > 0)
+                if(scriptableHealth.currentHealth > 0  && !knockout)
                 {
                     player02EventAnimation.forcehurt = force;
                     anim.SetTrigger("Shark_grab_HCB");
                     StartCoroutine(resetGrapHCB(damage));
+                    player02Movement.isPerformingAction = true;
+                    player02TakeAction.isPerformingAction = true;
+                }
+            }
+            else if(actionGrabName == "632146S_Shark")
+            {
+                if(scriptableHealth.currentHealth > 0  && !knockout)
+                {
+                    player02EventAnimation.forcehurt = force;
+                    anim.SetTrigger("Shark_grab_HCBF");
+                    StartCoroutine(resetGrapHCBF(damage));
                     player02Movement.isPerformingAction = true;
                     player02TakeAction.isPerformingAction = true;
                 }
@@ -170,6 +181,8 @@ public class Player02Health : MonoBehaviour
         yield return new WaitForSeconds(2f);
         scriptableHealth.currentHealth -= damage;
         player02EventAnimation.forcehurt = 0;
+        player02Movement.isPerformingAction = false;
+        player02TakeAction.isPerformingAction = false;
         if(scriptableHealth.currentHealth > 0)
         {
             StartCoroutine(recovery());
@@ -179,5 +192,13 @@ public class Player02Health : MonoBehaviour
             knockout = true;
         }
 
+    }
+
+    IEnumerator resetGrapHCBF(int damage)
+    {
+        yield return new WaitForSeconds(4f);
+        scriptableHealth.currentHealth -= damage;
+        player02EventAnimation.forcehurt = 0;
+        knockout = true;
     }
 }

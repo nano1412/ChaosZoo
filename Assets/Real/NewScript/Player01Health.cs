@@ -117,7 +117,7 @@ public class Player01Health : MonoBehaviour
                 player01TakeAction.isPerformingAction = true;
                 StartCoroutine(resetHurt());
             }
-            if(actionGrapName == "63214P_Shark")
+            else if(actionGrapName == "63214P_Shark")
             {
                 if(scriptableHealth.currentHealth > 0)
                 {
@@ -126,9 +126,22 @@ public class Player01Health : MonoBehaviour
                     StartCoroutine(resetGrapHCB(damage));
                     player01Movement.isPerformingAction = true;
                     player01TakeAction.isPerformingAction = true;
-                    return;
+                    
                 }
-            }   
+            }
+            else if(actionGrapName == "632146S_Shark")
+            {
+                if(scriptableHealth.currentHealth > 0)
+                {
+                    player01EventAnimation.forcehurt = force;
+                    anim.SetTrigger("Shark_grab_HCBF");
+                    StartCoroutine(resetGrapHCB(damage));
+                    player01Movement.isPerformingAction = true;
+                    player01TakeAction.isPerformingAction = true;
+                    
+                }
+            }
+
         }    
         if(scriptableHealth.currentHealth <= 0 && !knockout)
         {
@@ -162,6 +175,8 @@ public class Player01Health : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         anim.SetTrigger("recove");
+        player01Movement.isPerformingAction = false;
+        player01TakeAction.isPerformingAction = false;
         knockout = false;
     }
     IEnumerator resetGrapHCB(int damage)
@@ -169,6 +184,9 @@ public class Player01Health : MonoBehaviour
         yield return new WaitForSeconds(2f);
         scriptableHealth.currentHealth -= damage;
         player01EventAnimation.forcehurt = 0;
+        player01Movement.isPerformingAction = false;
+        player01TakeAction.isPerformingAction = false;
+
         if(scriptableHealth.currentHealth > 0)
         {
             StartCoroutine(recovery());
@@ -177,5 +195,12 @@ public class Player01Health : MonoBehaviour
         {
             knockout = true;
         }
+    }
+    IEnumerator resetGrapHCBF(int damage)
+    {
+        yield return new WaitForSeconds(4f);
+        scriptableHealth.currentHealth -= damage;
+        player01EventAnimation.forcehurt = 0;
+        knockout = true;
     }
 }   
