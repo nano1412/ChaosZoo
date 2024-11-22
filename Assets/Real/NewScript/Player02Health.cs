@@ -174,6 +174,8 @@ public class Player02Health : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         anim.SetTrigger("recove");
+        player02Movement.isPerformingAction = false;
+        player02TakeAction.isPerformingAction = false;
         knockout = false;
     }
     IEnumerator resetGrapHCB(int damage)
@@ -199,6 +201,13 @@ public class Player02Health : MonoBehaviour
         yield return new WaitForSeconds(4f);
         scriptableHealth.currentHealth -= damage;
         player02EventAnimation.forcehurt = 0;
-        knockout = true;
+         if(scriptableHealth.currentHealth > 0)
+        {
+            StartCoroutine(recovery());
+        }
+        else
+        {
+            knockout = true;
+        }
     }
 }

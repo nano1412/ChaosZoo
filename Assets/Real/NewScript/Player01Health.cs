@@ -135,7 +135,7 @@ public class Player01Health : MonoBehaviour
                 {
                     player01EventAnimation.forcehurt = force;
                     anim.SetTrigger("Shark_grab_HCBF");
-                    StartCoroutine(resetGrapHCB(damage));
+                    StartCoroutine(resetGrapHCBF(damage));
                     player01Movement.isPerformingAction = true;
                     player01TakeAction.isPerformingAction = true;
                     
@@ -201,6 +201,13 @@ public class Player01Health : MonoBehaviour
         yield return new WaitForSeconds(4f);
         scriptableHealth.currentHealth -= damage;
         player01EventAnimation.forcehurt = 0;
-        knockout = true;
+        if(scriptableHealth.currentHealth > 0)
+        {
+            StartCoroutine(recovery());
+        }
+        else
+        {
+            knockout = true;
+        }
     }
 }   
