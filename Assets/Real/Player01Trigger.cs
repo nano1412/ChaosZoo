@@ -11,6 +11,7 @@ public class Player01Trigger : MonoBehaviour
     public bool Grab = false;
     public string animationNameGrab;
     public Player02Health player02Health;
+    public Player01CameraSpecial player01CameraSpecial;
 
 
     void Start()
@@ -40,6 +41,7 @@ public class Player01Trigger : MonoBehaviour
                 {
                     GetComponentInParent<Player01TakeAction>().GrapHCBFShark();
                     player02Health.TakeDamage(damage, force, animationNameGrab);
+                    player01CameraSpecial.CameraAtciveSpecial();
                 }
             }
             else if(!Grab)

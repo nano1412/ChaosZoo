@@ -7,6 +7,7 @@ public class Player01TakeAction : MonoBehaviour
     public float defaultActionCooldown = 0.5f;
     public GameObject player01;
     public Player01Movement player01Movement;
+    public Player01CameraSpecial player01CameraSpecial;
     public SelectController selectController;
     public bool isPerformingAction = false;
     public static bool Hits = false;
@@ -802,6 +803,7 @@ public class Player01TakeAction : MonoBehaviour
     private void ActionHCBF(string actionName)
     {
         specialMoveEnergy -= 50;
+        player01CameraSpecial.CameraSetActive();
         anim.SetTrigger("HCBF_"+ actionName);
         StartCoroutine(ResetHCBFState());
     }
