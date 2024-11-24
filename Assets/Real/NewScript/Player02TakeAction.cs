@@ -463,7 +463,7 @@ public class Player02TakeAction : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                        return;
+                    return;
                 }
             }
             else
@@ -473,6 +473,7 @@ public class Player02TakeAction : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    return;
                 }
             }
         }
@@ -531,8 +532,8 @@ public class Player02TakeAction : MonoBehaviour
                     Hits = false;
                     return;
                 }
-                }
             }
+         }
         if (Time.time - lastInputTime > inputBufferTime)
         {
             inputState = InputState.None;

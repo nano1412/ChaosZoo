@@ -56,10 +56,10 @@ public class Player01TakeAction : MonoBehaviour
         string horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
         bool Joystick = selectController.Selectjoystick01 ? true : false;
 
-        HandleQCF();
-        HandleQCB();
-        HandleHCB();
-        HandleHCBF();
+        //HandleQCF();
+        //HandleQCB();
+        //HandleHCB();
+        //HandleHCBF();
         
         if(Input.GetAxis(verticalInput) < -0.4f)
         {
@@ -711,6 +711,7 @@ public class Player01TakeAction : MonoBehaviour
             isHCBInProgress = false;
         }
     }
+
     private void PerformAction(string actionName)
     {   
         isPerformingAction = true;
@@ -798,7 +799,6 @@ public class Player01TakeAction : MonoBehaviour
     {
         anim.SetTrigger("HCB_" + actionName);
         StartCoroutine(ResetHCBFState());
-
     }
     private void ActionHCBF(string actionName)
     {
@@ -874,7 +874,7 @@ public enum SpecialMove
     HCBF_Punch,
     HCBF_Kick,
     HCBF_Slash,
-    HCBF_HeavySlash
+    HCBF_HeavySlash,
 }
 
 [System.Serializable]
