@@ -12,8 +12,6 @@ public class Player01Trigger : MonoBehaviour
     public string animationNameGrab;
     public Player02Health player02Health;
     public Player01CameraSpecial player01CameraSpecial;
-
-
     void Start()
     {
         Col.enabled = true;

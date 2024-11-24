@@ -825,6 +825,7 @@ public class Player01TakeAction : MonoBehaviour
     {
         Debug.Log("Grap");
         anim.SetTrigger("Grap_HCBF");
+        isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         StartCoroutine(ResetGrap());
     }

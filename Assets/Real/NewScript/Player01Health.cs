@@ -119,7 +119,7 @@ public class Player01Health : MonoBehaviour
             }
             else if(actionGrapName == "63214P_Shark")
             {
-                if(scriptableHealth.currentHealth > 0)
+                if(scriptableHealth.currentHealth > 0 && !knockout)
                 {
                     player01EventAnimation.forcehurt = force;
                     anim.SetTrigger("Shark_grab_HCB");
@@ -131,7 +131,7 @@ public class Player01Health : MonoBehaviour
             }
             else if(actionGrapName == "632146S_Shark")
             {
-                if(scriptableHealth.currentHealth > 0)
+                if(scriptableHealth.currentHealth > 0 && !knockout)
                 {
                     player01EventAnimation.forcehurt = force;
                     anim.SetTrigger("Shark_grab_HCBF");

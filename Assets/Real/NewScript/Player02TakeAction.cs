@@ -7,6 +7,7 @@ public class Player02TakeAction : MonoBehaviour
     public float defaultActionCooldown = 0.5f;
     public GameObject player02;
     public Player02Movement player02Movement;
+    public Player02CameraSpecial player02CameraSpecial;
     public SelectController selectController;
     public bool isPerformingAction = false;
     public static bool Hits = false;
@@ -802,6 +803,7 @@ public class Player02TakeAction : MonoBehaviour
     private void ActionHCBF(string actionName)
     {
         specialMoveEnergy -= 50;
+        player02CameraSpecial.CameraSetActive();
         anim.SetTrigger("HCBF_"+ actionName);
         Debug.Log("HCBF" + actionName);
         StartCoroutine(ResetHCBFState());
@@ -833,6 +835,7 @@ public class Player02TakeAction : MonoBehaviour
     {
         Debug.Log("Grap");
         anim.SetTrigger("Grap_HCBF");
+        isPerformingAction = true;
         player02Movement.isPerformingAction = true;
         StartCoroutine(ResetGrap());
     }
@@ -852,7 +855,7 @@ public class Player02TakeAction : MonoBehaviour
     }
     IEnumerator ResetGrap()
     {
-        yield return new WaitForSeconds(actionCooldown);
+        yield return new WaitForSeconds(2f);
         isPerformingAction = false;
         player02Movement.isPerformingAction = false;
     }
