@@ -6,6 +6,7 @@ public class Player01CameraSpecial : MonoBehaviour
 {
     public GameObject cameraSpecial;
     public float cooldown;
+    public float cooldown_2;
 
     public void CameraSetActive()
     {
@@ -17,7 +18,11 @@ public class Player01CameraSpecial : MonoBehaviour
     {
         cameraSpecial.SetActive(true);
         StartCoroutine(ResetCamareGrap());
-
+    }
+    public void cameraHCB()
+    {
+        cameraSpecial.SetActive(true);
+        StartCoroutine(ResetCamareHCB());
     }
 
     IEnumerator ResetCamareSpecial()
@@ -31,6 +36,11 @@ public class Player01CameraSpecial : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         cameraSpecial.SetActive(false);
+    }
 
+    IEnumerator ResetCamareHCB()
+    {
+        yield return new WaitForSeconds(cooldown_2);
+        cameraSpecial.SetActive(false);
     }
 }

@@ -36,6 +36,7 @@ public class Player01Trigger : MonoBehaviour
                 {
                     GetComponentInParent<Player01TakeAction>().GrapHCBShark();
                     player02Health.TakeDamage(damage, force, animationNameGrab);
+                    player01CameraSpecial.cameraHCB();
                 }
                 if(animationNameGrab == "632146S_Shark")
                 {
