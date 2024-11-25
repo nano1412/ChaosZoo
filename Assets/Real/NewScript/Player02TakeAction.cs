@@ -5,9 +5,11 @@ using UnityEngine;
 public class Player02TakeAction : MonoBehaviour
 {
     public float defaultActionCooldown = 0.5f;
+    public string nameCharacter;
     public GameObject player02;
     public Player02Movement player02Movement;
     public Player02CameraSpecial player02CameraSpecial;
+    public Player02Health player02Health;
     public SelectController selectController;
     public bool isPerformingAction = false;
     public static bool Hits = false;
@@ -784,20 +786,23 @@ public class Player02TakeAction : MonoBehaviour
     private void ActionQCF(string actionName)
     {
         anim.SetTrigger("QCF_" + actionName);
-        Debug.Log("QCF" + actionName);
+        isPerformingAction = true;
+        player02Movement.isPerformingAction = true;
         StartCoroutine(ResetQCState());
     }
 
     private void ActionQCB(string actionName)
     {
         anim.SetTrigger("QCB_" + actionName);
-        Debug.Log("QCB" + actionName);
+        isPerformingAction = true;
+        player02Movement.isPerformingAction = true; 
         StartCoroutine(ResetQCState());
     }
     private void ActionHCB(string actionName)
     {
         anim.SetTrigger("HCB_" + actionName);
-        Debug.Log("HCB" + actionName);
+        isPerformingAction = true;
+        player02Movement.isPerformingAction = true;
         StartCoroutine(ResetHCBFState());
 
     }
@@ -805,11 +810,17 @@ public class Player02TakeAction : MonoBehaviour
     {
         specialMoveEnergy -= 50;
         player02CameraSpecial.CameraSetActive();
+        isPerformingAction = true;
+        player02Movement.isPerformingAction = true;
         anim.SetTrigger("HCBF_"+ actionName);
-        Debug.Log("HCBF" + actionName);
+        StartCoroutine(ResetHCBFState());
+        if(nameCharacter == "Shark")
+        {
+            player02Health.SharkDrive = true;
+            StartCoroutine(ResetBoolSharkdrive());
+        }
         StartCoroutine(ResetHCBFState());
     }
-
 
     IEnumerator ResetIsPerformingAction(float delay)
     {
@@ -846,18 +857,27 @@ public class Player02TakeAction : MonoBehaviour
         yield return new WaitForSeconds(actionCooldown);
         inputState = InputState.None;
         isQCInProgress = false;
+        isPerformingAction = true;
+        player02Movement.isPerformingAction = true;
     }
 
     IEnumerator ResetHCBFState()
     {
-        yield return new WaitForSeconds(actionCooldown);
+        yield return new WaitForSeconds(1f);
         inputState = InputState.None;
         isHCBInProgress = false;
+        isPerformingAction = true;
+        player02Movement.isPerformingAction = false;
     }
     IEnumerator ResetGrap()
     {
         yield return new WaitForSeconds(2f);
         isPerformingAction = false;
         player02Movement.isPerformingAction = false;
+    }
+    IEnumerator ResetBoolSharkdrive()
+    {
+        yield return new WaitForSeconds(5f);
+        player02Health.SharkDrive = false;
     }
 }

@@ -16,6 +16,7 @@ public class Player02Health : MonoBehaviour
     //private float lerpSpeed = 0.05f;
     public bool block = false;
     public bool knockout = false;
+    public bool SharkDrive = false;
     public int currentdamage = 0;
     public float time;
 
@@ -44,7 +45,7 @@ public class Player02Health : MonoBehaviour
 
     public void TakeDamage(int damage, float force, string actionGrabName)
     {
-        if(scriptableHealth.currentHealth > 5 && !knockout)
+        if(scriptableHealth.currentHealth > 5 && !knockout && !SharkDrive)
         {
             if(actionGrabName == "no")
             {
@@ -121,7 +122,7 @@ public class Player02Health : MonoBehaviour
             }
             else if(actionGrabName == "63214P_Shark")
             {
-                if(scriptableHealth.currentHealth > 0  && !knockout)
+                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive)
                 {
                     player02EventAnimation.forcehurt = force;
                     anim.SetTrigger("Shark_grab_HCB");
@@ -132,7 +133,7 @@ public class Player02Health : MonoBehaviour
             }
             else if(actionGrabName == "632146S_Shark")
             {
-                if(scriptableHealth.currentHealth > 0  && !knockout)
+                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive)
                 {
                     player02EventAnimation.forcehurt = force;
                     anim.SetTrigger("Shark_grab_HCBF");
@@ -201,7 +202,9 @@ public class Player02Health : MonoBehaviour
         yield return new WaitForSeconds(4f);
         scriptableHealth.currentHealth -= damage;
         player02EventAnimation.forcehurt = 0;
-         if(scriptableHealth.currentHealth > 0)
+        player02Movement.isPerformingAction = false;
+        player02TakeAction.isPerformingAction = false;
+        if(scriptableHealth.currentHealth > 0)
         {
             StartCoroutine(recovery());
         }

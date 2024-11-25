@@ -5,9 +5,11 @@ using UnityEngine;
 public class Player01TakeAction : MonoBehaviour
 {
     public float defaultActionCooldown = 0.5f;
+    public string nameCharacter;
     public GameObject player01;
     public Player01Movement player01Movement;
     public Player01CameraSpecial player01CameraSpecial;
+    public Player01Health player01Health;
     public SelectController selectController;
     public bool isPerformingAction = false;
     public static bool Hits = false;
@@ -56,10 +58,10 @@ public class Player01TakeAction : MonoBehaviour
         string horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
         bool Joystick = selectController.Selectjoystick01 ? true : false;
 
-        //HandleQCF();
-        //HandleQCB();
-        //HandleHCB();
-        //HandleHCBF();
+        HandleQCF();
+        HandleQCB();
+        HandleHCB();
+        HandleHCBF();
         
         if(Input.GetAxis(verticalInput) < -0.4f)
         {
@@ -787,24 +789,37 @@ public class Player01TakeAction : MonoBehaviour
     private void ActionQCF(string actionName)
     {
         anim.SetTrigger("QCF_" + actionName);
+        isPerformingAction = true;
+        player01Movement.isPerformingAction = true;
         StartCoroutine(ResetQCState());
     }
 
     private void ActionQCB(string actionName)
     {
         anim.SetTrigger("QCB_" + actionName);
+        isPerformingAction = true;
+        player01Movement.isPerformingAction = true;
         StartCoroutine(ResetQCState());
     }
     private void ActionHCB(string actionName)
     {
         anim.SetTrigger("HCB_" + actionName);
+        isPerformingAction = true;
+        player01Movement.isPerformingAction = true;
         StartCoroutine(ResetHCBFState());
     }
     private void ActionHCBF(string actionName)
     {
         specialMoveEnergy -= 50;
         player01CameraSpecial.CameraSetActive();
+        isPerformingAction = true;
+        player01Movement.isPerformingAction = true;
         anim.SetTrigger("HCBF_"+ actionName);
+        if(nameCharacter == "Shark")
+        {
+            player01Health.SharkDrive = true;
+            StartCoroutine(ResetBoolSharkdrive());
+        }
         StartCoroutine(ResetHCBFState());
     }
     public void OnHits()
@@ -815,7 +830,6 @@ public class Player01TakeAction : MonoBehaviour
     }
     public void GrapHCBShark()
     {
-        Debug.Log("Grap");
         anim.SetTrigger("Grap_HCB");
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
@@ -823,7 +837,6 @@ public class Player01TakeAction : MonoBehaviour
     }
     public void GrapHCBFShark()
     {
-        Debug.Log("Grap");
         anim.SetTrigger("Grap_HCBF");
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
@@ -841,19 +854,28 @@ public class Player01TakeAction : MonoBehaviour
         yield return new WaitForSeconds(actionCooldown);
         inputState = InputState.None;
         isQCInProgress = false;
+        isPerformingAction = false;
+        player01Movement.isPerformingAction = false;
     }
 
     IEnumerator ResetHCBFState()
     {
-        yield return new WaitForSeconds(actionCooldown);
+        yield return new WaitForSeconds(1f);
         inputState = InputState.None;
         isHCBInProgress = false;
+        isPerformingAction = false;
+        player01Movement.isPerformingAction = false;
     }
     IEnumerator ResetGrap()
     {
         yield return new WaitForSeconds(2f);
         isPerformingAction = false;
         player01Movement.isPerformingAction = false;
+    }
+    IEnumerator ResetBoolSharkdrive()
+    {
+        yield return new WaitForSeconds(5f);
+        player01Health.SharkDrive = false;
     }
 }
     
