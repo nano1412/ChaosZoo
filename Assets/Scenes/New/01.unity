@@ -11837,7 +11837,7 @@ MonoBehaviour:
   scriptableHealth: {fileID: 11400000, guid: 0b37c6e3e2cd1f343ade4224f5484814, type: 2}
   player01Movement: {fileID: 59890155}
   player01TakeAction: {fileID: 0}
-  player01EventAnimation: {fileID: 0}
+  player01EventAnimation: {fileID: 1923691837}
   block: 0
   knockout: 0
   SharkDrive: 0
@@ -13117,6 +13117,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1923691838}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 28e06609e400e424288d35e9bd0e4b3d,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1923691837}
   m_SourcePrefab: {fileID: 100100000, guid: 28e06609e400e424288d35e9bd0e4b3d, type: 3}
 --- !u!1 &1858172034
@@ -13327,13 +13331,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 59890156}
   player01Movement: {fileID: 59890155}
-  jumpForce: 2.5
+  jumpForce: 1.25
   forceAmount: 0
   QCFHS_force: 0
   dashforce: 0
   dashBackforce: 0
   HurtForce: 0
   forcehurt: 0
+--- !u!114 &1923691838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923691833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 896fbe696ca341f4f946fe3ee40a9e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultActionCooldown: 0.5
+  nameCharacter: 
+  player01: {fileID: 0}
+  player01Movement: {fileID: 0}
+  player01Health: {fileID: 0}
+  selectController: {fileID: 0}
 --- !u!1 &1934042305
 GameObject:
   m_ObjectHideFlags: 0
