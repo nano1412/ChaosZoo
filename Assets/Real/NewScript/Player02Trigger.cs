@@ -11,6 +11,7 @@ public class Player02Trigger : MonoBehaviour
     public bool Grap = false;
     public string animationNameGrap;
     public Player01Health player01Health;
+    public Player02CameraSpecial player02CameraSpecial;
 
     void Start()
     {
@@ -34,6 +35,7 @@ public class Player02Trigger : MonoBehaviour
                 {
                     GetComponentInParent<Player02TakeAction>().GrapHCBFShark();
                     player01Health.TakeDamage(damage, force, animationNameGrap);
+                    player02CameraSpecial.CameraAtciveSpecial();
                 }
                 if(animationNameGrap == "63214P_Shark")
                 {

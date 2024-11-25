@@ -7,6 +7,10 @@ public class Player02CameraSpecial : MonoBehaviour
     public GameObject cameraSpecial;
     public float cooldown;
     public float cooldown_2;
+    public GameObject playerHealthBar01;
+    public GameObject playerHealthBar02;
+    public GameObject BlackScene;
+    public GameObject BlackScene2;
 
     public void CameraSetActive()
     {
@@ -17,6 +21,10 @@ public class Player02CameraSpecial : MonoBehaviour
     public void CameraAtciveSpecial()
     {
         cameraSpecial.SetActive(true);
+        playerHealthBar01.SetActive(false);
+        playerHealthBar02.SetActive(false);
+        BlackScene.SetActive(true);
+        BlackScene2.SetActive(true);
         StartCoroutine(ResetCamareGrap());
     }
     public void cameraHCB()
@@ -36,6 +44,10 @@ public class Player02CameraSpecial : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         cameraSpecial.SetActive(false);
+        BlackScene.SetActive(false);
+        BlackScene2.SetActive(false);
+        playerHealthBar01.SetActive(true);
+        playerHealthBar02.SetActive(true);
     }
 
     IEnumerator ResetCamareHCB()

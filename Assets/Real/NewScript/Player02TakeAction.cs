@@ -857,8 +857,8 @@ public class Player02TakeAction : MonoBehaviour
         yield return new WaitForSeconds(actionCooldown);
         inputState = InputState.None;
         isQCInProgress = false;
-        isPerformingAction = true;
-        player02Movement.isPerformingAction = true;
+        isPerformingAction = false;
+        player02Movement.isPerformingAction = false;
     }
 
     IEnumerator ResetHCBFState()
@@ -866,7 +866,7 @@ public class Player02TakeAction : MonoBehaviour
         yield return new WaitForSeconds(1f);
         inputState = InputState.None;
         isHCBInProgress = false;
-        isPerformingAction = true;
+        isPerformingAction = false;
         player02Movement.isPerformingAction = false;
     }
     IEnumerator ResetGrap()
