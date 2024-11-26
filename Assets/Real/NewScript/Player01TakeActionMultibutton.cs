@@ -110,96 +110,118 @@ public class Player01TakeActionMultibutton : MonoBehaviour
             {
                 if(horizontal < 0f)
                 {
-                    if(RP && LP) return TriggerAction("BackDownRightPunchLeftPunchTrigger");
-                    if(RK && LK) return TriggerAction("BackDownRightKickLeftKickTrigger");
-                    if(RP && LK) return TriggerAction("BackDownRightPunchLeftKickTrigger");
-                    if(RK && LP) return TriggerAction("BackDownRightKickLeftPunchTrigger");
-                    if(RP) return TriggerAction("BackDownRightPunchTrigger");
-                    if(LP) return TriggerAction("BackDownLeftPunchTrigger");
-                    if(RK) return TriggerAction("BackDownRightKickTrigger");
-                    if(LK) return TriggerAction("BackDownLeftKickTrigger");
+                    if(RP && LP) return TriggerAction("BackDownRightPunchLeftPunchTrigger",1);
+                    if(RK && LK) return TriggerAction("BackDownRightKickLeftKickTrigger",1);
+                    if(RP && LK) return TriggerAction("BackDownRightPunchLeftKickTrigger",1);
+                    if(RK && LP) return TriggerAction("BackDownRightKickLeftPunchTrigger",1);
+                    if(RP) return TriggerAction("BackDownRightPunchTrigger",1);
+                    if(LP) return TriggerAction("BackDownLeftPunchTrigger",1);
+                    if(RK) return TriggerAction("BackDownRightKickTrigger",1);
+                    if(LK) return TriggerAction("BackDownLeftKickTrigger",1);
                 }
                 else if(horizontal > 0.4f)
                 {
-                    if(RP && LP) return TriggerAction("ForwardDownRightPunchLeftPunchTrigger");
-                    if(RK && LK) return TriggerAction("ForwardDownRightKickLeftKickTrigger");
-                    if(RP && LK) return TriggerAction("ForwardDownRightPunchLeftKickTrigger");
-                    if(RK && LP) return TriggerAction("ForwardDownRightKickLeftPunchTrigger");
-                    if(RP) return TriggerAction("ForwardDownRightPunchTrigger");
-                    if(LP) return TriggerAction("ForwardDownLeftPunchTrigger");
-                    if(RK) return TriggerAction("ForwardDownRightKickTrigger");
-                    if(LK) return TriggerAction("ForwardDownLeftKickTrigger");
+                    if(RP && LP) return TriggerAction("ForwardDownRightPunchLeftPunchTrigger",1);
+                    if(RK && LK) return TriggerAction("ForwardDownRightKickLeftKickTrigger",1);
+                    if(RP && LK) return TriggerAction("ForwardDownRightPunchLeftKickTrigger",1);
+                    if(RK && LP) return TriggerAction("ForwardDownRightKickLeftPunchTrigger",1);
+                    if(RP) return TriggerAction("ForwardDownRightPunchTrigger",1);
+                    if(LP) return TriggerAction("ForwardDownLeftPunchTrigger",1);
+                    if(RK) return TriggerAction("ForwardDownRightKickTrigger",1);
+                    if(LK) return TriggerAction("ForwardDownLeftKickTrigger",1);
                 }
             }
             else if(player01Movement.faceLeft)
             {
                 if(horizontal < 0f)
                 {
-                    if(RP && LP) return TriggerAction("ForwardDownRightPunchLeftPunchTrigger");
-                    if(RK && LK) return TriggerAction("ForwardDownRightKickLeftKickTrigger");
-                    if(RP && LK) return TriggerAction("ForwardDownRightPunchLeftKickTrigger");
-                    if(RK && LP) return TriggerAction("ForwardDownRightKickLeftPunchTrigger");
-                    if(RP) return TriggerAction("ForwardDownRightPunchTrigger");
-                    if(LP) return TriggerAction("ForwardDownLeftPunchTrigger");
-                    if(RK) return TriggerAction("ForwardDownRightKickTrigger");
-                    if(LK) return TriggerAction("ForwardDownLeftKickTrigger");
+                    if(RP && LP) return TriggerAction("ForwardDownRightPunchLeftPunchTrigger",1);
+                    if(RK && LK) return TriggerAction("ForwardDownRightKickLeftKickTrigger",1);
+                    if(RP && LK) return TriggerAction("ForwardDownRightPunchLeftKickTrigger",1);
+                    if(RK && LP) return TriggerAction("ForwardDownRightKickLeftPunchTrigger",1);
+                    if(RP) return TriggerAction("ForwardDownRightPunchTrigger",1);
+                    if(LP) return TriggerAction("ForwardDownLeftPunchTrigger",1);
+                    if(RK) return TriggerAction("ForwardDownRightKickTrigger",1);
+                    if(LK) return TriggerAction("ForwardDownLeftKickTrigger",1);
                 }
                 else if(horizontal > 0.4f)
                 {
-                    if(RP && LP) return TriggerAction("BackDownRightPunchLeftPunchTrigger");
-                    if(RK && LK) return TriggerAction("BackDownRightKickLeftKickTrigger");
-                    if(RP && LK) return TriggerAction("BackDownRightPunchLeftKickTrigger");
-                    if(RK && LP) return TriggerAction("BackDownRightKickLeftPunchTrigger");
-                    if(RP) return TriggerAction("BackDownRightPunchTrigger");
-                    if(LP) return TriggerAction("BackDownLeftPunchTrigger");
-                    if(RK) return TriggerAction("BackDownRightKickTrigger");
-                    if(LK) return TriggerAction("BackDownLeftKickTrigger");
+                    if(RP && LP) return TriggerAction("BackDownRightPunchLeftPunchTrigger",1);
+                    if(RK && LK) return TriggerAction("BackDownRightKickLeftKickTrigger",1);
+                    if(RP && LK) return TriggerAction("BackDownRightPunchLeftKickTrigger",1);
+                    if(RK && LP) return TriggerAction("BackDownRightKickLeftPunchTrigger",1);
+                    if(RP) return TriggerAction("BackDownRightPunchTrigger",1);
+                    if(LP) return TriggerAction("BackDownLeftPunchTrigger",1);
+                    if(RK) return TriggerAction("BackDownRightKickTrigger",1);
+                    if(LK) return TriggerAction("BackDownLeftKickTrigger",1);
                 }
             }
+            if(RP && LP) return TriggerAction("DownRightPunchLeftPunchTrigger",1);
+            if(RK && LK) return TriggerAction("DownRightKickLeftKickTrigger",1);
+            if(RP && LK) return TriggerAction("DownRightPunchLeftKickTrigger",1);
+            if(RK && LP) return TriggerAction("DownRightKickLeftPunchTrigger",1);
+            
         }
         else if(horizontal < 0f)
         {
             if(player01Movement.faceRight)
             {
-                if(RP && LP) return TriggerAction("BackRightPunchLeftPunchTrigger");
-                if(RK && LK) return TriggerAction("BackRightKickLeftKickTrigger");
-                if(RP && LK) return TriggerAction("BackRightPunchLeftKickTrigger");
-                if(RK && LP) return TriggerAction("BackRightKickLeftPunchTrigger");
+                if(RP && LP) return TriggerAction("BackRightPunchLeftPunchTrigger",1);
+                if(RK && LK) return TriggerAction("BackRightKickLeftKickTrigger",1);
+                if(RP && LK) return TriggerAction("BackRightPunchLeftKickTrigger",1);
+                if(RK && LP) return TriggerAction("BackRightKickLeftPunchTrigger",1);
             }
             else if(player01Movement.faceLeft)
             {
-                if(RP && LP) return TriggerAction("ForwardRightPunchLeftPunchTrigger");
-                if(RK && LK) return TriggerAction("ForwardightKickLeftKickTrigger");
-                if(RP && LK) return TriggerAction("ForwardRightPunchLeftKickTrigger");
-                if(RK && LP) return TriggerAction("ForwardRightKickLeftPunchTrigger");
+                if(RP && LP && RK && LK) return TriggerAction("ForwardRightPunchLeftPunchRightKickLeftKickTrigger", 1);
+                if(RP && LP) return TriggerAction("ForwardRightPunchLeftPunchTrigger",1);
+                if(RK && LK) return TriggerAction("ForwardRightKickLeftKickTrigger",1);
+                if(RP && LK) return TriggerAction("ForwardRightPunchLeftKickTrigger",1);
+                if(RK && LP) return TriggerAction("ForwardRightKickLeftPunchTrigger",1);
             }
         }
         else if(horizontal > 0.4f)
         {
             if(player01Movement.faceRight)
             {
-                if(RP && LP) return TriggerAction("ForwardRightPunchLeftPunchTrigger");
-                if(RK && LK) return TriggerAction("ForwardightKickLeftKickTrigger");
-                if(RP && LK) return TriggerAction("ForwardRightPunchLeftKickTrigger");
-                if(RK && LP) return TriggerAction("ForwardRightKickLeftPunchTrigger");
+                if(RP && LP && RK && LK) return TriggerAction("ForwardRightPunchLeftPunchRightKickLeftKickTrigger", 1);
+                if(RP && LP) return TriggerAction("ForwardRightPunchLeftPunchTrigger",1);
+                if(RK && LK) return TriggerAction("ForwardRightKickLeftKickTrigger",1);
+                if(RP && LK) return TriggerAction("ForwardRightPunchLeftKickTrigger",1);
+                if(RK && LP) return TriggerAction("ForwardRightKickLeftPunchTrigger",1);
             }
             else if(player01Movement.faceLeft)
             {
-                if(RP && LP) return TriggerAction("BackRightPunchLeftPunchTrigger");
-                if(RK && LK) return TriggerAction("BackRightKickLeftKickTrigger");
-                if(RP && LK) return TriggerAction("BackRightPunchLeftKickTrigger");
-                if(RK && LP) return TriggerAction("BackRightKickLeftPunchTrigger");
+                if(RP && LP) return TriggerAction("BackRightPunchLeftPunchTrigger",1);
+                if(RK && LK) return TriggerAction("BackRightKickLeftKickTrigger",1);
+                if(RP && LK) return TriggerAction("BackRightPunchLeftKickTrigger",1);
+                if(RK && LP) return TriggerAction("BackRightKickLeftPunchTrigger",1);
             } 
         }
+        if(RP && LP && RK && LK) return TriggerAction("RightPunchLeftPunchRightKickLeftKickTrigger", 1);
+        if(RP && LP) return TriggerAction("RightPunchLeftPunchTrigger",1);
+        if(RK && LK) return TriggerAction("RightKickLeftKickTrigger",1);
+        if(RP && LK) return TriggerAction("RightPunchLeftKickTrigger",1);
+        if(RK && LP) return TriggerAction("RightKickLeftPunchTrigger",1);
 
         return false;
     }
 
-    private bool TriggerAction(string action)
+    private bool TriggerAction(string action, int numberReset)
     {
         anim.SetTrigger(action);
-        Debug.Log(action);
         isPerformingAction = true;
+        player01Movement.isPerformingAction = true;
+        switch(numberReset)
+        {
+            case 1: StartCoroutine(ResetIsPerformingAction(0.5f));
+            break;
+            case 2: StartCoroutine(ResetIsPerformingAction(1f));
+            break;
+            case 3: StartCoroutine(ResetIsPerformingAction(2f));
+            break;
+        }
+
         StartCoroutine(ResetIsPerformingAction(0.5f));
         return true;
     }
@@ -290,8 +312,20 @@ public enum SpeacialMoveMultibutton
     ForwardLPRP,
     ForwardLKRK,
     ForwardLPRK,
-    ForwardRPLK
+    ForwardRPLK,
+    DownLPRP,
+    DownLKRK,
+    DownLPRK,
+    DownLKRP,
+    LPRP,
+    LKRK,
+    LPRK,
+    LKRP,
+    LPRPLKRK,
+    ForwardLPRPLKRK
+
 }
+
 
 [System.Serializable]
 public class SpeacialMoveMultibuttonToggle

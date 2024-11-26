@@ -289,6 +289,78 @@ MonoBehaviour:
   animationNameGrap: 
   player01Health: {fileID: 0}
   player02CameraSpecial: {fileID: 0}
+--- !u!1 &56490681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 56490682}
+  - component: {fileID: 56490683}
+  m_Layer: 0
+  m_Name: CameraCapybara_Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &56490682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56490681}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.08019477, y: -0.8440583, z: 0.13179871, w: 0.5135791}
+  m_LocalPosition: {x: 0.161, y: 0.117, z: 0.099}
+  m_LocalScale: {x: 0.35623989, y: 0.3601692, z: 0.3513416}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1907622152}
+  m_Father: {fileID: 1923691834}
+  m_LocalEulerAnglesHint: {x: 17.75, y: -117.362, z: 0}
+--- !u!114 &56490683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56490681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
+  m_Lens:
+    FieldOfView: 43.05
+    OrthographicSize: 5
+    NearClipPlane: 0.3
+    FarClipPlane: 1000
+    Dutch: 0
+    ModeOverride: 0
+    LensShift: {x: 0, y: 0}
+    GateFit: 2
+    FocusDistance: 10
+    m_SensorSize: {x: 1, y: 1}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 1907622152}
 --- !u!1 &59890153
 GameObject:
   m_ObjectHideFlags: 0
@@ -13109,6 +13181,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1652529360}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 28e06609e400e424288d35e9bd0e4b3d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 56490682}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -13201,6 +13277,50 @@ CapsuleCollider:
   m_Height: 0.08578407
   m_Direction: 1
   m_Center: {x: 7.5456494e-17, y: 0.040781535, z: -0.0036074843}
+--- !u!1 &1907622151
+GameObject:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1907622152}
+  - component: {fileID: 1907622153}
+  m_Layer: 0
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1907622152
+Transform:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907622151}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 56490682}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1907622153
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907622151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1918536703
 GameObject:
   m_ObjectHideFlags: 0
@@ -13359,7 +13479,7 @@ MonoBehaviour:
   isPerformingAction: 0
   specialMoveMultibuttonToggle:
   - moveNameButton: 0
-    isEnabled: 0
+    isEnabled: 1
   - moveNameButton: 1
     isEnabled: 0
   - moveNameButton: 2
@@ -13377,13 +13497,13 @@ MonoBehaviour:
   - moveNameButton: 8
     isEnabled: 0
   - moveNameButton: 9
-    isEnabled: 0
+    isEnabled: 1
   - moveNameButton: 10
     isEnabled: 0
   - moveNameButton: 11
     isEnabled: 0
   - moveNameButton: 12
-    isEnabled: 0
+    isEnabled: 1
   - moveNameButton: 13
     isEnabled: 0
   - moveNameButton: 14
@@ -13391,7 +13511,7 @@ MonoBehaviour:
   - moveNameButton: 15
     isEnabled: 0
   - moveNameButton: 16
-    isEnabled: 0
+    isEnabled: 1
   - moveNameButton: 17
     isEnabled: 0
   - moveNameButton: 18
@@ -13399,12 +13519,32 @@ MonoBehaviour:
   - moveNameButton: 19
     isEnabled: 0
   - moveNameButton: 20
-    isEnabled: 0
+    isEnabled: 1
   - moveNameButton: 21
-    isEnabled: 0
+    isEnabled: 1
   - moveNameButton: 22
     isEnabled: 0
   - moveNameButton: 23
+    isEnabled: 0
+  - moveNameButton: 33
+    isEnabled: 1
+  - moveNameButton: 24
+    isEnabled: 0
+  - moveNameButton: 25
+    isEnabled: 1
+  - moveNameButton: 26
+    isEnabled: 0
+  - moveNameButton: 27
+    isEnabled: 0
+  - moveNameButton: 28
+    isEnabled: 1
+  - moveNameButton: 29
+    isEnabled: 0
+  - moveNameButton: 30
+    isEnabled: 0
+  - moveNameButton: 31
+    isEnabled: 0
+  - moveNameButton: 32
     isEnabled: 0
 --- !u!1 &1934042305
 GameObject:
