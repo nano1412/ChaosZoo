@@ -9,7 +9,7 @@ public class Player01Trigger : MonoBehaviour
     public float force;
     public bool Check = false;
     public bool Grab = false;
-    public string animationNameGrab;
+    public string animationName;
     public Player02Health player02Health;
     public Player01CameraSpecial player01CameraSpecial;
     void Start()
@@ -30,16 +30,22 @@ public class Player01Trigger : MonoBehaviour
             Player01TakeAction.Hits = true;
             if(Grab)
             {
-                if(animationNameGrab == "63214P_Shark")
+                if(animationName == "63214P_Shark")
                 {
                     GetComponentInParent<Player01TakeAction>().GrapHCBShark();
-                    player02Health.TakeDamage(damage, force, animationNameGrab);
+                    player02Health.TakeDamage(damage, force, animationName);
                 }
-                if(animationNameGrab == "632146S_Shark")
+                if(animationName == "632146S_Shark")
                 {
                     GetComponentInParent<Player01TakeAction>().GrapHCBFShark();
-                    player02Health.TakeDamage(damage, force, animationNameGrab);
+                    player02Health.TakeDamage(damage, force, animationName);
                     player01CameraSpecial.CameraAtciveSpecial();
+                }
+                if(animationName == "6LPRPLKRP_Capybara")
+                {
+                    player02Health.TakeDamage(damage, force, animationName);
+                    Debug.Log(animationName);
+                    return;
                 }
             }
             else if(!Grab)

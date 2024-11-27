@@ -13,6 +13,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
     public bool isPerformingAction = false;
     public static bool Hits = false;
     public bool hits => Hits;
+    public int specialMoveEnergy = 100;
 
     private Animator anim;
 
@@ -184,7 +185,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         {
             if(player01Movement.faceRight)
             {
-                if(RP && LP && RK && LK && specialMoveMultibuttonToggle[24].isEnabled) return TriggerAction("ForwardRightPunchLeftPunchRightKickLeftKickTrigger", specialMoveMultibuttonToggle[24].numberReset);
+                if(RP && LP && RK && LK && specialMoveMultibuttonToggle[24].isEnabled) return SpecialTriggerAction("ForwardRightPunchLeftPunchRightKickLeftKickTrigger", specialMoveMultibuttonToggle[24].numberReset);
                 if(RP && LP && specialMoveMultibuttonToggle[20].isEnabled) return TriggerAction("ForwardRightPunchLeftPunchTrigger",specialMoveMultibuttonToggle[20].numberReset);
                 if(RK && LK && specialMoveMultibuttonToggle[21].isEnabled) return TriggerAction("ForwardRightKickLeftKickTrigger",specialMoveMultibuttonToggle[21].numberReset);
                 if(RP && LK && specialMoveMultibuttonToggle[23].isEnabled) return TriggerAction("ForwardRightPunchLeftKickTrigger",specialMoveMultibuttonToggle[23].numberReset);
@@ -198,7 +199,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
                 if(RK && LP && specialMoveMultibuttonToggle[18].isEnabled) return TriggerAction("BackRightKickLeftPunchTrigger",specialMoveMultibuttonToggle[18].numberReset);
             } 
         }
-        if(RP && LP && RK && LK && specialMoveMultibuttonToggle[33].isEnabled) return TriggerAction("RightPunchLeftPunchRightKickLeftKickTrigger", specialMoveMultibuttonToggle[33].numberReset);
+        if(RP && LP && RK && LK && specialMoveMultibuttonToggle[33].isEnabled) return SpecialTriggerAction("RightPunchLeftPunchRightKickLeftKickTrigger", specialMoveMultibuttonToggle[33].numberReset);
         if(RP && LP && specialMoveMultibuttonToggle[29].isEnabled) return TriggerAction("RightPunchLeftPunchTrigger",specialMoveMultibuttonToggle[29].numberReset);
         if(RK && LK && specialMoveMultibuttonToggle[30].isEnabled) return TriggerAction("RightKickLeftKickTrigger",specialMoveMultibuttonToggle[30].numberReset);
         if(RP && LK && specialMoveMultibuttonToggle[32].isEnabled) return TriggerAction("RightPunchLeftKickTrigger",specialMoveMultibuttonToggle[32].numberReset);
@@ -212,6 +213,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         anim.SetTrigger(action);
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
+        Hits = false;
         switch(numberReset)
         {
             case 1: StartCoroutine(ResetIsPerformingAction(0.5f));
@@ -226,6 +228,24 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         return true;
     }
 
+    private bool SpecialTriggerAction(string action, int numberReset)
+    {
+        if(specialMoveEnergy < 50)
+        {
+            return false;
+        }
+        else
+        {
+            anim.SetTrigger(action);
+            specialMoveEnergy -= 50;
+            isPerformingAction = true;
+            player01Movement.isPerformingAction = true;
+            StartCoroutine(ResetIsPerformingAction(3f));
+            return true;
+        }
+        return false;
+    }
+
     private void PerformAction(string actionName)
     {
         isPerformingAction = true;
@@ -238,24 +258,20 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         if(Input.GetAxis(verticalInput) < -0.4f)
         {
             anim.SetTrigger("Crouch" + actionName + "Trigger");
-            Debug.Log("Crouch" + actionName);
         }
         else if(player01Movement.faceRight)
         {
             if(Input.GetAxis(horizontalInput) < 0f)
             {
                 anim.SetTrigger("BackSpecial" + actionName + "Trigger");
-                Debug.Log("BackSpecial" + actionName);
             }
             else if(Input.GetAxis(horizontalInput) > 0.4f)
             {
                 anim.SetTrigger("Special" + actionName + "Trigger");
-                Debug.Log("Special" + actionName);
             }
             else
             {
                 anim.SetTrigger(actionName + "Trigger");
-                Debug.Log(actionName + "Trigger");
             }
         }
         else if(player01Movement.faceLeft)
@@ -263,17 +279,14 @@ public class Player01TakeActionMultibutton : MonoBehaviour
             if(Input.GetAxis(horizontalInput) > 0.4f)
             {
                 anim.SetTrigger("BackSpecial" + actionName + "Trigger");
-                Debug.Log("BackSpecial" + actionName);
             }
             else if(Input.GetAxis(horizontalInput) < 0f)
             {
                 anim.SetTrigger("Special" + actionName + "Trigger");
-                Debug.Log("Special" + actionName);
             }
             else
             {
                 anim.SetTrigger(actionName + "Trigger");
-                Debug.Log(actionName + "Trigger");
             }
         }
         StartCoroutine(ResetIsPerformingAction(0.5f));
