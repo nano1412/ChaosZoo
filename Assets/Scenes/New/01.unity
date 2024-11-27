@@ -1151,7 +1151,7 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 0
+    m_Style: 2
     m_Time: 0.5
     m_CustomCurve:
       serializedVersion: 2
@@ -2353,8 +2353,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.182718, y: 1, z: 1}
+  m_Center: {x: -1.5913591, y: 0, z: 0}
 --- !u!4 &636828270
 Transform:
   m_ObjectHideFlags: 0
@@ -5612,6 +5612,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 330747d8608b3774c994bdc0fa8dd1b3,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 330747d8608b3774c994bdc0fa8dd1b3,
+        type: 3}
       propertyPath: m_TagString
       value: PlayerCharacter01Tpose
       objectReference: {fileID: 0}
@@ -7524,6 +7529,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 330747d8608b3774c994bdc0fa8dd1b3,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1012605544}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 330747d8608b3774c994bdc0fa8dd1b3,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1012605538}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 330747d8608b3774c994bdc0fa8dd1b3,
         type: 3}
@@ -7674,6 +7683,26 @@ MonoBehaviour:
   playerHealthBar02: {fileID: 1456183046}
   BlackScene: {fileID: 75609911}
   BlackScene2: {fileID: 1954921221}
+--- !u!114 &1012605544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012605531}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 896fbe696ca341f4f946fe3ee40a9e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultActionCooldown: 0.5
+  nameCharacter: 
+  player01: {fileID: 0}
+  player01Movement: {fileID: 0}
+  player01Health: {fileID: 0}
+  selectController: {fileID: 0}
+  isPerformingAction: 0
+  specialMoveMultibuttonToggle: []
 --- !u!4 &1017133935 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8502374860080149942, guid: 330747d8608b3774c994bdc0fa8dd1b3,
@@ -8514,9 +8543,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 235794197}
+  nameCharacter: 
   scriptableHealth: {fileID: 11400000, guid: fd4d6887480d82d45a3ac42a6f62404c, type: 2}
   player01Movement: {fileID: 235794196}
   player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 1012605544}
   player01EventAnimation: {fileID: 1012605540}
   block: 0
   knockout: 0
@@ -11754,8 +11785,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 7.423334, y: 1, z: 1}
+  m_Center: {x: 3.2116673, y: 0, z: 0}
 --- !u!4 &1542590770
 Transform:
   m_ObjectHideFlags: 0
@@ -11906,9 +11937,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 59890156}
+  nameCharacter: 
   scriptableHealth: {fileID: 11400000, guid: 0b37c6e3e2cd1f343ade4224f5484814, type: 2}
   player01Movement: {fileID: 59890155}
-  player01TakeAction: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01EventAnimation: {fileID: 1923691837}
   block: 0
   knockout: 0
@@ -13193,6 +13226,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1923691839}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 28e06609e400e424288d35e9bd0e4b3d,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1923691838}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -13546,6 +13583,62 @@ MonoBehaviour:
     isEnabled: 0
   - moveNameButton: 32
     isEnabled: 0
+--- !u!114 &1923691839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923691833}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43ea0ca7da54e141a1568844e7ec150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultActionCooldown: 0.5
+  nameCharacter: 
+  player01: {fileID: 0}
+  player01Movement: {fileID: 0}
+  player01CameraSpecial: {fileID: 0}
+  player01Health: {fileID: 0}
+  selectController: {fileID: 0}
+  isPerformingAction: 0
+  inputState: 0
+  isQCInProgress: 0
+  isHCBInProgress: 0
+  actionCooldown: 0.1
+  lastInputTime: 0
+  inputBufferTime: 0.2
+  specialMoveEnergy: 100
+  holdbuttonVertical: 0
+  holdbuttonHorizontal: 0
+  holdTimeVertical: 0
+  holdTimeHorizontal: 0
+  specialMoveToggles:
+  - moveName: 0
+    isEnabled: 1
+  - moveName: 1
+    isEnabled: 1
+  - moveName: 2
+    isEnabled: 1
+  - moveName: 3
+    isEnabled: 1
+  - moveName: 4
+    isEnabled: 1
+  - moveName: 5
+    isEnabled: 1
+  - moveName: 6
+    isEnabled: 1
+  - moveName: 7
+    isEnabled: 1
+  - moveName: 12
+    isEnabled: 1
+  - moveName: 13
+    isEnabled: 1
+  - moveName: 14
+    isEnabled: 1
+  - moveName: 15
+    isEnabled: 1
 --- !u!1 &1934042305
 GameObject:
   m_ObjectHideFlags: 0
