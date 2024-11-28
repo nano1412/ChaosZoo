@@ -141,6 +141,21 @@ public class Player02Health : MonoBehaviour
                     player02Movement.isPerformingAction = true;
                     player02TakeAction.isPerformingAction = true;
                 }
+            }
+            else if(actionGrabName == "6LPRPLKRP_Capybara")
+            {
+                if(scriptableHealth.currentHealth > 0  && !knockout)
+                {
+                    scriptableHealth.currentHealth -= damage;
+                    anim.SetTrigger("Hurt");
+                    player02Movement.isPerformingAction = true;
+                    player02TakeAction.isPerformingAction = true;
+                    if(scriptableHealth.currentHealth <= 0)
+                    {
+                        anim.SetTrigger("Dead");
+                        knockout = true;
+                    }
+                }
             }    
         }
         if(scriptableHealth.currentHealth <= 0 && !knockout)
