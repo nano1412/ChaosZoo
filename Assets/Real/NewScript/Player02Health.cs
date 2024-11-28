@@ -39,6 +39,13 @@ public class Player02Health : MonoBehaviour
                 time = 0;
             }
         }
+        if(scriptableHealth.currentHealth <= 0)
+        {
+            player02Movement.isPerformingAction = true;
+            player02TakeAction.isPerformingAction = true;
+            //anim.SetTrigger("Dead");
+            knockout = true;
+        }
 
         //HPSliderLink();
     }
@@ -147,14 +154,17 @@ public class Player02Health : MonoBehaviour
                 if(scriptableHealth.currentHealth > 0  && !knockout)
                 {
                     scriptableHealth.currentHealth -= damage;
-                    anim.SetTrigger("Hurt");
-                    player02Movement.isPerformingAction = true;
-                    player02TakeAction.isPerformingAction = true;
-                    if(scriptableHealth.currentHealth <= 0)
+                    if(scriptableHealth.currentHealth > 0)
+                    {
+                        anim.SetTrigger("Hurt");
+                    }
+                    else if(scriptableHealth.currentHealth <= 0)
                     {
                         anim.SetTrigger("Dead");
                         knockout = true;
                     }
+                    player02Movement.isPerformingAction = true;
+                    player02TakeAction.isPerformingAction = true;
                 }
             }    
         }

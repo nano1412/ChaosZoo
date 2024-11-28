@@ -239,6 +239,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         {
             player01CameraSpecial.SpecialCapybaraCamare();
             anim.SetTrigger(action);
+            Hits = false;
             specialMoveEnergy -= 50;
             isPerformingAction = true;
             player01Movement.isPerformingAction = true;
