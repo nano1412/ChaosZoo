@@ -211,6 +211,7 @@ public class Player01Movement : MonoBehaviour
                 {
                     anim.SetTrigger("DashForward");
                     IsDash = true;
+                    player01Health.knockout = true;
                     StartCoroutine(DashPause());
                 }
                 else if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player01Joystick05") && !IsDash)
@@ -226,12 +227,14 @@ public class Player01Movement : MonoBehaviour
                 {
                     anim.SetTrigger("DashForward");
                     IsDash = true;
+                    player01Health.knockout = true;
                     StartCoroutine(DashPause());
                 }
                 else if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player01Bt05") && !IsDash)
                 {
                     anim.SetTrigger("DashBackward");
                     IsDash = true;
+                    player01Health.knockout = true;
                     StartCoroutine(DashPause());
                 }
             }
@@ -244,11 +247,15 @@ public class Player01Movement : MonoBehaviour
                 if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player01Joystick05") && !IsDash)
                 {
                     anim.SetTrigger("DashForward");
+                    IsDash = true;
+                    player01Health.knockout = true;
                     StartCoroutine(DashPause());
                 }
                 else if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player01Joystick05") && !IsDash)
                 {
                     anim.SetTrigger("DashBackward");
+                    IsDash = true;
+                    player01Health.knockout = true;
                     StartCoroutine(DashPause());
                 }
             }
@@ -257,11 +264,15 @@ public class Player01Movement : MonoBehaviour
                 if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player01Bt05") && !IsDash)
                 {
                     anim.SetTrigger("DashForward");
+                    IsDash = true;
+                    player01Health.knockout = true;
                     StartCoroutine(DashPause());
                 }
                 else if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player01Bt05") && !IsDash)
                 {
                     anim.SetTrigger("DashBackward");
+                    IsDash = true;
+                    player01Health.knockout = true;
                     StartCoroutine(DashPause());
                 }
             }
@@ -282,8 +293,9 @@ public class Player01Movement : MonoBehaviour
     }
     IEnumerator DashPause()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         IsDash = false;
+        player01Health.knockout = false;
     }
     IEnumerator FaceLeft()
     {

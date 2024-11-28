@@ -9,6 +9,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
     public GameObject player01;
     public Player01Movement player01Movement;
     public Player01Health player01Health;
+    public Player01CameraSpecial player01CameraSpecial;
     public SelectController selectController;
     public bool isPerformingAction = false;
     public static bool Hits = false;
@@ -236,11 +237,12 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         }
         else
         {
+            player01CameraSpecial.SpecialCapybaraCamare();
             anim.SetTrigger(action);
             specialMoveEnergy -= 50;
             isPerformingAction = true;
             player01Movement.isPerformingAction = true;
-            StartCoroutine(ResetIsPerformingAction(3f));
+            StartCoroutine(ResetIsPerformingAction(2.5f));
             return true;
         }
         return false;

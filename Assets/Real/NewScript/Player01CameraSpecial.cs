@@ -33,6 +33,12 @@ public class Player01CameraSpecial : MonoBehaviour
         StartCoroutine(ResetCamareHCB());
     }
 
+    public void SpecialCapybaraCamare()
+    {
+        cameraSpecial.SetActive(true);
+        StartCoroutine(ResetCapybaraCamera(1f));
+    }
+
     IEnumerator ResetCamareSpecial()
     {
         yield return new WaitForSeconds(cooldown);
@@ -53,6 +59,12 @@ public class Player01CameraSpecial : MonoBehaviour
     IEnumerator ResetCamareHCB()
     {
         yield return new WaitForSeconds(cooldown_2);
+        cameraSpecial.SetActive(false);
+    }
+
+    IEnumerator ResetCapybaraCamera(float timereset)
+    {
+        yield return new WaitForSeconds(timereset);
         cameraSpecial.SetActive(false);
     }
 }
