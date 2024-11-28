@@ -1375,7 +1375,7 @@ MonoBehaviour:
   player01: {fileID: 1012605531}
   oppenent: {fileID: 0}
   oppPosition: {x: 0, y: 0, z: 0}
-  player01Health: {fileID: 1300206581}
+  player01Health: {fileID: 0}
   isPerformingAction: 0
   Joystick: 0
   horizontalInput: Horizontal
@@ -4854,8 +4854,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b098363415c20468fe28bf4c6a3022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  scriptableHealth: {fileID: 0}
+  rb: {fileID: 2059565159}
+  scriptableHealth: {fileID: 11400000, guid: f5d48b7e410df8d45bfa41bae2e5d10a, type: 2}
   player02Movement: {fileID: 2059565160}
   player02TakeAction: {fileID: 0}
   player02EventAnimation: {fileID: 0}
@@ -10333,7 +10333,7 @@ MonoBehaviour:
   player01: {fileID: 1012605531}
   player01Movement: {fileID: 235794196}
   player01CameraSpecial: {fileID: 1012605542}
-  player01Health: {fileID: 1300206581}
+  player01Health: {fileID: 0}
   selectController: {fileID: 1934042306}
   isPerformingAction: 0
   inputState: 0
