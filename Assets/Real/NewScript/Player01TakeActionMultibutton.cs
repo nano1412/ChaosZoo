@@ -175,7 +175,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
             }
             else if(player01Movement.faceLeft)
             {
-                if(RP && LP && RK && LK && specialMoveMultibuttonToggle[24].isEnabled) return TriggerAction("ForwardRightPunchLeftPunchRightKickLeftKickTrigger", specialMoveMultibuttonToggle[24].numberReset);
+                if(RP && LP && RK && LK && specialMoveMultibuttonToggle[24].isEnabled) return SpecialTriggerAction("ForwardRightPunchLeftPunchRightKickLeftKickTrigger", specialMoveMultibuttonToggle[24].numberReset);
                 if(RP && LP && specialMoveMultibuttonToggle[20].isEnabled) return TriggerAction("ForwardRightPunchLeftPunchTrigger",specialMoveMultibuttonToggle[20].numberReset);
                 if(RK && LK && specialMoveMultibuttonToggle[21].isEnabled) return TriggerAction("ForwardRightKickLeftKickTrigger",specialMoveMultibuttonToggle[21].numberReset);
                 if(RP && LK && specialMoveMultibuttonToggle[23].isEnabled) return TriggerAction("ForwardRightPunchLeftKickTrigger",specialMoveMultibuttonToggle[23].numberReset);
