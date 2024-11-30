@@ -9,6 +9,8 @@ public class Player01Trigger : MonoBehaviour
     public float force;
     public bool Check = false;
     public bool Grab = false;
+    public bool TakeAction = false;
+    public bool TakeActionMultiButton = false;
     public string animationName;
     public Player02Health player02Health;
     public Player01CameraSpecial player01CameraSpecial;
@@ -20,7 +22,14 @@ public class Player01Trigger : MonoBehaviour
 
     void Update()
     {
-        Col.enabled = !Player01Action.Hits;
+        if(TakeAction && !TakeActionMultiButton)
+        {
+            Col.enabled = !Player01TakeAction.Hits;
+        }
+        else if(!TakeAction && TakeActionMultiButton)
+        {
+            Col.enabled = !Player01TakeActionMultibutton.Hits;
+        }
     }
 
      private void OnTriggerEnter(Collider other)

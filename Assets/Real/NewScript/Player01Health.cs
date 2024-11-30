@@ -47,6 +47,7 @@ public class Player01Health : MonoBehaviour
             player01Movement.isPerformingAction = true;
             player01TakeAction.isPerformingAction = true;
             player01TakeActionMultibutton.isPerformingAction = true;
+            knockout = true;
         }
 
         //HPSliderLink();

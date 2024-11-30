@@ -258,41 +258,81 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         string horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
         bool Joystick = selectController.Selectjoystick01 ? true : false;
 
-        if(Input.GetAxis(verticalInput) < -0.4f)
+       if(Joystick)
         {
-            anim.SetTrigger("Crouch" + actionName + "Trigger");
+            if(-Input.GetAxis(verticalInput) < -0.4f)
+            {
+                anim.SetTrigger("Crouch" + actionName + "Trigger");
+            }
+             else if(player01Movement.faceRight)
+            {
+                if(Input.GetAxis(horizontalInput) < 0f)
+                {
+                    anim.SetTrigger("BackSpecial" + actionName + "Trigger");
+                }
+                else if(Input.GetAxis(horizontalInput) > 0.4f)
+                {
+                    anim.SetTrigger("Special" + actionName + "Trigger");
+                }
+                else
+                {
+                    anim.SetTrigger(actionName + "Trigger");
+                }
+            }
+            else if(player01Movement.faceLeft)
+            {
+                if(Input.GetAxis(horizontalInput) > 0.4f)
+                {
+                    anim.SetTrigger("BackSpecial" + actionName + "Trigger");
+                }
+                else if(Input.GetAxis(horizontalInput) < 0f)
+                {
+                    anim.SetTrigger("Special" + actionName + "Trigger");
+                }
+                else
+                {
+                    anim.SetTrigger(actionName + "Trigger");
+                }
+            }
         }
-        else if(player01Movement.faceRight)
+        else
         {
-            if(Input.GetAxis(horizontalInput) < 0f)
+            if(Input.GetAxis(verticalInput) < -0.4f)
             {
-                anim.SetTrigger("BackSpecial" + actionName + "Trigger");
+                anim.SetTrigger("Crouch" + actionName + "Trigger");
             }
-            else if(Input.GetAxis(horizontalInput) > 0.4f)
+            else if(player01Movement.faceRight)
             {
-                anim.SetTrigger("Special" + actionName + "Trigger");
+                if(Input.GetAxis(horizontalInput) < 0f)
+                {
+                    anim.SetTrigger("BackSpecial" + actionName + "Trigger");
+                }
+                else if(Input.GetAxis(horizontalInput) > 0.4f)
+                {
+                    anim.SetTrigger("Special" + actionName + "Trigger");
+                }
+                else
+                {
+                    anim.SetTrigger(actionName + "Trigger");
+                }
             }
-            else
+            else if(player01Movement.faceLeft)
             {
-                anim.SetTrigger(actionName + "Trigger");
+                if(Input.GetAxis(horizontalInput) > 0.4f)
+                {
+                    anim.SetTrigger("BackSpecial" + actionName + "Trigger");
+                }
+                else if(Input.GetAxis(horizontalInput) < 0f)
+                {
+                    anim.SetTrigger("Special" + actionName + "Trigger");
+                }
+                else
+                {
+                    anim.SetTrigger(actionName + "Trigger");
+                }
             }
+            StartCoroutine(ResetIsPerformingAction(0.5f));
         }
-        else if(player01Movement.faceLeft)
-        {
-            if(Input.GetAxis(horizontalInput) > 0.4f)
-            {
-                anim.SetTrigger("BackSpecial" + actionName + "Trigger");
-            }
-            else if(Input.GetAxis(horizontalInput) < 0f)
-            {
-                anim.SetTrigger("Special" + actionName + "Trigger");
-            }
-            else
-            {
-                anim.SetTrigger(actionName + "Trigger");
-            }
-        }
-        StartCoroutine(ResetIsPerformingAction(0.5f));
     }
 
     IEnumerator ResetIsPerformingAction(float time)
