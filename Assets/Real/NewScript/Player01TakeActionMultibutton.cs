@@ -28,7 +28,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
 
     void Update()
     {
-        if(isPerformingAction) return;
+        if(isPerformingAction || player01Movement.isJump) return;
         if (HandleMultibutton()) return;
 
         if(selectController.Selectjoystick01)

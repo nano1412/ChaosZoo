@@ -102,7 +102,7 @@ public class Player01TakeAction : MonoBehaviour
         }
 
 
-        if (isPerformingAction || isQCInProgress || isHCBInProgress) return;
+        if (isPerformingAction || isQCInProgress || isHCBInProgress || player01Movement.isJump) return;
 
         if (selectController.Selectjoystick01)
         {

@@ -29,7 +29,7 @@ public class Player02TakeActionMultibutton : MonoBehaviour
 
     void Update()
     {
-        if(isPerformingAction) return;
+        if(isPerformingAction || player02Movement.isJump) return;
         if (HandleMultibutton()) return;
 
         if(selectController.Selectjoystick02)
