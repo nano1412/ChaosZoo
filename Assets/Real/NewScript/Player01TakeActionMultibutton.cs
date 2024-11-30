@@ -112,6 +112,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
             {
                 if(horizontal < 0f)
                 {
+                    if(RP && RK && LK && specialMoveMultibuttonToggle[34].isEnabled) return TriggerAction("BackDownRightPunchRightKickLeftKickTrigger", specialMoveMultibuttonToggle[34].numberReset);
                     if(RP && LP && specialMoveMultibuttonToggle[4].isEnabled) return TriggerAction("BackDownRightPunchLeftPunchTrigger",specialMoveMultibuttonToggle[4].numberReset);
                     if(RK && LK && specialMoveMultibuttonToggle[5].isEnabled) return TriggerAction("BackDownRightKickLeftKickTrigger",specialMoveMultibuttonToggle[5].numberReset);
                     if(RP && LK && specialMoveMultibuttonToggle[7].isEnabled) return TriggerAction("BackDownRightPunchLeftKickTrigger",specialMoveMultibuttonToggle[7].numberReset);
@@ -168,6 +169,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         {
             if(player01Movement.faceRight)
             {
+                if(RP && LP && RK && LK && specialMoveMultibuttonToggle[36].isEnabled) return TriggerAction("BackRightPunchLeftPunchRightKickLeftKick", specialMoveMultibuttonToggle[36].numberReset);
                 if(RP && LP && specialMoveMultibuttonToggle[16].isEnabled) return TriggerAction("BackRightPunchLeftPunchTrigger",specialMoveMultibuttonToggle[16].numberReset);
                 if(RK && LK && specialMoveMultibuttonToggle[17].isEnabled) return TriggerAction("BackRightKickLeftKickTrigger",specialMoveMultibuttonToggle[17].numberReset);
                 if(RP && LK && specialMoveMultibuttonToggle[19].isEnabled) return TriggerAction("BackRightPunchLeftKickTrigger",specialMoveMultibuttonToggle[19].numberReset);
@@ -201,6 +203,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
             } 
         }
         if(RP && LP && RK && LK && specialMoveMultibuttonToggle[33].isEnabled) return SpecialTriggerAction("RightPunchLeftPunchRightKickLeftKickTrigger", specialMoveMultibuttonToggle[33].numberReset);
+        if(RP && LP && LK && specialMoveMultibuttonToggle[35].isEnabled) return TriggerAction("RightPunchLeftPunchLeftKickTrigger", specialMoveMultibuttonToggle[35].numberReset);
         if(RP && LP && specialMoveMultibuttonToggle[29].isEnabled) return TriggerAction("RightPunchLeftPunchTrigger",specialMoveMultibuttonToggle[29].numberReset);
         if(RK && LK && specialMoveMultibuttonToggle[30].isEnabled) return TriggerAction("RightKickLeftKickTrigger",specialMoveMultibuttonToggle[30].numberReset);
         if(RP && LK && specialMoveMultibuttonToggle[32].isEnabled) return TriggerAction("RightPunchLeftKickTrigger",specialMoveMultibuttonToggle[32].numberReset);
@@ -378,7 +381,10 @@ public enum SpeacialMoveMultibutton
     LPRK,
     LKRP,
     LPRPLKRK,
-    ForwardLPRPLKRK
+    ForwardLPRPLKRK,
+    BackDownRPRKLK,
+    LPRPLK,
+    BackLPRPLKRK
 
 }
 
