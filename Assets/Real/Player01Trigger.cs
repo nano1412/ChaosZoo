@@ -44,14 +44,14 @@ public class Player01Trigger : MonoBehaviour
             {
                 if (animationName == "632146S_Shark")
                 {
-                    GetComponentInParent<Player02TakeAction>().GrapHCBFShark();
+                    GetComponentInParent<Player01TakeAction>().GrapHCBFShark();
                     player02Health.TakeDamage(damage, force, animationName);
                     player01CameraSpecial.CameraAtciveSpecial();
                     Player01TakeAction.Hits = true;
                 }
                 else if (animationName == "63214P_Shark")
                 {
-                    GetComponentInParent<Player02TakeAction>().GrapHCBShark();
+                    GetComponentInParent<Player01TakeAction>().GrapHCBShark();
                     player02Health.TakeDamage(damage, force, animationName);
                     Player01TakeAction.Hits = true;
                 }
