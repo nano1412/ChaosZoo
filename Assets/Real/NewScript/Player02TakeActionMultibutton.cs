@@ -15,6 +15,7 @@ public class Player02TakeActionMultibutton : MonoBehaviour
     public static bool Hits = false;
     public bool hits => Hits;
     public int specialMoveEnergy = 100;
+    public bool actionHits = false;
 
     private Animator anim;
 
@@ -240,7 +241,6 @@ public class Player02TakeActionMultibutton : MonoBehaviour
         {
             player02CameraSpecial.SpecialCapybaraCamare();
             anim.SetTrigger(action);
-            Hits = false;
             specialMoveEnergy -= 50;
             isPerformingAction = true;
             player02Movement.isPerformingAction = true;
