@@ -239,15 +239,43 @@ public class Player02TakeActionMultibutton : MonoBehaviour
         }
         else
         {
-            player02CameraSpecial.SpecialCapybaraCamare();
-            anim.SetTrigger(action);
-            specialMoveEnergy -= 50;
-            isPerformingAction = true;
-            player02Movement.isPerformingAction = true;
-            StartCoroutine(ResetIsPerformingAction(2.5f));
+            switch(numberReset)
+            {
+                case 1: SpecialWithoutSpecialMoveEnergy(action);
+                break;
+                case 2: SpecialActionEnergy(action);
+                break;
+            }
             return true;
         }
         return false;
+    }
+
+    public void SpecialWithoutSpecialMoveEnergy(string action)
+    {
+        anim.SetTrigger(action);
+        Debug.Log(action);
+        anim.SetBool("canWalk", false);
+        Hits = false;
+        isPerformingAction = true;
+        player02Movement.isPerformingAction = true;
+        StartCoroutine(ResetIsPerformingAction(2f));
+    }
+
+    public void SpecialActionEnergy(string action)
+    {
+        if(nameCharacter == "4RPLPRKLK_Ken" || nameCharacter == "6RPLPRKLK_Capy")
+        {
+            player02CameraSpecial.SpecialCapybaraCamare();
+        }
+        anim.SetTrigger(action);
+        anim.SetBool("canWalk", false);
+        Hits = false;
+        specialMoveEnergy -= 50;
+        isPerformingAction = true;
+        player02Movement.isPerformingAction = true;
+        
+        StartCoroutine(ResetIsPerformingAction(2f));
     }
 
     private void PerformAction(string actionName)
