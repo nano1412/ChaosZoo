@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player01TakeActionMultibutton : MonoBehaviour
 {
     public float defaultActionCooldown = 0.5f;
-    public string nameCharacter;
+    public List<string> nameAnimation = new List<string>();
     public GameObject player01;
     public Player01Movement player01Movement;
     public Player01Health player01Health;
@@ -222,6 +222,10 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         Hits = false;
+        if(action == "BackDownRightPunchRightKickLeftKickTrigger" || action == "BackDownLeftPunchRightKickLeftKickTrigger")
+        {
+            player01Health.KenInAir = true;
+        }
         switch(numberReset)
         {
             case 1: StartCoroutine(ResetIsPerformingAction(0.5f));
@@ -268,7 +272,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
 
     public void SpecialActionEnergy(string action)
     {
-        if(nameCharacter == "4RPLPRKLK_Ken" || nameCharacter == "6RPLPRKLK_Capy")
+        if(nameAnimation[0] == "4RPLPRKLK_Ken" || nameAnimation[0] == "6RPLPRKLK_Capy")
         {
             player01CameraSpecial.SpecialCapybaraCamare();
         }
@@ -373,6 +377,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         yield return new WaitForSeconds(time);
         isPerformingAction = false;
         player01Movement.isPerformingAction = false;
+        player01Health.KenInAir = false;
     }
 }
 

@@ -21,6 +21,7 @@ public class Player01Health : MonoBehaviour
     public bool block = false;
     public bool knockout = false;
     public bool SharkDrive = false;
+    public bool KenInAir = false;
     public int currentdamage = 0;
     public float time;
 
@@ -54,7 +55,7 @@ public class Player01Health : MonoBehaviour
     }
     public void TakeDamage(int damage, float force, string actionGrapName)
     {
-        if(scriptableHealth.currentHealth > 5 && !knockout && !SharkDrive)
+        if(scriptableHealth.currentHealth > 5 && !knockout && !SharkDrive && !KenInAir)
         {
             if(actionGrapName == "no")
             {
