@@ -27,6 +27,7 @@ public class Player01Movement : MonoBehaviour
     public bool faceLeft => FaceingLeft;
     public bool faceRight => FaceingRight;
     public bool animCrouch => animationCouch;
+    public bool isJump => IsJumping;
 
     public string horizontalInput = "Horizontal";
     public string verticalInput = "Vertical";

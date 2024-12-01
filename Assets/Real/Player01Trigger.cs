@@ -9,6 +9,8 @@ public class Player01Trigger : MonoBehaviour
     public float force;
     public bool Check = false;
     public bool Grab = false;
+    public bool TakeAction = false;
+    public bool TakeActionMultiButton = false;
     public string animationName;
     public Player02Health player02Health;
     public Player01CameraSpecial player01CameraSpecial;
@@ -20,41 +22,57 @@ public class Player01Trigger : MonoBehaviour
 
     void Update()
     {
-        Col.enabled = !Player01Action.Hits;
+        if(TakeAction && !TakeActionMultiButton)
+        {
+            Col.enabled = !Player01TakeAction.Hits;
+        }
+        else if(!TakeAction && TakeActionMultiButton && animationName != "6LPRPLKRP_Capybara")
+        {
+            Col.enabled = !Player01TakeActionMultibutton.Hits;
+        }
+        if(animationName == "6LPRPLKRP_Capybara")
+        {
+            Col.enabled = true;
+        }
     }
 
      private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player02Health")
         {
-            Player01TakeAction.Hits = true;
-            if(Grab)
+            if (Grab)
             {
-                if(animationName == "63214P_Shark")
-                {
-                    GetComponentInParent<Player01TakeAction>().GrapHCBShark();
-                    player02Health.TakeDamage(damage, force, animationName);
-                }
-                if(animationName == "632146S_Shark")
+                if (animationName == "632146S_Shark")
                 {
                     GetComponentInParent<Player01TakeAction>().GrapHCBFShark();
                     player02Health.TakeDamage(damage, force, animationName);
                     player01CameraSpecial.CameraAtciveSpecial();
+                    Player01TakeAction.Hits = true;
                 }
-                if(animationName == "6LPRPLKRP_Capybara")
+                else if (animationName == "63214P_Shark")
+                {
+                    GetComponentInParent<Player01TakeAction>().GrapHCBShark();
+                    player02Health.TakeDamage(damage, force, animationName);
+                    Player01TakeAction.Hits = true;
+                }
+                else if (animationName == "6LPRPLKRP_Capybara")
                 {
                     player02Health.TakeDamage(damage, force, animationName);
-                    Debug.Log(animationName);
+                    // ไม่ตั้งค่า Hits เพื่อไม่ให้ปิด Collider
                     return;
                 }
             }
-            else if(!Grab)
+            else if (!Grab)
             {
                 player02Health.TakeDamage(damage, force, "no");
+                Player01TakeAction.Hits = true;
+                Player01TakeActionMultibutton.Hits = true;
             }
-            else if(Check)
+            else if (Check)
             {
-                GetComponentInParent<Player01TakeAction>().OnHits();
+                GetComponentInParent<Player02TakeAction>().OnHits();
+                Player01TakeAction.Hits = true;
+                Player01TakeActionMultibutton.Hits = true;
             }
 
             StartCoroutine(ResetHits());
@@ -63,7 +81,15 @@ public class Player01Trigger : MonoBehaviour
 
     private IEnumerator ResetHits()
     {
+        // หาก animationNameGrap เป็น "6LPRPLKRP_Capybara" ไม่ต้องรีเซ็ต Hits
+        if (animationName == "6LPRPLKRP_Capybara")
+        {
+            yield break; // ออกจาก Coroutine ทันที
+        }
+
         yield return new WaitForSeconds(1f);
         Player01TakeAction.Hits = false;
+        Player01TakeActionMultibutton.Hits = false;
     }
+
 }
