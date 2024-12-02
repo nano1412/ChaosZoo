@@ -36,9 +36,9 @@ public class Player01Trigger : MonoBehaviour
         }
     }
 
-     private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player02Health")
+        if(other.tag == "Player02")
         {
             if (Grab)
             {

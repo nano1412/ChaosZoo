@@ -13,6 +13,8 @@ public class SelectControllerInChallenge : MonoBehaviour
     public GameObject player02;
     public Transform position01;
     public Transform position02;
+    public bool SelectKeyBoard01 = true;
+    public bool Selectjoystick01 = false;
 
     public bool SelectKeyBoard = true; // ค่าเริ่มต้นเป็นการใช้คีย์บอร์ด
     public bool Selectjoystick = false;
@@ -66,13 +68,13 @@ public class SelectControllerInChallenge : MonoBehaviour
     {
         if (challlengeScripttable.CurrentRound < 5)
         {
-            SelectKeyBoard = true;
-            Selectjoystick = false;
+            SelectKeyBoard01 = true;
+            Selectjoystick01 = false;
         }
         else if (challlengeScripttable.CurrentRound >= 5)
         {
-            SelectKeyBoard = false;
-            Selectjoystick = true;
+            SelectKeyBoard01 = false;
+            Selectjoystick01 = true;
         }
     }
 

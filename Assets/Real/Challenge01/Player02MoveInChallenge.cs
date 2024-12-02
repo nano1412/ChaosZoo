@@ -5,13 +5,12 @@ using UnityEngine;
 public class Player02MoveInChallenge : MonoBehaviour
 {
     public GameObject player02;
-    public GameObject player01;
-    public GameObject opponent;
+    public GameObject oppenent;
     public Player01MovementChallenge movementScript;
     public Player01TakeActionInChallenge  actionScript;
     public Vector3 oppPosition;
-    private Animator anim;
-    private Rigidbody rb;
+    public Animator anim;
+    public Rigidbody rb;
     private bool FaceingLeft = true;
     private bool FaceingRight = false;
     public bool faceLeft => FaceingLeft;
@@ -21,17 +20,17 @@ public class Player02MoveInChallenge : MonoBehaviour
     public GetValueInChallenge getValueInChallenge;
 
     private int currentTagIndex = 0;
+    public float time;
+    public bool stopAttack = false;
 
     void Start()
     {
-        anim = GetComponentInChildren<Animator>();
-        rb = GetComponent<Rigidbody>();
         StartCoroutine(FaceLeft());
     }
 
     void Update()
     {
-        oppPosition = opponent.transform.position;
+        oppPosition = oppenent.transform.position;
         if (oppPosition.x > player02.transform.position.x && !FaceingRight)
         {
             StartCoroutine(FaceRight());
@@ -40,44 +39,79 @@ public class Player02MoveInChallenge : MonoBehaviour
         {
             StartCoroutine(FaceLeft());
         }
-    }
-
-    private void OnTriggerEnter(Collider other)
-{
-    if (currentTagIndex < validTags.Count)
-    {
-        if (other.tag == validTags[currentTagIndex])
+        
+        if(currentTagIndex >= 1)
         {
-            anim.SetTrigger("Hurt");
-            currentTagIndex++;
-            if (currentTagIndex >= validTags.Count)
+            time += Time.deltaTime;
+            if(time > 4)
             {
-                challengeData.boolList.Add(true);
+                stopAttack = true;
+                challengeData.boolList.Add(false);
                 currentTagIndex = 0; // Reset tag index for the next round
-                getValueInChallenge.GreenUpdate();
-                challengeData.CurrentRound++;
+                getValueInChallenge.RedUpdate();
 
                 Time.timeScale = 0;
                 DisablePlayerControls(); // Disable player controls
                 selectControllerInChallenge.DisableScripts();
                 selectControllerInChallenge.ResetScene();
+                challengeData.CurrentRound++;
+                time = 0;
             }
         }
-        else
-        {
-            Debug.Log("Tag mismatch: " + other.tag + ". Expected: " + validTags[currentTagIndex]);
-            challengeData.boolList.Add(false);
-            currentTagIndex = 0; // Reset tag index for the next round
-            getValueInChallenge.RedUpdate();
+    }
 
-            Time.timeScale = 0;
-            DisablePlayerControls(); // Disable player controls
-            selectControllerInChallenge.DisableScripts();
-            selectControllerInChallenge.ResetScene();
-            challengeData.CurrentRound++;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (currentTagIndex < validTags.Count)
+        {
+            if (other.tag == validTags[currentTagIndex])
+            {
+                anim.SetTrigger("Hurt");
+                currentTagIndex++;
+                if(stopAttack)
+                {
+                    Debug.Log("Tag mismatch: " + other.tag + ". Expected: " + validTags[currentTagIndex]);
+                    challengeData.boolList.Add(false);
+                    currentTagIndex = 0; // Reset tag index for the next round
+                    getValueInChallenge.RedUpdate();
+
+                    Time.timeScale = 0;
+                    DisablePlayerControls(); // Disable player controls
+                    selectControllerInChallenge.DisableScripts();
+                    selectControllerInChallenge.ResetScene();
+                    challengeData.CurrentRound++;
+                }
+                if (currentTagIndex >= validTags.Count && !stopAttack)
+                {
+                    challengeData.boolList.Add(true);
+                    currentTagIndex = 0; // Reset tag index for the next round
+                    getValueInChallenge.GreenUpdate();
+                    challengeData.CurrentRound++;
+                    time = 0;
+
+                    Time.timeScale = 0;
+                    DisablePlayerControls(); // Disable player controls
+                    selectControllerInChallenge.DisableScripts();
+                    selectControllerInChallenge.ResetScene();
+                }
+            }
+            else
+            {
+                anim.SetTrigger("Knock");
+                Debug.Log("Tag mismatch: " + other.tag + ". Expected: " + validTags[currentTagIndex]);
+                challengeData.boolList.Add(false);
+                currentTagIndex = 0; // Reset tag index for the next round
+                getValueInChallenge.RedUpdate();
+
+                Time.timeScale = 0;
+                DisablePlayerControls(); // Disable player controls
+                selectControllerInChallenge.DisableScripts();
+                selectControllerInChallenge.ResetScene();
+                challengeData.CurrentRound++;
+                time = 0;
+            }
         }
     }
-}
 
     private void DisablePlayerControls()
     {
