@@ -272,7 +272,7 @@ public class Player02TakeActionMultibutton : MonoBehaviour
         Hits = false;
         isPerformingAction = true;
         player02Movement.isPerformingAction = true;
-        StartCoroutine(ResetIsPerformingAction(2f));
+        StartCoroutine(ResetIsPerformingAction(1f));
     }
 
     public void SpecialActionEnergy(string action)
