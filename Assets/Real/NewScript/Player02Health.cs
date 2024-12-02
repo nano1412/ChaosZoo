@@ -156,7 +156,7 @@ public class Player02Health : MonoBehaviour
             }
             else if(actionGrabName == "6LPRPLKRP_Capybara")
             {
-                if(scriptableHealth.currentHealth > 0  && !knockout)
+                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive)
                 {
                     scriptableHealth.currentHealth -= damage;
                     if(scriptableHealth.currentHealth > 0)
@@ -168,6 +168,18 @@ public class Player02Health : MonoBehaviour
                         anim.SetTrigger("Dead");
                         knockout = true;
                     }
+                    player02Movement.isPerformingAction = true;
+                    player02TakeAction.isPerformingAction = true;
+                    player02TakeActionMultibutton.isPerformingAction = true;
+                }
+            }
+            else if(actionGrabName == "4RPLPRKLK_Ken")
+            {
+                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive)
+                {
+                    player02EventAnimation.forcehurt = force;
+                    anim.SetTrigger("Ken_4RPLPRKLK");
+                    StartCoroutine(resetKenSpecial(damage));
                     player02Movement.isPerformingAction = true;
                     player02TakeAction.isPerformingAction = true;
                     player02TakeActionMultibutton.isPerformingAction = true;
@@ -226,7 +238,7 @@ public class Player02Health : MonoBehaviour
             knockout = true;
             player02Movement.isPerformingAction = true;
             player02TakeAction.isPerformingAction = true;
-            player02TakeActionMultibutton.isPerformingAction = false;
+            player02TakeActionMultibutton.isPerformingAction = true;
         }
 
     }
@@ -246,6 +258,28 @@ public class Player02Health : MonoBehaviour
             player02Movement.isPerformingAction = true;
             player02TakeAction.isPerformingAction = true;
             player02TakeActionMultibutton.isPerformingAction = true;
+        }
+    }
+
+    IEnumerator resetKenSpecial(int damage)
+    {
+        yield return new WaitForSeconds(0.5f);
+        scriptableHealth.currentHealth -= damage;
+        player02EventAnimation.forcehurt = 0;
+        if(scriptableHealth.currentHealth <= 0)
+        {
+            anim.SetTrigger("DeadKen");
+            knockout = true;
+            player02Movement.isPerformingAction = true;
+            player02TakeAction.isPerformingAction = true;
+            player02TakeActionMultibutton.isPerformingAction = true;
+        }
+        else
+        {
+            player02Movement.isPerformingAction = false;
+            player02TakeAction.isPerformingAction = false;
+            player02TakeActionMultibutton.isPerformingAction = false;
+            knockout = false;
         }
     }
 }

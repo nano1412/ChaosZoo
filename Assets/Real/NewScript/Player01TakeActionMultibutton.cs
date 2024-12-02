@@ -80,6 +80,8 @@ public class Player01TakeActionMultibutton : MonoBehaviour
     }
     public bool HandleMultibutton()
     {
+        if(isPerformingAction) return false;
+        
         string verticalInput = selectController.Selectjoystick01 ? "LeftAnalogY1" : "Vertical";
         string horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
         bool Joystick = selectController.Selectjoystick01 ? true : false;

@@ -61,6 +61,12 @@ public class Player01Trigger : MonoBehaviour
                     // ไม่ตั้งค่า Hits เพื่อไม่ให้ปิด Collider
                     return;
                 }
+                else if (animationName == "4RPLPRKLK_Ken")
+                {
+                    player02Health.TakeDamage(damage, force, animationName);
+                    Player01TakeAction.Hits = true;
+                    Player01TakeActionMultibutton.Hits = true;
+                }
             }
             else if (!Grab)
             {
