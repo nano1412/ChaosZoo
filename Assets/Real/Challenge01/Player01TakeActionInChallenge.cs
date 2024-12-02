@@ -29,6 +29,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     public bool holdbuttonHorizontal = false;
     public float holdTimeVertical;
     public float holdTimeHorizontal;
+    public int inputCount = 0; // ตัวแปรสำหรับนับจำนวนอินพุต
 
     [Header("Enable/Disable Actions")]
     public List<SpecialMoveToggle> specialMoveToggles = new List<SpecialMoveToggle>()
@@ -652,25 +653,25 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         {
             if(Joystick)
             {
-                if(Input.GetButtonDown("player02Joystick01") && specialMoveToggles[12].isEnabled)
+                if(Input.GetButtonDown("Player02Joystick01") && specialMoveToggles[12].isEnabled)
                 {
                     ActionHCBF("Punch");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("player02Joystick02") && specialMoveToggles[13].isEnabled)
+                else if(Input.GetButtonDown("Player02Joystick02") && specialMoveToggles[13].isEnabled)
                 {
                     ActionHCBF("Kick");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("player02Joystick03") && specialMoveToggles[14].isEnabled)
+                else if(Input.GetButtonDown("Player02Joystick03") && specialMoveToggles[14].isEnabled)
                 {
                     ActionHCBF("Slash");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("player02Joystick04") && specialMoveToggles[15].isEnabled)
+                else if(Input.GetButtonDown("Player02Joystick04") && specialMoveToggles[15].isEnabled)
                 {
                     ActionHCBF("HeavySlash");
                     Hits = false;
@@ -679,25 +680,25 @@ public class Player01TakeActionInChallenge : MonoBehaviour
             }
             else
             {
-                if(Input.GetButtonDown("player02Bt01") && specialMoveToggles[12].isEnabled)
+                if(Input.GetButtonDown("Player02Bt01") && specialMoveToggles[12].isEnabled)
                 {
                     ActionHCBF("Punch");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("player02Bt02") && specialMoveToggles[13].isEnabled)
+                else if(Input.GetButtonDown("Player02Bt02") && specialMoveToggles[13].isEnabled)
                 {
                     ActionHCBF("Kick");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("player02Bt03") && specialMoveToggles[14].isEnabled)
+                else if(Input.GetButtonDown("Player02Bt03") && specialMoveToggles[14].isEnabled)
                 {
                     ActionHCBF("Slash");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("player02Bt04") && specialMoveToggles[15].isEnabled)
+                else if(Input.GetButtonDown("Player02Bt04") && specialMoveToggles[15].isEnabled)
                 {
                     ActionHCBF("HeavySlash");
                     Hits = false;

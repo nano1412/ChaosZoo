@@ -30,6 +30,7 @@ public class Player01TakeAction : MonoBehaviour
     public bool holdbuttonHorizontal = false;
     public float holdTimeVertical;
     public float holdTimeHorizontal;
+    public int inputCount = 0; // ตัวแปรสำหรับนับจำนวนอินพุต
 
     [Header("Enable/Disable Actions")]
     public List<SpecialMoveToggle> specialMoveToggles = new List<SpecialMoveToggle>()
@@ -421,6 +422,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputState++;
                     return;
                 }
             }
@@ -431,6 +433,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputState++;
                     return;
                 }
             }
@@ -444,6 +447,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputState++;
                     return;
                 }
             }
@@ -454,6 +458,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputState++;
                     return;
                 }
             }
@@ -467,6 +472,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputState++;
                     return;
                 }
             }
@@ -477,6 +483,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputState++;
                 }
             }
         }
@@ -546,172 +553,162 @@ public class Player01TakeAction : MonoBehaviour
 
     private void HandleHCBF()
     {
-        if(isQCInProgress)
-        {
-            return;
-        }
-        if (specialMoveEnergy < 50)
-        {
-            return;
-        }
+        if (isQCInProgress || specialMoveEnergy < 50) return;
 
         string verticalInput = selectController.Selectjoystick01 ? "LeftAnalogY1" : "Vertical";
         string horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
         bool Joystick = selectController.Selectjoystick01 ? true : false;
 
-        if(inputState == InputState.None || inputState == InputState.ForwardAgain && !isHCBInProgress)
+        if (inputState == InputState.None && !isHCBInProgress)
         {
-            if(player01Movement.faceRight)
+            if (player01Movement.faceRight)
             {
-                if(Input.GetAxis(horizontalInput) > 0.4f && !holdbuttonHorizontal)
+                if (Input.GetAxis(horizontalInput) > 0.4f && !holdbuttonHorizontal)
                 {
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    return;
+                    inputCount++; // เพิ่มจำนวนการกด direction
                 }
             }
             else
             {
-                if(Input.GetAxis(horizontalInput) < -0.4f && !holdbuttonHorizontal)
+                if (Input.GetAxis(horizontalInput) < -0.4f && !holdbuttonHorizontal)
                 {
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    return;
+                    inputCount++;
                 }
             }
         }
-        if(inputState == InputState.Forward && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
+        else if (inputState == InputState.Forward && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
         {
-            if(Joystick)
+            if (Joystick)
             {
-                if(-Input.GetAxis(verticalInput) < -0.4f && !holdbuttonVertical)
+                if (-Input.GetAxis(verticalInput) < -0.4f && !holdbuttonVertical)
                 {
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
-                    isHCBInProgress = true;
-                    return;
+                    inputCount++;
                 }
             }
             else
             {
-                if(Input.GetAxis(verticalInput) < -0.4f && !holdbuttonVertical)
+                if (Input.GetAxis(verticalInput) < -0.4f && !holdbuttonVertical)
                 {
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
-                    isHCBInProgress = true;
-                    return;
+                    inputCount++;
                 }
             }
         }
-        if(inputState == InputState.Down && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
+        else if (inputState == InputState.Down && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
         {
-            if(player01Movement.faceRight)
+            if (player01Movement.faceRight)
             {
-                if(Input.GetAxis(horizontalInput) < -0.4f)
+                if (Input.GetAxis(horizontalInput) < -0.4f)
                 {
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
-                    isHCBInProgress = true;
-                    return;
+                    inputCount++;
                 }
             }
             else
             {
-                if(Input.GetAxis(horizontalInput) > 0.4f)
+                if (Input.GetAxis(horizontalInput) > 0.4f)
                 {
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
-                    isHCBInProgress = true;
+                    inputCount++;
                 }
             }
         }
-        if(inputState == InputState.Backward && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
+        else if (inputState == InputState.Backward && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
         {
-            if(player01Movement.faceRight)
+            if (player01Movement.faceRight)
             {
-                if(Input.GetAxis(horizontalInput) > 0.4f && !holdbuttonHorizontal)
+                if (Input.GetAxis(horizontalInput) > 0.4f && !holdbuttonHorizontal)
                 {
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
-                    isHCBInProgress = true;
-                    return;
+                    inputCount++;
                 }
             }
             else
             {
-                if(Input.GetAxis(horizontalInput) < -0.4f && !holdbuttonHorizontal)
+                if (Input.GetAxis(horizontalInput) < -0.4f && !holdbuttonHorizontal)
                 {
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
-                    isHCBInProgress = true;
+                    inputCount++;
                 }
             }
         }
-        if(inputState == InputState.Forward && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
-        {
-            if(Joystick)
-            {
-                if(Input.GetButtonDown("Player01Joystick01") && specialMoveToggles[12].isEnabled)
-                {
-                    ActionHCBF("Punch");
-                    Hits = false;
-                    return;
-                }
-                else if(Input.GetButtonDown("Player01Joystick02") && specialMoveToggles[13].isEnabled)
-                {
-                    ActionHCBF("Kick");
-                    Hits = false;
-                    return;
-                }
-                else if(Input.GetButtonDown("Player01Joystick03") && specialMoveToggles[14].isEnabled)
-                {
-                    ActionHCBF("Slash");
-                    Hits = false;
-                    return;
-                }
-                else if(Input.GetButtonDown("Player01Joystick04") && specialMoveToggles[15].isEnabled)
-                {
-                    ActionHCBF("HeavySlash");
-                    Hits = false;
-                    return;
-                }
-            }
-            else
-            {
-                if(Input.GetButtonDown("Player01Bt01") && specialMoveToggles[12].isEnabled)
-                {
-                    ActionHCBF("Punch");
-                    Hits = false;
-                    return;
-                }
-                else if(Input.GetButtonDown("Player01Bt02") && specialMoveToggles[13].isEnabled)
-                {
-                    ActionHCBF("Kick");
-                    Hits = false;
-                    return;
-                }
-                else if(Input.GetButtonDown("Player01Bt03") && specialMoveToggles[14].isEnabled)
-                {
-                    ActionHCBF("Slash");
-                    Hits = false;
-                    return;
-                }
-                else if(Input.GetButtonDown("Player01Bt04") && specialMoveToggles[15].isEnabled)
-                {
-                    ActionHCBF("HeavySlash");
-                    Hits = false;
-                    return;
 
+        // ตรวจสอบเงื่อนไขสำหรับ HCBF
+        if (inputCount >= 3 && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
+        {
+            if (Joystick)
+            {
+                if (Input.GetButtonDown("Player01Joystick01") && specialMoveToggles[12].isEnabled)
+                {
+                    ActionHCBF("Punch");
+                    ResetHCBF();
+                }
+                else if (Input.GetButtonDown("Player01Joystick02") && specialMoveToggles[13].isEnabled)
+                {
+                    ActionHCBF("Kick");
+                    ResetHCBF();
+                }
+                else if (Input.GetButtonDown("Player01Joystick03") && specialMoveToggles[14].isEnabled)
+                {
+                    ActionHCBF("Slash");
+                    ResetHCBF();
+                }
+                else if (Input.GetButtonDown("Player01Joystick04") && specialMoveToggles[15].isEnabled)
+                {
+                    ActionHCBF("HeavySlash");
+                    ResetHCBF();
+                }
+            }
+            else
+            {
+                if (Input.GetButtonDown("Player01Bt01") && specialMoveToggles[12].isEnabled)
+                {
+                    ActionHCBF("Punch");
+                    ResetHCBF();
+                }
+                else if (Input.GetButtonDown("Player01Bt02") && specialMoveToggles[13].isEnabled)
+                {
+                    ActionHCBF("Kick");
+                    ResetHCBF();
+                }
+                else if (Input.GetButtonDown("Player01Bt03") && specialMoveToggles[14].isEnabled)
+                {
+                    ActionHCBF("Slash");
+                    ResetHCBF();
+                }
+                else if (Input.GetButtonDown("Player01Bt04") && specialMoveToggles[15].isEnabled)
+                {
+                    ActionHCBF("HeavySlash");
+                    ResetHCBF();
                 }
             }
         }
+
+        // รีเซ็ตสถานะหากหมดเวลา
         if (Time.time - lastInputTime > inputBufferTime)
         {
-            inputState = InputState.None;
-            isHCBInProgress = false;
+            ResetHCBF();
         }
+    }
+
+    private void ResetHCBF()
+    {
+        inputState = InputState.None;
+        isHCBInProgress = false;
+        inputCount = 0; // รีเซ็ตตัวแปรจำนวนการกด
     }
 
     private void PerformAction(string actionName)
