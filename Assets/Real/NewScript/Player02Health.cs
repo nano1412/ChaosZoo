@@ -18,6 +18,7 @@ public class Player02Health : MonoBehaviour
     public bool block = false;
     public bool knockout = false;
     public bool SharkDrive = false;
+    public bool KenInAir = false;
     public int currentdamage = 0;
     public float time;
 
@@ -54,7 +55,7 @@ public class Player02Health : MonoBehaviour
 
     public void TakeDamage(int damage, float force, string actionGrabName)
     {
-        if(scriptableHealth.currentHealth > 5 && !knockout && !SharkDrive)
+        if(scriptableHealth.currentHealth > 5 && !knockout && !SharkDrive && !KenInAir)
         {
             if(actionGrabName == "no")
             {
@@ -132,7 +133,7 @@ public class Player02Health : MonoBehaviour
             }
             else if(actionGrabName == "63214P_Shark")
             {
-                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive)
+                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive && !KenInAir)
                 {
                     player02EventAnimation.forcehurt = force;
                     anim.SetTrigger("Shark_grab_HCB");
@@ -144,7 +145,7 @@ public class Player02Health : MonoBehaviour
             }
             else if(actionGrabName == "632146S_Shark")
             {
-                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive)
+                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive && !KenInAir)
                 {
                     player02EventAnimation.forcehurt = force;
                     anim.SetTrigger("Shark_grab_HCBF");
@@ -156,7 +157,7 @@ public class Player02Health : MonoBehaviour
             }
             else if(actionGrabName == "6LPRPLKRP_Capybara")
             {
-                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive)
+                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive && !KenInAir)
                 {
                     scriptableHealth.currentHealth -= damage;
                     if(scriptableHealth.currentHealth > 0)
@@ -175,7 +176,7 @@ public class Player02Health : MonoBehaviour
             }
             else if(actionGrabName == "4RPLPRKLK_Ken")
             {
-                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive)
+                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive && !KenInAir)
                 {
                     player02EventAnimation.forcehurt = force;
                     anim.SetTrigger("Ken_4RPLPRKLK");
