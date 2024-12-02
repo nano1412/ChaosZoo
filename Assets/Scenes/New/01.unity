@@ -3821,6 +3821,7 @@ MonoBehaviour:
   block: 0
   knockout: 0
   SharkDrive: 0
+  KenInAir: 0
   currentdamage: 0
   time: 0
 --- !u!1 &338059382
@@ -12335,6 +12336,82 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101138917}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1119925124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1119925125}
+  - component: {fileID: 1119925127}
+  - component: {fileID: 1119925126}
+  m_Layer: 0
+  m_Name: 1LPRKLKAttackBox
+  m_TagString: 1LPRKLK_AttackBox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1119925125
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119925124}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.00018, y: -0, z: 0.00627}
+  m_LocalScale: {x: -0.009806416, y: 0.0033497754, z: -0.0059619397}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 922647088}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1119925126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119925124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 1119925127}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  animationName: 
+  player02Health: {fileID: 0}
+  player01CameraSpecial: {fileID: 0}
+--- !u!65 &1119925127
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119925124}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1126428472
 GameObject:
   m_ObjectHideFlags: 0
@@ -13349,6 +13426,7 @@ MonoBehaviour:
   block: 0
   knockout: 0
   SharkDrive: 0
+  KenInAir: 0
   currentdamage: 0
   time: 0
 --- !u!136 &1300206582
@@ -18539,6 +18617,8 @@ MonoBehaviour:
   defaultActionCooldown: 0.5
   nameAnimation:
   - 4RPLPRKLK_Ken
+  - 1RPRKLK_Ken
+  - 1LPRKLK_Ken
   player01: {fileID: 1546451618}
   player01Movement: {fileID: 377594581}
   player01Health: {fileID: 336084517}
@@ -19137,6 +19217,7 @@ MonoBehaviour:
   block: 0
   knockout: 0
   SharkDrive: 0
+  KenInAir: 0
   currentdamage: 0
   time: 0
 --- !u!136 &1652529362
@@ -21375,12 +21456,12 @@ PrefabInstance:
     - target: {fileID: -8006035428877583666, guid: 5d0a9f8673a266e4da8a2b5558256126,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -4.052761e-15
+      value: -4.028398e-15
       objectReference: {fileID: 0}
     - target: {fileID: -8006035428877583666, guid: 5d0a9f8673a266e4da8a2b5558256126,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -4.580096e-16
+      value: -4.5883796e-16
       objectReference: {fileID: 0}
     - target: {fileID: -6934762704456450976, guid: 5d0a9f8673a266e4da8a2b5558256126,
         type: 3}
@@ -21400,17 +21481,17 @@ PrefabInstance:
     - target: {fileID: -6528039194488152944, guid: 5d0a9f8673a266e4da8a2b5558256126,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 10.310634
+      value: 10.310632
       objectReference: {fileID: 0}
     - target: {fileID: -6528039194488152944, guid: 5d0a9f8673a266e4da8a2b5558256126,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 45.612045
+      value: 45.612038
       objectReference: {fileID: 0}
     - target: {fileID: -6528039194488152944, guid: 5d0a9f8673a266e4da8a2b5558256126,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -6.8727813
+      value: -6.8727765
       objectReference: {fileID: 0}
     - target: {fileID: -4969991215818944475, guid: 5d0a9f8673a266e4da8a2b5558256126,
         type: 3}
@@ -21685,7 +21766,7 @@ PrefabInstance:
     - target: {fileID: 572617754110402786, guid: 5d0a9f8673a266e4da8a2b5558256126,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 14.137265
+      value: 14.137267
       objectReference: {fileID: 0}
     - target: {fileID: 572617754110402786, guid: 5d0a9f8673a266e4da8a2b5558256126,
         type: 3}
@@ -22125,17 +22206,17 @@ PrefabInstance:
     - target: {fileID: 8108198227213407789, guid: 5d0a9f8673a266e4da8a2b5558256126,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -63.663696
+      value: -63.663692
       objectReference: {fileID: 0}
     - target: {fileID: 8108198227213407789, guid: 5d0a9f8673a266e4da8a2b5558256126,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 40.605206
+      value: 40.605232
       objectReference: {fileID: 0}
     - target: {fileID: 8108198227213407789, guid: 5d0a9f8673a266e4da8a2b5558256126,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -30.210611
+      value: -30.210638
       objectReference: {fileID: 0}
     - target: {fileID: 8705060886863549987, guid: 5d0a9f8673a266e4da8a2b5558256126,
         type: 3}
@@ -22253,6 +22334,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 775084768}
+    - targetCorrespondingSourceObject: {fileID: 2689888123826509042, guid: 5d0a9f8673a266e4da8a2b5558256126,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1119925125}
     - targetCorrespondingSourceObject: {fileID: 8108198227213407789, guid: 5d0a9f8673a266e4da8a2b5558256126,
         type: 3}
       insertIndex: -1
@@ -22629,7 +22714,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultActionCooldown: 0.5
-  nameAnimation: []
+  nameAnimation:
+  - 6RPLPRKLK_Capy
   player01: {fileID: 1923691833}
   player01Movement: {fileID: 59890155}
   player01Health: {fileID: 1652529361}
