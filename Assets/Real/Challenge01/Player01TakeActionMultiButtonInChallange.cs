@@ -267,6 +267,7 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
         anim.SetBool("canWalk", false);
         Hits = false;
         isPerformingAction = true;
+        player01Movement.isPerformingAction = true;
         StartCoroutine(ResetIsPerformingAction(2f));
     }
 
