@@ -152,7 +152,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
             }
         }
     }
-     private void HandleQCF()
+    private void HandleQCF()
     {
         if (isPerformingAction || isHCBInProgress) return;
 

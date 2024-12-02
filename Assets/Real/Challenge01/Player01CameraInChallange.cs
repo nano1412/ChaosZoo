@@ -25,6 +25,11 @@ public class Player01CameraInChallange : MonoBehaviour
         BlackScene2.SetActive(true);
         StartCoroutine(ResetCamareGrap());
     }
+     public void SpecialCapybaraCamare()
+    {
+        cameraSpecial.SetActive(true);
+        StartCoroutine(ResetCapybaraCamera(1f));
+    }
 
     IEnumerator ResetCamareSpecial()
     {
@@ -40,5 +45,11 @@ public class Player01CameraInChallange : MonoBehaviour
         BlackScene.SetActive(false);
         BlackScene2.SetActive(false);
         canvas.SetActive(true);
+    }
+
+     IEnumerator ResetCapybaraCamera(float timereset)
+    {
+        yield return new WaitForSeconds(timereset);
+        cameraSpecial.SetActive(false);
     }
 }
