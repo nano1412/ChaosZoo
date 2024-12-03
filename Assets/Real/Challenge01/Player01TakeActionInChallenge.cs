@@ -8,7 +8,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     public string nameCharacter;
     public GameObject player01;
     public Player01MovementChallenge player01Movement;
-    //public //player01cameraSpecialInChallange //player01cameraSpecialInChallange;
+    public Player01CameraInChallange player01CameraInChallange;
     public SelectControllerInChallenge selectControllerInChallenge;
     public bool isPerformingAction = false;
     public static bool Hits = false;
@@ -810,8 +810,8 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     }
     private void ActionHCBF(string actionName)
     {
-        specialMoveEnergy -= 50;
-        //player01cameraSpecial.CameraSetActive();
+        //specialMoveEnergy -= 50;
+        player01CameraInChallange.CameraSetActive();
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         anim.SetTrigger("HCBF_"+ actionName);

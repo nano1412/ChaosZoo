@@ -1304,7 +1304,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 184678884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 184678887}
@@ -1316,6 +1316,7 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &194449974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,7 +1814,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 279259199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 279259202}
@@ -1825,6 +1826,7 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &280640262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,7 +1910,7 @@ GameObject:
   - component: {fileID: 290088019}
   - component: {fileID: 290088022}
   - component: {fileID: 290088021}
-  - component: {fileID: 290088020}
+  - component: {fileID: 290088023}
   m_Layer: 14
   m_Name: 2PAttackBox
   m_TagString: 2P_AttackBox
@@ -1931,28 +1933,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 363747125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &290088020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 290088018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 290088021}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 1
-  TakeActionMultiButton: 0
-  animationName: 
-  player02Health: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &290088021
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1982,6 +1962,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290088018}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &290088023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290088018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 290088021}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 0
+  animationName: 
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &306965260
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,7 +2358,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 393965094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 393965097}
@@ -2368,6 +2370,7 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &395293168
 GameObject:
   m_ObjectHideFlags: 3
@@ -5836,7 +5839,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 561339281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 561339284}
@@ -5848,6 +5851,7 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &566243276
 GameObject:
   m_ObjectHideFlags: 0
@@ -6227,7 +6231,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 638298069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 638298072}
@@ -6239,6 +6243,7 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 63214P_Shark
   player01CameraSpecial: {fileID: 1842798387}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &643819247
 GameObject:
   m_ObjectHideFlags: 0
@@ -7032,10 +7037,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 799821683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Col: {fileID: 0}
+  Col: {fileID: 799821686}
   damage: 10
   force: 0
   Check: 0
@@ -7044,6 +7049,7 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 632146S_Shark
   player01CameraSpecial: {fileID: 1842798387}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &800173081
 GameObject:
   m_ObjectHideFlags: 0
@@ -11828,8 +11834,8 @@ GameObject:
   - component: {fileID: 900800235}
   - component: {fileID: 900800234}
   - component: {fileID: 900800233}
-  - component: {fileID: 900800237}
   - component: {fileID: 900800238}
+  - component: {fileID: 900800239}
   m_Layer: 0
   m_Name: SharkNew_Right
   m_TagString: Player02
@@ -11930,34 +11936,6 @@ Transform:
   - {fileID: 647263146}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &900800237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900800232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3598834ede829df4b88e6198f465b776, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player02: {fileID: 647263145}
-  oppenent: {fileID: 1842798380}
-  movementScript: {fileID: 1717437579}
-  actionScript: {fileID: 1842798381}
-  oppPosition: {x: 0, y: 0, z: 0}
-  anim: {fileID: 647263147}
-  rb: {fileID: 900800233}
-  validTags:
-  - 5S_AttackBox
-  - 6S_AttackBox
-  - 5HS_AttackBox
-  challengeData: {fileID: 11400000, guid: 48c3d9db23d8bd0478be61746491810a, type: 2}
-  selectControllerInChallenge: {fileID: 16306425}
-  getValueInChallenge: {fileID: 16306426}
-  time: 0
-  stopAttack: 0
 --- !u!114 &900800238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11970,20 +11948,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011af5e69b8d3e94f89943a2b6957e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player02: {fileID: 0}
-  oppenent: {fileID: 0}
-  movementScript: {fileID: 0}
-  actionScript: {fileID: 0}
+  player02: {fileID: 647263145}
+  oppenent: {fileID: 1842798380}
+  movementScript: {fileID: 1717437579}
+  actionScript: {fileID: 1842798381}
   oppPosition: {x: 0, y: 0, z: 0}
-  anim: {fileID: 0}
-  rb: {fileID: 0}
+  anim: {fileID: 647263147}
+  rb: {fileID: 900800233}
   validTags: []
-  challengeData: {fileID: 0}
-  selectControllerInChallenge: {fileID: 0}
-  getValueInChallenge: {fileID: 0}
-  animationOverdrive: 
+  challengeData: {fileID: 11400000, guid: 705cfa87d486ff844beae579298a7f6c, type: 2}
+  selectControllerInChallenge: {fileID: 16306425}
+  getValueInChallenge: {fileID: 16306426}
+  animationOverdrive: 632146S_Shark
   time: 0
   stopAttack: 0
+--- !u!136 &900800239
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900800232}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5088874
+  m_Height: 1.7357389
+  m_Direction: 1
+  m_Center: {x: 0.1847071, y: -0.08665434, z: -0.04056107}
 --- !u!1 &901944982
 GameObject:
   m_ObjectHideFlags: 0
@@ -12184,7 +12185,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 913781674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 913781677}
@@ -12196,6 +12197,7 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &946027686
 GameObject:
   m_ObjectHideFlags: 0
@@ -13714,7 +13716,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1121507731}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 1121507734}
@@ -13726,6 +13728,7 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &1142530751
 GameObject:
   m_ObjectHideFlags: 0
@@ -14079,7 +14082,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1195185763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 1195185766}
@@ -14091,6 +14094,7 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &1209197636
 GameObject:
   m_ObjectHideFlags: 0
@@ -14163,7 +14167,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1209197636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 1209197639}
@@ -14175,6 +14179,7 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &1232659200
 GameObject:
   m_ObjectHideFlags: 0
@@ -14718,7 +14723,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1280569634}
-  - component: {fileID: 1280569635}
   m_Layer: 14
   m_Name: PlayerHealth
   m_TagString: Player02Health
@@ -14741,29 +14745,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 647263146}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1280569635
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280569633}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.01597841
-  m_Height: 0.08578407
-  m_Direction: 1
-  m_Center: {x: 7.5456494e-17, y: 0.040781535, z: -0.0036074843}
 --- !u!1 &1281573230
 GameObject:
   m_ObjectHideFlags: 0
@@ -15319,7 +15300,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1331930458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 1331930461}
@@ -15331,6 +15312,7 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &1348872258
 GameObject:
   m_ObjectHideFlags: 0
@@ -15394,7 +15376,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1348872258}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 1348872261}
@@ -15406,6 +15388,7 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &1367616156
 GameObject:
   m_ObjectHideFlags: 0
@@ -19348,7 +19331,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1699511709}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 1699511712}
@@ -19360,6 +19343,7 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &1717437578
 GameObject:
   m_ObjectHideFlags: 0
@@ -25738,7 +25722,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2103080997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 2103081000}
@@ -25750,6 +25734,7 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &2121116307
 GameObject:
   m_ObjectHideFlags: 0
@@ -25894,7 +25879,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2133898898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 2133898901}
@@ -25906,6 +25891,7 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 0}
 --- !u!1 &2137088943
 GameObject:
   m_ObjectHideFlags: 0
