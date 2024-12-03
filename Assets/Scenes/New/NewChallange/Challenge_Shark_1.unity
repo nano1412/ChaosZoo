@@ -1908,7 +1908,7 @@ GameObject:
   - component: {fileID: 290088019}
   - component: {fileID: 290088022}
   - component: {fileID: 290088021}
-  - component: {fileID: 290088020}
+  - component: {fileID: 290088023}
   m_Layer: 14
   m_Name: 2PAttackBox
   m_TagString: 2P_AttackBox
@@ -1931,28 +1931,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 363747125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &290088020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 290088018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 290088021}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 1
-  TakeActionMultiButton: 0
-  animationName: 
-  player02Health: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &290088021
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1982,6 +1960,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290088018}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &290088023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290088018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfe5f7a4a8979a4a8689e66c0b13ebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 290088021}
+  damage: 10
+  force: 0
+  Check: 1
+  Grab: 0
+  TakeAction: 1
+  TakeActionMultiButton: 0
+  animationName: 
+  player01CameraSpecial: {fileID: 0}
 --- !u!1 &306965260
 GameObject:
   m_ObjectHideFlags: 0
@@ -5249,6 +5248,9 @@ MonoBehaviour:
   holdbuttonHorizontal: 0
   holdTimeVertical: 0
   holdTimeHorizontal: 0
+  challengeData: {fileID: 0}
+  verticalInput: 
+  horizontalInput: 
   inputCount: 0
   specialMoveToggles:
   - moveName: 0
@@ -15217,6 +15219,7 @@ MonoBehaviour:
   isPerformingAction: 0
   selectControllerInChallenge: {fileID: 0}
   Joystick: 0
+  challengeData: {fileID: 0}
   horizontalInput: Horizontal
   verticalInput: Vertical
 --- !u!1 &1331930458
@@ -19377,6 +19380,7 @@ MonoBehaviour:
   isPerformingAction: 0
   selectControllerInChallenge: {fileID: 16306425}
   Joystick: 0
+  challengeData: {fileID: 0}
   horizontalInput: Horizontal
   verticalInput: Vertical
 --- !u!54 &1717437580
@@ -19874,6 +19878,9 @@ MonoBehaviour:
   holdbuttonHorizontal: 0
   holdTimeVertical: 0
   holdTimeHorizontal: 0
+  challengeData: {fileID: 0}
+  verticalInput: 
+  horizontalInput: 
   inputCount: 0
   specialMoveToggles:
   - moveName: 0
