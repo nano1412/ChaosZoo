@@ -490,7 +490,7 @@ MonoBehaviour:
   Selectjoystick01: 0
   SelectKeyBoard: 1
   Selectjoystick: 0
-  challlengeScripttable: {fileID: 11400000, guid: 48c3d9db23d8bd0478be61746491810a,
+  challlengeScripttable: {fileID: 11400000, guid: 705cfa87d486ff844beae579298a7f6c,
     type: 2}
   FinalResult: {fileID: 1879179972}
   scoreKeyBoard: {fileID: 2234520}
@@ -552,7 +552,7 @@ MonoBehaviour:
   JoyStick: {fileID: 1914746164}
   ArcadeStick: {fileID: 10988342}
   CurrentIndex: 0
-  challlengeScripttable: {fileID: 11400000, guid: 48c3d9db23d8bd0478be61746491810a,
+  challlengeScripttable: {fileID: 11400000, guid: 705cfa87d486ff844beae579298a7f6c,
     type: 2}
 --- !u!1 &35465571
 GameObject:
@@ -5238,6 +5238,7 @@ MonoBehaviour:
   nameCharacter: 
   player01: {fileID: 1330142313}
   player01Movement: {fileID: 1330142320}
+  player01CameraInChallange: {fileID: 0}
   selectControllerInChallenge: {fileID: 16306425}
   isPerformingAction: 0
   inputState: 0
@@ -5251,6 +5252,9 @@ MonoBehaviour:
   holdbuttonHorizontal: 0
   holdTimeVertical: 0
   holdTimeHorizontal: 0
+  challengeData: {fileID: 0}
+  verticalInput: 
+  horizontalInput: 
   inputCount: 0
   specialMoveToggles:
   - moveName: 0
@@ -15224,6 +15228,7 @@ MonoBehaviour:
   isPerformingAction: 0
   selectControllerInChallenge: {fileID: 0}
   Joystick: 0
+  challengeData: {fileID: 0}
   horizontalInput: Horizontal
   verticalInput: Vertical
 --- !u!1 &1331930458
@@ -18895,7 +18900,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1660579516
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19387,6 +19392,7 @@ MonoBehaviour:
   isPerformingAction: 0
   selectControllerInChallenge: {fileID: 16306425}
   Joystick: 0
+  challengeData: {fileID: 11400000, guid: 705cfa87d486ff844beae579298a7f6c, type: 2}
   horizontalInput: Horizontal
   verticalInput: Vertical
 --- !u!54 &1717437580
@@ -19870,6 +19876,7 @@ MonoBehaviour:
   nameCharacter: Shark
   player01: {fileID: 1842798380}
   player01Movement: {fileID: 1717437579}
+  player01CameraInChallange: {fileID: 1842798387}
   selectControllerInChallenge: {fileID: 16306425}
   isPerformingAction: 0
   inputState: 0
@@ -19883,6 +19890,9 @@ MonoBehaviour:
   holdbuttonHorizontal: 0
   holdTimeVertical: 0
   holdTimeHorizontal: 0
+  challengeData: {fileID: 11400000, guid: 705cfa87d486ff844beae579298a7f6c, type: 2}
+  verticalInput: 
+  horizontalInput: 
   inputCount: 0
   specialMoveToggles:
   - moveName: 0
@@ -25403,7 +25413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -708, y: 132}
+  m_AnchoredPosition: {x: -708, y: 5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2075350629

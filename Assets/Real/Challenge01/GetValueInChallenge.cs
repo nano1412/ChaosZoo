@@ -42,10 +42,10 @@ public class GetValueInChallenge : MonoBehaviour
         {
             StartCoroutine(ChangelayoutToJoyStick());
         }
-        else if(challlengeScripttable.CurrentRound == 10)
+        /*else if(challlengeScripttable.CurrentRound == 10)
         {
             StartCoroutine(ChangelayoutToArcadeStrick());
-        }
+        }*/
     }
 
     public void GreenUpdate()
