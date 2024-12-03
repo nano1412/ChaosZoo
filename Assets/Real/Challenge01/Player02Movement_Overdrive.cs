@@ -8,6 +8,7 @@ public class Player02Movement_Overdrive : MonoBehaviour
     public GameObject oppenent;
     public Player01MovementChallenge movementScript;
     public Player01TakeActionInChallenge  actionScript;
+    public Player01TakeActionMultiButtonInChallange actionMultiButtonInChallange;
     public Vector3 oppPosition;
     public Animator anim;
     public Rigidbody rb;
@@ -82,6 +83,11 @@ public class Player02Movement_Overdrive : MonoBehaviour
             anim.SetTrigger("Shark_grab_HCBF");
             StartCoroutine(GetValue(5f));
         }
+        else if(animationOverdrive == "6LPRPLKRP_Capybara" && actionGrapName == "6LPRPLKRP_Capybara")
+        {
+            anim.SetTrigger("Hurt");
+            StartCoroutine(GetValue(1f));
+        }
     }
 
     private void DisablePlayerControls()
@@ -95,6 +101,7 @@ public class Player02Movement_Overdrive : MonoBehaviour
         if (actionScript != null)
         {
             actionScript.enabled = false;
+            actionMultiButtonInChallange.enabled = false;
         }
 
         Player02MoveInChallenge player02MovementScript = player02.GetComponent<Player02MoveInChallenge>();

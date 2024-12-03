@@ -26,11 +26,11 @@ public class Player01Trigger_OverDrive : MonoBehaviour
     {
         if(TakeAction && !TakeActionMultiButton)
         {
-            Col.enabled = !Player01TakeAction.Hits;
+            Col.enabled = !Player01TakeActionInChallenge.Hits;
         }
         else if(!TakeAction && TakeActionMultiButton && animationName != "6LPRPLKRP_Capybara")
         {
-            Col.enabled = !Player01TakeActionMultibutton.Hits;
+            Col.enabled = !Player01TakeActionMultiButtonInChallange.Hits;
         }
         if(animationName == "6LPRPLKRP_Capybara")
         {
@@ -59,7 +59,6 @@ public class Player01Trigger_OverDrive : MonoBehaviour
                 }
                 else if (animationName == "6LPRPLKRP_Capybara")
                 {
-                    // ไม่ตั้งค่า Hits เพื่อไม่ให้ปิด Collider
                     player02Movement_Overdrive.TakeDamage(damage, force, animationName);
                     return;
                 }
