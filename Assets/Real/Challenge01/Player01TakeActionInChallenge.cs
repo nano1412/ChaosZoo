@@ -29,6 +29,9 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     public bool holdbuttonHorizontal = false;
     public float holdTimeVertical;
     public float holdTimeHorizontal;
+    public ChalllengeScripttable challengeData;
+    public string verticalInput;
+    public string horizontalInput;
     public int inputCount = 0; // ตัวแปรสำหรับนับจำนวนอินพุต
 
     [Header("Enable/Disable Actions")]
@@ -55,9 +58,18 @@ public class Player01TakeActionInChallenge : MonoBehaviour
 
     void Update()
     {
-        string verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
-        string horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
+        if(challengeData.CurrentRound <= 9)
+        {
+            verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
+            horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
+        }
+        else if(challengeData.CurrentRound >= 10)
+        {
+            verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY1" : "Vertical";
+            horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
+        }
         bool Joystick = selectControllerInChallenge.Selectjoystick01 ? true : false;
+        
 
         HandleQCF();
         HandleQCB();
@@ -156,8 +168,8 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     {
         if (isPerformingAction || isHCBInProgress) return;
 
-        string verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
-        string horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
+        // string verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
+        // string horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
         bool Joystick = selectControllerInChallenge.Selectjoystick01 ? true : false;
 
         if(Joystick)
@@ -280,8 +292,8 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     {   
         if(isPerformingAction || isHCBInProgress) return;
         
-        string verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
-        string horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
+        // string verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
+        // string horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
         bool Joystick = selectControllerInChallenge.Selectjoystick01 ? true : false;
 
 
@@ -407,8 +419,8 @@ public class Player01TakeActionInChallenge : MonoBehaviour
             return;
         }
 
-        string verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
-        string horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
+        // string verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
+        // string horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
         bool Joystick = selectControllerInChallenge.Selectjoystick01 ? true : false;
 
 
@@ -555,8 +567,8 @@ public class Player01TakeActionInChallenge : MonoBehaviour
             return;
         }
 
-        string verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
-        string horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
+        // string verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
+        // string horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
         bool Joystick = selectControllerInChallenge.Selectjoystick01 ? true : false;
 
         if(inputState == InputState.None || inputState == InputState.ForwardAgain && !isHCBInProgress)
@@ -719,8 +731,8 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
 
-        string verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
-        string horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
+        // string verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
+        // string horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
         bool Joystick = selectControllerInChallenge.Selectjoystick01 ? true : false;
         
         if(Joystick)
