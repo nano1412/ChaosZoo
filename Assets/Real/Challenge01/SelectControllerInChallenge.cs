@@ -47,7 +47,13 @@ public class SelectControllerInChallenge : MonoBehaviour
     {
         UpdateControlSettings();
 
-        if (challlengeScripttable.CurrentRound == 15)
+        /*if (challlengeScripttable.CurrentRound == 15)
+        {
+            Time.timeScale = 0;
+            FinalResult.SetActive(true);
+            UpdateScores();
+        }*/
+        if (challlengeScripttable.CurrentRound == 10)
         {
             Time.timeScale = 0;
             FinalResult.SetActive(true);
@@ -132,11 +138,11 @@ public class SelectControllerInChallenge : MonoBehaviour
     {
         int keyboardScore = CountTrueValues(0, 4);
         int joystickScore = CountTrueValues(5, 9);
-        int acradeStickScore = CountTrueValues(10, 14);
+        //int acradeStickScore = CountTrueValues(10, 14);
 
         scoreKeyBoard.text = "KeyBoard : " + keyboardScore.ToString() + "/5";
         scoreJoystick.text = "JoyStick : " + joystickScore.ToString() + "/5";
-        scoreAcradestick.text = "AcradeStick : " + acradeStickScore.ToString() + "/5";
+        //scoreAcradestick.text = "AcradeStick : " + acradeStickScore.ToString() + "/5";
     }
 
     private int CountTrueValues(int startIndex, int endIndex)

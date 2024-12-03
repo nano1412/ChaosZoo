@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player02MoveInChallenge : MonoBehaviour
+public class Player02Movement_Overdrive : MonoBehaviour
 {
     public GameObject player02;
     public GameObject oppenent;
@@ -18,6 +18,7 @@ public class Player02MoveInChallenge : MonoBehaviour
     [SerializeField] private ChalllengeScripttable challengeData;
     public SelectControllerInChallenge selectControllerInChallenge;
     public GetValueInChallenge getValueInChallenge;
+    public string animationOverdrive;
 
     private int currentTagIndex = 0;
     public float time;
@@ -56,64 +57,30 @@ public class Player02MoveInChallenge : MonoBehaviour
                 selectControllerInChallenge.ResetScene();
                 challengeData.CurrentRound++;
                 time = 0;
-                stopAttack = false;
             }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void TakeDamage(int damage, float force, string actionGrapName)
     {
-        if (currentTagIndex < validTags.Count)
+        if(actionGrapName == "no")
         {
-            if (other.tag == validTags[currentTagIndex])
-            {
-                anim.SetTrigger("Hurt");
-                currentTagIndex++;
-                if(stopAttack)
-                {
-                    Debug.Log("Tag mismatch: " + other.tag + ". Expected: " + validTags[currentTagIndex]);
-                    challengeData.boolList.Add(false);
-                    currentTagIndex = 0; // Reset tag index for the next round
-                    getValueInChallenge.RedUpdate();
+            anim.SetTrigger("Knock");
+            challengeData.boolList.Add(false);
+            currentTagIndex = 0; // Reset tag index for the next round
+            getValueInChallenge.RedUpdate();
 
-                    Time.timeScale = 0;
-                    DisablePlayerControls(); // Disable player controls
-                    selectControllerInChallenge.DisableScripts();
-                    selectControllerInChallenge.ResetScene();
-                    challengeData.CurrentRound++;
-                    stopAttack = false;
-                }
-                if (currentTagIndex >= validTags.Count && !stopAttack)
-                {
-                    challengeData.boolList.Add(true);
-                    currentTagIndex = 0; // Reset tag index for the next round
-                    getValueInChallenge.GreenUpdate();
-                    challengeData.CurrentRound++;
-                    time = 0;
-
-                    Time.timeScale = 0;
-                    DisablePlayerControls(); // Disable player controls
-                    selectControllerInChallenge.DisableScripts();
-                    selectControllerInChallenge.ResetScene();
-                    stopAttack = false;
-                }
-            }
-            else
-            {
-                anim.SetTrigger("Knock");
-                Debug.Log("Tag mismatch: " + other.tag + ". Expected: " + validTags[currentTagIndex]);
-                challengeData.boolList.Add(false);
-                currentTagIndex = 0; // Reset tag index for the next round
-                getValueInChallenge.RedUpdate();
-
-                Time.timeScale = 0;
-                DisablePlayerControls(); // Disable player controls
-                selectControllerInChallenge.DisableScripts();
-                selectControllerInChallenge.ResetScene();
-                challengeData.CurrentRound++;
-                time = 0;
-                stopAttack = false;
-            }
+            Time.timeScale = 0;
+            DisablePlayerControls(); // Disable player controls
+            selectControllerInChallenge.DisableScripts();
+            selectControllerInChallenge.ResetScene();
+            challengeData.CurrentRound++;
+            time = 0;
+        }
+        else if(animationOverdrive == "632146S_Shark" && actionGrapName == "632146S_Shark")
+        {
+            anim.SetTrigger("Shark_grab_HCBF");
+            StartCoroutine(GetValue(5f));
         }
     }
 
@@ -164,5 +131,21 @@ public class Player02MoveInChallenge : MonoBehaviour
             newScale.x = Mathf.Abs(newScale.x);
             transform.localScale = newScale;
         }
+    }
+
+    IEnumerator GetValue(float time)
+    {
+        yield return new WaitForSeconds(time);
+        challengeData.boolList.Add(true);
+        currentTagIndex = 0; // Reset tag index for the next round
+        getValueInChallenge.GreenUpdate();
+        challengeData.CurrentRound++;
+        time = 0;
+
+        Time.timeScale = 0;
+        DisablePlayerControls(); // Disable player controls
+        selectControllerInChallenge.DisableScripts();
+        selectControllerInChallenge.ResetScene();
+
     }
 }

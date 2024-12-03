@@ -30,7 +30,7 @@ public class Player01MovementChallenge : MonoBehaviour
     public bool faceRight => FaceingRight;
     public bool isJump => IsJumping;
     public bool animCrouch => animationCouch;
-
+    public ChalllengeScripttable challengeData;
     public string horizontalInput = "Horizontal";
     public string verticalInput = "Vertical";
 
@@ -56,22 +56,45 @@ public class Player01MovementChallenge : MonoBehaviour
             StartCoroutine(FaceLeft());
         }
 
-        if(selectControllerInChallenge.SelectKeyBoard01)
+        if(challengeData.CurrentRound <= 9)
         {
-            horizontalInput = "Horizontal";
-            verticalInput = "Vertical";
-            walkThreshold = 0.1f;
-            verticalThreshold = 0.1f;
-            Joystick = false;
-            
+            if(selectControllerInChallenge.SelectKeyBoard01)
+            {
+                horizontalInput = "Horizontal";
+                verticalInput = "Vertical";
+                walkThreshold = 0.1f;
+                verticalThreshold = 0.1f;
+                Joystick = false;
+                
+            }
+            if(selectControllerInChallenge.Selectjoystick01)
+            {
+                horizontalInput = "LeftAnalogX2";
+                verticalInput = "LeftAnalogY2";
+                walkThreshold = 0.4f;
+                verticalThreshold = 0.4f;
+                Joystick = true;
+            }
         }
-        if(selectControllerInChallenge.Selectjoystick01)
+        else if(challengeData.CurrentRound >= 10)
         {
-            horizontalInput = "LeftAnalogX2";
-            verticalInput = "LeftAnalogY2";
-            walkThreshold = 0.4f;
-            verticalThreshold = 0.4f;
-            Joystick = true;
+            if(selectControllerInChallenge.SelectKeyBoard01)
+            {
+                horizontalInput = "Horizontal";
+                verticalInput = "Vertical";
+                walkThreshold = 0.1f;
+                verticalThreshold = 0.1f;
+                Joystick = false;
+                
+            }
+            if(selectControllerInChallenge.Selectjoystick01)
+            {
+                horizontalInput = "LeftAnalogX1";
+                verticalInput = "LeftAnalogY1";
+                walkThreshold = 0.4f;
+                verticalThreshold = 0.6f;
+                Joystick = true;
+            }
         }
 
         HandleCrouch();
