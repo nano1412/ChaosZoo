@@ -64,6 +64,7 @@ public class Player01Trigger_OverDrive : MonoBehaviour
                 }
                 else if (animationName == "4RPLPRKLK_Ken")
                 {
+                    player02Movement_Overdrive.TakeDamage(damage, force, animationName);
                     Player01TakeActionInChallenge.Hits = true;
                     Player01TakeActionMultibutton.Hits = true;
                 }

@@ -24,6 +24,7 @@ public class Player02Movement_Overdrive : MonoBehaviour
     private int currentTagIndex = 0;
     public float time;
     public bool stopAttack = false;
+    private bool hasKenAttackExecuted = false;
 
     void Start()
     {
@@ -66,17 +67,22 @@ public class Player02Movement_Overdrive : MonoBehaviour
     {
         if(actionGrapName == "no")
         {
-            anim.SetTrigger("Knock");
-            challengeData.boolList.Add(false);
-            currentTagIndex = 0; // Reset tag index for the next round
-            getValueInChallenge.RedUpdate();
+            if(!hasKenAttackExecuted)
+            {
+                anim.SetTrigger("Knock");
+                challengeData.boolList.Add(false);
+                currentTagIndex = 0; // Reset tag index for the next round
+                getValueInChallenge.RedUpdate();
 
-            Time.timeScale = 0;
-            DisablePlayerControls(); // Disable player controls
-            selectControllerInChallenge.DisableScripts();
-            selectControllerInChallenge.ResetScene();
-            challengeData.CurrentRound++;
-            time = 0;
+                Time.timeScale = 0;
+                DisablePlayerControls(); // Disable player controls
+                selectControllerInChallenge.DisableScripts();
+                selectControllerInChallenge.ResetScene();
+                challengeData.CurrentRound++;
+                time = 0;
+                hasKenAttackExecuted = true;
+                StartCoroutine(ResethaskanAttack());
+            }
         }
         else if(animationOverdrive == "632146S_Shark" && actionGrapName == "632146S_Shark")
         {
@@ -87,6 +93,15 @@ public class Player02Movement_Overdrive : MonoBehaviour
         {
             anim.SetTrigger("Hurt");
             StartCoroutine(GetValue(1f));
+        }
+        else if(animationOverdrive == "4RPLPRKLK_Ken" && actionGrapName == "4RPLPRKLK_Ken")
+        {
+            if(!hasKenAttackExecuted)
+            {
+                anim.SetTrigger("Ken_4RPLPRKLK");
+                StartCoroutine(GetValue(3f));
+                hasKenAttackExecuted = true;
+            }
         }
     }
 
@@ -153,6 +168,14 @@ public class Player02Movement_Overdrive : MonoBehaviour
         DisablePlayerControls(); // Disable player controls
         selectControllerInChallenge.DisableScripts();
         selectControllerInChallenge.ResetScene();
+        hasKenAttackExecuted = false;
+
+    }
+
+    IEnumerator ResethaskanAttack()
+    {
+        yield return new WaitForSeconds(0.5f);
+        hasKenAttackExecuted = false;
 
     }
 }

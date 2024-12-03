@@ -76,9 +76,9 @@ public class Player01Trigger : MonoBehaviour
             }
             else if (Check)
             {
-                GetComponentInParent<Player02TakeAction>().OnHits();
                 Player01TakeAction.Hits = true;
                 Player01TakeActionMultibutton.Hits = true;
+                GetComponentInParent<Player01TakeAction>().OnHits();
             }
 
             StartCoroutine(ResetHits());
