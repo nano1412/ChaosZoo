@@ -30,6 +30,7 @@ public class Player02TakeAction : MonoBehaviour
     public bool holdbuttonHorizontal = false;
     public float holdTimeVertical;
     public float holdTimeHorizontal;
+    public int inputCount = 0; // ตัวแปรสำหรับนับจำนวนอินพุต
 
     [Header("Enable/Disable Actions")]
     public List<SpecialMoveToggle> specialMoveToggles = new List<SpecialMoveToggle>()
@@ -103,7 +104,7 @@ public class Player02TakeAction : MonoBehaviour
         }
 
 
-        if (isPerformingAction || isQCInProgress || isHCBInProgress) return;
+        if (isPerformingAction || isQCInProgress || isHCBInProgress || player02Movement.isJump) return;
 
         if(selectController.Selectjoystick02)
         {
@@ -632,7 +633,7 @@ public class Player02TakeAction : MonoBehaviour
             {
                 if(Input.GetAxis(horizontalInput) > 0.4f && !holdbuttonHorizontal)
                 {
-                    inputState = InputState.Forward;
+                    inputState = InputState.ForwardAgain;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
                     return;
@@ -642,13 +643,13 @@ public class Player02TakeAction : MonoBehaviour
             {
                 if(Input.GetAxis(horizontalInput) < -0.4f && !holdbuttonHorizontal)
                 {
-                    inputState = InputState.Forward;
+                    inputState = InputState.ForwardAgain;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
                 }
             }
         }
-        if(inputState == InputState.Forward && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
+        if(inputState == InputState.ForwardAgain && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
         {
             if(Joystick)
             {
@@ -702,6 +703,7 @@ public class Player02TakeAction : MonoBehaviour
                     ActionHCBF("HeavySlash");
                     Hits = false;
                     return;
+
                 }
             }
         }
@@ -711,6 +713,7 @@ public class Player02TakeAction : MonoBehaviour
             isHCBInProgress = false;
         }
     }
+
     private void PerformAction(string actionName)
     {   
         isPerformingAction = true;

@@ -10,6 +10,7 @@ public class Player02Health : MonoBehaviour
     public ScriptableHealth scriptableHealth;
     public Player02Movement player02Movement;
     public Player02TakeAction player02TakeAction;
+    public Player02TakeActionMultibutton player02TakeActionMultibutton;
     public Player02EventAnimation player02EventAnimation;
     //public Slider hpMainSlider;
     //public Slider hpEaseSlider;
@@ -17,6 +18,7 @@ public class Player02Health : MonoBehaviour
     public bool block = false;
     public bool knockout = false;
     public bool SharkDrive = false;
+    public bool KenInAir = false;
     public int currentdamage = 0;
     public float time;
 
@@ -39,13 +41,21 @@ public class Player02Health : MonoBehaviour
                 time = 0;
             }
         }
+        if(scriptableHealth.currentHealth <= 0)
+        {
+            player02Movement.isPerformingAction = true;
+            player02TakeAction.isPerformingAction = true;
+            player02TakeActionMultibutton.isPerformingAction = true;
+            //anim.SetTrigger("Dead");
+            knockout = true;
+        }
 
         //HPSliderLink();
     }
 
     public void TakeDamage(int damage, float force, string actionGrabName)
     {
-        if(scriptableHealth.currentHealth > 5 && !knockout && !SharkDrive)
+        if(scriptableHealth.currentHealth > 5 && !knockout && !SharkDrive && !KenInAir)
         {
             if(actionGrabName == "no")
             {
@@ -118,43 +128,62 @@ public class Player02Health : MonoBehaviour
                 }
                 player02Movement.isPerformingAction = true;
                 player02TakeAction.isPerformingAction = true;
+                player02TakeActionMultibutton.isPerformingAction = true;
                 StartCoroutine(resetHurt());
             }
             else if(actionGrabName == "63214P_Shark")
             {
-                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive)
+                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive && !KenInAir)
                 {
                     player02EventAnimation.forcehurt = force;
                     anim.SetTrigger("Shark_grab_HCB");
                     StartCoroutine(resetGrapHCB(damage));
                     player02Movement.isPerformingAction = true;
                     player02TakeAction.isPerformingAction = true;
+                    player02TakeActionMultibutton.isPerformingAction = true;
                 }
             }
             else if(actionGrabName == "632146S_Shark")
             {
-                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive)
+                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive && !KenInAir)
                 {
                     player02EventAnimation.forcehurt = force;
                     anim.SetTrigger("Shark_grab_HCBF");
                     StartCoroutine(resetGrapHCBF(damage));
                     player02Movement.isPerformingAction = true;
                     player02TakeAction.isPerformingAction = true;
+                    player02TakeActionMultibutton.isPerformingAction = true;
                 }
             }
             else if(actionGrabName == "6LPRPLKRP_Capybara")
             {
-                if(scriptableHealth.currentHealth > 0  && !knockout)
+                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive && !KenInAir)
                 {
                     scriptableHealth.currentHealth -= damage;
-                    anim.SetTrigger("Hurt");
-                    player02Movement.isPerformingAction = true;
-                    player02TakeAction.isPerformingAction = true;
-                    if(scriptableHealth.currentHealth <= 0)
+                    if(scriptableHealth.currentHealth > 0)
+                    {
+                        anim.SetTrigger("Hurt");
+                    }
+                    else if(scriptableHealth.currentHealth <= 0)
                     {
                         anim.SetTrigger("Dead");
                         knockout = true;
                     }
+                    player02Movement.isPerformingAction = true;
+                    player02TakeAction.isPerformingAction = true;
+                    player02TakeActionMultibutton.isPerformingAction = true;
+                }
+            }
+            else if(actionGrabName == "4RPLPRKLK_Ken")
+            {
+                if(scriptableHealth.currentHealth > 0  && !knockout && !SharkDrive && !KenInAir)
+                {
+                    player02EventAnimation.forcehurt = force;
+                    anim.SetTrigger("Ken_4RPLPRKLK");
+                    StartCoroutine(resetKenSpecial(damage));
+                    player02Movement.isPerformingAction = true;
+                    player02TakeAction.isPerformingAction = true;
+                    player02TakeActionMultibutton.isPerformingAction = true;
                 }
             }    
         }
@@ -183,6 +212,7 @@ public class Player02Health : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         player02Movement.isPerformingAction = false;
         player02TakeAction.isPerformingAction = false;
+        player02TakeActionMultibutton.isPerformingAction = false;
         player02EventAnimation.forcehurt = 0;
     }
 
@@ -192,6 +222,7 @@ public class Player02Health : MonoBehaviour
         anim.SetTrigger("recove");
         player02Movement.isPerformingAction = false;
         player02TakeAction.isPerformingAction = false;
+        player02TakeActionMultibutton.isPerformingAction = false;
         knockout = false;
     }
     IEnumerator resetGrapHCB(int damage)
@@ -199,8 +230,6 @@ public class Player02Health : MonoBehaviour
         yield return new WaitForSeconds(2f);
         scriptableHealth.currentHealth -= damage;
         player02EventAnimation.forcehurt = 0;
-        player02Movement.isPerformingAction = false;
-        player02TakeAction.isPerformingAction = false;
         if(scriptableHealth.currentHealth > 0)
         {
             StartCoroutine(recovery());
@@ -208,6 +237,9 @@ public class Player02Health : MonoBehaviour
         else
         {
             knockout = true;
+            player02Movement.isPerformingAction = true;
+            player02TakeAction.isPerformingAction = true;
+            player02TakeActionMultibutton.isPerformingAction = true;
         }
 
     }
@@ -217,8 +249,6 @@ public class Player02Health : MonoBehaviour
         yield return new WaitForSeconds(4f);
         scriptableHealth.currentHealth -= damage;
         player02EventAnimation.forcehurt = 0;
-        player02Movement.isPerformingAction = false;
-        player02TakeAction.isPerformingAction = false;
         if(scriptableHealth.currentHealth > 0)
         {
             StartCoroutine(recovery());
@@ -226,6 +256,31 @@ public class Player02Health : MonoBehaviour
         else
         {
             knockout = true;
+            player02Movement.isPerformingAction = true;
+            player02TakeAction.isPerformingAction = true;
+            player02TakeActionMultibutton.isPerformingAction = true;
+        }
+    }
+
+    IEnumerator resetKenSpecial(int damage)
+    {
+        yield return new WaitForSeconds(0.5f);
+        scriptableHealth.currentHealth -= damage;
+        player02EventAnimation.forcehurt = 0;
+        if(scriptableHealth.currentHealth <= 0)
+        {
+            anim.SetTrigger("DeadKen");
+            knockout = true;
+            player02Movement.isPerformingAction = true;
+            player02TakeAction.isPerformingAction = true;
+            player02TakeActionMultibutton.isPerformingAction = true;
+        }
+        else
+        {
+            player02Movement.isPerformingAction = false;
+            player02TakeAction.isPerformingAction = false;
+            player02TakeActionMultibutton.isPerformingAction = false;
+            knockout = false;
         }
     }
 }

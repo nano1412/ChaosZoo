@@ -13,6 +13,7 @@ public class Player01MovementChallenge : MonoBehaviour
     public GameObject oppenent;
     public Vector3 oppPosition;
     public bool isPerformingAction = false;
+    public SelectControllerInChallenge selectControllerInChallenge;
 
     private Rigidbody rb;
     private Animator anim;
@@ -22,9 +23,13 @@ public class Player01MovementChallenge : MonoBehaviour
     private bool FaceingRight = true;
     private bool animationCouch = false;
     private bool IsJumping = false;
+     private bool IsDash = false;
+    public bool Joystick = false;
 
     public bool faceLeft => FaceingLeft;
     public bool faceRight => FaceingRight;
+    public bool isJump => IsJumping;
+    public bool animCrouch => animationCouch;
 
     public string horizontalInput = "Horizontal";
     public string verticalInput = "Vertical";
@@ -51,35 +56,88 @@ public class Player01MovementChallenge : MonoBehaviour
             StartCoroutine(FaceLeft());
         }
 
-        horizontalInput = "Horizontal";
-        verticalInput = "Vertical";
-        walkThreshold = 0.1f;
-        verticalThreshold = 0.1f;
-        if(FindObjectOfType<SelectControllerInChallenge>().Selectjoystick)
+        if(selectControllerInChallenge.SelectKeyBoard01)
         {
-            horizontalInput = "HorizontalJoyStick";
-            verticalInput = "VerticalJoystick";
-            walkThreshold = 0.99f;
+            horizontalInput = "Horizontal";
+            verticalInput = "Vertical";
+            walkThreshold = 0.1f;
+            verticalThreshold = 0.1f;
+            Joystick = false;
+            
+        }
+        if(selectControllerInChallenge.Selectjoystick01)
+        {
+            horizontalInput = "LeftAnalogX2";
+            verticalInput = "LeftAnalogY2";
+            walkThreshold = 0.4f;
             verticalThreshold = 0.4f;
+            Joystick = true;
         }
 
         HandleCrouch();
         HandleMovement();
         HandleJump();
+        HandleDash();
     }
 
     public void HandleCrouch()
     {
         float verticalAxis = Input.GetAxis(verticalInput);
-        if(verticalAxis < -verticalThreshold && IsGrounded())
+        float horizontalAxis = Input.GetAxis(horizontalInput);
+
+        if(Joystick)
         {
-            animationCouch = true;
-            anim.SetBool("Crouch", true);
+            if(-verticalAxis < -verticalThreshold && IsGrounded())
+            {
+                animationCouch = true;
+                anim.SetBool("Crouch", true);
+                if(horizontalAxis < -walkThreshold && FaceingRight)
+                {
+                    //player01Health.block = true;
+                }
+                else if(horizontalAxis > walkThreshold && FaceingLeft)
+                {
+                    ////player01Health.block = true;
+                }
+                else if(horizontalAxis == 0)
+                {
+                    //player01Health.block = false;
+                }
+            }
+            else
+            {
+                animationCouch = false;
+                anim.SetBool("Crouch", false);
+                //player01Health.block = false;
+
+            }
         }
         else
         {
-            animationCouch = false;
-            anim.SetBool("Crouch", false);
+            if(verticalAxis < -verticalThreshold && IsGrounded())
+            {
+                animationCouch = true;
+                anim.SetBool("Crouch", true);
+                if(horizontalAxis < -walkThreshold && FaceingRight)
+                {
+                    //player01Health.block = true;
+                }
+                else if(horizontalAxis > walkThreshold && FaceingLeft)
+                {
+                    //player01Health.block = true;
+                }
+                else if(horizontalAxis == 0)
+                {
+                    //player01Health.block = false;
+
+                }
+            }
+            else
+            {
+                animationCouch = false;
+                anim.SetBool("Crouch", false);
+                //player01Health.block = false;
+            }
         }
     }
 
@@ -88,35 +146,138 @@ public class Player01MovementChallenge : MonoBehaviour
         if(animationCouch) return;
         
         float horizontalAxis = Input.GetAxis(horizontalInput);
-        if(horizontalAxis > walkThreshold && canWalkright)
+        if(horizontalAxis > walkThreshold)
         {
             walkanimation = walkspeed;
             anim.SetBool("canWalk", true);
+            if(FaceingLeft)
+            {
+                //player01Health.block = true;
+            }
             transform.Translate(transform.right * walkspeed * Time.deltaTime);
         }
-        else if(horizontalAxis < -walkThreshold && canWalkleft)
+        else if(horizontalAxis < -walkThreshold)
         {
             walkanimation = -walkspeed;
             anim.SetBool("canWalk", true);
+            if(FaceingRight)
+            {
+                //player01Health.block = true;
+            }
             transform.Translate(-transform.right * walkspeed * Time.deltaTime);
         }
         else
         {
             walkanimation = 0f;
             anim.SetBool("canWalk", false);
+            //player01Health.block = false;
         }
         anim.SetFloat("Speed", walkanimation);
     }  
+
     private void HandleJump()
     {
-        float verticalAxis = Input.GetAxis(verticalInput);
-
-        if(verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+       float verticalAxis = Input.GetAxis(verticalInput);
+        if(Joystick)
         {
-            IsJumping = true;
-            anim.SetTrigger("Jump");
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            StartCoroutine(JumpPause());
+            if(-verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+            {
+                IsJumping = true;
+                anim.SetTrigger("Jump");
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                walkspeed = 0.6f;
+                StartCoroutine(JumpPause());
+            }
+        }
+        else
+        {
+            if(verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+            {
+                IsJumping = true;
+                anim.SetTrigger("Jump");
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                walkspeed = 0.6f;
+                StartCoroutine(JumpPause());
+            }
+        }
+    } 
+    private void HandleDash()
+    {
+        float horizontalAxis = Input.GetAxis(horizontalInput);
+        
+        if(FaceingRight)
+        {
+            if(Joystick)
+            {
+                if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player02Joystick05") && !IsDash)
+                {
+                    anim.SetTrigger("DashForward");
+                    IsDash = true;
+                    //player01Health.knockout = true;
+                    StartCoroutine(DashPause());
+                }
+                else if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player02Joystick05") && !IsDash)
+                {
+                    anim.SetTrigger("DashBackward");
+                    IsDash = true;
+                    StartCoroutine(DashPause());
+                }
+            }
+            else
+            {
+                if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player02Bt05") && !IsDash)
+                {
+                    anim.SetTrigger("DashForward");
+                    IsDash = true;
+                    //player01Health.knockout = true;
+                    StartCoroutine(DashPause());
+                }
+                else if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player02Bt05") && !IsDash)
+                {
+                    anim.SetTrigger("DashBackward");
+                    IsDash = true;
+                    //player01Health.knockout = true;
+                    StartCoroutine(DashPause());
+                }
+            }
+            
+        }
+        else
+        {
+            if(Joystick)
+            {
+                if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player02Joystick05") && !IsDash)
+                {
+                    anim.SetTrigger("DashForward");
+                    IsDash = true;
+                    //player01Health.knockout = true;
+                    StartCoroutine(DashPause());
+                }
+                else if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player02Joystick05") && !IsDash)
+                {
+                    anim.SetTrigger("DashBackward");
+                    IsDash = true;
+                    //player01Health.knockout = true;
+                    StartCoroutine(DashPause());
+                }
+            }
+            else
+            {
+                if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player02Bt05") && !IsDash)
+                {
+                    anim.SetTrigger("DashForward");
+                    IsDash = true;
+                    //player01Health.knockout = true;
+                    StartCoroutine(DashPause());
+                }
+                else if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player02Bt05") && !IsDash)
+                {
+                    anim.SetTrigger("DashBackward");
+                    IsDash = true;
+                    //player01Health.knockout = true;
+                    StartCoroutine(DashPause());
+                }
+            }
         }
     } 
 
@@ -125,34 +286,18 @@ public class Player01MovementChallenge : MonoBehaviour
         return Physics.Raycast(transform.position, Vector3.down, 1.1f);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "WallLeft")
-        {
-            canWalkleft = false;
-        }
-        if (collision.gameObject.tag == "WallRight")
-        {
-            canWalkright = false;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "WallLeft")
-        {
-            canWalkleft = true;
-        }
-        if (collision.gameObject.tag == "WallRight")
-        {
-            canWalkright = true;
-        }
-    }
-
     IEnumerator JumpPause()
     {
         yield return new WaitForSeconds(1.0f);
         IsJumping = false;
+        walkspeed = 0.2f;
+    }
+
+    IEnumerator DashPause()
+    {
+        yield return new WaitForSeconds(0.5f);
+        IsDash = false;
+        //player01Health.knockout = false;
     }
 
     IEnumerator FaceLeft()
@@ -163,14 +308,13 @@ public class Player01MovementChallenge : MonoBehaviour
             FaceingRight = false;
             yield return new WaitForSeconds(0.15f);
 
-            // Flip the character by inverting the scale on the X axis
             Vector3 newScale = transform.localScale;
-            newScale.x = Mathf.Abs(newScale.x) * -1;  // Invert the X scale to face left
+            newScale.x = Mathf.Abs(newScale.x) * -1;  
             transform.localScale = newScale;
 
-            // Set weights: RightLayer = 0, LeftLayer = 1
-            anim.SetLayerWeight(1, 0);  // RightLayer
-            anim.SetLayerWeight(2, 1);  // LeftLayer
+            anim.SetBool("FaceLeft", true);
+            anim.SetBool("FaceRight", false);
+            
         }
     }
 
@@ -182,14 +326,13 @@ public class Player01MovementChallenge : MonoBehaviour
             FaceingLeft = false;
             yield return new WaitForSeconds(0.15f);
 
-            // Reset the character scale to face right
             Vector3 newScale = transform.localScale;
-            newScale.x = Mathf.Abs(newScale.x);  // Ensure the X scale is positive
+            newScale.x = Mathf.Abs(newScale.x);
             transform.localScale = newScale;
 
-            // Set weights: RightLayer = 1, LeftLayer = 0
-            anim.SetLayerWeight(1, 1);  // RightLayer
-            anim.SetLayerWeight(2, 0);  // LeftLayer
+            anim.SetBool("FaceLeft", false);
+            anim.SetBool("FaceRight", true);
+            
         }
     }
 }
