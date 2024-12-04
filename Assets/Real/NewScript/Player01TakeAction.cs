@@ -11,9 +11,11 @@ public class Player01TakeAction : MonoBehaviour
     public Player01CameraSpecial player01CameraSpecial;
     public Player01Health player01Health;
     public SelectController selectController;
+    public BoxCollider boxColliderPangeng;
     public bool isPerformingAction = false;
     public static bool Hits = false;
     public bool hits => Hits;
+    
 
     private Animator anim;
 
@@ -786,6 +788,11 @@ public class Player01TakeAction : MonoBehaviour
     private void ActionQCF(string actionName)
     {
         anim.SetTrigger("QCF_" + actionName);
+        if(nameCharacter == "Pengang")
+        {
+            boxColliderPangeng.enabled = false;
+            StartCoroutine(ResetBoxCollider());
+        }
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         StartCoroutine(ResetQCState());
@@ -794,6 +801,11 @@ public class Player01TakeAction : MonoBehaviour
     private void ActionQCB(string actionName)
     {
         anim.SetTrigger("QCB_" + actionName);
+        if(nameCharacter == "Pengang")
+        {
+            boxColliderPangeng.enabled = false;
+            StartCoroutine(ResetBoxCollider());
+        }
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         StartCoroutine(ResetQCState());
@@ -878,6 +890,11 @@ public class Player01TakeAction : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         player01Health.SharkDrive = false;
+    }
+    IEnumerator ResetBoxCollider()
+    {
+        yield return new WaitForSeconds(1f);
+        boxColliderPangeng.enabled = true;
     }
 }
     
