@@ -8,6 +8,7 @@ public class Player02Movement_Overdrive : MonoBehaviour
     public GameObject oppenent;
     public Player01MovementChallenge movementScript;
     public Player01TakeActionInChallenge  actionScript;
+    public Player01TakeActionMultiButtonInChallange actionMultiButtonInChallange;
     public Vector3 oppPosition;
     public Animator anim;
     public Rigidbody rb;
@@ -23,6 +24,7 @@ public class Player02Movement_Overdrive : MonoBehaviour
     private int currentTagIndex = 0;
     public float time;
     public bool stopAttack = false;
+    private bool hasKenAttackExecuted = false;
 
     void Start()
     {
@@ -65,22 +67,41 @@ public class Player02Movement_Overdrive : MonoBehaviour
     {
         if(actionGrapName == "no")
         {
-            anim.SetTrigger("Knock");
-            challengeData.boolList.Add(false);
-            currentTagIndex = 0; // Reset tag index for the next round
-            getValueInChallenge.RedUpdate();
+            if(!hasKenAttackExecuted)
+            {
+                anim.SetTrigger("Knock");
+                challengeData.boolList.Add(false);
+                currentTagIndex = 0; // Reset tag index for the next round
+                getValueInChallenge.RedUpdate();
 
-            Time.timeScale = 0;
-            DisablePlayerControls(); // Disable player controls
-            selectControllerInChallenge.DisableScripts();
-            selectControllerInChallenge.ResetScene();
-            challengeData.CurrentRound++;
-            time = 0;
+                Time.timeScale = 0;
+                DisablePlayerControls(); // Disable player controls
+                selectControllerInChallenge.DisableScripts();
+                selectControllerInChallenge.ResetScene();
+                challengeData.CurrentRound++;
+                time = 0;
+                hasKenAttackExecuted = true;
+                StartCoroutine(ResethaskanAttack());
+            }
         }
         else if(animationOverdrive == "632146S_Shark" && actionGrapName == "632146S_Shark")
         {
             anim.SetTrigger("Shark_grab_HCBF");
             StartCoroutine(GetValue(5f));
+        }
+        else if(animationOverdrive == "6LPRPLKRP_Capybara" && actionGrapName == "6LPRPLKRP_Capybara")
+        {
+            anim.SetTrigger("Hurt");
+            StartCoroutine(GetValue(1f));
+        }
+        else if(animationOverdrive == "4RPLPRKLK_Ken" && actionGrapName == "4RPLPRKLK_Ken")
+        {
+            if(!hasKenAttackExecuted)
+            {
+                anim.SetTrigger("Ken_4RPLPRKLK");
+                StartCoroutine(GetValue(3f));
+                hasKenAttackExecuted = true;
+            }
         }
     }
 
@@ -95,6 +116,7 @@ public class Player02Movement_Overdrive : MonoBehaviour
         if (actionScript != null)
         {
             actionScript.enabled = false;
+            actionMultiButtonInChallange.enabled = false;
         }
 
         Player02MoveInChallenge player02MovementScript = player02.GetComponent<Player02MoveInChallenge>();
@@ -146,6 +168,14 @@ public class Player02Movement_Overdrive : MonoBehaviour
         DisablePlayerControls(); // Disable player controls
         selectControllerInChallenge.DisableScripts();
         selectControllerInChallenge.ResetScene();
+        hasKenAttackExecuted = false;
+
+    }
+
+    IEnumerator ResethaskanAttack()
+    {
+        yield return new WaitForSeconds(0.5f);
+        hasKenAttackExecuted = false;
 
     }
 }
