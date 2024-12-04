@@ -261,7 +261,6 @@ public class Player02TakeActionMultibutton : MonoBehaviour
             }
             return true;
         }
-        return false;
     }
 
     public void SpecialWithoutSpecialMoveEnergy(string action)
@@ -377,11 +376,25 @@ public class Player02TakeActionMultibutton : MonoBehaviour
         }
     }
 
+    public void OnHits()
+    {
+        StopCoroutine(ResetIsPerformingAction(0));
+        StartCoroutine(ResetCheckBool(0.25f));
+    }
+
+
     IEnumerator ResetIsPerformingAction(float time)
     {
         yield return new WaitForSeconds(time);
         isPerformingAction = false;
         player02Movement.isPerformingAction = false;
+    }
+
+    IEnumerator ResetCheckBool(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        isPerformingAction = false;
+        player02Movement.isPerformingAction = true;
     }
 }
 

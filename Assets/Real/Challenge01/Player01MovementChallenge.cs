@@ -17,8 +17,6 @@ public class Player01MovementChallenge : MonoBehaviour
 
     private Rigidbody rb;
     private Animator anim;
-    private bool canWalkleft = true;
-    private bool canWalkright = true;
     private bool FaceingLeft = false;
     private bool FaceingRight = true;
     private bool animationCouch = false;

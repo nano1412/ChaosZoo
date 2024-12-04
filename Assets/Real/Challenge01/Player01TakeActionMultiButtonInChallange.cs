@@ -258,7 +258,6 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
             }
             return true;
         }
-        return false;
     }
 
     public void SpecialWithoutSpecialMoveEnergy(string action)

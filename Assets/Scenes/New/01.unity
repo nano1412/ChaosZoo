@@ -207,6 +207,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &24108759
 GameObject:
@@ -292,6 +294,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &26776428
 GameObject:
@@ -347,6 +351,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 0}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &26776431
 BoxCollider:
@@ -429,6 +435,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &39779655
 BoxCollider:
@@ -505,6 +513,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &56385959
 BoxCollider:
@@ -616,7 +626,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &59890154
 Transform:
   m_ObjectHideFlags: 0
@@ -739,6 +749,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &70329433
 BoxCollider:
@@ -911,6 +923,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &87821880
 GameObject:
@@ -987,6 +1001,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &97907622
 GameObject:
@@ -1042,6 +1058,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &97907625
 BoxCollider:
@@ -1115,9 +1133,11 @@ MonoBehaviour:
   Check: 0
   Grab: 0
   TakeAction: 0
-  TakeActionMultiButton: 0
+  TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &116053747
 BoxCollider:
@@ -1259,6 +1279,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &175983786
 GameObject:
@@ -1314,6 +1336,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &175983789
 BoxCollider:
@@ -1656,6 +1680,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 6LPRPLKRP_Capybara
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!1 &207577307
 GameObject:
@@ -1732,6 +1758,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &210983563
 GameObject:
@@ -1787,6 +1815,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &210983566
 BoxCollider:
@@ -1863,6 +1893,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &212918401
 BoxCollider:
@@ -1904,7 +1936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &235794196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2098,6 +2130,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &244638761
 GameObject:
@@ -2149,10 +2183,12 @@ MonoBehaviour:
   force: 2
   Check: 0
   Grap: 1
-  TakeAction: 0
+  TakeAction: 1
   TakeActionMultiButton: 0
   animationNameGrap: 632146S_Shark
-  player01Health: {fileID: 0}
+  player01Health: {fileID: 336084517}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
   player02CameraSpecial: {fileID: 187303742}
 --- !u!65 &244638764
 BoxCollider:
@@ -2400,6 +2436,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &282303094
 GameObject:
@@ -2476,6 +2514,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 6LPRPLKRP_Capybara
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &285824484
 GameObject:
@@ -2531,6 +2571,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &285824487
 BoxCollider:
@@ -2741,6 +2783,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &311186122
 BoxCollider:
@@ -2855,6 +2899,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &323152425
 GameObject:
@@ -2931,6 +2977,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1001 &330267523
 PrefabInstance:
@@ -4094,12 +4142,14 @@ MonoBehaviour:
   Col: {fileID: 335042407}
   damage: 10
   force: 0
-  Check: 0
+  Check: 1
   Grab: 0
-  TakeAction: 0
+  TakeAction: 1
   TakeActionMultiButton: 0
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &335042407
 BoxCollider:
@@ -4265,6 +4315,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &338059385
 BoxCollider:
@@ -4362,6 +4414,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &349797654
 GameObject:
@@ -4417,6 +4471,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &349797657
 BoxCollider:
@@ -4591,6 +4647,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &365350223
 GameObject:
@@ -4667,6 +4725,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &370880341
 GameObject:
@@ -4722,6 +4782,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &370880344
 BoxCollider:
@@ -4884,6 +4946,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &384213317
 BoxCollider:
@@ -4990,6 +5054,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
   player02CameraSpecial: {fileID: 0}
 --- !u!4 &402516672 stripped
 Transform:
@@ -5182,6 +5248,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &458230752
 GameObject:
@@ -5258,6 +5326,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &469251164
 GameObject:
@@ -5313,6 +5383,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &469251167
 BoxCollider:
@@ -5542,6 +5614,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 0}
 --- !u!136 &538636535
 CapsuleCollider:
@@ -5658,6 +5732,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &554807548
 GameObject:
@@ -5713,6 +5789,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &554807551
 BoxCollider:
@@ -5843,6 +5921,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &599967140
 BoxCollider:
@@ -5927,6 +6007,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &601506476
 BoxCollider:
@@ -6098,6 +6180,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &632979243
 BoxCollider:
@@ -6256,6 +6340,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &658638479
 GameObject:
@@ -6400,6 +6486,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
   player02CameraSpecial: {fileID: 0}
 --- !u!65 &667157911
 BoxCollider:
@@ -6539,6 +6627,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &697334085
 GameObject:
@@ -6615,6 +6705,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &699030835
 GameObject:
@@ -6771,6 +6863,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &735568751
 GameObject:
@@ -6847,6 +6941,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &757066265
 GameObject:
@@ -6923,6 +7019,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &761846676
 GameObject:
@@ -7066,6 +7164,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 4RPLPRKLK_Ken
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &775084770
 BoxCollider:
@@ -7174,6 +7274,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &795504067
 GameObject:
@@ -7250,6 +7352,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &797976020
 GameObject:
@@ -7326,6 +7430,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &801130268
 GameObject:
@@ -7402,6 +7508,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &820433965
 GameObject:
@@ -7487,6 +7595,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &823034258
 GameObject:
@@ -7543,6 +7653,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &823034261
 BoxCollider:
@@ -8835,6 +8947,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &873270039
 GameObject:
@@ -8988,6 +9102,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &907624643
 GameObject:
@@ -9064,6 +9180,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 6LPRPLKRP_Capybara
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &917601033
 GameObject:
@@ -9259,11 +9377,13 @@ MonoBehaviour:
   force: 2
   Check: 0
   Grap: 1
-  TakeAction: 0
+  TakeAction: 1
   TakeActionMultiButton: 0
   animationNameGrap: 63214P_Shark
   player01Health: {fileID: 0}
-  player02CameraSpecial: {fileID: 0}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
+  player02CameraSpecial: {fileID: 187303742}
 --- !u!65 &944028444
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9369,6 +9489,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 0}
 --- !u!1 &969338833
 GameObject:
@@ -9445,6 +9567,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &973113234
 GameObject:
@@ -9544,6 +9668,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &982199016
 BoxCollider:
@@ -9888,6 +10014,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1008263929
 GameObject:
@@ -14267,6 +14395,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1025071135
 BoxCollider:
@@ -14364,6 +14494,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1035772135
 GameObject:
@@ -14487,6 +14619,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1049170881
 BoxCollider:
@@ -14563,6 +14697,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 6LPRPLKRP_Capybara
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1059152770
 BoxCollider:
@@ -14660,6 +14796,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1062009291
 GameObject:
@@ -14736,6 +14874,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1073951067
 GameObject:
@@ -14791,6 +14931,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1073951070
 BoxCollider:
@@ -14888,6 +15030,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1084716772
 GameObject:
@@ -14964,6 +15108,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1101138917
 GameObject:
@@ -15020,6 +15166,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1101138920
 BoxCollider:
@@ -15104,6 +15252,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1119925127
 BoxCollider:
@@ -15201,6 +15351,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1141408247
 GameObject:
@@ -15277,6 +15429,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1164043970
 GameObject:
@@ -15415,6 +15569,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1223770547
 BoxCollider:
@@ -15520,6 +15676,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1229024212
 GameObject:
@@ -15575,6 +15733,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1229024215
 BoxCollider:
@@ -15681,6 +15841,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1231702764
 GameObject:
@@ -15736,6 +15898,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 632146S_Shark
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 1012605542}
 --- !u!65 &1231702767
 BoxCollider:
@@ -15842,6 +16006,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1241870430
 GameObject:
@@ -15999,6 +16165,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1290132566
 GameObject:
@@ -16055,6 +16223,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1290132569
 BoxCollider:
@@ -16180,7 +16350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1299951464
 Transform:
   m_ObjectHideFlags: 0
@@ -16481,6 +16651,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!1 &1366147167
 GameObject:
@@ -20517,6 +20689,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1404853400
 GameObject:
@@ -20589,10 +20763,12 @@ MonoBehaviour:
   force: 0
   Check: 0
   Grap: 0
-  TakeAction: 0
+  TakeAction: 1
   TakeActionMultiButton: 0
   animationNameGrap: 63214P_Shark
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1406638996
 GameObject:
@@ -20663,12 +20839,14 @@ MonoBehaviour:
   Col: {fileID: 1406638999}
   damage: 10
   force: 0
-  Check: 0
+  Check: 1
   Grab: 0
   TakeAction: 0
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!1 &1420467966
 GameObject:
@@ -20724,6 +20902,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 63214P_Shark
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 1012605542}
 --- !u!65 &1420467969
 BoxCollider:
@@ -20807,6 +20987,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1425691456
 BoxCollider:
@@ -20891,6 +21073,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1430560416
 BoxCollider:
@@ -20988,6 +21172,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1456183046
 GameObject:
@@ -21081,6 +21267,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1465365785
 BoxCollider:
@@ -21240,6 +21428,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1475804522
 BoxCollider:
@@ -21316,6 +21506,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1485706758
 BoxCollider:
@@ -21413,6 +21605,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!4 &1500350686 stripped
 Transform:
@@ -21551,6 +21745,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1541444360
 BoxCollider:
@@ -21927,6 +22123,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1565539476
 BoxCollider:
@@ -22011,6 +22209,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1580175959
 BoxCollider:
@@ -22120,6 +22320,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!1 &1644914507
 GameObject:
@@ -22175,6 +22377,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1644914510
 BoxCollider:
@@ -22272,6 +22476,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1652529359
 GameObject:
@@ -22410,10 +22616,12 @@ MonoBehaviour:
   force: 0
   Check: 0
   Grab: 0
-  TakeAction: 0
+  TakeAction: 1
   TakeActionMultiButton: 0
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1669966963
 BoxCollider:
@@ -22517,6 +22725,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1700161234
 GameObject:
@@ -22593,6 +22803,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1700267037
 GameObject:
@@ -22648,6 +22860,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1700267040
 BoxCollider:
@@ -22724,6 +22938,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1701291036
 BoxCollider:
@@ -22904,6 +23120,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1716119564
 GameObject:
@@ -22959,6 +23177,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1716119567
 BoxCollider:
@@ -23056,6 +23276,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1751154045
 GameObject:
@@ -23155,6 +23377,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1766633869
 BoxCollider:
@@ -23364,6 +23588,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!1 &1835467561
 GameObject:
@@ -23440,6 +23666,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1836628397
 GameObject:
@@ -23589,6 +23817,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1838597841
 BoxCollider:
@@ -24744,6 +24974,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1852005098
 BoxCollider:
@@ -27427,6 +27659,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 1963080897}
+  player02TakeActionMultibutton: {fileID: 1963080894}
   player02CameraSpecial: {fileID: 0}
 --- !u!4 &1894659874 stripped
 Transform:
@@ -27562,6 +27796,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &1923691833 stripped
 GameObject:
@@ -28211,6 +28447,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1959597995
 BoxCollider:
@@ -28287,6 +28525,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1546451623}
+  player01TakeActionMultibutton: {fileID: 1546451622}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1960552018
 BoxCollider:
@@ -28649,6 +28889,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!1 &1985278470
 GameObject:
@@ -28705,6 +28947,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1012605538}
+  player01TakeActionMultibutton: {fileID: 0}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1985278473
 BoxCollider:
@@ -28789,6 +29033,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &1987041790
 BoxCollider:
@@ -28886,6 +29132,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!1 &1997141158
 GameObject:
@@ -29084,6 +29332,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 4RPLPRKLK_Ken
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &2013346243
 GameObject:
@@ -29139,6 +29389,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationName: 
   player02Health: {fileID: 0}
+  player01TakeAction: {fileID: 1923691839}
+  player01TakeActionMultibutton: {fileID: 1923691838}
   player01CameraSpecial: {fileID: 0}
 --- !u!65 &2013346246
 BoxCollider:
@@ -29236,6 +29488,8 @@ MonoBehaviour:
   TakeActionMultiButton: 1
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 998856010}
+  player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
 --- !u!4 &2041727332 stripped
 Transform:
@@ -29333,6 +29587,8 @@ MonoBehaviour:
   TakeActionMultiButton: 0
   animationNameGrap: 
   player01Health: {fileID: 0}
+  player02TakeAction: {fileID: 187303738}
+  player02TakeActionMultibutton: {fileID: 187303744}
   player02CameraSpecial: {fileID: 0}
 --- !u!1 &2059565156
 GameObject:
@@ -29351,7 +29607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2059565157
 Transform:
   m_ObjectHideFlags: 0
