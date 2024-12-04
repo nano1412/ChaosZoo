@@ -258,7 +258,6 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
             }
             return true;
         }
-        return false;
     }
 
     public void SpecialWithoutSpecialMoveEnergy(string action)
@@ -280,7 +279,7 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
         anim.SetTrigger(action);
         anim.SetBool("canWalk", false);
         Hits = false;
-        specialMoveEnergy -= 50;
+        //specialMoveEnergy -= 50;
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         

@@ -28,6 +28,7 @@ public class Player01CameraInChallange : MonoBehaviour
      public void SpecialCapybaraCamare()
     {
         cameraSpecial.SetActive(true);
+        canvas.SetActive(false);
         StartCoroutine(ResetCapybaraCamera(1f));
     }
 
@@ -51,5 +52,6 @@ public class Player01CameraInChallange : MonoBehaviour
     {
         yield return new WaitForSeconds(timereset);
         cameraSpecial.SetActive(false);
+        canvas.SetActive(true);
     }
 }

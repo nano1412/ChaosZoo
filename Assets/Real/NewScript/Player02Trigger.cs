@@ -13,6 +13,8 @@ public class Player02Trigger : MonoBehaviour
     public bool TakeActionMultiButton = false;
     public string animationNameGrap;
     public Player01Health player01Health;
+    public Player02TakeAction player02TakeAction;
+    public Player02TakeActionMultibutton player02TakeActionMultibutton;
     public Player02CameraSpecial player02CameraSpecial;
 
     void Start()
@@ -76,11 +78,13 @@ public class Player02Trigger : MonoBehaviour
                 Player02TakeAction.Hits = true;
                 Player02TakeActionMultibutton.Hits = true;
             }
-            else if (Check)
+            else if (Check && !Grap)
             {
-                GetComponentInParent<Player02TakeAction>().OnHits();
                 Player02TakeAction.Hits = true;
                 Player02TakeActionMultibutton.Hits = true;
+                player01Health.TakeDamage(damage, force, "no");
+                if(TakeAction && !TakeActionMultiButton) player02TakeAction.OnHits();
+                else if(!TakeAction && TakeActionMultiButton) player02TakeActionMultibutton.OnHits();
             }
 
             StartCoroutine(ResetHits());

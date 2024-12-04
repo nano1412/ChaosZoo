@@ -835,8 +835,7 @@ public class Player02TakeAction : MonoBehaviour
     public void OnHits()
     {
         StopCoroutine(ResetIsPerformingAction(0));
-        isPerformingAction = false;
-        player02Movement.isPerformingAction = true;
+        StartCoroutine(ResetCheckBool(0.25f));
     }
     public void GrapHCBShark()
     {
@@ -882,5 +881,11 @@ public class Player02TakeAction : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         player02Health.SharkDrive = false;
+    }
+    IEnumerator ResetCheckBool(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        isPerformingAction = false;
+        player02Movement.isPerformingAction = true;
     }
 }
