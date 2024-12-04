@@ -13,7 +13,8 @@ public class Player01Movement : MonoBehaviour
     public GameObject oppenent;
     public Vector3 oppPosition;
     public Player01Health player01Health;
-     public string nameCharacter;
+    public string nameCharacter;
+    public BoxCollider boxcolliderPengang;
     public bool isPerformingAction = false;
 
     private Rigidbody rb;
@@ -206,7 +207,44 @@ public class Player01Movement : MonoBehaviour
         float horizontalAxis = Input.GetAxis(horizontalInput);
         if(nameCharacter == "PenGang")
         {
-
+            // if(Joystick)
+            // {
+            //     if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player01Joystick05") && !IsDash)
+            //     {
+            //         //anim.SetTrigger("DashForward");
+            //         boxcolliderPengang.enabled = false;
+            //         IsDash = true;
+            //         player01Health.knockout = true;
+            //         StartCoroutine(DashPengang());
+            //     }
+            //     else if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player01Joystick05") && !IsDash)
+            //     {
+            //         //anim.SetTrigger("DashBackward");
+            //         boxcolliderPengang.enabled = false;
+            //         IsDash = true;
+            //         player01Health.knockout = true;
+            //         StartCoroutine(DashPause());
+            //     }
+            // }
+            // else
+            // {
+            //     if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player01Bt05") && !IsDash)
+            //     {
+            //         //anim.SetTrigger("DashForward");
+            //         boxcolliderPengang.enabled = false;
+            //         IsDash = true;
+            //         player01Health.knockout = true;
+            //         StartCoroutine(DashPengang());
+            //     }
+            //     else if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player01Bt05") && !IsDash)
+            //     {
+            //         //anim.SetTrigger("DashBackward");
+            //         boxcolliderPengang.enabled = false;
+            //         IsDash = true;
+            //         player01Health.knockout = true;
+            //         StartCoroutine(DashPause());
+            //     }
+            // }
         }
         else if(nameCharacter == "No")
         {
@@ -225,6 +263,7 @@ public class Player01Movement : MonoBehaviour
                     {
                         anim.SetTrigger("DashBackward");
                         IsDash = true;
+                        player01Health.knockout = true;
                         StartCoroutine(DashPause());
                     }
                 }
@@ -304,6 +343,13 @@ public class Player01Movement : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         IsDash = false;
         player01Health.knockout = false;
+    }
+    IEnumerator DashPengang()
+    {
+        yield return new WaitForSeconds(2f);
+        IsDash = false;
+        player01Health.knockout = false;
+        boxcolliderPengang.enabled = true;
     }
     IEnumerator FaceLeft()
     {
