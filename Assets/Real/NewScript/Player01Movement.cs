@@ -92,7 +92,10 @@ public class Player01Movement : MonoBehaviour
             if(-verticalAxis < -verticalThreshold && IsGrounded())
             {
                 animationCouch = true;
-                anim.SetBool("Crouch", true);
+                if(nameCharacter == "Pengang")
+                {
+                    anim.SetBool("Crouch", true);
+                }
                 if(horizontalAxis < -walkThreshold && FaceingRight)
                 {
                     player01Health.block = true;
@@ -119,7 +122,10 @@ public class Player01Movement : MonoBehaviour
             if(verticalAxis < -verticalThreshold && IsGrounded())
             {
                 animationCouch = true;
-                anim.SetBool("Crouch", true);
+                if(nameCharacter != "Pengang")
+                {
+                    anim.SetBool("Crouch", true);
+                }
                 if(horizontalAxis < -walkThreshold && FaceingRight)
                 {
                     player01Health.block = true;
@@ -179,26 +185,29 @@ public class Player01Movement : MonoBehaviour
     private void HandleJump()
     {
         float verticalAxis = Input.GetAxis(verticalInput);
-        if(Joystick)
+        if(nameCharacter != "Pengang")
         {
-            if(-verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+            if(Joystick)
             {
-                IsJumping = true;
-                anim.SetTrigger("Jump");
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                walkspeed = 0.6f;
-                StartCoroutine(JumpPause());
+                if(-verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+                {
+                    IsJumping = true;
+                    anim.SetTrigger("Jump");
+                    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                    walkspeed = 0.6f;
+                    StartCoroutine(JumpPause());
+                }
             }
-        }
-        else
-        {
-            if(verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+            else
             {
-                IsJumping = true;
-                anim.SetTrigger("Jump");
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                walkspeed = 0.6f;
-                StartCoroutine(JumpPause());
+                if(verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+                {
+                    IsJumping = true;
+                    anim.SetTrigger("Jump");
+                    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                    walkspeed = 0.6f;
+                    StartCoroutine(JumpPause());
+                }
             }
         }
     }

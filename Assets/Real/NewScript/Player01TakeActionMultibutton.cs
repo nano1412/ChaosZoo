@@ -33,22 +33,22 @@ public class Player01TakeActionMultibutton : MonoBehaviour
 
         if(selectController.Selectjoystick01)
         {
-            if (Input.GetButtonDown("Player01Joystick01"))
+            if (Input.GetButtonDown("Player01Joystick03"))
             {
                 PerformAction("RightPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player01Joystick02"))
+            if (Input.GetButtonDown("Player01Joystick04"))
             {
                 PerformAction("RightKick");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player01Joystick03"))
+            if (Input.GetButtonDown("Player01Joystick01"))
             {
                 PerformAction("LeftPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player01Joystick04"))
+            if (Input.GetButtonDown("Player01Joystick02"))
             {
                 PerformAction("LeftKick");
                 Hits = false;
@@ -56,22 +56,22 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Player01Bt01"))
+            if (Input.GetButtonDown("Player01Bt03"))
             {
                 PerformAction("RightPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player01Bt02"))
+            if (Input.GetButtonDown("Player01Bt04"))
             {
                 PerformAction("RightKick");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player01Bt03"))
+            if (Input.GetButtonDown("Player01Bt01"))
             {
                 PerformAction("LeftPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player01Bt04"))
+            if (Input.GetButtonDown("Player01Bt02"))
             {
                 PerformAction("LeftKick");
                 Hits = false;
@@ -91,19 +91,19 @@ public class Player01TakeActionMultibutton : MonoBehaviour
 
         if (selectController.Selectjoystick01)
         {
-            RP = Input.GetButton("Player01Joystick01");
-            LP = Input.GetButton("Player01Joystick03");
-            RK = Input.GetButton("Player01Joystick02");
-            LK = Input.GetButton("Player01Joystick04");
+            RP = Input.GetButton("Player01Joystick03");
+            LP = Input.GetButton("Player01Joystick01");
+            RK = Input.GetButton("Player01Joystick04");
+            LK = Input.GetButton("Player01Joystick02");
             vertical = -Input.GetAxis(verticalInput);
             horizontal = Input.GetAxis(horizontalInput);
         }
         else
         {
-            RP = Input.GetButton("Player01Bt01");
-            LP = Input.GetButton("Player01Bt03");
-            RK = Input.GetButton("Player01Bt02");
-            LK = Input.GetButton("Player01Bt04");
+            RP = Input.GetButton("Player01Bt03");
+            LP = Input.GetButton("Player01Bt01");
+            RK = Input.GetButton("Player01Bt04");
+            LK = Input.GetButton("Player01Bt02");
             vertical = Input.GetAxis(verticalInput);
             horizontal = Input.GetAxis(horizontalInput);
         }
