@@ -6479,7 +6479,7 @@ Transform:
   m_GameObject: {fileID: 636828268}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.632, y: -0.222, z: -0.037984}
+  m_LocalPosition: {x: -0.752, y: -0.222, z: -0.037984}
   m_LocalScale: {x: 0.1625, y: 3.025, z: 2.428}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9777,6 +9777,7 @@ GameObject:
   - component: {fileID: 917601038}
   - component: {fileID: 917601036}
   - component: {fileID: 917601035}
+  - component: {fileID: 917601040}
   m_Layer: 0
   m_Name: SharkNew_Right
   m_TagString: Player02
@@ -9902,6 +9903,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917601033}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &917601040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917601033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f045c925e2fe19149af42ab0afd9a101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player02Health: {fileID: 1858172036}
 --- !u!4 &922647088 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2689888123826509042, guid: 5d0a9f8673a266e4da8a2b5558256126,
@@ -22535,7 +22549,7 @@ Transform:
   m_GameObject: {fileID: 1542590768}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.633, y: -0.222, z: -0.037984}
+  m_LocalPosition: {x: 0.747, y: -0.222, z: -0.037984}
   m_LocalScale: {x: 0.1625, y: 3.025, z: 2.428}
   m_ConstrainProportionsScale: 0
   m_Children: []
