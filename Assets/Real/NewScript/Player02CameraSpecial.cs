@@ -35,7 +35,17 @@ public class Player02CameraSpecial : MonoBehaviour
     public void SpecialCapybaraCamare()
     {
         cameraSpecial.SetActive(true);
+        playerHealthBar01.SetActive(false);
+        playerHealthBar02.SetActive(false);
         StartCoroutine(ResetCapybaraCamera(1f));
+    }
+
+    public void SpecialPengang()
+    {
+        cameraSpecial.SetActive(true);
+        playerHealthBar01.SetActive(false);
+        playerHealthBar02.SetActive(false);
+        StartCoroutine(ResetCapybaraCamera(2f));
     }
 
     IEnumerator ResetCamareSpecial()
@@ -62,6 +72,8 @@ public class Player02CameraSpecial : MonoBehaviour
     IEnumerator ResetCapybaraCamera(float timereset)
     {
         yield return new WaitForSeconds(timereset);
+        playerHealthBar01.SetActive(true);
+        playerHealthBar02.SetActive(true);
         cameraSpecial.SetActive(false);
     }
 }

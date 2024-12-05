@@ -13,6 +13,8 @@ public class Player02Movement : MonoBehaviour
     public GameObject oppenent;
     public Vector3 oppPosition;
     public Player02Health player02Health;
+    public string nameCharacter;
+    public BoxCollider boxcolliderPengang;
     public bool isPerformingAction = false;
 
     private Rigidbody rb;
@@ -68,7 +70,7 @@ public class Player02Movement : MonoBehaviour
             horizontalInput = "LeftAnalogX2";
             verticalInput = "LeftAnalogY2";
             walkThreshold = 0.4f;
-            verticalThreshold = 0.4f;
+            verticalThreshold = 0.6f;
             Joystick = true;
         }
 
@@ -88,7 +90,10 @@ public class Player02Movement : MonoBehaviour
             if(-verticalAxis < -verticalThreshold && IsGrounded())
             {
                 animationCouch = true;
-                anim.SetBool("Crouch", true);
+                if(nameCharacter != "Pengang")
+                {
+                    anim.SetBool("Crouch", true);
+                }
                 if(horizontalAxis < -walkThreshold && FaceingRight)
                 {
                     player02Health.block = true;
@@ -111,10 +116,13 @@ public class Player02Movement : MonoBehaviour
         }
         else
         {
-             if(verticalAxis < -verticalThreshold && IsGrounded())
+            if(verticalAxis < -verticalThreshold && IsGrounded())
             {
                 animationCouch = true;
-                anim.SetBool("Crouch", true);
+                if(nameCharacter != "Pengang")
+                {
+                    anim.SetBool("Crouch", true);
+                }
                 if(horizontalAxis < -walkThreshold && FaceingRight)
                 {
                     player02Health.block = true;
@@ -175,92 +183,97 @@ public class Player02Movement : MonoBehaviour
     private void HandleJump()
     {
         float verticalAxis = Input.GetAxis(verticalInput);
-        if(Joystick)
+        if(nameCharacter != "Pengang")
         {
-            if(-verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+            if(Joystick)
             {
-                IsJumping = true;
-                anim.SetTrigger("Jump");
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                walkspeed = 0.6f;
-                StartCoroutine(JumpPause());
+                if(-verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+                {
+                    IsJumping = true;
+                    anim.SetTrigger("Jump");
+                    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                    walkspeed = 0.6f;
+                    StartCoroutine(JumpPause());
+                }
             }
-        }
-        else
-        {
-            if(verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+            else
             {
-                IsJumping = true;
-                anim.SetTrigger("Jump");
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                walkspeed = 0.6f;
-                StartCoroutine(JumpPause());
+                if(verticalAxis > verticalThreshold && !IsJumping && !animationCouch)
+                {
+                    IsJumping = true;
+                    anim.SetTrigger("Jump");
+                    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                    walkspeed = 0.6f;
+                    StartCoroutine(JumpPause());
+                }
             }
         }
     }
     private void HandleDash()
     {
         float horizontalAxis = Input.GetAxis(horizontalInput);
-        
-        if(FaceingRight)
+        if(nameCharacter != "Pengang")
         {
-            if(Joystick)
+            if(FaceingRight)
             {
-                if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player02Joystick05") && !IsDash)
+                if(Joystick)
                 {
-                    anim.SetTrigger("DashForward");
-                    IsDash = true;
-                    StartCoroutine(DashPause());
+                    if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player02Joystick05") && !IsDash)
+                    {
+                        anim.SetTrigger("DashForward");
+                        IsDash = true;
+                        StartCoroutine(DashPause());
+                    }
+                    else if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player02Joystick05") && !IsDash)
+                    {
+                        anim.SetTrigger("DashBackward");
+                        IsDash = true;
+                        StartCoroutine(DashPause());
+                    }
                 }
-                else if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player02Joystick05") && !IsDash)
+                else
                 {
-                    anim.SetTrigger("DashBackward");
-                    IsDash = true;
-                    StartCoroutine(DashPause());
+                    if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player02Bt05") && !IsDash)
+                    {
+                        anim.SetTrigger("DashForward");
+                        IsDash = true;
+                        StartCoroutine(DashPause());
+                    }
+                    else if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player02Bt05") && !IsDash)
+                    {
+                        anim.SetTrigger("DashBackward");
+                        IsDash = true;
+                        StartCoroutine(DashPause());
+                    }
                 }
-            }
+                }
             else
             {
-                if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player02Bt05") && !IsDash)
+                if(Joystick)
                 {
-                    anim.SetTrigger("DashForward");
-                    IsDash = true;
-                    StartCoroutine(DashPause());
+                    if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player02Joystick05") && !IsDash)
+                    {
+                        anim.SetTrigger("DashForward");
+                        StartCoroutine(DashPause());
+                    }
+                    else if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player02Joystick05") && !IsDash)
+                    {
+                        anim.SetTrigger("DashBackward");
+                        StartCoroutine(DashPause());
+                    }
                 }
-                else if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player02Bt05") && !IsDash)
+                else
                 {
-                    anim.SetTrigger("DashBackward");
-                    IsDash = true;
-                    StartCoroutine(DashPause());
-                }
-            }
-             }
-        else
-        {
-            if(Joystick)
-            {
-                if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player02Joystick05") && !IsDash)
-                {
-                    anim.SetTrigger("DashForward");
-                    StartCoroutine(DashPause());
-                }
-                else if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player02Joystick05") && !IsDash)
-                {
-                    anim.SetTrigger("DashBackward");
-                    StartCoroutine(DashPause());
-                }
-            }
-            else
-            {
-                if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player02Bt05") && !IsDash)
-                {
-                    anim.SetTrigger("DashForward");
-                    StartCoroutine(DashPause());
-                }
-                else if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player02Bt05") && !IsDash)
-                {
-                    anim.SetTrigger("DashBackward");
-                    StartCoroutine(DashPause());
+                    if(horizontalAxis < walkThreshold && Input.GetButtonDown("Player02Bt05") && !IsDash)
+                    {
+                        anim.SetTrigger("DashForward");
+                        StartCoroutine(DashPause());
+                    }
+                    else if(horizontalAxis > walkThreshold && Input.GetButtonDown("Player02Bt05") && !IsDash)
+                    {
+                        anim.SetTrigger("DashBackward");
+                        StartCoroutine(DashPause());
+                    }
                 }
             }
         }
