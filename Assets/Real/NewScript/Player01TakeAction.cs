@@ -429,7 +429,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    inputState++;
+                    inputCount++;
                     return;
                 }
             }
@@ -440,7 +440,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    inputState++;
+                    inputCount++;
                     return;
                 }
             }
@@ -454,7 +454,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    inputState++;
+                    inputCount++;
                     return;
                 }
             }
@@ -465,7 +465,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    inputState++;
+                    inputCount++;
                     return;
                 }
             }
@@ -479,7 +479,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    inputState++;
+                    inputCount++;
                     return;
                 }
             }
@@ -490,11 +490,11 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    inputState++;
+                    inputCount++;
                 }
             }
         }
-        if(inputState == InputState.Backward && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
+        if(inputCount >= 2 && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
         {
             if(Joystick)
             {
@@ -575,7 +575,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    inputCount++; // เพิ่มจำนวนการกด direction
+                    inputCount++;
                 }
             }
             else
@@ -654,7 +654,7 @@ public class Player01TakeAction : MonoBehaviour
         }
 
         // ตรวจสอบเงื่อนไขสำหรับ HCBF
-        if (inputCount >= 2 && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
+        if (inputCount >= 3 && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
         {
             if (Joystick)
             {
