@@ -23,4 +23,9 @@ public class Player02WithRpg : MonoBehaviour
     {
         player02Health.TakeDamage(10, 0 , "no");
     }
+
+    public void ShildAttack()
+    {
+        player02Health.TakeDamage(10, 0, "no");
+    }
 }

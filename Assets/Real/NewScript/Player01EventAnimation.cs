@@ -15,6 +15,7 @@ public class Player01EventAnimation : MonoBehaviour
     public float forcehurt;
     public GameObject Rpg;
     public GameObject spawnPoint;
+    public GameObject Shild;
     public void JumpEvent()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -119,6 +120,11 @@ public class Player01EventAnimation : MonoBehaviour
     public void RPGTime()
     {
         Instantiate(Rpg, spawnPoint.transform.position, spawnPoint.transform.rotation);
+    }
+
+    public void ShildTime()
+    {
+        Instantiate(Shild, spawnPoint.transform.position, spawnPoint.transform.rotation);
     }
 
 
