@@ -371,6 +371,11 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
             StartCoroutine(ResetIsPerformingAction(0.5f));
         }
     }
+    public void OnHits()
+    {
+        StopCoroutine(ResetIsPerformingAction(0));
+        StartCoroutine(ResetCheckBool(0.25f));
+    }
 
     IEnumerator ResetIsPerformingAction(float time)
     {
@@ -378,6 +383,12 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
         isPerformingAction = false;
         player01Movement.isPerformingAction = false;
         //player01Health.KenInAir = false;
+    }
+    IEnumerator ResetCheckBool(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        isPerformingAction = false;
+        player01Movement.isPerformingAction = true;
     }
 }
 

@@ -41,7 +41,6 @@ public class Player01Movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         oppenent = GameObject.FindGameObjectWithTag("PlayerCharacter02Tpose");
         StartCoroutine(FaceRight());
-
     }
 
     void Update()

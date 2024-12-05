@@ -11,9 +11,13 @@ public class Player01Trigger_OverDrive : MonoBehaviour
     public bool Grab = false;
     public bool TakeAction = false;
     public bool TakeActionMultiButton = false;
+    public bool ActionInChallenge = false;
     public string animationName;
     public Player01CameraInChallange player01CameraSpecial;
     public Player02Movement_Overdrive player02Movement_Overdrive;
+
+    public Player01TakeActionInChallenge player01TakeAction;
+    public Player01TakeActionMultiButtonInChallange player01TakeActionMultibutton;
 
     void Start()
     {
@@ -69,17 +73,30 @@ public class Player01Trigger_OverDrive : MonoBehaviour
                     Player01TakeActionMultibutton.Hits = true;
                 }
             }
-            else if (!Grab)
+            else if (!Grab && !Check && !ActionInChallenge)
             {
                 player02Movement_Overdrive.TakeDamage(damage, force, "no");
                 Player01TakeActionInChallenge.Hits = true;
                 Player01TakeActionMultibutton.Hits = true;
             }
-            else if (Check)
+            else if (Check && !Grab)
             {
-                GetComponentInParent<Player02TakeAction>().OnHits();
                 Player01TakeAction.Hits = true;
                 Player01TakeActionMultibutton.Hits = true;
+                player02Movement_Overdrive.TakeDamage(damage, force, "no");
+                if(TakeAction && !TakeActionMultiButton) player01TakeAction.OnHits();
+                else if(!TakeAction && TakeActionMultiButton) player01TakeActionMultibutton.OnHits();
+            }
+            else if(ActionInChallenge)
+            {
+                Player01TakeAction.Hits = true;
+                Player01TakeActionMultibutton.Hits = true;
+                player02Movement_Overdrive.TakeDamage(damage, force, animationName);
+                if(Check)
+                {
+                    if(TakeAction && !TakeActionMultiButton) player01TakeAction.OnHits();
+                    else if(!TakeAction && TakeActionMultiButton) player01TakeActionMultibutton.OnHits();
+                }
             }
 
             Debug.Log("Player");

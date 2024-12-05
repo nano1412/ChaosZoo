@@ -10,6 +10,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     public Player01MovementChallenge player01Movement;
     public Player01CameraInChallange player01CameraInChallange;
     public SelectControllerInChallenge selectControllerInChallenge;
+    public BoxCollider boxColliderPangeng;
     public bool isPerformingAction = false;
     public static bool Hits = false;
     public bool hits => Hits;
@@ -33,6 +34,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     public string verticalInput;
     public string horizontalInput;
     public int inputCount = 0; // ตัวแปรสำหรับนับจำนวนอินพุต
+    public bool NumberRPG = false;
 
     [Header("Enable/Disable Actions")]
     public List<SpecialMoveToggle> specialMoveToggles = new List<SpecialMoveToggle>()
@@ -801,6 +803,11 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     private void ActionQCF(string actionName)
     {
         anim.SetTrigger("QCF_" + actionName);
+        if(nameCharacter == "Pengang")
+        {
+            boxColliderPangeng.enabled = false;
+            StartCoroutine(ResetBoxCollider(1f));
+        }
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         StartCoroutine(ResetQCState());
@@ -809,6 +816,11 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     private void ActionQCB(string actionName)
     {
         anim.SetTrigger("QCB_" + actionName);
+        if(nameCharacter == "Pengang")
+        {
+            boxColliderPangeng.enabled = false;
+            StartCoroutine(ResetBoxCollider(1f));
+        }
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         StartCoroutine(ResetQCState());
@@ -818,27 +830,35 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         anim.SetTrigger("HCB_" + actionName);
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
-        StartCoroutine(ResetHCBFState());
+        StartCoroutine(ResetHCBFState(1f));
     }
     private void ActionHCBF(string actionName)
     {
         //specialMoveEnergy -= 50;
-        player01CameraInChallange.CameraSetActive();
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         anim.SetTrigger("HCBF_"+ actionName);
         if(nameCharacter == "Shark")
         {
             //player01Health.SharkDrive = true;
+            player01CameraInChallange.CameraSetActive();
             StartCoroutine(ResetBoolSharkdrive());
+            StartCoroutine(ResetHCBFState(1f));
         }
-        StartCoroutine(ResetHCBFState());
+        if(nameCharacter == "Pengang")
+        {
+            player01CameraInChallange.SpecialPengang();
+            NumberRPG = true;
+            boxColliderPangeng.enabled = false;
+
+            StartCoroutine(ResetBoxCollider(3.2f));
+            StartCoroutine(ResetHCBFState(5f));
+        }
     }
     public void OnHits()
     {
         StopCoroutine(ResetIsPerformingAction(0));
-        isPerformingAction = false;
-        player01Movement.isPerformingAction = true;
+        StartCoroutine(ResetCheckBool(0.25f));
     }
     public void GrapHCBShark()
     {
@@ -860,6 +880,12 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         isPerformingAction = false;
         player01Movement.isPerformingAction = false;
     }
+    IEnumerator ResetCheckBool(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        isPerformingAction = false;
+        player01Movement.isPerformingAction = true;
+    }
 
     IEnumerator ResetQCState()
     {
@@ -870,9 +896,9 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         player01Movement.isPerformingAction = false;
     }
 
-    IEnumerator ResetHCBFState()
+    IEnumerator ResetHCBFState(float time)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(time);
         inputState = InputState.None;
         isHCBInProgress = false;
         isPerformingAction = false;
@@ -889,4 +915,11 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         yield return new WaitForSeconds(5f);
         //player01Health.SharkDrive = false;
     }
+    IEnumerator ResetBoxCollider(float time)
+    {
+        yield return new WaitForSeconds(time);
+        boxColliderPangeng.enabled = true;
+    }
+
+    
 }
