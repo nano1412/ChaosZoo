@@ -650,7 +650,7 @@ public class Player01TakeAction : MonoBehaviour
         }
 
         // ตรวจสอบเงื่อนไขสำหรับ HCBF
-        if (inputCount >= 3 && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
+        if (inputCount >= 2 && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
         {
             if (Joystick)
             {
@@ -792,7 +792,7 @@ public class Player01TakeAction : MonoBehaviour
         if(nameCharacter == "Pengang")
         {
             boxColliderPangeng.enabled = false;
-            StartCoroutine(ResetBoxCollider());
+            StartCoroutine(ResetBoxCollider(1f));
         }
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
@@ -805,7 +805,7 @@ public class Player01TakeAction : MonoBehaviour
         if(nameCharacter == "Pengang")
         {
             boxColliderPangeng.enabled = false;
-            StartCoroutine(ResetBoxCollider());
+            StartCoroutine(ResetBoxCollider(1f));
         }
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
@@ -821,19 +821,22 @@ public class Player01TakeAction : MonoBehaviour
     private void ActionHCBF(string actionName)
     {
         specialMoveEnergy -= 50;
-        player01CameraSpecial.CameraSetActive();
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         anim.SetTrigger("HCBF_"+ actionName);
         if(nameCharacter == "Shark")
         {
+            player01CameraSpecial.CameraSetActive();
             player01Health.SharkDrive = true;
             StartCoroutine(ResetBoolSharkdrive());
             StartCoroutine(ResetHCBFState(1f));
         }
         if(nameCharacter == "Pengang")
         {
+            player01CameraSpecial.SpecialPengang();
             NumberRPG = true;
+            boxColliderPangeng.enabled = false;
+            StartCoroutine(ResetBoxCollider(3.2f));
             StartCoroutine(ResetHCBFState(5f));
         }
     }
@@ -898,9 +901,9 @@ public class Player01TakeAction : MonoBehaviour
         yield return new WaitForSeconds(5f);
         player01Health.SharkDrive = false;
     }
-    IEnumerator ResetBoxCollider()
+    IEnumerator ResetBoxCollider(float time)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(time);
         boxColliderPangeng.enabled = true;
     }
 }
