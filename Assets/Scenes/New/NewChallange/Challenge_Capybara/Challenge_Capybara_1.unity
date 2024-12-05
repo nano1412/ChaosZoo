@@ -496,8 +496,10 @@ MonoBehaviour:
   Selectjoystick01: 0
   SelectKeyBoard: 1
   Selectjoystick: 0
+  Player02OverDrive: 1
   challlengeScripttable: {fileID: 11400000, guid: 687d3cefaa05f984c97622fd6b30e1a2,
     type: 2}
+  player02Movement_Overdrive: {fileID: 900800237}
   FinalResult: {fileID: 1879179972}
   scoreKeyBoard: {fileID: 2234520}
   scoreJoystick: {fileID: 2075350629}
@@ -570,7 +572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 23560311}
   - component: {fileID: 23560313}
-  - component: {fileID: 23560312}
+  - component: {fileID: 23560314}
   m_Layer: 0
   m_Name: 2RPAttackBox
   m_TagString: 2RP_AttackBox
@@ -593,30 +595,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1972397436}
   m_LocalEulerAnglesHint: {x: -79.345, y: -313.778, z: 136.663}
---- !u!114 &23560312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23560310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 23560313}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &23560313
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -638,6 +616,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &23560314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23560310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 23560313}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 2RP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &32307135
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,10 +651,10 @@ GameObject:
   m_Component:
   - component: {fileID: 32307136}
   - component: {fileID: 32307138}
-  - component: {fileID: 32307137}
+  - component: {fileID: 32307139}
   m_Layer: 0
   m_Name: 3LPRPAttackBox_RP
-  m_TagString: Untagged
+  m_TagString: 3LPRP_AttackBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -671,30 +674,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1972397436}
   m_LocalEulerAnglesHint: {x: -79.345, y: -313.778, z: 136.663}
---- !u!114 &32307137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 32307135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 32307138}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &32307138
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -716,6 +695,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &32307139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32307135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 32307138}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 3LPRP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &35465571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,7 +1250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 155070505}
   - component: {fileID: 155070507}
-  - component: {fileID: 155070506}
+  - component: {fileID: 155070508}
   m_Layer: 0
   m_Name: 5LPAttackBox
   m_TagString: 5LP_AttackBox
@@ -1269,30 +1273,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 752323516}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &155070506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155070504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 155070507}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &155070507
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1314,6 +1294,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &155070508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155070504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 155070507}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 5LP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &167006662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1425,6 +1430,7 @@ MonoBehaviour:
   oppenent: {fileID: 647263145}
   oppPosition: {x: 0, y: 0, z: 0}
   isPerformingAction: 0
+  nameCharacter: No
   selectControllerInChallenge: {fileID: 16306425}
   Joystick: 0
   challengeData: {fileID: 11400000, guid: 687d3cefaa05f984c97622fd6b30e1a2, type: 2}
@@ -1625,7 +1631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 225072686}
   - component: {fileID: 225072688}
-  - component: {fileID: 225072687}
+  - component: {fileID: 225072689}
   m_Layer: 0
   m_Name: 6LPRPLKRKAttackBox_RP
   m_TagString: 6LPRPLKRK_AttackBox
@@ -1648,30 +1654,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1972397436}
   m_LocalEulerAnglesHint: {x: -75.683, y: -359.818, z: 171.368}
---- !u!114 &225072687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 225072685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 225072688}
-  damage: 5
-  force: 0
-  Check: 0
-  Grab: 1
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 6LPRPLKRP_Capybara
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &225072688
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1693,6 +1675,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &225072689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225072685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 225072688}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 6LPRPLKRK_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &227165203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1981,6 +1988,10 @@ MonoBehaviour:
   dashBackforce: 0.75
   HurtForce: 0.75
   forcehurt: 0
+  Rpg: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  Shild: {fileID: 0}
+  spawnPointShild: {fileID: 0}
 --- !u!114 &243324862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2141,6 +2152,67 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1807272903}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &243324865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243324859}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ef9cf18f85a8d44945f293ef18208f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultActionCooldown: 0.5
+  nameCharacter: 
+  player01: {fileID: 243324859}
+  player01Movement: {fileID: 181086659}
+  player01CameraInChallange: {fileID: 243324860}
+  selectControllerInChallenge: {fileID: 16306425}
+  boxColliderPangeng: {fileID: 0}
+  isPerformingAction: 0
+  inputState: 0
+  isQCInProgress: 0
+  isHCBInProgress: 0
+  actionCooldown: 0.1
+  lastInputTime: 0
+  inputBufferTime: 0.2
+  specialMoveEnergy: 100
+  holdbuttonVertical: 0
+  holdbuttonHorizontal: 0
+  holdTimeVertical: 0
+  holdTimeHorizontal: 0
+  challengeData: {fileID: 11400000, guid: 687d3cefaa05f984c97622fd6b30e1a2, type: 2}
+  verticalInput: 
+  horizontalInput: 
+  inputCount: 0
+  NumberRPG: 0
+  specialMoveToggles:
+  - moveName: 0
+    isEnabled: 1
+  - moveName: 1
+    isEnabled: 1
+  - moveName: 2
+    isEnabled: 1
+  - moveName: 3
+    isEnabled: 1
+  - moveName: 4
+    isEnabled: 1
+  - moveName: 5
+    isEnabled: 1
+  - moveName: 6
+    isEnabled: 1
+  - moveName: 7
+    isEnabled: 1
+  - moveName: 12
+    isEnabled: 1
+  - moveName: 13
+    isEnabled: 1
+  - moveName: 14
+    isEnabled: 1
+  - moveName: 15
+    isEnabled: 1
 --- !u!1 &257291312
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,7 +2223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 257291313}
   - component: {fileID: 257291315}
-  - component: {fileID: 257291314}
+  - component: {fileID: 257291316}
   m_Layer: 0
   m_Name: 6LPRPAttackBox_03
   m_TagString: Untagged
@@ -2174,30 +2246,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1731414833}
   m_LocalEulerAnglesHint: {x: -79.345, y: -313.778, z: 136.663}
---- !u!114 &257291314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257291312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 257291315}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &257291315
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2219,6 +2267,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &257291316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257291312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 257291315}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 6LPRP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &263139577
 GameObject:
   m_ObjectHideFlags: 0
@@ -2229,7 +2302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 263139578}
   - component: {fileID: 263139580}
-  - component: {fileID: 263139579}
+  - component: {fileID: 263139581}
   m_Layer: 0
   m_Name: 2LPAttackBox
   m_TagString: 2LP_AttackBox
@@ -2252,30 +2325,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 752323516}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &263139579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263139577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 263139580}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &263139580
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2297,6 +2346,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &263139581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263139577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 263139580}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 2LP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &268726554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2451,10 +2525,10 @@ GameObject:
   m_Component:
   - component: {fileID: 293507515}
   - component: {fileID: 293507517}
-  - component: {fileID: 293507516}
+  - component: {fileID: 293507518}
   m_Layer: 0
-  m_Name: 3LPAttackBox_LP
-  m_TagString: Untagged
+  m_Name: 3LPRPAttackBox_LP
+  m_TagString: 3LPRP_AttackBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2474,30 +2548,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 752323516}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &293507516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293507514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 293507517}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &293507517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2519,6 +2569,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &293507518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293507514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 293507517}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 3LPRP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &306965260
 GameObject:
   m_ObjectHideFlags: 0
@@ -3429,7 +3504,7 @@ GameObject:
   m_Component:
   - component: {fileID: 495299515}
   - component: {fileID: 495299517}
-  - component: {fileID: 495299516}
+  - component: {fileID: 495299518}
   m_Layer: 0
   m_Name: 3RPAttackBox
   m_TagString: 3RP_AttackBox
@@ -3452,30 +3527,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1972397436}
   m_LocalEulerAnglesHint: {x: -79.345, y: -313.778, z: 136.663}
---- !u!114 &495299516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495299514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 495299517}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &495299517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3497,6 +3548,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &495299518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495299514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 495299517}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 3RP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &505149113
 GameObject:
   m_ObjectHideFlags: 0
@@ -3785,7 +3861,7 @@ GameObject:
   m_Component:
   - component: {fileID: 600505939}
   - component: {fileID: 600505941}
-  - component: {fileID: 600505940}
+  - component: {fileID: 600505942}
   m_Layer: 0
   m_Name: 6LPRPAttackBox_02
   m_TagString: Untagged
@@ -3808,30 +3884,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1731414833}
   m_LocalEulerAnglesHint: {x: -79.345, y: -313.778, z: 136.663}
---- !u!114 &600505940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 600505938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 600505941}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &600505941
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3853,6 +3905,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &600505942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600505938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 600505941}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 6LPRP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &619127497
 GameObject:
   m_ObjectHideFlags: 0
@@ -9245,7 +9322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 866883923}
   - component: {fileID: 866883925}
-  - component: {fileID: 866883924}
+  - component: {fileID: 866883926}
   m_Layer: 0
   m_Name: 5LPRPAttackBox_03
   m_TagString: Untagged
@@ -9268,30 +9345,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 853918224}
   m_LocalEulerAnglesHint: {x: -79.345, y: -313.778, z: 136.663}
---- !u!114 &866883924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 866883922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 866883925}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &866883925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9313,6 +9366,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &866883926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866883922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 866883925}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 5LPRP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &871112194
 GameObject:
   m_ObjectHideFlags: 0
@@ -9635,6 +9713,7 @@ GameObject:
   - component: {fileID: 900800234}
   - component: {fileID: 900800233}
   - component: {fileID: 900800237}
+  - component: {fileID: 900800238}
   m_Layer: 0
   m_Name: SharkNew_Right
   m_TagString: Player02
@@ -9744,25 +9823,56 @@ MonoBehaviour:
   m_GameObject: {fileID: 900800232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3598834ede829df4b88e6198f465b776, type: 3}
+  m_Script: {fileID: 11500000, guid: 011af5e69b8d3e94f89943a2b6957e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player02: {fileID: 647263145}
-  oppenent: {fileID: 0}
-  movementScript: {fileID: 0}
-  actionScript: {fileID: 0}
+  oppenent: {fileID: 243324859}
+  movementScript: {fileID: 181086659}
+  actionScript: {fileID: 243324865}
+  actionMultiButtonInChallange: {fileID: 243324862}
   oppPosition: {x: 0, y: 0, z: 0}
   anim: {fileID: 647263147}
   rb: {fileID: 900800233}
   validTags:
   - 5LPRP_AttackBox
+  - 5LPRP_AttackBox
+  - 5LPRP_AttackBox
+  - 3LPRP_AttackBox
   - 3LPRP_AttackBox
   - 3RP_AttackBox
   challengeData: {fileID: 11400000, guid: 687d3cefaa05f984c97622fd6b30e1a2, type: 2}
   selectControllerInChallenge: {fileID: 16306425}
   getValueInChallenge: {fileID: 16306426}
+  animationOverdrive: Challenge
+  currentTagIndex: 0
+  IndexTag: 6
   time: 0
   stopAttack: 0
+  isValidTagCompleted: 0
+--- !u!136 &900800238
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900800232}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.50000006
+  m_Height: 1.9999999
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &901944982
 GameObject:
   m_ObjectHideFlags: 0
@@ -9901,10 +10011,10 @@ GameObject:
   m_Component:
   - component: {fileID: 911241348}
   - component: {fileID: 911241350}
-  - component: {fileID: 911241349}
+  - component: {fileID: 911241351}
   m_Layer: 0
   m_Name: 5LPRPAttackBox_02
-  m_TagString: Untagged
+  m_TagString: 5LPRP_AttackBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9924,30 +10034,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 853918224}
   m_LocalEulerAnglesHint: {x: -79.345, y: -313.778, z: 136.663}
---- !u!114 &911241349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911241347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 911241350}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &911241350
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9969,6 +10055,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &911241351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911241347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 911241350}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 5LPRP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &943171877
 GameObject:
   m_ObjectHideFlags: 0
@@ -9979,7 +10090,7 @@ GameObject:
   m_Component:
   - component: {fileID: 943171878}
   - component: {fileID: 943171880}
-  - component: {fileID: 943171879}
+  - component: {fileID: 943171881}
   m_Layer: 0
   m_Name: 6LPRPAttackBox_01
   m_TagString: 6LPRP_AttackBox
@@ -10002,30 +10113,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1731414833}
   m_LocalEulerAnglesHint: {x: -79.345, y: -313.778, z: 136.663}
---- !u!114 &943171879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943171877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 943171880}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &943171880
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10047,6 +10134,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &943171881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943171877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 943171880}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 6LPRP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &946027686
 GameObject:
   m_ObjectHideFlags: 0
@@ -11379,7 +11491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1082879420}
   - component: {fileID: 1082879422}
-  - component: {fileID: 1082879421}
+  - component: {fileID: 1082879423}
   m_Layer: 0
   m_Name: 6LKRKAttackBox
   m_TagString: 6LKRK_AttackBox
@@ -11402,30 +11514,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1972397436}
   m_LocalEulerAnglesHint: {x: -74.866, y: -426.892, z: 258.87}
---- !u!114 &1082879421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1082879419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 1082879422}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &1082879422
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11447,6 +11535,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1082879423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082879419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 1082879422}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 6LKRK_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &1093397632
 GameObject:
   m_ObjectHideFlags: 0
@@ -11457,7 +11570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1093397633}
   - component: {fileID: 1093397635}
-  - component: {fileID: 1093397634}
+  - component: {fileID: 1093397636}
   m_Layer: 0
   m_Name: 6LPRPLKRKAttackBox_LP
   m_TagString: 6LPRPLKRK_AttackBox
@@ -11480,30 +11593,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 752323516}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1093397634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093397632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 1093397635}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 1
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 6LPRPLKRP_Capybara
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &1093397635
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11525,6 +11614,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1093397636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093397632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 1093397635}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 6LPRPLKRK_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &1108152787
 GameObject:
   m_ObjectHideFlags: 0
@@ -11575,7 +11689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1117033216}
   - component: {fileID: 1117033218}
-  - component: {fileID: 1117033217}
+  - component: {fileID: 1117033219}
   m_Layer: 0
   m_Name: 4LPRPAttackBox_LP
   m_TagString: 4LPRP_AttackBox
@@ -11598,30 +11712,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 752323516}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1117033217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117033215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 1117033218}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &1117033218
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11643,6 +11733,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1117033219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117033215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 1117033218}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 4LPRP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &1133862553
 GameObject:
   m_ObjectHideFlags: 0
@@ -12048,7 +12163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1206376339}
   - component: {fileID: 1206376341}
-  - component: {fileID: 1206376340}
+  - component: {fileID: 1206376342}
   m_Layer: 0
   m_Name: 5RPAttackBox
   m_TagString: 5LPRP_AttackBox
@@ -12071,30 +12186,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1972397436}
   m_LocalEulerAnglesHint: {x: -75.683, y: -359.818, z: 171.368}
---- !u!114 &1206376340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206376338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 1206376341}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &1206376341
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12116,6 +12207,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1206376342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206376338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 1206376341}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 5RP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &1232659200
 GameObject:
   m_ObjectHideFlags: 0
@@ -12404,7 +12520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1262999475}
   - component: {fileID: 1262999477}
-  - component: {fileID: 1262999476}
+  - component: {fileID: 1262999478}
   m_Layer: 0
   m_Name: 5LPRPAttackBox_01
   m_TagString: 5LPRP_AttackBox
@@ -12427,30 +12543,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 853918224}
   m_LocalEulerAnglesHint: {x: -79.345, y: -313.778, z: 136.663}
---- !u!114 &1262999476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262999474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 1262999477}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &1262999477
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12472,6 +12564,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1262999478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262999474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 1262999477}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 5LPRP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &1268786714
 GameObject:
   m_ObjectHideFlags: 0
@@ -12737,7 +12854,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1280569634}
-  - component: {fileID: 1280569635}
   m_Layer: 14
   m_Name: PlayerHealth
   m_TagString: Player02Health
@@ -12760,29 +12876,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 647263146}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1280569635
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280569633}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.01597841
-  m_Height: 0.08578407
-  m_Direction: 1
-  m_Center: {x: 7.5456494e-17, y: 0.040781535, z: -0.0036074843}
 --- !u!1 &1301249826
 GameObject:
   m_ObjectHideFlags: 0
@@ -13880,7 +13973,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1567341577}
   - component: {fileID: 1567341579}
-  - component: {fileID: 1567341578}
+  - component: {fileID: 1567341580}
   m_Layer: 0
   m_Name: 4RPAttackBox
   m_TagString: 4RP_AttackBox
@@ -13903,30 +13996,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1972397436}
   m_LocalEulerAnglesHint: {x: -79.345, y: -313.778, z: 136.663}
---- !u!114 &1567341578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1567341576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 1567341579}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &1567341579
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13948,6 +14017,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1567341580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567341576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 1567341579}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 4RP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!4 &1617243048 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3818341080566662289, guid: 330747d8608b3774c994bdc0fa8dd1b3,
@@ -14568,7 +14662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1745488719}
   - component: {fileID: 1745488721}
-  - component: {fileID: 1745488720}
+  - component: {fileID: 1745488722}
   m_Layer: 0
   m_Name: 4LPRPAttackBox_RP
   m_TagString: Untagged
@@ -14591,30 +14685,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1972397436}
   m_LocalEulerAnglesHint: {x: -79.345, y: -313.778, z: 136.663}
---- !u!114 &1745488720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1745488718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 1745488721}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &1745488721
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14636,6 +14706,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1745488722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745488718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 1745488721}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 4LPRP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &1776209826
 GameObject:
   m_ObjectHideFlags: 0
@@ -14734,7 +14829,7 @@ PrefabInstance:
     - target: {fileID: -9124688206312251337, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -1.4518379
+      value: -1.4518384
       objectReference: {fileID: 0}
     - target: {fileID: -9124688206312251337, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -14749,22 +14844,22 @@ PrefabInstance:
     - target: {fileID: -8928420436442827525, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -18.839157
+      value: -6.6825085
       objectReference: {fileID: 0}
     - target: {fileID: -8928420436442827525, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -153.60443
+      value: 145.21858
       objectReference: {fileID: 0}
     - target: {fileID: -8928420436442827525, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -161.42824
+      value: -165.95798
       objectReference: {fileID: 0}
     - target: {fileID: -8879826167090600341, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.336009
+      value: -0.3360094
       objectReference: {fileID: 0}
     - target: {fileID: -8879826167090600341, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -14779,27 +14874,27 @@ PrefabInstance:
     - target: {fileID: -8826081506452349389, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 18.629444
+      value: 1.2884407
       objectReference: {fileID: 0}
     - target: {fileID: -8826081506452349389, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 37.46518
+      value: 11.157659
       objectReference: {fileID: 0}
     - target: {fileID: -8826081506452349389, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -27.48441
+      value: -12.474178
       objectReference: {fileID: 0}
     - target: {fileID: -8806565986281225459, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.69597214
+      value: -0.69597185
       objectReference: {fileID: 0}
     - target: {fileID: -8806565986281225459, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.34338045
+      value: -0.34338075
       objectReference: {fileID: 0}
     - target: {fileID: -8806565986281225459, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -14874,12 +14969,12 @@ PrefabInstance:
     - target: {fileID: -8624283074477885658, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.4113321
+      value: -0.411332
       objectReference: {fileID: 0}
     - target: {fileID: -8624283074477885658, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 2.2934337
+      value: 2.293433
       objectReference: {fileID: 0}
     - target: {fileID: -8624283074477885658, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -14889,7 +14984,7 @@ PrefabInstance:
     - target: {fileID: -8502374860080149942, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -1.0215323e-14
+      value: -9.309183e-15
       objectReference: {fileID: 0}
     - target: {fileID: -8502374860080149942, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -14904,7 +14999,7 @@ PrefabInstance:
     - target: {fileID: -8252230721515431508, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -1.7604799
+      value: -1.7604802
       objectReference: {fileID: 0}
     - target: {fileID: -8252230721515431508, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -14919,42 +15014,42 @@ PrefabInstance:
     - target: {fileID: -8006035428877583666, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -1.3728353e-15
+      value: 5.6027627
       objectReference: {fileID: 0}
     - target: {fileID: -8006035428877583666, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 33.65522
+      value: 34.027573
       objectReference: {fileID: 0}
     - target: {fileID: -8006035428877583666, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -7.060881e-15
+      value: -0.055549443
       objectReference: {fileID: 0}
     - target: {fileID: -7410206627924110022, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 10.998458
+      value: 14.488615
       objectReference: {fileID: 0}
     - target: {fileID: -7410206627924110022, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 29.360662
+      value: 33.325607
       objectReference: {fileID: 0}
     - target: {fileID: -7410206627924110022, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -24.04646
+      value: -25.916859
       objectReference: {fileID: 0}
     - target: {fileID: -6875645249227947931, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 4.5894713
+      value: 4.589472
       objectReference: {fileID: 0}
     - target: {fileID: -6875645249227947931, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -6.0816603
+      value: -6.0816607
       objectReference: {fileID: 0}
     - target: {fileID: -6875645249227947931, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -14964,7 +15059,7 @@ PrefabInstance:
     - target: {fileID: -6577948769028156585, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.73697495
+      value: -0.7369744
       objectReference: {fileID: 0}
     - target: {fileID: -6577948769028156585, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -14979,17 +15074,17 @@ PrefabInstance:
     - target: {fileID: -6543396073329032077, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -5.9999137
+      value: -5.999913
       objectReference: {fileID: 0}
     - target: {fileID: -6543396073329032077, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 1.2652881e-15
+      value: 1.1530518e-15
       objectReference: {fileID: 0}
     - target: {fileID: -6543396073329032077, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 7.046007e-16
+      value: 6.420997e-16
       objectReference: {fileID: 0}
     - target: {fileID: -4846488512266372772, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15009,12 +15104,12 @@ PrefabInstance:
     - target: {fileID: -4765659409022289829, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.9670002
+      value: -0.96699977
       objectReference: {fileID: 0}
     - target: {fileID: -4765659409022289829, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.72095907
+      value: 0.72095937
       objectReference: {fileID: 0}
     - target: {fileID: -4765659409022289829, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15024,27 +15119,27 @@ PrefabInstance:
     - target: {fileID: -4630058347872050302, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.22261325
+      value: 0.24731995
       objectReference: {fileID: 0}
     - target: {fileID: -4630058347872050302, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -88.0467
+      value: -100.20939
       objectReference: {fileID: 0}
     - target: {fileID: -4630058347872050302, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.0081025055
+      value: -0.04679806
       objectReference: {fileID: 0}
     - target: {fileID: -4537909304506440424, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -1.8830373
+      value: -1.8830377
       objectReference: {fileID: 0}
     - target: {fileID: -4537909304506440424, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 3.5181708
+      value: 3.518171
       objectReference: {fileID: 0}
     - target: {fileID: -4537909304506440424, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15054,12 +15149,12 @@ PrefabInstance:
     - target: {fileID: -4370745004410725682, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.74023837
+      value: -0.740238
       objectReference: {fileID: 0}
     - target: {fileID: -4370745004410725682, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.2330918
+      value: -0.23309194
       objectReference: {fileID: 0}
     - target: {fileID: -4370745004410725682, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15069,12 +15164,12 @@ PrefabInstance:
     - target: {fileID: -4139656757204795071, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.29357442
+      value: -0.29357484
       objectReference: {fileID: 0}
     - target: {fileID: -4139656757204795071, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 1.2507145
+      value: 1.2507148
       objectReference: {fileID: 0}
     - target: {fileID: -4139656757204795071, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15084,12 +15179,12 @@ PrefabInstance:
     - target: {fileID: -3898036545594678366, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.19268852
+      value: 0.19268848
       objectReference: {fileID: 0}
     - target: {fileID: -3898036545594678366, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.33443147
+      value: -0.33443105
       objectReference: {fileID: 0}
     - target: {fileID: -3898036545594678366, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15099,22 +15194,22 @@ PrefabInstance:
     - target: {fileID: -3791140988821211439, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -1.2622316
+      value: -1.2622321
       objectReference: {fileID: 0}
     - target: {fileID: -3791140988821211439, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -1.4383767
+      value: -1.4383761
       objectReference: {fileID: 0}
     - target: {fileID: -3791140988821211439, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -3.0734017
+      value: -3.073401
       objectReference: {fileID: 0}
     - target: {fileID: -3580141598786749326, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -5.9999137
+      value: -5.999913
       objectReference: {fileID: 0}
     - target: {fileID: -2627639560225093678, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15134,17 +15229,17 @@ PrefabInstance:
     - target: {fileID: -1503821049851092115, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -24.348347
+      value: -42.170647
       objectReference: {fileID: 0}
     - target: {fileID: -1503821049851092115, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -58.63978
+      value: -116.03435
       objectReference: {fileID: 0}
     - target: {fileID: -1503821049851092115, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -15.423197
+      value: 36.510616
       objectReference: {fileID: 0}
     - target: {fileID: -1062681702781874659, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15154,12 +15249,12 @@ PrefabInstance:
     - target: {fileID: -943689586905952863, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.4113321
+      value: -0.411332
       objectReference: {fileID: 0}
     - target: {fileID: -943689586905952863, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 2.2934337
+      value: 2.293433
       objectReference: {fileID: 0}
     - target: {fileID: -943689586905952863, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15169,12 +15264,12 @@ PrefabInstance:
     - target: {fileID: -655891456479820787, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.782394
+      value: -0.78239405
       objectReference: {fileID: 0}
     - target: {fileID: -655891456479820787, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 4.823389
+      value: 4.8233895
       objectReference: {fileID: 0}
     - target: {fileID: -655891456479820787, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15184,12 +15279,12 @@ PrefabInstance:
     - target: {fileID: -573357776538558595, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 7.0167083e-15
+      value: 6.394298e-15
       objectReference: {fileID: 0}
     - target: {fileID: -573357776538558595, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -7.0167083e-15
+      value: -6.394298e-15
       objectReference: {fileID: 0}
     - target: {fileID: -573357776538558595, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15199,12 +15294,12 @@ PrefabInstance:
     - target: {fileID: -468899652392196236, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 4.125417e-15
+      value: -4.435666e-15
       objectReference: {fileID: 0}
     - target: {fileID: -468899652392196236, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -2.6336758e-14
+      value: -5.2014176e-15
       objectReference: {fileID: 0}
     - target: {fileID: -468899652392196236, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15214,12 +15309,12 @@ PrefabInstance:
     - target: {fileID: -331636499873689202, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -6.25991
+      value: -6.2599096
       objectReference: {fileID: 0}
     - target: {fileID: -331636499873689202, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.00000010736184
+      value: -0.000000097838424
       objectReference: {fileID: 0}
     - target: {fileID: -331636499873689202, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15229,12 +15324,12 @@ PrefabInstance:
     - target: {fileID: -263581045880081845, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -6.25991
+      value: -6.2599096
       objectReference: {fileID: 0}
     - target: {fileID: -263581045880081845, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.00000010736184
+      value: -0.000000097838424
       objectReference: {fileID: 0}
     - target: {fileID: -263581045880081845, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15244,17 +15339,17 @@ PrefabInstance:
     - target: {fileID: 572617754110402786, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -33.427917
+      value: -20.077408
       objectReference: {fileID: 0}
     - target: {fileID: 572617754110402786, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 174.00745
       objectReference: {fileID: 0}
     - target: {fileID: 572617754110402786, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
+      value: -88.11089
       objectReference: {fileID: 0}
     - target: {fileID: 629717425914174796, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15264,7 +15359,7 @@ PrefabInstance:
     - target: {fileID: 629717425914174796, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 3.9308586
+      value: 3.9308589
       objectReference: {fileID: 0}
     - target: {fileID: 629717425914174796, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15274,12 +15369,12 @@ PrefabInstance:
     - target: {fileID: 802589227482139642, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.000001155256
+      value: 0.00000105278
       objectReference: {fileID: 0}
     - target: {fileID: 802589227482139642, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.00000035105958
+      value: -0.0000003199192
       objectReference: {fileID: 0}
     - target: {fileID: 802589227482139642, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15299,22 +15394,22 @@ PrefabInstance:
     - target: {fileID: 1146317848978521515, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -1.206333e-14
+      value: 10.19758
       objectReference: {fileID: 0}
     - target: {fileID: 1146317848978521515, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -22.126158
+      value: -30.876364
       objectReference: {fileID: 0}
     - target: {fileID: 1146317848978521515, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -1.0604458e-14
+      value: -9.224687
       objectReference: {fileID: 0}
     - target: {fileID: 1338135434773234205, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -9.012206e-15
+      value: -8.2127866e-15
       objectReference: {fileID: 0}
     - target: {fileID: 1338135434773234205, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15324,42 +15419,42 @@ PrefabInstance:
     - target: {fileID: 1338135434773234205, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -1.1793477e-14
+      value: -1.0747347e-14
       objectReference: {fileID: 0}
     - target: {fileID: 1345432051226033693, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -82.15512
+      value: -66.30665
       objectReference: {fileID: 0}
     - target: {fileID: 1345432051226033693, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -76.07856
+      value: -170.18047
       objectReference: {fileID: 0}
     - target: {fileID: 1345432051226033693, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 45.751682
+      value: 126.18119
       objectReference: {fileID: 0}
     - target: {fileID: 1573104154704751926, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -56.82151
+      value: -65.77906
       objectReference: {fileID: 0}
     - target: {fileID: 1573104154704751926, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 170.44289
+      value: 163.11569
       objectReference: {fileID: 0}
     - target: {fileID: 1573104154704751926, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 81.84092
+      value: 101.85258
       objectReference: {fileID: 0}
     - target: {fileID: 1614215523828265719, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -2.257377
+      value: -2.2573762
       objectReference: {fileID: 0}
     - target: {fileID: 1614215523828265719, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15374,7 +15469,7 @@ PrefabInstance:
     - target: {fileID: 2041789027316846595, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -1.4518379
+      value: -1.4518384
       objectReference: {fileID: 0}
     - target: {fileID: 2041789027316846595, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15389,12 +15484,12 @@ PrefabInstance:
     - target: {fileID: 2906208618074185049, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 4.5894713
+      value: 4.589472
       objectReference: {fileID: 0}
     - target: {fileID: 2906208618074185049, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -6.0816603
+      value: -6.0816607
       objectReference: {fileID: 0}
     - target: {fileID: 2906208618074185049, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15409,52 +15504,52 @@ PrefabInstance:
     - target: {fileID: 3914094459853866650, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.8109425
+      value: 0.8109426
       objectReference: {fileID: 0}
     - target: {fileID: 3914094459853866650, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -7.114723
+      value: -7.1147227
       objectReference: {fileID: 0}
     - target: {fileID: 4316241698820879102, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 6.0672584
+      value: 1.1710484
       objectReference: {fileID: 0}
     - target: {fileID: 4316241698820879102, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -8.907459
+      value: 18.22384
       objectReference: {fileID: 0}
     - target: {fileID: 4316241698820879102, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -15.790169
+      value: -30.127409
       objectReference: {fileID: 0}
     - target: {fileID: 4359573668035872770, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -4.1853123
+      value: -28.08525
       objectReference: {fileID: 0}
     - target: {fileID: 4359573668035872770, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90.883514
+      value: 74.64586
       objectReference: {fileID: 0}
     - target: {fileID: 4359573668035872770, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -159.02422
+      value: -173.27898
       objectReference: {fileID: 0}
     - target: {fileID: 4808084199366449482, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.05645504
+      value: -0.05645526
       objectReference: {fileID: 0}
     - target: {fileID: 4808084199366449482, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 2.3293254
+      value: 2.329326
       objectReference: {fileID: 0}
     - target: {fileID: 4808084199366449482, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15464,12 +15559,12 @@ PrefabInstance:
     - target: {fileID: 4905871674859522368, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.7892707
+      value: 0.7892712
       objectReference: {fileID: 0}
     - target: {fileID: 4905871674859522368, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 3.2007716
+      value: 3.2007718
       objectReference: {fileID: 0}
     - target: {fileID: 4905871674859522368, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15479,32 +15574,32 @@ PrefabInstance:
     - target: {fileID: 5496510618604058539, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.19729719
+      value: 0.1972971
       objectReference: {fileID: 0}
     - target: {fileID: 5496510618604058539, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 3.3271408
+      value: 3.3271415
       objectReference: {fileID: 0}
     - target: {fileID: 5496510618604058539, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -5.2448993
+      value: -5.2448997
       objectReference: {fileID: 0}
     - target: {fileID: 5731573519906924337, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 5.101487
+      value: -39.88115
       objectReference: {fileID: 0}
     - target: {fileID: 5731573519906924337, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -12.489036
+      value: -18.842026
       objectReference: {fileID: 0}
     - target: {fileID: 5731573519906924337, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -49.93062
+      value: -11.837459
       objectReference: {fileID: 0}
     - target: {fileID: 6120417880516036093, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15514,7 +15609,7 @@ PrefabInstance:
     - target: {fileID: 6120417880516036093, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.6155936
+      value: 0.6155942
       objectReference: {fileID: 0}
     - target: {fileID: 6120417880516036093, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15524,12 +15619,12 @@ PrefabInstance:
     - target: {fileID: 6246678847346294784, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.09919456
+      value: -0.09919481
       objectReference: {fileID: 0}
     - target: {fileID: 6246678847346294784, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 1.2808675
+      value: 1.2808676
       objectReference: {fileID: 0}
     - target: {fileID: 6246678847346294784, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15539,17 +15634,17 @@ PrefabInstance:
     - target: {fileID: 6561138093641443954, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -25.228327
+      value: -6.574044
       objectReference: {fileID: 0}
     - target: {fileID: 6561138093641443954, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -59.154873
+      value: -50.82396
       objectReference: {fileID: 0}
     - target: {fileID: 6561138093641443954, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -18.202261
+      value: 33.453342
       objectReference: {fileID: 0}
     - target: {fileID: 6623172085124634012, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15559,7 +15654,7 @@ PrefabInstance:
     - target: {fileID: 6623172085124634012, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -5.3566794
+      value: -5.356679
       objectReference: {fileID: 0}
     - target: {fileID: 6623172085124634012, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15569,57 +15664,57 @@ PrefabInstance:
     - target: {fileID: 6770329158993651421, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 2.5532422
+      value: 2.5532417
       objectReference: {fileID: 0}
     - target: {fileID: 6770329158993651421, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -1.643291
+      value: -1.6432914
       objectReference: {fileID: 0}
     - target: {fileID: 6770329158993651421, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -3.0757113
+      value: -3.0757115
       objectReference: {fileID: 0}
     - target: {fileID: 6797799505420593855, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.22746463
+      value: 0.21869476
       objectReference: {fileID: 0}
     - target: {fileID: 6797799505420593855, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -89.764244
+      value: -86.18223
       objectReference: {fileID: 0}
     - target: {fileID: 6797799505420593855, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.0009979358
+      value: 0.015571736
       objectReference: {fileID: 0}
     - target: {fileID: 7113844712972701965, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 2.8168905
+      value: 2.816891
       objectReference: {fileID: 0}
     - target: {fileID: 7113844712972701965, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 3.0864608
+      value: 3.0864604
       objectReference: {fileID: 0}
     - target: {fileID: 7113844712972701965, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -5.251231
+      value: -5.2512317
       objectReference: {fileID: 0}
     - target: {fileID: 7188759626199730238, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.18424833
+      value: 0.18424846
       objectReference: {fileID: 0}
     - target: {fileID: 7188759626199730238, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.1389273
+      value: -0.13892765
       objectReference: {fileID: 0}
     - target: {fileID: 7188759626199730238, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15629,27 +15724,27 @@ PrefabInstance:
     - target: {fileID: 7437526032976756966, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 2.5532422
+      value: 2.5532417
       objectReference: {fileID: 0}
     - target: {fileID: 7437526032976756966, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -1.643291
+      value: -1.6432914
       objectReference: {fileID: 0}
     - target: {fileID: 7437526032976756966, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -3.0757113
+      value: -3.0757115
       objectReference: {fileID: 0}
     - target: {fileID: 7547827092540092671, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.8907366
+      value: -0.89073616
       objectReference: {fileID: 0}
     - target: {fileID: 7547827092540092671, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.92347026
+      value: 0.92347085
       objectReference: {fileID: 0}
     - target: {fileID: 7547827092540092671, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15659,17 +15754,17 @@ PrefabInstance:
     - target: {fileID: 7870210810543630924, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -1.2622316
+      value: -1.2622321
       objectReference: {fileID: 0}
     - target: {fileID: 7870210810543630924, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -1.4383767
+      value: -1.4383761
       objectReference: {fileID: 0}
     - target: {fileID: 7870210810543630924, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -3.0734017
+      value: -3.073401
       objectReference: {fileID: 0}
     - target: {fileID: 7982980802323650706, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15679,7 +15774,7 @@ PrefabInstance:
     - target: {fileID: 7982980802323650706, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.6155936
+      value: 0.6155942
       objectReference: {fileID: 0}
     - target: {fileID: 7982980802323650706, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15689,12 +15784,12 @@ PrefabInstance:
     - target: {fileID: 9031237078573575381, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.05645504
+      value: -0.05645526
       objectReference: {fileID: 0}
     - target: {fileID: 9031237078573575381, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 2.3293254
+      value: 2.329326
       objectReference: {fileID: 0}
     - target: {fileID: 9031237078573575381, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
@@ -15785,6 +15880,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 243324863}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 28e06609e400e424288d35e9bd0e4b3d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 243324865}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 28e06609e400e424288d35e9bd0e4b3d,
         type: 3}
       insertIndex: -1
@@ -16988,7 +17087,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2011754069}
   - component: {fileID: 2011754071}
-  - component: {fileID: 2011754070}
+  - component: {fileID: 2011754072}
   m_Layer: 0
   m_Name: 1LPAttackBox
   m_TagString: 1LP_AttackBox
@@ -17011,30 +17110,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 752323516}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2011754070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011754068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35e635ab7feb0b4789dbd1f1d9d2b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Col: {fileID: 2011754071}
-  damage: 10
-  force: 0
-  Check: 0
-  Grab: 0
-  TakeAction: 0
-  TakeActionMultiButton: 1
-  animationName: 
-  player02Health: {fileID: 0}
-  player01TakeAction: {fileID: 0}
-  player01TakeActionMultibutton: {fileID: 0}
-  player01CameraSpecial: {fileID: 0}
 --- !u!65 &2011754071
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17056,6 +17131,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2011754072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011754068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1380ddc9189e4a45b70eccbdecb6b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Col: {fileID: 2011754071}
+  damage: 10
+  force: 0
+  Check: 0
+  Grab: 0
+  TakeAction: 0
+  TakeActionMultiButton: 1
+  ActionInChallenge: 1
+  animationName: 1LP_AttackBox
+  player01CameraSpecial: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800237}
+  player01TakeAction: {fileID: 243324865}
+  player01TakeActionMultibutton: {fileID: 243324862}
 --- !u!1 &2037357555
 GameObject:
   m_ObjectHideFlags: 0

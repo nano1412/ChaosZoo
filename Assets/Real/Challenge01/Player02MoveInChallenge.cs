@@ -8,6 +8,7 @@ public class Player02MoveInChallenge : MonoBehaviour
     public GameObject oppenent;
     public Player01MovementChallenge movementScript;
     public Player01TakeActionInChallenge  actionScript;
+    public Player01TakeActionMultiButtonInChallange actionMultiButton;
     public Vector3 oppPosition;
     public Animator anim;
     public Rigidbody rb;
@@ -128,6 +129,7 @@ public class Player02MoveInChallenge : MonoBehaviour
         if (actionScript != null)
         {
             actionScript.enabled = false;
+            actionMultiButton.enabled = false;
         }
 
         Player02MoveInChallenge player02MovementScript = player02.GetComponent<Player02MoveInChallenge>();

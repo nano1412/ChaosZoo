@@ -21,10 +21,13 @@ public class Player02Movement_Overdrive : MonoBehaviour
     public GetValueInChallenge getValueInChallenge;
     public string animationOverdrive;
 
-    private int currentTagIndex = 0;
+    public int currentTagIndex = 0;
+    public int IndexTag = 0;
     public float time;
     public bool stopAttack = false;
     private bool hasKenAttackExecuted = false;
+    public bool isValidTagCompleted = false; // เพิ่มตัวแปรนี้
+
 
     void Start()
     {
@@ -61,33 +64,46 @@ public class Player02Movement_Overdrive : MonoBehaviour
                 time = 0;
             }
         }
+        if(currentTagIndex == IndexTag)
+        {
+            isValidTagCompleted = true;
+        }
     }
 
     public void TakeDamage(int damage, float force, string actionGrapName)
     {
-        if(animationOverdrive == "Challenge")
+        if(isValidTagCompleted)
         {
-            if(actionGrapName == validTags[currentTagIndex])
+            StartCoroutine(ResetCurrenttext(2f));
+            return;
+        }
+        if (animationOverdrive == "Challenge")
+        {
+            if (actionGrapName == validTags[currentTagIndex])
             {
                 anim.SetTrigger("Hurt");
                 currentTagIndex++;
-                if(stopAttack)
+                if (stopAttack)
                 {
                     challengeData.boolList.Add(false);
-                    currentTagIndex = 0; // Reset tag index for the next round
                     getValueInChallenge.RedUpdate();
 
                     Time.timeScale = 0;
                     DisablePlayerControls(); // Disable player controls
                     selectControllerInChallenge.DisableScripts();
                     selectControllerInChallenge.ResetScene();
+                    time = 0;
+                    
                     challengeData.CurrentRound++;
                     stopAttack = false;
+                    //StartCoroutine(ResetCurrenttext(0.5f));
+                    StartCoroutine(ResetCurrenttext(2f));
                 }
-                if (currentTagIndex >= validTags.Count && !stopAttack)
+                if (currentTagIndex >= validTags.Count && !stopAttack && !hasKenAttackExecuted)
                 {
+                    isValidTagCompleted = true;
+                    hasKenAttackExecuted = true;
                     challengeData.boolList.Add(true);
-                    currentTagIndex = 0; // Reset tag index for the next round
                     getValueInChallenge.GreenUpdate();
                     challengeData.CurrentRound++;
                     time = 0;
@@ -96,14 +112,16 @@ public class Player02Movement_Overdrive : MonoBehaviour
                     DisablePlayerControls(); // Disable player controls
                     selectControllerInChallenge.DisableScripts();
                     selectControllerInChallenge.ResetScene();
-                    hasKenAttackExecuted = false;
+                    //StartCoroutine(ResetCurrenttext(0.5f));
+                    StartCoroutine(ResetCurrenttext(2f));
                 }
             }
-            else
+            else if(!isValidTagCompleted && actionGrapName != validTags[currentTagIndex])
             {
+                isValidTagCompleted = true;
                 anim.SetTrigger("Knock");
                 challengeData.boolList.Add(false);
-                currentTagIndex = 0; // Reset tag index for the next round
+                hasKenAttackExecuted = true;
                 getValueInChallenge.RedUpdate();
 
                 Time.timeScale = 0;
@@ -113,6 +131,8 @@ public class Player02Movement_Overdrive : MonoBehaviour
                 challengeData.CurrentRound++;
                 time = 0;
                 stopAttack = false;
+                //StartCoroutine(ResetCurrenttext(0.5f));
+                StartCoroutine(ResetCurrenttext(2f));
             }
         }
         else
@@ -177,6 +197,8 @@ public class Player02Movement_Overdrive : MonoBehaviour
         {
             player02MovementScript.enabled = false;
         }
+        time = 0;
+        hasKenAttackExecuted = false;
 
         // Disable any other scripts or controls as needed
     }
@@ -230,5 +252,13 @@ public class Player02Movement_Overdrive : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         hasKenAttackExecuted = false;
 
+    }
+
+    IEnumerator ResetCurrenttext(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        //currentTagIndex = 0;
+        isValidTagCompleted = false;
+        stopAttack = false;
     }
 }
