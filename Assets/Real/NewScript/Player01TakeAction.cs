@@ -7,6 +7,8 @@ public class Player01TakeAction : MonoBehaviour
     public float defaultActionCooldown = 0.5f;
     public string nameCharacter;
     public GameObject player01;
+    public GameObject opponent;
+    public Player02Movement player02Movement;
     public Player01Movement player01Movement;
     public Player01CameraSpecial player01CameraSpecial;
     public Player01Health player01Health;
@@ -54,6 +56,8 @@ public class Player01TakeAction : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        opponent = GameObject.FindGameObjectWithTag("PlayerCharacter02Tpose");
+        player02Movement = GameObject.FindGameObjectWithTag("Player02").GetComponent<Player02Movement>();
     }
 
     void Update()
@@ -828,6 +832,13 @@ public class Player01TakeAction : MonoBehaviour
         {
             player01CameraSpecial.CameraSetActive();
             player01Health.SharkDrive = true;
+            Animator opponentAnimator = opponent.GetComponent<Animator>();
+            if (opponentAnimator != null)
+            {
+                opponentAnimator.enabled = false;
+                player02Movement.enabled = false;
+            }
+
             StartCoroutine(ResetBoolSharkdrive());
             StartCoroutine(ResetHCBFState(1f));
         }
@@ -836,6 +847,14 @@ public class Player01TakeAction : MonoBehaviour
             player01CameraSpecial.SpecialPengang();
             NumberRPG = true;
             boxColliderPangeng.enabled = false;
+
+            Animator opponentAnimator = opponent.GetComponent<Animator>();
+            if (opponentAnimator != null)
+            {
+                opponentAnimator.enabled = false;
+                player02Movement.enabled = false;
+            }
+            StartCoroutine(ResetMovement(1.8f));
             StartCoroutine(ResetBoxCollider(3.2f));
             StartCoroutine(ResetHCBFState(5f));
         }
@@ -889,6 +908,13 @@ public class Player01TakeAction : MonoBehaviour
         isPerformingAction = false;
         player01Movement.isPerformingAction = false;
         NumberRPG = false;
+
+        Animator opponentAnimator = opponent.GetComponent<Animator>();
+        if (opponentAnimator != null)
+        {
+            opponentAnimator.enabled = true;
+            player02Movement.enabled = true;
+        }
     }
     IEnumerator ResetGrap()
     {
@@ -905,6 +931,17 @@ public class Player01TakeAction : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         boxColliderPangeng.enabled = true;
+    }
+
+    IEnumerator ResetMovement(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Animator opponentAnimator = opponent.GetComponent<Animator>();
+        if (opponentAnimator != null)
+        {
+            opponentAnimator.enabled = true;
+            player02Movement.enabled = true;
+        }
     }
 }
     

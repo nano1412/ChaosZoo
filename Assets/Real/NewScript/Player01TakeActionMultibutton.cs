@@ -7,6 +7,8 @@ public class Player01TakeActionMultibutton : MonoBehaviour
     public float defaultActionCooldown = 0.5f;
     public List<string> nameAnimation = new List<string>();
     public GameObject player01;
+    public GameObject opponent;
+    public Player02Movement player02Movement;
     public Player01Movement player01Movement;
     public Player01Health player01Health;
     public Player01CameraSpecial player01CameraSpecial;
@@ -24,6 +26,8 @@ public class Player01TakeActionMultibutton : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        opponent = GameObject.FindGameObjectWithTag("PlayerCharacter02Tpose");
+        player02Movement = GameObject.FindGameObjectWithTag("Player02").GetComponent<Player02Movement>();
     }
 
     void Update()
@@ -273,6 +277,16 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         if(nameAnimation[0] == "4RPLPRKLK_Ken" || nameAnimation[0] == "6RPLPRKLK_Capy")
         {
             player01CameraSpecial.SpecialCapybaraCamare();
+
+            Animator opponentAnimator = opponent.GetComponent<Animator>();
+            if (opponentAnimator != null)
+            {
+                opponentAnimator.enabled = false;
+                player02Movement.enabled = false;
+            }
+
+            StartCoroutine(ResetMovement(0.75f));
+
         }
         anim.SetTrigger(action);
         anim.SetBool("canWalk", false);
@@ -281,6 +295,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         
+
         StartCoroutine(ResetIsPerformingAction(2f));
     }
 
@@ -391,6 +406,16 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         player01Movement.isPerformingAction = true;
     }
 
+    IEnumerator ResetMovement(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Animator opponentAnimator = opponent.GetComponent<Animator>();
+        if (opponentAnimator != null)
+        {
+            opponentAnimator.enabled = true;
+            player02Movement.enabled = true;
+        }
+    }
 }
 
 public enum SpeacialMoveMultibutton

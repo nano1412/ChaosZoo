@@ -6,6 +6,7 @@ public class Player01EventAnimation : MonoBehaviour
 {   
     public Rigidbody rb;
     public Player01Movement player01Movement;
+    
     public float jumpForce = 0;
     public float forceAmount = 0;
     public float QCFHS_force = 0;

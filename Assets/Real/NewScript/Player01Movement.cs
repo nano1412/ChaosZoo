@@ -92,7 +92,7 @@ public class Player01Movement : MonoBehaviour
             if(-verticalAxis < -verticalThreshold && IsGrounded())
             {
                 animationCouch = true;
-                if(nameCharacter == "Pengang")
+                if(nameCharacter != "Pengang")
                 {
                     anim.SetBool("Crouch", true);
                 }
