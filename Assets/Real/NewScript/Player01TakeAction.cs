@@ -33,6 +33,7 @@ public class Player01TakeAction : MonoBehaviour
     public float holdTimeVertical;
     public float holdTimeHorizontal;
     public int inputCount = 0; // ตัวแปรสำหรับนับจำนวนอินพุต
+    public bool NumberRPG = false;
 
     [Header("Enable/Disable Actions")]
     public List<SpecialMoveToggle> specialMoveToggles = new List<SpecialMoveToggle>()
@@ -815,7 +816,7 @@ public class Player01TakeAction : MonoBehaviour
         anim.SetTrigger("HCB_" + actionName);
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
-        StartCoroutine(ResetHCBFState());
+        StartCoroutine(ResetHCBFState(1f));
     }
     private void ActionHCBF(string actionName)
     {
@@ -828,8 +829,13 @@ public class Player01TakeAction : MonoBehaviour
         {
             player01Health.SharkDrive = true;
             StartCoroutine(ResetBoolSharkdrive());
+            StartCoroutine(ResetHCBFState(1f));
         }
-        StartCoroutine(ResetHCBFState());
+        if(nameCharacter == "Pengang")
+        {
+            NumberRPG = true;
+            StartCoroutine(ResetHCBFState(5f));
+        }
     }
     public void OnHits()
     {
@@ -872,13 +878,14 @@ public class Player01TakeAction : MonoBehaviour
         player01Movement.isPerformingAction = false;
     }
 
-    IEnumerator ResetHCBFState()
+    IEnumerator ResetHCBFState(float time)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(time);
         inputState = InputState.None;
         isHCBInProgress = false;
         isPerformingAction = false;
         player01Movement.isPerformingAction = false;
+        NumberRPG = false;
     }
     IEnumerator ResetGrap()
     {

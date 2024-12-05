@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player02WithRpg : MonoBehaviour
 {
     public Player02Health player02Health;
-
+    
     public void RPGTIme()
     {
         if (player02Health != null)
@@ -17,5 +17,10 @@ public class Player02WithRpg : MonoBehaviour
         {
             Debug.LogError("Player02Health reference is not assigned.");
         }
+    }
+
+    public void RPGOverDrive()
+    {
+        player02Health.TakeDamage(10, 0 , "no");
     }
 }
