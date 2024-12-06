@@ -156,6 +156,18 @@ Transform:
   - {fileID: 1178727400}
   m_Father: {fileID: 846733118}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9586474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5693991176103250330, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 794851343}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &10988342
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,11 +374,11 @@ MonoBehaviour:
   challlengeScripttable: {fileID: 11400000, guid: b274c660cf2e0f243922835d49de8c81,
     type: 2}
   player02Movement_Overdrive: {fileID: 900800238}
-  FinalResult: {fileID: 0}
-  scoreKeyBoard: {fileID: 0}
-  scoreJoystick: {fileID: 0}
-  scoreAcradestick: {fileID: 0}
-  sceneToLoad: Challenge02
+  FinalResult: {fileID: 428019218}
+  scoreKeyBoard: {fileID: 359081048}
+  scoreJoystick: {fileID: 1459871911}
+  scoreAcradestick: {fileID: 9586474}
+  sceneToLoad: Challenge_Ken_2
   Mainmenu: Mainmenu
 --- !u!114 &16306426
 MonoBehaviour:
@@ -424,6 +436,7 @@ MonoBehaviour:
   CurrentIndex: 0
   challlengeScripttable: {fileID: 11400000, guid: b274c660cf2e0f243922835d49de8c81,
     type: 2}
+  KeyboardInputOnly: 1
 --- !u!114 &16306427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1914,6 +1927,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346020441}
   m_CullTransparentMesh: 1
+--- !u!114 &359081048 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3380527557942183921, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 794851343}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &395293168
 GameObject:
   m_ObjectHideFlags: 3
@@ -2150,6 +2175,12 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &428019218 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7067079442967468595, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 794851343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &431122784
 GameObject:
   m_ObjectHideFlags: 0
@@ -4066,6 +4097,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1268786718}
     m_Modifications:
+    - target: {fileID: 1619610448784348575, guid: 0ff50c3305b29c0439877375b0c9be2b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 16306425}
+    - target: {fileID: 1619610448784348575, guid: 0ff50c3305b29c0439877375b0c9be2b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeSceneToChallengeNext
+      objectReference: {fileID: 0}
     - target: {fileID: 3792113179755488724, guid: 0ff50c3305b29c0439877375b0c9be2b,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4165,6 +4206,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041840591011378061, guid: 0ff50c3305b29c0439877375b0c9be2b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 16306425}
+    - target: {fileID: 7041840591011378061, guid: 0ff50c3305b29c0439877375b0c9be2b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeSceneToMainmenu
       objectReference: {fileID: 0}
     - target: {fileID: 7067079442967468595, guid: 0ff50c3305b29c0439877375b0c9be2b,
         type: 3}
@@ -12710,6 +12761,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454759249}
   m_CullTransparentMesh: 1
+--- !u!114 &1459871911 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8763055218332960461, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 794851343}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1472289919
 GameObject:
   m_ObjectHideFlags: 0
