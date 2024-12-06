@@ -371,7 +371,7 @@ MonoBehaviour:
   scoreKeyBoard: {fileID: 2234520}
   scoreJoystick: {fileID: 2075350629}
   scoreAcradestick: {fileID: 1660579517}
-  sceneToLoad: Challenge02
+  sceneToLoad: Challenge_Capybara_2
   Mainmenu: Mainmenu
 --- !u!114 &16306426
 MonoBehaviour:
@@ -16893,6 +16893,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1268786718}
     m_Modifications:
+    - target: {fileID: 1619610448784348575, guid: 0ff50c3305b29c0439877375b0c9be2b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 16306425}
     - target: {fileID: 3792113179755488724, guid: 0ff50c3305b29c0439877375b0c9be2b,
         type: 3}
       propertyPath: m_Pivot.x
