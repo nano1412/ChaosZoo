@@ -359,14 +359,14 @@ MonoBehaviour:
   Selectjoystick: 0
   Player02OverDrive: 1
   multibuttonScript: 0
-  challlengeScripttable: {fileID: 11400000, guid: 4e803dfbcd0c60840a63821e10c51581,
+  challlengeScripttable: {fileID: 11400000, guid: 3270218c3c4873740902352c36a1e295,
     type: 2}
   player02Movement_Overdrive: {fileID: 900800239}
-  FinalResult: {fileID: 0}
-  scoreKeyBoard: {fileID: 0}
-  scoreJoystick: {fileID: 0}
-  scoreAcradestick: {fileID: 0}
-  sceneToLoad: Challenge02
+  FinalResult: {fileID: 1174616124}
+  scoreKeyBoard: {fileID: 1709728557}
+  scoreJoystick: {fileID: 796537549}
+  scoreAcradestick: {fileID: 1406132215}
+  sceneToLoad: Challenge_Pengang_1
   Mainmenu: Mainmenu
 --- !u!114 &16306426
 MonoBehaviour:
@@ -422,8 +422,9 @@ MonoBehaviour:
   JoyStick: {fileID: 1914746164}
   ArcadeStick: {fileID: 10988342}
   CurrentIndex: 0
-  challlengeScripttable: {fileID: 11400000, guid: 4e803dfbcd0c60840a63821e10c51581,
+  challlengeScripttable: {fileID: 11400000, guid: 3270218c3c4873740902352c36a1e295,
     type: 2}
+  KeyboardInputOnly: 1
 --- !u!114 &16306427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4841,6 +4842,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794800283}
   m_CullTransparentMesh: 1
+--- !u!114 &796537549 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8763055218332960461, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 112202671}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &800173081
 GameObject:
   m_ObjectHideFlags: 0
@@ -11800,6 +11813,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 395040291}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1174616124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7067079442967468595, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 112202671}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1178727399
 GameObject:
   m_ObjectHideFlags: 0
@@ -12872,6 +12891,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397137028}
   m_CullTransparentMesh: 1
+--- !u!114 &1406132215 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5693991176103250330, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 112202671}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1409261137 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 77dee3b34ca3e6c46b07a0613855f487,
@@ -14350,6 +14381,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682283145}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1709728557 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3380527557942183921, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 112202671}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1723906637
 PrefabInstance:
   m_ObjectHideFlags: 0
