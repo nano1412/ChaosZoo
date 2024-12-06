@@ -21,10 +21,14 @@ public class Player02Movement_Overdrive : MonoBehaviour
     public GetValueInChallenge getValueInChallenge;
     public string animationOverdrive;
 
-    private int currentTagIndex = 0;
+    public int currentTagIndex = 0;
+    public int IndexTag = 0;
+    public int limitTime = 0;
     public float time;
     public bool stopAttack = false;
     private bool hasKenAttackExecuted = false;
+    public bool isValidTagCompleted = false; // เพิ่มตัวแปรนี้
+
 
     void Start()
     {
@@ -42,36 +46,86 @@ public class Player02Movement_Overdrive : MonoBehaviour
         {
             StartCoroutine(FaceLeft());
         }
-        
-        if(currentTagIndex >= 1)
+    
+        if(currentTagIndex == IndexTag)
         {
-            time += Time.deltaTime;
-            if(time > 4)
-            {
-                stopAttack = true;
-                challengeData.boolList.Add(false);
-                currentTagIndex = 0; // Reset tag index for the next round
-                getValueInChallenge.RedUpdate();
+            isValidTagCompleted = true;
+        }
+        if(time > limitTime)
+        {
+            StopCountingTime();
+            challengeData.boolList.Add(false);
+            hasKenAttackExecuted = true;
+            getValueInChallenge.RedUpdate();
 
-                Time.timeScale = 0;
-                DisablePlayerControls(); // Disable player controls
-                selectControllerInChallenge.DisableScripts();
-                selectControllerInChallenge.ResetScene();
-                challengeData.CurrentRound++;
-                time = 0;
-            }
+            Time.timeScale = 0;
+            DisablePlayerControls(); // Disable player controls
+            selectControllerInChallenge.DisableScripts();
+            selectControllerInChallenge.ResetScene();
+            challengeData.CurrentRound++;
+            stopAttack = false;
+            //StartCoroutine(ResetCurrenttext(0.5f));
+            StartCoroutine(ResetCurrenttext(2f));
         }
     }
 
     public void TakeDamage(int damage, float force, string actionGrapName)
     {
-        if(actionGrapName == "no")
+        time = 0;
+        StartCoroutine(StartCountingTime());
+
+        if(isValidTagCompleted)
         {
-            if(!hasKenAttackExecuted)
+            StartCoroutine(ResetCurrenttext(2f));
+            StopCountingTime();
+            return;
+        }
+        if (animationOverdrive == "Challenge")
+        {
+            if (actionGrapName == validTags[currentTagIndex])
             {
+                anim.SetTrigger("Hurt");
+                currentTagIndex++;
+                if (stopAttack)
+                {
+                    StopCountingTime();
+                    challengeData.boolList.Add(false);
+                    getValueInChallenge.RedUpdate();
+
+                    Time.timeScale = 0;
+                    DisablePlayerControls(); // Disable player controls
+                    selectControllerInChallenge.DisableScripts();
+                    selectControllerInChallenge.ResetScene();
+                    
+                    challengeData.CurrentRound++;
+                    stopAttack = false;
+                    //StartCoroutine(ResetCurrenttext(0.5f));
+                    StartCoroutine(ResetCurrenttext(2f));
+                }
+                if (currentTagIndex >= validTags.Count && !stopAttack && !hasKenAttackExecuted)
+                {
+                    StopCountingTime();
+                    isValidTagCompleted = true;
+                    hasKenAttackExecuted = true;
+                    challengeData.boolList.Add(true);
+                    getValueInChallenge.GreenUpdate();
+                    challengeData.CurrentRound++;
+
+                    Time.timeScale = 0;
+                    DisablePlayerControls(); // Disable player controls
+                    selectControllerInChallenge.DisableScripts();
+                    selectControllerInChallenge.ResetScene();
+                    //StartCoroutine(ResetCurrenttext(0.5f));
+                    StartCoroutine(ResetCurrenttext(2f));
+                }
+            }
+            else if(!isValidTagCompleted && actionGrapName != validTags[currentTagIndex])
+            {
+                StopCountingTime();
+                isValidTagCompleted = true;
                 anim.SetTrigger("Knock");
                 challengeData.boolList.Add(false);
-                currentTagIndex = 0; // Reset tag index for the next round
+                hasKenAttackExecuted = true;
                 getValueInChallenge.RedUpdate();
 
                 Time.timeScale = 0;
@@ -79,28 +133,53 @@ public class Player02Movement_Overdrive : MonoBehaviour
                 selectControllerInChallenge.DisableScripts();
                 selectControllerInChallenge.ResetScene();
                 challengeData.CurrentRound++;
-                time = 0;
-                hasKenAttackExecuted = true;
-                StartCoroutine(ResethaskanAttack());
+                stopAttack = false;
+                //StartCoroutine(ResetCurrenttext(0.5f));
+                StartCoroutine(ResetCurrenttext(2f));
             }
         }
-        else if(animationOverdrive == "632146S_Shark" && actionGrapName == "632146S_Shark")
+        else
         {
-            anim.SetTrigger("Shark_grab_HCBF");
-            StartCoroutine(GetValue(5f));
-        }
-        else if(animationOverdrive == "6LPRPLKRP_Capybara" && actionGrapName == "6LPRPLKRP_Capybara")
-        {
-            anim.SetTrigger("Hurt");
-            StartCoroutine(GetValue(1f));
-        }
-        else if(animationOverdrive == "4RPLPRKLK_Ken" && actionGrapName == "4RPLPRKLK_Ken")
-        {
-            if(!hasKenAttackExecuted)
+            if(actionGrapName == "no")
             {
-                anim.SetTrigger("Ken_4RPLPRKLK");
-                StartCoroutine(GetValue(3f));
-                hasKenAttackExecuted = true;
+                if(!hasKenAttackExecuted)
+                {
+                    StopCountingTime();
+                    anim.SetTrigger("Knock");
+                    challengeData.boolList.Add(false);
+                    currentTagIndex = 0; // Reset tag index for the next round
+                    getValueInChallenge.RedUpdate();
+
+                    Time.timeScale = 0;
+                    DisablePlayerControls(); // Disable player controls
+                    selectControllerInChallenge.DisableScripts();
+                    selectControllerInChallenge.ResetScene();
+                    challengeData.CurrentRound++;
+                    hasKenAttackExecuted = true;
+                    StartCoroutine(ResethaskanAttack());
+                }
+            }
+            else if(animationOverdrive == "632146S_Shark" && actionGrapName == "632146S_Shark")
+            {
+                StopCountingTime();
+                anim.SetTrigger("Shark_grab_HCBF");
+                StartCoroutine(GetValue(5f));
+            }
+            else if(animationOverdrive == "6LPRPLKRP_Capybara" && actionGrapName == "6LPRPLKRP_Capybara")
+            {
+                StopCountingTime();
+                anim.SetTrigger("Hurt");
+                StartCoroutine(GetValue(1f));
+            }
+            else if(animationOverdrive == "4RPLPRKLK_Ken" && actionGrapName == "4RPLPRKLK_Ken")
+            {
+                if(!hasKenAttackExecuted)
+                {
+                    StopCountingTime();
+                    anim.SetTrigger("Ken_4RPLPRKLK");
+                    StartCoroutine(GetValue(3f));
+                    hasKenAttackExecuted = true;
+                }
             }
         }
     }
@@ -124,6 +203,8 @@ public class Player02Movement_Overdrive : MonoBehaviour
         {
             player02MovementScript.enabled = false;
         }
+        time = 0;
+        hasKenAttackExecuted = false;
 
         // Disable any other scripts or controls as needed
     }
@@ -177,5 +258,26 @@ public class Player02Movement_Overdrive : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         hasKenAttackExecuted = false;
 
+    }
+
+    IEnumerator ResetCurrenttext(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        //currentTagIndex = 0;
+        isValidTagCompleted = false;
+        stopAttack = false;
+    }
+    private IEnumerator StartCountingTime()
+    {
+        while (true)
+        {
+            time += Time.deltaTime;
+            yield return null;
+        }
+    }
+    private void StopCountingTime()
+    {
+        StopAllCoroutines();
+        time = 0;
     }
 }

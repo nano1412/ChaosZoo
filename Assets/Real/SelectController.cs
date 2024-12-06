@@ -9,6 +9,7 @@ public class SelectController : MonoBehaviour
 
     public bool Selectjoystick02 = true;
     public bool SelectKeyBoard02 = false;
+    public bool traningRoom =false;
 
     void Start()
     {
@@ -46,13 +47,13 @@ public class SelectController : MonoBehaviour
             Selectjoystick01 = true;
             Debug.Log("Switched to Joystick control player01");
         }
-        else if (Input.GetKeyDown(KeyCode.F3))
+        else if (Input.GetKeyDown(KeyCode.F3) && !traningRoom)
         {
             SelectKeyBoard02 = true;
             Selectjoystick02 = false;
             Debug.Log("Switched to Keyboard control player02");
         }
-        else if (Input.GetKeyDown(KeyCode.F4))
+        else if (Input.GetKeyDown(KeyCode.F4) && !traningRoom)
         {
             SelectKeyBoard02 = false;
             Selectjoystick02 = true;

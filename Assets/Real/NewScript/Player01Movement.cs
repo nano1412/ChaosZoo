@@ -41,7 +41,6 @@ public class Player01Movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         oppenent = GameObject.FindGameObjectWithTag("PlayerCharacter02Tpose");
         StartCoroutine(FaceRight());
-
     }
 
     void Update()
@@ -92,7 +91,7 @@ public class Player01Movement : MonoBehaviour
             if(-verticalAxis < -verticalThreshold && IsGrounded())
             {
                 animationCouch = true;
-                if(nameCharacter == "Pengang")
+                if(nameCharacter != "Pengang")
                 {
                     anim.SetBool("Crouch", true);
                 }

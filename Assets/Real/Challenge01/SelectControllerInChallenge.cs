@@ -18,11 +18,15 @@ public class SelectControllerInChallenge : MonoBehaviour
 
     public bool SelectKeyBoard = true; // ค่าเริ่มต้นเป็นการใช้คีย์บอร์ด
     public bool Selectjoystick = false;
+    public bool Player02OverDrive = false;
+    public bool multibuttonScript = false;
     public ChalllengeScripttable challlengeScripttable;
 
     // ตัวแปรเพื่อเก็บสคริปต์ที่ต้องการปิดใช้งาน
     private Player01MovementChallenge movementScript;
     private Player01TakeActionInChallenge actionScript;
+    private Player01TakeActionMultiButtonInChallange actionMultiButton;
+    public Player02Movement_Overdrive player02Movement_Overdrive;
 
     public GameObject FinalResult;
     public TextMeshProUGUI scoreKeyBoard;
@@ -41,6 +45,7 @@ public class SelectControllerInChallenge : MonoBehaviour
         // เข้าถึงสคริปต์ที่ต้องการปิดใช้งาน
         movementScript = player01.GetComponent<Player01MovementChallenge>();
         actionScript = player01.GetComponentInChildren<Player01TakeActionInChallenge>();
+        actionMultiButton = player01.GetComponentInChildren<Player01TakeActionMultiButtonInChallange>();
     }
 
     void Update()
@@ -65,6 +70,11 @@ public class SelectControllerInChallenge : MonoBehaviour
     {
         // Move players to their respective positions
         StartCoroutine(WaitForMovePlayers());
+        if(Player02OverDrive)
+        {
+            player02Movement_Overdrive.currentTagIndex = 0;
+            player02Movement_Overdrive.time = 0;
+        }
 
         // Resume the game by setting Time.timeScale back to 1
         Time.timeScale = 1;
@@ -94,6 +104,7 @@ public class SelectControllerInChallenge : MonoBehaviour
         if (actionScript != null)
         {
             actionScript.enabled = false;
+            actionMultiButton.enabled = false;
         }
 
         Debug.Log("Scripts disabled");
@@ -108,7 +119,12 @@ public class SelectControllerInChallenge : MonoBehaviour
 
         if (actionScript != null)
         {
-            actionScript.enabled = true;
+            if(!multibuttonScript) actionScript.enabled = false;
+            else
+            {
+                actionMultiButton.enabled = true;
+            }
+        
         }
     }
 
@@ -132,6 +148,10 @@ public class SelectControllerInChallenge : MonoBehaviour
         yield return new WaitForSeconds(2f);
         EnabledScripts();
         MovePlayersToPositions();
+        if(Player02OverDrive)
+        {
+            player02Movement_Overdrive.isValidTagCompleted = false;
+        }
     }
 
    private void UpdateScores()
