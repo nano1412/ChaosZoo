@@ -19,6 +19,7 @@ public class SelectControllerInChallenge : MonoBehaviour
     public bool SelectKeyBoard = true; // ค่าเริ่มต้นเป็นการใช้คีย์บอร์ด
     public bool Selectjoystick = false;
     public bool Player02OverDrive = false;
+    public bool multibuttonScript = false;
     public ChalllengeScripttable challlengeScripttable;
 
     // ตัวแปรเพื่อเก็บสคริปต์ที่ต้องการปิดใช้งาน
@@ -72,6 +73,7 @@ public class SelectControllerInChallenge : MonoBehaviour
         if(Player02OverDrive)
         {
             player02Movement_Overdrive.currentTagIndex = 0;
+            player02Movement_Overdrive.time = 0;
         }
 
         // Resume the game by setting Time.timeScale back to 1
@@ -117,8 +119,12 @@ public class SelectControllerInChallenge : MonoBehaviour
 
         if (actionScript != null)
         {
-            actionScript.enabled = true;
-            actionMultiButton.enabled = true;
+            if(!multibuttonScript) actionScript.enabled = false;
+            else
+            {
+                actionMultiButton.enabled = true;
+            }
+        
         }
     }
 
@@ -142,6 +148,10 @@ public class SelectControllerInChallenge : MonoBehaviour
         yield return new WaitForSeconds(2f);
         EnabledScripts();
         MovePlayersToPositions();
+        if(Player02OverDrive)
+        {
+            player02Movement_Overdrive.isValidTagCompleted = false;
+        }
     }
 
    private void UpdateScores()
