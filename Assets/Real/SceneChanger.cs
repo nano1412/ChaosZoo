@@ -10,10 +10,19 @@ public class SceneChangerButton : MonoBehaviour
     public GameObject selectChallenge;
     public GameObject trainingModeButton;
     public GameObject challengeModeButton;
+    public GameObject camera01;
+    public GameObject camera02;
+
+    void Start()
+    {
+        camera01.SetActive(false);
+        camera02.SetActive(false);
+    }
 
 
     public void SelectTrainingRoom()
     {
+        camera01.SetActive(true);
         selectTrainingRoom.SetActive(true);
         trainingModeButton.SetActive(false);
         challengeModeButton.SetActive(false);
@@ -21,6 +30,7 @@ public class SceneChangerButton : MonoBehaviour
 
     public void CloseSelectTrainingRoom()
     {
+        camera01.SetActive(false);
         selectTrainingRoom.SetActive(false);
         trainingModeButton.SetActive(true);
         challengeModeButton.SetActive(true);
@@ -28,6 +38,7 @@ public class SceneChangerButton : MonoBehaviour
 
     public void SelectChallenge()
     {
+        camera02.SetActive(true);
         selectChallenge.SetActive(true);
         trainingModeButton.SetActive(false);
         challengeModeButton.SetActive(false);
@@ -35,6 +46,7 @@ public class SceneChangerButton : MonoBehaviour
 
     public void CloseSelectChallenge()
     {
+        camera02.SetActive(false);
         selectChallenge.SetActive(false);
         trainingModeButton.SetActive(true);
         challengeModeButton.SetActive(true);
