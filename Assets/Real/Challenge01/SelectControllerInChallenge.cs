@@ -119,7 +119,7 @@ public class SelectControllerInChallenge : MonoBehaviour
 
         if (actionScript != null)
         {
-            if(!multibuttonScript) actionScript.enabled = false;
+            if(!multibuttonScript) actionScript.enabled = true;
             else
             {
                 actionMultiButton.enabled = true;
