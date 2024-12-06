@@ -266,7 +266,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 16306424}
-  - component: {fileID: 16306423}
   - component: {fileID: 16306425}
   - component: {fileID: 16306426}
   - component: {fileID: 16306427}
@@ -277,18 +276,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &16306423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 16306421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf0e8713c8adcf04b96458839d17d2b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &16306424
 Transform:
   m_ObjectHideFlags: 0
@@ -324,15 +311,15 @@ MonoBehaviour:
   Selectjoystick01: 0
   SelectKeyBoard: 1
   Selectjoystick: 0
-  Player02OverDrive: 0
+  Player02OverDrive: 1
   multibuttonScript: 0
   challlengeScripttable: {fileID: 11400000, guid: d38d6b6a9b41e1d4892b9fdd2a386564,
     type: 2}
-  player02Movement_Overdrive: {fileID: 0}
-  FinalResult: {fileID: 0}
-  scoreKeyBoard: {fileID: 0}
-  scoreJoystick: {fileID: 0}
-  scoreAcradestick: {fileID: 0}
+  player02Movement_Overdrive: {fileID: 900800239}
+  FinalResult: {fileID: 930918718}
+  scoreKeyBoard: {fileID: 1163697712}
+  scoreJoystick: {fileID: 829586310}
+  scoreAcradestick: {fileID: 1871272782}
   sceneToLoad: Challenge02
   Mainmenu: Mainmenu
 --- !u!114 &16306426
@@ -378,8 +365,8 @@ MonoBehaviour:
     Red: {fileID: 1631548742}
   - Green: {fileID: 1142530751}
     Red: {fileID: 227165203}
-  keyboardInputTutorial: {fileID: 0}
-  stickInputTutorial: {fileID: 0}
+  keyboardInputTutorial: {fileID: 1481564079}
+  stickInputTutorial: {fileID: 1481564079}
   KeyBoardGroup: {fileID: 77787959}
   JoyStickGroup: {fileID: 845347894}
   ArcadeStickGroup: {fileID: 1958198688}
@@ -391,6 +378,7 @@ MonoBehaviour:
   CurrentIndex: 0
   challlengeScripttable: {fileID: 11400000, guid: d38d6b6a9b41e1d4892b9fdd2a386564,
     type: 2}
+  KeyboardInputOnly: 1
 --- !u!114 &16306427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4394,6 +4382,18 @@ MonoBehaviour:
   player02Movement_Overdrive: {fileID: 900800239}
   player01TakeAction: {fileID: 734968058}
   player01TakeActionMultibutton: {fileID: 734968062}
+--- !u!114 &829586310 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8763055218332960461, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 352678435}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &842386835
 GameObject:
   m_ObjectHideFlags: 0
@@ -9096,14 +9096,13 @@ MonoBehaviour:
   - 632146S_AttackBox
   - 632146S_AttackBox
   - 632146S_AttackBox
-  - 632146S_AttackBox
   challengeData: {fileID: 11400000, guid: d38d6b6a9b41e1d4892b9fdd2a386564, type: 2}
   selectControllerInChallenge: {fileID: 16306425}
   getValueInChallenge: {fileID: 16306426}
   animationOverdrive: Challenge
   currentTagIndex: 0
-  IndexTag: 0
-  limitTime: 0
+  IndexTag: 8
+  limitTime: 6
   time: 0
   stopAttack: 0
   isValidTagCompleted: 0
@@ -9183,6 +9182,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.182718, y: 1, z: 1}
   m_Center: {x: -1.5913591, y: 0, z: 0}
+--- !u!1 &930918718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7067079442967468595, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 352678435}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &946027686
 GameObject:
   m_ObjectHideFlags: 0
@@ -10796,6 +10801,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 395040291}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1163697712 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3380527557942183921, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 352678435}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1232659200
 GameObject:
   m_ObjectHideFlags: 0
@@ -12260,6 +12277,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b78f05d12cc9278488ef51ed3e5fa767,
     type: 3}
   m_PrefabInstance: {fileID: 173634154}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1481564079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1815776453704552763, guid: 20720e213068f5c45b44fcd360800f4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1884093680}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1485297344
 GameObject:
@@ -15084,6 +15107,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866550832}
   m_CullTransparentMesh: 1
+--- !u!114 &1871272782 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5693991176103250330, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 352678435}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1884093680
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -435,6 +435,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -445,6 +446,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -458,6 +460,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -468,6 +471,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -481,6 +485,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -491,10 +496,11 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                 }
             }
         }
-        if(inputState == InputState.Backward && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
+        if(inputCount >= 2 && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
         {
             if(Joystick)
             {
@@ -555,6 +561,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         {
             inputState = InputState.None;
             isHCBInProgress = false;
+            inputCount = 0;
         }  
     }
 
@@ -582,6 +589,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -592,6 +600,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -605,6 +614,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -615,6 +625,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -628,6 +639,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -638,6 +650,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                 }
             }
         }
@@ -650,6 +663,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.ForwardAgain;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -660,10 +674,11 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.ForwardAgain;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                 }
             }
         }
-        if(inputState == InputState.ForwardAgain && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
+        if(inputCount >= 3 && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
         {
             if(Joystick)
             {
@@ -725,6 +740,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         {
             inputState = InputState.None;
             isHCBInProgress = false;
+            inputCount = 0;
         }
     }
 
@@ -903,6 +919,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         isHCBInProgress = false;
         isPerformingAction = false;
         player01Movement.isPerformingAction = false;
+        NumberRPG = false;
     }
     IEnumerator ResetGrap()
     {
