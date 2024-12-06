@@ -138,7 +138,7 @@ public class Player02Movement_Overdrive : MonoBehaviour
                 StartCoroutine(ResetCurrenttext(2f));
             }
         }
-        else
+        else if(animationOverdrive != "Challenge")
         {
             if(actionGrapName == "no")
             {
