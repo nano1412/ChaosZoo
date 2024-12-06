@@ -272,7 +272,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 16306424}
-  - component: {fileID: 16306423}
   - component: {fileID: 16306425}
   - component: {fileID: 16306426}
   - component: {fileID: 16306427}
@@ -283,18 +282,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &16306423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 16306421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf0e8713c8adcf04b96458839d17d2b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &16306424
 Transform:
   m_ObjectHideFlags: 0
@@ -331,14 +318,14 @@ MonoBehaviour:
   SelectKeyBoard: 1
   Selectjoystick: 0
   Player02OverDrive: 1
-  multibuttonScript: 0
+  multibuttonScript: 1
   challlengeScripttable: {fileID: 11400000, guid: 24ee37fdf41a2f1489f2293d2fa92017,
     type: 2}
   player02Movement_Overdrive: {fileID: 900800237}
-  FinalResult: {fileID: 0}
-  scoreKeyBoard: {fileID: 0}
-  scoreJoystick: {fileID: 0}
-  scoreAcradestick: {fileID: 0}
+  FinalResult: {fileID: 246577295}
+  scoreKeyBoard: {fileID: 331814495}
+  scoreJoystick: {fileID: 1968769608}
+  scoreAcradestick: {fileID: 531270904}
   sceneToLoad: Challenge02
   Mainmenu: Mainmenu
 --- !u!114 &16306426
@@ -384,8 +371,8 @@ MonoBehaviour:
     Red: {fileID: 1631548742}
   - Green: {fileID: 1142530751}
     Red: {fileID: 227165203}
-  keyboardInputTutorial: {fileID: 0}
-  stickInputTutorial: {fileID: 0}
+  keyboardInputTutorial: {fileID: 331770011}
+  stickInputTutorial: {fileID: 331770011}
   KeyBoardGroup: {fileID: 77787959}
   JoyStickGroup: {fileID: 845347894}
   ArcadeStickGroup: {fileID: 1958198688}
@@ -397,6 +384,7 @@ MonoBehaviour:
   CurrentIndex: 0
   challlengeScripttable: {fileID: 11400000, guid: 24ee37fdf41a2f1489f2293d2fa92017,
     type: 2}
+  KeyboardInputOnly: 1
 --- !u!114 &16306427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1298,7 +1286,7 @@ MonoBehaviour:
   nameCharacter: No
   selectControllerInChallenge: {fileID: 16306425}
   Joystick: 0
-  challengeData: {fileID: 11400000, guid: 687d3cefaa05f984c97622fd6b30e1a2, type: 2}
+  challengeData: {fileID: 11400000, guid: 24ee37fdf41a2f1489f2293d2fa92017, type: 2}
   horizontalInput: Horizontal
   verticalInput: Vertical
 --- !u!54 &181086660
@@ -2003,6 +1991,12 @@ MonoBehaviour:
     isEnabled: 1
   - moveName: 15
     isEnabled: 1
+--- !u!1 &246577295 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7067079442967468595, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 766010122}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &257291312
 GameObject:
   m_ObjectHideFlags: 0
@@ -2464,6 +2458,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 538.813, y: 93.81299}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &331770011 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 178480559253096317, guid: 819d1ea4db7baf744a4adfea77fc28a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 459998996}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &331814495 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3380527557942183921, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 766010122}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &336029531
 GameObject:
   m_ObjectHideFlags: 0
@@ -3444,6 +3456,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516314410}
   m_CullTransparentMesh: 1
+--- !u!114 &531270904 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5693991176103250330, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 766010122}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &536536996
 GameObject:
   m_ObjectHideFlags: 3
@@ -15186,6 +15210,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 538.813, y: 93.81299}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1968769608 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8763055218332960461, guid: 0ff50c3305b29c0439877375b0c9be2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 766010122}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1972397436 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4316241698820879102, guid: 28e06609e400e424288d35e9bd0e4b3d,

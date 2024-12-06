@@ -24,6 +24,7 @@ public class GetValueInChallenge : MonoBehaviour
     public GameObject ArcadeStick;
     public int CurrentIndex = 0;
     public ChalllengeScripttable challlengeScripttable;
+    public bool KeyboardInputOnly = false;
 
     void Update()
     {
@@ -36,9 +37,9 @@ public class GetValueInChallenge : MonoBehaviour
             JoyStick.SetActive(false);
             ArcadeStick.SetActive(false);
             keyboardInputTutorial.SetActive(true);
-            stickInputTutorial.SetActive(false);
+            if(!KeyboardInputOnly) stickInputTutorial.SetActive(false);
         }
-        else if(challlengeScripttable.CurrentRound == 5)
+        /*else if(challlengeScripttable.CurrentRound == 5)
         {
             StartCoroutine(ChangelayoutToJoyStick());
         }
