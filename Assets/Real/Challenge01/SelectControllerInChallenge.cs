@@ -52,18 +52,24 @@ public class SelectControllerInChallenge : MonoBehaviour
     {
         UpdateControlSettings();
 
+        if (challlengeScripttable.CurrentRound == 5)
+        {
+            Time.timeScale = 0;
+            FinalResult.SetActive(true);
+            UpdateScores();
+        }
         /*if (challlengeScripttable.CurrentRound == 15)
         {
             Time.timeScale = 0;
             FinalResult.SetActive(true);
             UpdateScores();
         }*/
-        if (challlengeScripttable.CurrentRound == 10)
+        /*if (challlengeScripttable.CurrentRound == 10)
         {
             Time.timeScale = 0;
             FinalResult.SetActive(true);
             UpdateScores();
-        }
+        }*/
     }
 
     public void ResetScene()
@@ -157,11 +163,11 @@ public class SelectControllerInChallenge : MonoBehaviour
    private void UpdateScores()
     {
         int keyboardScore = CountTrueValues(0, 4);
-        int joystickScore = CountTrueValues(5, 9);
+        //int joystickScore = CountTrueValues(5, 9);
         //int acradeStickScore = CountTrueValues(10, 14);
 
         scoreKeyBoard.text = "KeyBoard : " + keyboardScore.ToString() + "/5";
-        scoreJoystick.text = "JoyStick : " + joystickScore.ToString() + "/5";
+        //scoreJoystick.text = "JoyStick : " + joystickScore.ToString() + "/5";
         //scoreAcradestick.text = "AcradeStick : " + acradeStickScore.ToString() + "/5";
     }
 
