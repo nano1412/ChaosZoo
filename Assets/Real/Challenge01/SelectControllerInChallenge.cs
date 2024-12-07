@@ -25,7 +25,7 @@ public class SelectControllerInChallenge : MonoBehaviour
     // ตัวแปรเพื่อเก็บสคริปต์ที่ต้องการปิดใช้งาน
     private Player01MovementChallenge movementScript;
     private Player01TakeActionInChallenge actionScript;
-    private Player01TakeActionMultiButtonInChallange actionMultiButton;
+    public Player01TakeActionMultiButtonInChallange actionMultiButton;
     public Player02Movement_Overdrive player02Movement_Overdrive;
 
     public GameObject FinalResult;
