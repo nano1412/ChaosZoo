@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
+    public GameObject sharkMove;
+    public GameObject pengangMove;
 
     // Start is called before the first frame update
     void Start()
@@ -34,5 +36,23 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("Mainmenu");
+    }
+
+    public void SharkMove()
+    {
+        pauseMenuUI.SetActive(false);
+        sharkMove.SetActive(true);
+    }
+    public void PengangMove()
+    {
+        pauseMenuUI.SetActive(false);
+        pengangMove.SetActive(true);
+    }
+
+    public void BackToPause()
+    {
+        pauseMenuUI.SetActive(true);
+        sharkMove.SetActive(false);
+        pengangMove.SetActive(false);
     }
 }
