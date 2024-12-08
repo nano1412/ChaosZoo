@@ -151,7 +151,7 @@ public class Player01Movement : MonoBehaviour
     public void HandleMovement()
     {
         if(animationCouch) return;
-        
+
         float horizontalAxis = Input.GetAxis(horizontalInput);
         if(horizontalAxis > walkThreshold)
         {
@@ -163,7 +163,7 @@ public class Player01Movement : MonoBehaviour
             }
             transform.Translate(transform.right * walkspeed * Time.deltaTime);
         }
-        else if(horizontalAxis < -walkThreshold)
+        if(horizontalAxis < -walkThreshold)
         {
             walkanimation = -walkspeed;
             anim.SetBool("canWalk", true);
@@ -173,7 +173,7 @@ public class Player01Movement : MonoBehaviour
             }
             transform.Translate(-transform.right * walkspeed * Time.deltaTime);
         }
-        else
+        if (horizontalAxis == 0)
         {
             walkanimation = 0f;
             anim.SetBool("canWalk", false);
