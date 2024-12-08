@@ -79,7 +79,7 @@ public class Player01Trigger_OverDrive : MonoBehaviour
                 Player01TakeActionInChallenge.Hits = true;
                 Player01TakeActionMultibutton.Hits = true;
             }
-            else if (Check && !Grab)
+            else if (Check && !Grab && !ActionInChallenge)
             {
                 Player01TakeAction.Hits = true;
                 Player01TakeActionMultibutton.Hits = true;
