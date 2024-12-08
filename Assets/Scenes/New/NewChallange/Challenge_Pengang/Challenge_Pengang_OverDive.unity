@@ -2105,6 +2105,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5104751020472400049, guid: 0ff50c3305b29c0439877375b0c9be2b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 16306425}
+    - target: {fileID: 5104751020472400049, guid: 0ff50c3305b29c0439877375b0c9be2b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6417777383194760737, guid: 0ff50c3305b29c0439877375b0c9be2b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -17
+      objectReference: {fileID: 0}
     - target: {fileID: 7041840591011378061, guid: 0ff50c3305b29c0439877375b0c9be2b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -9123,11 +9138,17 @@ MonoBehaviour:
   getValueInChallenge: {fileID: 16306426}
   animationOverdrive: Challenge
   currentTagIndex: 0
+  currentProgress: 0
+  currenthits: 0
   IndexTag: 8
   limitTime: 6
   time: 0
   stopAttack: 0
   isValidTagCompleted: 0
+  ProgressInput:
+  - Green: {fileID: 1008458680}
+    Red: {fileID: 2085333425}
+  numberHits: 08000000
 --- !u!136 &900800240
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10010,6 +10031,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999119406}
   m_CullTransparentMesh: 1
+--- !u!1 &1008458680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2873821326677607587, guid: 20720e213068f5c45b44fcd360800f4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1884093680}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1014128245
 GameObject:
   m_ObjectHideFlags: 0
@@ -15154,6 +15181,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: InputTutorial_OD
       objectReference: {fileID: 0}
+    - target: {fileID: 2873821326677607587, guid: 20720e213068f5c45b44fcd360800f4b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5522905055364106994, guid: 20720e213068f5c45b44fcd360800f4b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8381694431004492933, guid: 20720e213068f5c45b44fcd360800f4b,
         type: 3}
       propertyPath: m_Pivot.x
@@ -16440,6 +16477,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2085333425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5522905055364106994, guid: 20720e213068f5c45b44fcd360800f4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1884093680}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2093820288
 PrefabInstance:
   m_ObjectHideFlags: 0

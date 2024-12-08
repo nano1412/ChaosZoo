@@ -22,17 +22,20 @@ public class Player02Movement_Overdrive : MonoBehaviour
     public string animationOverdrive;
 
     public int currentTagIndex = 0;
+    public int currentProgress = 0;
+    public int currenthits = 0;
     public int IndexTag = 0;
     public int limitTime = 0;
     public float time;
     public bool stopAttack = false;
     private bool hasKenAttackExecuted = false;
     public bool isValidTagCompleted = false; // เพิ่มตัวแปรนี้
-
-
+    public List<RedGreenValue> ProgressInput = new List<RedGreenValue>();
+    public List<int> numberHits = new List<int>();
     void Start()
     {
         StartCoroutine(FaceLeft());
+
     }
 
     void Update()
@@ -57,6 +60,7 @@ public class Player02Movement_Overdrive : MonoBehaviour
             challengeData.boolList.Add(false);
             hasKenAttackExecuted = true;
             getValueInChallenge.RedUpdate();
+            RedUpdate();
 
             Time.timeScale = 0;
             DisablePlayerControls(); // Disable player controls
@@ -86,11 +90,18 @@ public class Player02Movement_Overdrive : MonoBehaviour
             {
                 anim.SetTrigger("Hurt");
                 currentTagIndex++;
+                if (currenthits < numberHits.Count && currentTagIndex == numberHits[currenthits])
+                {
+                    GreenUpdate();
+                    currenthits++; // ไปยัง hit ถัดไป
+                }
                 if (stopAttack)
                 {
                     StopCountingTime();
                     challengeData.boolList.Add(false);
                     getValueInChallenge.RedUpdate();
+                    RedUpdate();
+
 
                     Time.timeScale = 0;
                     DisablePlayerControls(); // Disable player controls
@@ -127,6 +138,8 @@ public class Player02Movement_Overdrive : MonoBehaviour
                 challengeData.boolList.Add(false);
                 hasKenAttackExecuted = true;
                 getValueInChallenge.RedUpdate();
+                RedUpdate();
+
 
                 Time.timeScale = 0;
                 DisablePlayerControls(); // Disable player controls
@@ -149,6 +162,7 @@ public class Player02Movement_Overdrive : MonoBehaviour
                     challengeData.boolList.Add(false);
                     currentTagIndex = 0; // Reset tag index for the next round
                     getValueInChallenge.RedUpdate();
+                    RedUpdate();
 
                     Time.timeScale = 0;
                     DisablePlayerControls(); // Disable player controls
@@ -242,6 +256,7 @@ public class Player02Movement_Overdrive : MonoBehaviour
         challengeData.boolList.Add(true);
         currentTagIndex = 0; // Reset tag index for the next round
         getValueInChallenge.GreenUpdate();
+        GreenUpdate();
         challengeData.CurrentRound++;
         time = 0;
 
@@ -279,5 +294,29 @@ public class Player02Movement_Overdrive : MonoBehaviour
     {
         StopAllCoroutines();
         time = 0;
+    }
+
+    public void GreenUpdate()
+    {
+        ProgressInput[currentProgress].Green.SetActive(true);
+        currentProgress++;
+    }
+
+    public void RedUpdate()
+    {
+        ProgressInput[currentProgress].Red.SetActive(true);
+        currentProgress++;
+    }
+
+    public void ResetGreenRed()
+    {
+        for(int i = 0; i < ProgressInput.Count; i++)
+        {
+            ProgressInput[i].Green.SetActive(false);
+            ProgressInput[i].Red.SetActive(false);
+            
+        }
+        currentProgress = 0;
+        currenthits = 0;
     }
 }

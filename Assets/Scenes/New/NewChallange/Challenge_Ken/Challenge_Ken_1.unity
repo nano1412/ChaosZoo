@@ -1661,7 +1661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &329516454
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2769,7 +2769,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &501453987
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3708,7 +3708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &712549625
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3783,7 +3783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &725578682
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4630,6 +4630,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5104751020472400049, guid: 0ff50c3305b29c0439877375b0c9be2b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 16306425}
+    - target: {fileID: 5104751020472400049, guid: 0ff50c3305b29c0439877375b0c9be2b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartScene
+      objectReference: {fileID: 0}
     - target: {fileID: 7041840591011378061, guid: 0ff50c3305b29c0439877375b0c9be2b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4644,6 +4654,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FinalResult
+      objectReference: {fileID: 0}
+    - target: {fileID: 7067079442967468595, guid: 0ff50c3305b29c0439877375b0c9be2b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9842,11 +9857,21 @@ MonoBehaviour:
   getValueInChallenge: {fileID: 16306426}
   animationOverdrive: Challenge
   currentTagIndex: 0
+  currentProgress: 0
+  currenthits: 0
   IndexTag: 4
   limitTime: 4
   time: 0
   stopAttack: 0
   isValidTagCompleted: 0
+  ProgressInput:
+  - Green: {fileID: 329516453}
+    Red: {fileID: 1129710797}
+  - Green: {fileID: 712549624}
+    Red: {fileID: 725578681}
+  - Green: {fileID: 1616072916}
+    Red: {fileID: 501453986}
+  numberHits: 010000000300000004000000
 --- !u!1 &901944982
 GameObject:
   m_ObjectHideFlags: 0
@@ -11610,7 +11635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1129710798
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13716,7 +13741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1616072917
 RectTransform:
   m_ObjectHideFlags: 0

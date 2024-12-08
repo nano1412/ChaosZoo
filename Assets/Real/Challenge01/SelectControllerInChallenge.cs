@@ -83,6 +83,7 @@ public class SelectControllerInChallenge : MonoBehaviour
         }
 
         // Resume the game by setting Time.timeScale back to 1
+        StartCoroutine(WaitForRedUpdate());
         Time.timeScale = 1;
     }
 
@@ -160,6 +161,12 @@ public class SelectControllerInChallenge : MonoBehaviour
         }
     }
 
+    IEnumerator WaitForRedUpdate()
+    {
+        yield return new WaitForSeconds(2f);
+        player02Movement_Overdrive.ResetGreenRed();
+    }
+
    private void UpdateScores()
     {
         int keyboardScore = CountTrueValues(0, 4);
@@ -192,5 +199,18 @@ public class SelectControllerInChallenge : MonoBehaviour
     public void ChangeSceneToChallengeNext()
     {
         SceneManager.LoadScene(sceneToLoad);
+    }
+
+    public void RestartScene()
+    {
+        ClearChallengeData(challlengeScripttable);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    }
+
+    private void ClearChallengeData(ChalllengeScripttable challengeData)
+    {
+        challengeData.CurrentRound = 0;
+        challengeData.boolList.Clear();
     }
 }

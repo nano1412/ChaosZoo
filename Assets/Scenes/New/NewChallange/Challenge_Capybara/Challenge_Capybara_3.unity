@@ -892,6 +892,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5104751020472400049, guid: 0ff50c3305b29c0439877375b0c9be2b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 16306425}
+    - target: {fileID: 5104751020472400049, guid: 0ff50c3305b29c0439877375b0c9be2b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartScene
+      objectReference: {fileID: 0}
     - target: {fileID: 7041840591011378061, guid: 0ff50c3305b29c0439877375b0c9be2b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -901,6 +911,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FinalResult
+      objectReference: {fileID: 0}
+    - target: {fileID: 7067079442967468595, guid: 0ff50c3305b29c0439877375b0c9be2b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -986,6 +1001,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &64578213 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4536520384117036236, guid: 16f1175c47151b548aed748065f7bb87,
+    type: 3}
+  m_PrefabInstance: {fileID: 225612781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &77787959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,10 +1525,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1268786718}
     m_Modifications:
+    - target: {fileID: 1747857644432478318, guid: 16f1175c47151b548aed748065f7bb87,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562549850286307382, guid: 16f1175c47151b548aed748065f7bb87,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3890523737114791740, guid: 16f1175c47151b548aed748065f7bb87,
         type: 3}
       propertyPath: m_Name
       value: InputTutorial_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536520384117036236, guid: 16f1175c47151b548aed748065f7bb87,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6528037630041313297, guid: 16f1175c47151b548aed748065f7bb87,
         type: 3}
@@ -1607,6 +1643,11 @@ PrefabInstance:
     - target: {fileID: 6528037630041313297, guid: 16f1175c47151b548aed748065f7bb87,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039197954056983334, guid: 16f1175c47151b548aed748065f7bb87,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2816,6 +2857,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346020441}
   m_CullTransparentMesh: 1
+--- !u!1 &365301970 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2562549850286307382, guid: 16f1175c47151b548aed748065f7bb87,
+    type: 3}
+  m_PrefabInstance: {fileID: 225612781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &395293168
 GameObject:
   m_ObjectHideFlags: 3
@@ -9127,11 +9174,19 @@ MonoBehaviour:
   getValueInChallenge: {fileID: 16306426}
   animationOverdrive: Challenge
   currentTagIndex: 0
+  currentProgress: 0
+  currenthits: 0
   IndexTag: 2
   limitTime: 4
   time: 0
   stopAttack: 0
   isValidTagCompleted: 0
+  ProgressInput:
+  - Green: {fileID: 1445059761}
+    Red: {fileID: 365301970}
+  - Green: {fileID: 1247625124}
+    Red: {fileID: 64578213}
+  numberHits: 0100000002000000
 --- !u!136 &900800238
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11305,6 +11360,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244515993}
   m_CullTransparentMesh: 1
+--- !u!1 &1247625124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1747857644432478318, guid: 16f1175c47151b548aed748065f7bb87,
+    type: 3}
+  m_PrefabInstance: {fileID: 225612781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1262999474
 GameObject:
   m_ObjectHideFlags: 0
@@ -12025,6 +12086,12 @@ MonoBehaviour:
   player02Movement_Overdrive: {fileID: 900800237}
   player01TakeAction: {fileID: 243324865}
   player01TakeActionMultibutton: {fileID: 243324862}
+--- !u!1 &1445059761 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8039197954056983334, guid: 16f1175c47151b548aed748065f7bb87,
+    type: 3}
+  m_PrefabInstance: {fileID: 225612781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1454759249
 GameObject:
   m_ObjectHideFlags: 0

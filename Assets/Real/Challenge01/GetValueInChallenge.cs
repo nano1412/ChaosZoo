@@ -61,7 +61,6 @@ public class GetValueInChallenge : MonoBehaviour
         ValueGreenRed[CurrentIndex].Red.SetActive(true);
         CurrentIndex++;
         StartCoroutine(FailedActive());
-
     }
 
     IEnumerator SucessSetActive()
