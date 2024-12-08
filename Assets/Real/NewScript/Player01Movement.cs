@@ -163,7 +163,7 @@ public class Player01Movement : MonoBehaviour
             }
             transform.Translate(transform.right * walkspeed * Time.deltaTime);
         }
-        if(horizontalAxis < -walkThreshold)
+        else if(horizontalAxis < -walkThreshold)
         {
             walkanimation = -walkspeed;
             anim.SetBool("canWalk", true);
@@ -173,7 +173,7 @@ public class Player01Movement : MonoBehaviour
             }
             transform.Translate(-transform.right * walkspeed * Time.deltaTime);
         }
-        if (horizontalAxis == 0)
+        else
         {
             walkanimation = 0f;
             anim.SetBool("canWalk", false);
