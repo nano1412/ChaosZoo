@@ -1361,8 +1361,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -71.91584, y: 0.000019073486}
-  m_SizeDelta: {x: 404.2201, y: 974.2898}
+  m_AnchoredPosition: {x: -123.13502, y: 0.000019073486}
+  m_SizeDelta: {x: 237.7633, y: 974.2898}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &289106657
 MonoBehaviour:
@@ -1970,8 +1970,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000019073486}
-  m_SizeDelta: {x: 394.26837, y: 974.2898}
+  m_AnchoredPosition: {x: -4.2768, y: 0.000019073486}
+  m_SizeDelta: {x: 372.5055, y: 974.2898}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &380924922
 MonoBehaviour:
@@ -2281,8 +2281,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -36.19921, y: 0.000019073486}
-  m_SizeDelta: {x: 305.4497, y: 974.2898}
+  m_AnchoredPosition: {x: -49.433315, y: 0.000019073486}
+  m_SizeDelta: {x: 279.1717, y: 974.2898}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &455351884
 MonoBehaviour:
@@ -8777,12 +8777,11 @@ MonoBehaviour:
   anim: {fileID: 647263147}
   rb: {fileID: 900800233}
   validTags:
+  - 5LP_AttackBox
+  - 5LPRK_AttackBox
+  - 5LPRK_AttackBox
   - 5RPLPLK_AttackBox
   - 5RPLPLK_AttackBox
-  - 5RKLK_AttackBox
-  - 5RKLK_AttackBox
-  - 5RKLK_AttackBox
-  - 3RPLP_AttackBox
   challengeData: {fileID: 11400000, guid: 32054401170cfa8449f5a870e5aa3d91, type: 2}
   selectControllerInChallenge: {fileID: 16306425}
   getValueInChallenge: {fileID: 16306426}
@@ -8790,8 +8789,8 @@ MonoBehaviour:
   currentTagIndex: 0
   currentProgress: 0
   currenthits: 0
-  IndexTag: 6
-  limitTime: 6
+  IndexTag: 5
+  limitTime: 4
   time: 0
   stopAttack: 0
   isValidTagCompleted: 0
@@ -8802,7 +8801,11 @@ MonoBehaviour:
     Red: {fileID: 1367604023}
   - Green: {fileID: 1399819194}
     Red: {fileID: 289106655}
-  numberHits: 020000000500000006000000
+  - Green: {fileID: 1399819194}
+    Red: {fileID: 289106655}
+  - Green: {fileID: 1399819194}
+    Red: {fileID: 289106655}
+  numberHits: 010000000300000005000000
 --- !u!1 &901944982
 GameObject:
   m_ObjectHideFlags: 0
@@ -11448,8 +11451,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -36.1993, y: 0.000019073486}
-  m_SizeDelta: {x: 305.4497, y: 974.2898}
+  m_AnchoredPosition: {x: -49.433468, y: 0.000019073486}
+  m_SizeDelta: {x: 279.1717, y: 974.2898}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1367604025
 MonoBehaviour:
@@ -11921,8 +11924,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -71.91581, y: 0.000019073486}
-  m_SizeDelta: {x: 404.2201, y: 974.2898}
+  m_AnchoredPosition: {x: -123.13499, y: 0.000019073486}
+  m_SizeDelta: {x: 237.7633, y: 974.2898}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1399819196
 MonoBehaviour:
@@ -12280,8 +12283,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000019073486}
-  m_SizeDelta: {x: 394.26837, y: 974.2898}
+  m_AnchoredPosition: {x: -4.2768, y: 0.000019073486}
+  m_SizeDelta: {x: 372.5055, y: 974.2898}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1478517130
 MonoBehaviour:
@@ -16188,10 +16191,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1268786718}
     m_Modifications:
+    - target: {fileID: 794729846419151347, guid: 1a2708b573032b043b041e2bc9a18674,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ead022c8607985f4494c163181e83f99,
+        type: 3}
     - target: {fileID: 1751147329451128761, guid: 1a2708b573032b043b041e2bc9a18674,
         type: 3}
       propertyPath: m_Name
       value: InputTutorial_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382676229381631861, guid: 1a2708b573032b043b041e2bc9a18674,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 71.7
       objectReference: {fileID: 0}
     - target: {fileID: 4264906836959673669, guid: 1a2708b573032b043b041e2bc9a18674,
         type: 3}
@@ -16271,7 +16285,7 @@ PrefabInstance:
     - target: {fileID: 4264906836959673669, guid: 1a2708b573032b043b041e2bc9a18674,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -455
+      value: -426
       objectReference: {fileID: 0}
     - target: {fileID: 4264906836959673669, guid: 1a2708b573032b043b041e2bc9a18674,
         type: 3}
@@ -16291,6 +16305,33 @@ PrefabInstance:
     - target: {fileID: 4264906836959673669, guid: 1a2708b573032b043b041e2bc9a18674,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031039683783022298, guid: 1a2708b573032b043b041e2bc9a18674,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1d603e463ca417d4dba949d57740e0c4,
+        type: 3}
+    - target: {fileID: 6563306979683269934, guid: 1a2708b573032b043b041e2bc9a18674,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 17896353fef86364e82cf3ef62b77cce,
+        type: 3}
+    - target: {fileID: 7060584814606238357, guid: 1a2708b573032b043b041e2bc9a18674,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 824.2249
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060584814606238357, guid: 1a2708b573032b043b041e2bc9a18674,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -83.579216
+      objectReference: {fileID: 0}
+    - target: {fileID: 7483244434588415462, guid: 1a2708b573032b043b041e2bc9a18674,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -17390,7 +17431,7 @@ MonoBehaviour:
   TakeAction: 0
   TakeActionMultiButton: 1
   ActionInChallenge: 1
-  animationName: 5LPRP_AttackBox
+  animationName: 5LPRK_AttackBox
   player01CameraSpecial: {fileID: 0}
   player02Movement_Overdrive: {fileID: 900800238}
   player01TakeAction: {fileID: 2055255166}
