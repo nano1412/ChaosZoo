@@ -18,6 +18,8 @@ public class SceneChangerButton : MonoBehaviour
     public GameObject camera02;
     public GameObject cameraSharkChallenge;
     public GameObject cameraCapybaraChallenge;
+    public GameObject cameraKenChallenge;
+    public GameObject cameraPengangChallenge;
 
     void Start()
     {
@@ -62,6 +64,8 @@ public class SceneChangerButton : MonoBehaviour
     {
         cameraSharkChallenge.SetActive(true);
         cameraCapybaraChallenge.SetActive(false);
+        cameraKenChallenge.SetActive(false);
+        cameraPengangChallenge.SetActive(false);
         selectChallengeShark.SetActive(true);
         selectChallengeCapybara.SetActive(false);
         selectChallengeKen.SetActive(false);
@@ -73,6 +77,9 @@ public class SceneChangerButton : MonoBehaviour
     {
         cameraSharkChallenge.SetActive(false);
         cameraCapybaraChallenge.SetActive(true);
+        cameraKenChallenge.SetActive(false);
+        cameraPengangChallenge.SetActive(false);
+
         selectChallengeShark.SetActive(false);
         selectChallengeCapybara.SetActive(true);
         selectChallengeKen.SetActive(false);
@@ -82,6 +89,11 @@ public class SceneChangerButton : MonoBehaviour
 
     public void SelectChallengeKen()
     {
+        cameraSharkChallenge.SetActive(false);
+        cameraCapybaraChallenge.SetActive(false);
+        cameraKenChallenge.SetActive(true);
+        cameraPengangChallenge.SetActive(false);
+
         selectChallengeShark.SetActive(false);
         selectChallengeCapybara.SetActive(false);
         selectChallengeKen.SetActive(true);
@@ -91,6 +103,11 @@ public class SceneChangerButton : MonoBehaviour
 
     public void SelectChallengePengang()
     {
+        cameraSharkChallenge.SetActive(false);
+        cameraCapybaraChallenge.SetActive(false);
+        cameraKenChallenge.SetActive(false);
+        cameraPengangChallenge.SetActive(true);
+
         selectChallengeShark.SetActive(false);
         selectChallengeCapybara.SetActive(false);
         selectChallengeKen.SetActive(false);
@@ -102,6 +119,9 @@ public class SceneChangerButton : MonoBehaviour
     {
         cameraSharkChallenge.SetActive(false);
         cameraCapybaraChallenge.SetActive(false);
+        cameraKenChallenge.SetActive(false);
+        cameraPengangChallenge.SetActive(false);
+        
         selectChallengeShark.SetActive(false);
         selectChallengeCapybara.SetActive(false);
         selectChallengeKen.SetActive(false);
