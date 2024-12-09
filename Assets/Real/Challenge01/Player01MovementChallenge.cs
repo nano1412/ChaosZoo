@@ -68,8 +68,8 @@ public class Player01MovementChallenge : MonoBehaviour
             }
             if(selectControllerInChallenge.Selectjoystick01)
             {
-                horizontalInput = "LeftAnalogX2";
-                verticalInput = "LeftAnalogY2";
+                horizontalInput = "LeftAnalogX1";
+                verticalInput = "LeftAnalogY1";
                 walkThreshold = 0.4f;
                 verticalThreshold = 0.4f;
                 Joystick = true;

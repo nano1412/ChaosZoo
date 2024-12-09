@@ -14,6 +14,9 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
     public static bool Hits = false;
     public bool hits => Hits;
     public int specialMoveEnergy = 100;
+    public ChalllengeScripttable challengeData;
+    public string horizontalInput , verticalInput;
+    public string Joy01, Joy02, Joy03, Joy04;
 
     private Animator anim;
     [Header("Enable/Disble ACtions")]
@@ -26,27 +29,47 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
 
     void Update()
     {
+        if(challengeData.CurrentRound <= 9)
+        {
+            verticalInput = selectController.Selectjoystick01 ? "LeftAnalogY1" : "Vertical";
+            horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
+            Joy01 = "Player01Joystick03";
+            Joy02 = "Player01Joystick04";
+            Joy03 = "Player01Joystick01";
+            Joy04 = "Player01Joystick02";
+        }
+        else if(challengeData.CurrentRound >= 10)
+        {
+            verticalInput = selectController.Selectjoystick01 ? "LeftAnalogY1" : "Vertical";
+            horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
+            Joy01 = "Player01Joystick03";
+            Joy02 = "Player01Joystick04";
+            Joy03 = "Player01Joystick01";
+            Joy04 = "Player01Joystick02";
+        }
+        
+
         if(isPerformingAction || player01Movement.isJump) return;
         if (HandleMultibutton()) return;
 
         if(selectController.Selectjoystick01)
         {
-            if (Input.GetButtonDown("Player02Joystick03"))
+            if (Input.GetButtonDown("Player01Joystick03"))
             {
                 PerformAction("RightPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player02Joystick04"))
+            if (Input.GetButtonDown("Player01Joystick04"))
             {
                 PerformAction("RightKick");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player02Joystick01"))
+            if (Input.GetButtonDown("Player01Joystick01"))
             {
                 PerformAction("LeftPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player02Joystick02"))
+            if (Input.GetButtonDown("Player01Joystick02"))
             {
                 PerformAction("LeftKick");
                 Hits = false;
@@ -81,8 +104,8 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
     {
         if(isPerformingAction) return false;
         
-        string verticalInput = selectController.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
-        string horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
+        // string verticalInput = selectController.Selectjoystick01 ? "LeftAnalogY1" : "Vertical";
+        // string horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
         bool Joystick = selectController.Selectjoystick01 ? true : false;
 
         bool RP = false, LP = false, RK = false, LK = false;
@@ -90,10 +113,10 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
 
         if (selectController.Selectjoystick01)
         {
-            RP = Input.GetButton("Player02Joystick03");
-            LP = Input.GetButton("Player02Joystick01");
-            RK = Input.GetButton("Player02Joystick04");
-            LK = Input.GetButton("Player02Joystick02");
+            RP = Input.GetButton("Player01Joystick03");
+            LP = Input.GetButton("Player01Joystick01");
+            RK = Input.GetButton("Player01Joystick04");
+            LK = Input.GetButton("Player01Joystick02");
             vertical = -Input.GetAxis(verticalInput);
             horizontal = Input.GetAxis(horizontalInput);
         }
@@ -331,6 +354,7 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
                     anim.SetTrigger(actionName + "Trigger");
                 }
             }
+            StartCoroutine(ResetIsPerformingAction(0.5f));
         }
         else
         {

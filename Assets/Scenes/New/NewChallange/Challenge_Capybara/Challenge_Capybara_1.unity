@@ -208,7 +208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 406, y: -408}
+  m_AnchoredPosition: {x: 406, y: -428.49988}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &10988344
@@ -429,7 +429,7 @@ MonoBehaviour:
   CurrentIndex: 0
   challlengeScripttable: {fileID: 11400000, guid: 687d3cefaa05f984c97622fd6b30e1a2,
     type: 2}
-  KeyboardInputOnly: 0
+  KeyboardInputOnly: 1
 --- !u!1 &23560310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,6 +1748,13 @@ MonoBehaviour:
   selectController: {fileID: 16306425}
   isPerformingAction: 0
   specialMoveEnergy: 100
+  challengeData: {fileID: 11400000, guid: 687d3cefaa05f984c97622fd6b30e1a2, type: 2}
+  horizontalInput: 
+  verticalInput: 
+  Joy01: 
+  Joy02: 
+  Joy03: 
+  Joy04: 
   specialMoveMultibuttonToggle:
   - moveNameButton: 0
     isEnabled: 1
@@ -16436,7 +16443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 406, y: -408}
+  m_AnchoredPosition: {x: 406, y: -428.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1914746166

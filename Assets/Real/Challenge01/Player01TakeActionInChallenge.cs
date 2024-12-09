@@ -33,6 +33,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     public ChalllengeScripttable challengeData;
     public string verticalInput;
     public string horizontalInput;
+    public string Joy01, Joy02, Joy03, Joy04;
     public int inputCount = 0; // ตัวแปรสำหรับนับจำนวนอินพุต
     public bool NumberRPG = false;
 
@@ -62,13 +63,21 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     {
         if(challengeData.CurrentRound <= 9)
         {
-            verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
-            horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
+            verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY1" : "Vertical";
+            horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
+            Joy01 = "Player01Joystick01";
+            Joy02 = "Player01Joystick02";
+            Joy03 = "Player01Joystick03";
+            Joy04 = "Player01Joystick04";
         }
         else if(challengeData.CurrentRound >= 10)
         {
             verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY1" : "Vertical";
             horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
+            Joy01 = "Player01Joystick01";
+            Joy02 = "Player01Joystick02";
+            Joy03 = "Player01Joystick03";
+            Joy04 = "Player01Joystick04";
         }
         bool Joystick = selectControllerInChallenge.Selectjoystick01 ? true : false;
         
@@ -121,22 +130,22 @@ public class Player01TakeActionInChallenge : MonoBehaviour
 
         if (selectControllerInChallenge.Selectjoystick01)
         {
-            if (Input.GetButtonDown("Player02Joystick01"))
+            if (Input.GetButtonDown(Joy01))
             {
                 PerformAction("Punch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player02Joystick02"))
+            if (Input.GetButtonDown(Joy02))
             {
                 PerformAction("Kick");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player02Joystick03"))
+            if (Input.GetButtonDown(Joy03))
             {
                 PerformAction("Slash");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player02Joystick04"))
+            if (Input.GetButtonDown(Joy04))
             {
                 PerformAction("HeavySlash");
                 Hits = false;
@@ -204,22 +213,22 @@ public class Player01TakeActionInChallenge : MonoBehaviour
             }
             else if (inputState == InputState.Forward && Time.time - lastInputTime <= inputBufferTime && isQCInProgress)
             {
-                if(Input.GetButtonDown("Player02Joystick01") && specialMoveToggles[0].isEnabled)
+                if(Input.GetButtonDown(Joy01) && specialMoveToggles[0].isEnabled)
                 {
                     ActionQCF("Punch");
                     Hits = false;
                 }
-                else if(Input.GetButtonDown("Player02Joystick02") && specialMoveToggles[1].isEnabled)
+                else if(Input.GetButtonDown(Joy02) && specialMoveToggles[1].isEnabled)
                 {
                     ActionQCF("Kick");
                     Hits = false;
                 }
-                else if(Input.GetButtonDown("Player02Joystick03") && specialMoveToggles[2].isEnabled)
+                else if(Input.GetButtonDown(Joy03) && specialMoveToggles[2].isEnabled)
                 {
                     ActionQCF("Slash");
                     Hits = false;
                 }
-                else if(Input.GetButtonDown("Player02Joystick04") && specialMoveToggles[3].isEnabled)
+                else if(Input.GetButtonDown(Joy04) && specialMoveToggles[3].isEnabled)
                 {
                     ActionQCF("HeavySlash");
                     Hits = false;
@@ -328,22 +337,22 @@ public class Player01TakeActionInChallenge : MonoBehaviour
             }
             else if (inputState == InputState.Backward && Time.time - lastInputTime <= inputBufferTime && isQCInProgress)
             {
-                if(Input.GetButtonDown("Player02Joystick01") && specialMoveToggles[4].isEnabled)
+                if(Input.GetButtonDown(Joy01) && specialMoveToggles[4].isEnabled)
                 {
                     ActionQCB("Punch");
                     Hits = false;
                 }
-                else if(Input.GetButtonDown("Player02Joystick02") && specialMoveToggles[5].isEnabled)
+                else if(Input.GetButtonDown(Joy02) && specialMoveToggles[5].isEnabled)
                 {
                     ActionQCB("Kick");
                     Hits = false;
                 }
-                else if(Input.GetButtonDown("Player02Joystick03") && specialMoveToggles[6].isEnabled)
+                else if(Input.GetButtonDown(Joy03) && specialMoveToggles[6].isEnabled)
                 {
                     ActionQCB("Slash");
                     Hits = false;
                 }
-                else if(Input.GetButtonDown("Player02Joystick04") && specialMoveToggles[7].isEnabled)
+                else if(Input.GetButtonDown(Joy04) && specialMoveToggles[7].isEnabled)
                 {
                     ActionQCB("HeavySlash");
                     Hits = false;
@@ -504,25 +513,25 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         {
             if(Joystick)
             {
-                if(Input.GetButtonDown("Player02Joystick01") && specialMoveToggles[8].isEnabled)
+                if(Input.GetButtonDown(Joy01) && specialMoveToggles[8].isEnabled)
                 {
                     ActionHCB("Punch");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("Player02Joystick02") && specialMoveToggles[9].isEnabled)
+                else if(Input.GetButtonDown(Joy02) && specialMoveToggles[9].isEnabled)
                 {
                     ActionHCB("Kick");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("Player02Joystick03") && specialMoveToggles[10].isEnabled)
+                else if(Input.GetButtonDown(Joy03) && specialMoveToggles[10].isEnabled)
                 {
                     ActionHCB("Slash");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("Player02Joystick04") && specialMoveToggles[11].isEnabled)
+                else if(Input.GetButtonDown(Joy04) && specialMoveToggles[11].isEnabled)
                 {
                     ActionHCB("HeavySlash");
                     Hits = false;
@@ -682,25 +691,25 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         {
             if(Joystick)
             {
-                if(Input.GetButtonDown("Player02Joystick01") && specialMoveToggles[12].isEnabled)
+                if(Input.GetButtonDown(Joy01) && specialMoveToggles[12].isEnabled)
                 {
                     ActionHCBF("Punch");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("Player02Joystick02") && specialMoveToggles[13].isEnabled)
+                else if(Input.GetButtonDown(Joy02) && specialMoveToggles[13].isEnabled)
                 {
                     ActionHCBF("Kick");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("Player02Joystick03") && specialMoveToggles[14].isEnabled)
+                else if(Input.GetButtonDown(Joy03) && specialMoveToggles[14].isEnabled)
                 {
                     ActionHCBF("Slash");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("Player02Joystick04") && specialMoveToggles[15].isEnabled)
+                else if(Input.GetButtonDown(Joy04) && specialMoveToggles[15].isEnabled)
                 {
                     ActionHCBF("HeavySlash");
                     Hits = false;

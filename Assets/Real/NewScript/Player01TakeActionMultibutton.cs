@@ -344,6 +344,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
                     anim.SetTrigger(actionName + "Trigger");
                 }
             }
+            StartCoroutine(ResetIsPerformingAction(0.5f));
         }
         else
         {
