@@ -8,8 +8,10 @@ using UnityEngine.Video;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
-    public GameObject sharkMove;
-    public GameObject pengangMove;
+    public GameObject sharkMoveKB;
+    public GameObject sharkMoveJS;
+    public GameObject pengangMoveKB;
+    public GameObject pengangMoveJS;
     public GameObject capyMove;
     public GameObject kenMove;
     public GameObject vdoSample;
@@ -36,10 +38,13 @@ public class PauseMenu : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape) && pauseState == true)
         {
             TurnOffAll();
+            pauseMenuUI.SetActive(false);
             pauseState = false;
             Time.timeScale = 1;
         }
     }
+
+    // General Function
 
     public void Resume()
     {
@@ -55,15 +60,17 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("Mainmenu");
     }
 
+    // Open Move List UI
+
     public void SharkMove()
     {
         pauseMenuUI.SetActive(false);
-        sharkMove.SetActive(true);
+        sharkMoveKB.SetActive(true);
     }
     public void PengangMove()
     {
         pauseMenuUI.SetActive(false);
-        pengangMove.SetActive(true);
+        pengangMoveKB.SetActive(true);
     }
 
     public void CapyMove()
@@ -78,6 +85,34 @@ public class PauseMenu : MonoBehaviour
         kenMove.SetActive(true);
     }
 
+    // Switch Move List UI
+
+    public void ToSharkJS()
+    {
+        sharkMoveKB.SetActive(false);
+        sharkMoveJS.SetActive(true);
+    }
+
+    public void ToSharkKB()
+    {
+        sharkMoveKB.SetActive(true);
+        sharkMoveJS.SetActive(false);
+    }
+
+    public void ToPengangJS()
+    {
+        pengangMoveKB.SetActive(false);
+        pengangMoveJS.SetActive(true);
+    }
+
+    public void ToPengangKB()
+    {
+        pengangMoveKB.SetActive(true);
+        pengangMoveJS.SetActive(false);
+    }
+
+    // Video Handle
+
     public void VDOSample()
     {
         pauseMenuUI.SetActive(false);
@@ -89,21 +124,18 @@ public class PauseMenu : MonoBehaviour
     public void BackToPause()
     {
         pauseMenuUI.SetActive(true);
-        sharkMove.SetActive(false);
-        pengangMove.SetActive(false);
-        capyMove.SetActive(false);
-        kenMove.SetActive(false);
-        vdoSample.SetActive(false);
+        TurnOffAll();
     }
 
     void TurnOffAll()
     {
-        pauseMenuUI.SetActive(false);
-        sharkMove.SetActive(false);
-        pengangMove.SetActive(false);
+        sharkMoveKB.SetActive(false);
+        pengangMoveKB.SetActive(false);
         capyMove.SetActive(false);
         kenMove.SetActive(false);
         vdoSample.SetActive(false);
+        sharkMoveKB.SetActive(false);
+        pengangMoveKB.SetActive(false);
     }
 
     public void OnVideoReplayClicked()
