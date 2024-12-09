@@ -97,6 +97,20 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                 holdbuttonVertical = true;
             }
         }
+        if(Joystick)
+        {
+            if(-Input.GetAxis(verticalInput) < -0.4f)
+            {
+                holdTimeVertical += Time.deltaTime;
+                if(holdTimeVertical > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonVertical = true;
+                }
+            }
+        }
+
         if(Input.GetAxis(horizontalInput) > 0.4f && player01Movement.faceRight)
         {
             holdTimeHorizontal += Time.deltaTime;

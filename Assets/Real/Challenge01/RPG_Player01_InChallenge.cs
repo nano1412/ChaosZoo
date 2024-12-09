@@ -9,11 +9,15 @@ public class RPG_Player01_InChallenge : MonoBehaviour
     public int damage = 10; // ค่าความเสียหาย
     public Player01MovementChallenge player01Movement;
     public Player01TakeActionInChallenge player01TakeAction;
+    
+    
     void Start()
     {
         player01Movement = GameObject.FindGameObjectWithTag("Player01").GetComponent<Player01MovementChallenge>();
         player01TakeAction = GameObject.FindGameObjectWithTag("PlayerCharacter01Tpose").GetComponent<Player01TakeActionInChallenge>();
     }
+
+
 
     private void OnCollisionEnter(Collision other)
     {

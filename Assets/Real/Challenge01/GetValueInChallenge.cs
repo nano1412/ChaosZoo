@@ -105,6 +105,7 @@ public class GetValueInChallenge : MonoBehaviour
         ArcadeStickGroup.SetActive(true);
         KeyBoard.SetActive(false);
         JoyStick.SetActive(false);
+        ArcadeStick.SetActive(true);
         if(!KeyboardInputOnly)
         {
             keyboardInputTutorial.SetActive(false);

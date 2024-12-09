@@ -97,21 +97,21 @@ public class Player02Movement_Overdrive : MonoBehaviour
                 }
                 if (stopAttack)
                 {
-                    StopCountingTime();
-                    challengeData.boolList.Add(false);
-                    getValueInChallenge.RedUpdate();
-                    RedUpdate();
+                    // StopCountingTime();
+                    // challengeData.boolList.Add(false);
+                    // getValueInChallenge.RedUpdate();
+                    // RedUpdate();
 
 
-                    Time.timeScale = 0;
-                    DisablePlayerControls(); // Disable player controls
-                    selectControllerInChallenge.DisableScripts();
-                    selectControllerInChallenge.ResetScene();
+                    // Time.timeScale = 0;
+                    // DisablePlayerControls(); // Disable player controls
+                    // selectControllerInChallenge.DisableScripts();
+                    // selectControllerInChallenge.ResetScene();
                     
-                    challengeData.CurrentRound++;
-                    stopAttack = false;
-                    //StartCoroutine(ResetCurrenttext(0.5f));
-                    StartCoroutine(ResetCurrenttext(2f));
+                    // challengeData.CurrentRound++;
+                    // stopAttack = false;
+                    // //StartCoroutine(ResetCurrenttext(0.5f));
+                    // StartCoroutine(ResetCurrenttext(2f));
                 }
                 if (currentTagIndex >= validTags.Count && !stopAttack && !hasKenAttackExecuted)
                 {

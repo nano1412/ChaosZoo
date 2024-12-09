@@ -190,7 +190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 406, y: -408}
+  m_AnchoredPosition: {x: 406, y: -430}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &10988344
@@ -14169,6 +14169,10 @@ MonoBehaviour:
   challengeData: {fileID: 11400000, guid: 48c3d9db23d8bd0478be61746491810a, type: 2}
   verticalInput: 
   horizontalInput: 
+  Joy01: 
+  Joy02: 
+  Joy03: 
+  Joy04: 
   inputCount: 0
   NumberRPG: 0
   specialMoveToggles:
@@ -14273,6 +14277,13 @@ MonoBehaviour:
   selectController: {fileID: 0}
   isPerformingAction: 0
   specialMoveEnergy: 100
+  challengeData: {fileID: 0}
+  horizontalInput: 
+  verticalInput: 
+  Joy01: 
+  Joy02: 
+  Joy03: 
+  Joy04: 
   specialMoveMultibuttonToggle: []
 --- !u!1 &1852010800
 GameObject:
@@ -18711,7 +18722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 406, y: -408}
+  m_AnchoredPosition: {x: 406, y: -430}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1914746166
