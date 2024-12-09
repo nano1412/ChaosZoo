@@ -32,7 +32,7 @@ public class Player01Trigger_OverDrive : MonoBehaviour
         {
             Col.enabled = !Player01TakeActionInChallenge.Hits;
         }
-        else if(!TakeAction && TakeActionMultiButton && animationName != "6LPRPLKRP_Capybara")
+        else if(!TakeAction && TakeActionMultiButton)
         {
             Col.enabled = !Player01TakeActionMultiButtonInChallange.Hits;
         }
