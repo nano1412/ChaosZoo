@@ -388,7 +388,7 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         isPerformingAction = false;
-        player01Movement.isPerformingAction = true;
+        player01Movement.isPerformingAction = false;
     }
 }
 
