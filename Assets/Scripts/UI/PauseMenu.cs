@@ -9,6 +9,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject sharkMove;
     public GameObject pengangMove;
+    public GameObject capyMove;
+    public GameObject kenMove;
     public bool pauseState;
 
     // Start is called before the first frame update
@@ -60,11 +62,25 @@ public class PauseMenu : MonoBehaviour
         pengangMove.SetActive(true);
     }
 
+    public void CapyMove()
+    {
+        pauseMenuUI.SetActive(false);
+        capyMove.SetActive(true);
+    }
+
+    public void KenMove()
+    {
+        pauseMenuUI.SetActive(false);
+        kenMove.SetActive(true);
+    }
+
     public void BackToPause()
     {
         pauseMenuUI.SetActive(true);
         sharkMove.SetActive(false);
         pengangMove.SetActive(false);
+        capyMove.SetActive(false);
+        kenMove.SetActive(false);
     }
 
     void TurnOffAll()
@@ -72,5 +88,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         sharkMove.SetActive(false);
         pengangMove.SetActive(false);
+        capyMove.SetActive(false);
+        kenMove.SetActive(false);
     }
 }
