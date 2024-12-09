@@ -273,7 +273,6 @@ GameObject:
   m_Component:
   - component: {fileID: 16306424}
   - component: {fileID: 16306425}
-  - component: {fileID: 16306427}
   - component: {fileID: 16306426}
   m_Layer: 0
   m_Name: GameManager
@@ -386,21 +385,6 @@ MonoBehaviour:
   challlengeScripttable: {fileID: 11400000, guid: 80496dd86cfdcaf4397ba30d31b17df8,
     type: 2}
   KeyboardInputOnly: 1
---- !u!114 &16306427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 16306421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16a7bb89442d50e47889d4bacd0b5af9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
-  sharkMove: {fileID: 0}
-  pengangMove: {fileID: 0}
 --- !u!1 &23560310
 GameObject:
   m_ObjectHideFlags: 0
