@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject kenMove;
     public GameObject vdoSample;
     public bool pauseState;
+
+    public VideoPlayer videoPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -79,6 +82,8 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         vdoSample.SetActive(true);
+        videoPlayer.Stop();
+        videoPlayer.Play();
     }
 
     public void BackToPause()
@@ -99,5 +104,14 @@ public class PauseMenu : MonoBehaviour
         capyMove.SetActive(false);
         kenMove.SetActive(false);
         vdoSample.SetActive(false);
+    }
+
+    public void OnVideoReplayClicked()
+    {
+        if(videoPlayer)
+        {
+            videoPlayer.Stop();
+            videoPlayer.Play();
+        }
     }
 }
