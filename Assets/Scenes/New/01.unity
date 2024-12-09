@@ -3019,7 +3019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &235794196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10942,12 +10942,6 @@ MonoBehaviour:
   player02TakeAction: {fileID: 998856010}
   player02TakeActionMultibutton: {fileID: 998856008}
   player02CameraSpecial: {fileID: 0}
---- !u!1 &716758130 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6937764187853142018, guid: fc0320d2c83994348a349d4645019126,
-    type: 3}
-  m_PrefabInstance: {fileID: 5882426931389482699}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &735568751
 GameObject:
   m_ObjectHideFlags: 0
@@ -12424,7 +12418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &818986249
 Transform:
   m_ObjectHideFlags: 0
@@ -38934,11 +38928,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6937764187853142018, guid: fc0320d2c83994348a349d4645019126,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8754642941861241765, guid: fc0320d2c83994348a349d4645019126,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38989,11 +38978,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8891916414165249923, guid: fc0320d2c83994348a349d4645019126,
-        type: 3}
-      propertyPath: capyMove
-      value: 
-      objectReference: {fileID: 716758130}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
