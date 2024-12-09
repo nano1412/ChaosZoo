@@ -131,11 +131,11 @@ public class PauseMenu : MonoBehaviour
     {
         sharkMoveKB.SetActive(false);
         pengangMoveKB.SetActive(false);
+        sharkMoveJS.SetActive(false);
+        pengangMoveJS.SetActive(false);
         capyMove.SetActive(false);
         kenMove.SetActive(false);
         vdoSample.SetActive(false);
-        sharkMoveKB.SetActive(false);
-        pengangMoveKB.SetActive(false);
     }
 
     public void OnVideoReplayClicked()
