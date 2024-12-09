@@ -900,7 +900,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         isPerformingAction = false;
-        player01Movement.isPerformingAction = true;
+        player01Movement.isPerformingAction = false;
     }
 
     IEnumerator ResetQCState()
