@@ -9131,8 +9131,6 @@ MonoBehaviour:
   - 632146S_AttackBox
   - 632146S_AttackBox
   - 632146S_AttackBox
-  - 632146S_AttackBox
-  - 632146S_AttackBox
   challengeData: {fileID: 11400000, guid: d38d6b6a9b41e1d4892b9fdd2a386564, type: 2}
   selectControllerInChallenge: {fileID: 16306425}
   getValueInChallenge: {fileID: 16306426}
@@ -9140,7 +9138,7 @@ MonoBehaviour:
   currentTagIndex: 0
   currentProgress: 0
   currenthits: 0
-  IndexTag: 8
+  IndexTag: 6
   limitTime: 6
   time: 0
   stopAttack: 0
@@ -9148,7 +9146,7 @@ MonoBehaviour:
   ProgressInput:
   - Green: {fileID: 1008458680}
     Red: {fileID: 2085333425}
-  numberHits: 08000000
+  numberHits: 06000000
 --- !u!136 &900800240
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16496,6 +16494,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7073850216792954865, guid: fc0320d2c83994348a349d4645019126,
+        type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: ce05fbd4d5ae3f94c962aab6de7a0b88,
+        type: 3}
     - target: {fileID: 7123171762200704398, guid: fc0320d2c83994348a349d4645019126,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
