@@ -81,7 +81,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         if(Input.GetAxis(verticalInput) < -0.4f)
         {
             holdTimeVertical += Time.deltaTime;
-            if(holdTimeVertical > 0.1f)
+            if(holdTimeVertical > 0.2f)
             {
                 isQCInProgress = false;
                 isHCBInProgress = false;
@@ -91,7 +91,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         if(Input.GetAxis(horizontalInput) > 0.4f && player01Movement.faceRight)
         {
             holdTimeHorizontal += Time.deltaTime;
-            if(holdTimeHorizontal > 0.1f)
+            if(holdTimeHorizontal > 0.2f)
             {
                 isQCInProgress = false;
                 isHCBInProgress = false;
@@ -101,7 +101,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         if(Input.GetAxis(horizontalInput) < -0.4f && !player01Movement.faceRight)
         {
             holdTimeHorizontal += Time.deltaTime;
-            if(holdTimeHorizontal > 0.1f)
+            if(holdTimeHorizontal > 0.2f)
             {
                 isQCInProgress = false;
                 isHCBInProgress = false;
