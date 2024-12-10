@@ -4398,6 +4398,7 @@ MonoBehaviour:
   Joy04: 
   inputCount: 0
   NumberRPG: 0
+  Joystick: 0
   specialMoveToggles:
   - moveName: 0
     isEnabled: 1
@@ -9584,7 +9585,7 @@ MonoBehaviour:
   nameCharacter: Pengang
   selectControllerInChallenge: {fileID: 16306425}
   Joystick: 0
-  challengeData: {fileID: 11400000, guid: 4e803dfbcd0c60840a63821e10c51581, type: 2}
+  challengeData: {fileID: 11400000, guid: 3270218c3c4873740902352c36a1e295, type: 2}
   horizontalInput: Horizontal
   verticalInput: Vertical
 --- !u!54 &865384995
@@ -14109,6 +14110,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MenuManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897071520809054676, guid: fc0320d2c83994348a349d4645019126,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7073850216792954865, guid: fc0320d2c83994348a349d4645019126,
         type: 3}

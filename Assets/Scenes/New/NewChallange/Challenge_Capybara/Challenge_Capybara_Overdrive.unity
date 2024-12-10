@@ -1345,7 +1345,7 @@ MonoBehaviour:
   nameCharacter: No
   selectControllerInChallenge: {fileID: 16306425}
   Joystick: 0
-  challengeData: {fileID: 11400000, guid: 687d3cefaa05f984c97622fd6b30e1a2, type: 2}
+  challengeData: {fileID: 11400000, guid: 80496dd86cfdcaf4397ba30d31b17df8, type: 2}
   horizontalInput: Horizontal
   verticalInput: Vertical
 --- !u!54 &181086660
@@ -2036,6 +2036,7 @@ MonoBehaviour:
   Joy04: 
   inputCount: 0
   NumberRPG: 0
+  Joystick: 0
   specialMoveToggles:
   - moveName: 0
     isEnabled: 1
@@ -12199,6 +12200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MenuManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897071520809054676, guid: fc0320d2c83994348a349d4645019126,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7073850216792954865, guid: fc0320d2c83994348a349d4645019126,
         type: 3}

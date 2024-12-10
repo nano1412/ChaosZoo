@@ -40,12 +40,12 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
         }
         else if(challengeData.CurrentRound >= 10)
         {
-            verticalInput = selectController.Selectjoystick01 ? "LeftAnalogY1" : "Vertical";
-            horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
-            Joy01 = "Player01Joystick03";
-            Joy02 = "Player01Joystick04";
-            Joy03 = "Player01Joystick01";
-            Joy04 = "Player01Joystick02";
+            verticalInput = selectController.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
+            horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
+            Joy01 = "Player02Joystick03";
+            Joy02 = "Player02Joystick04";
+            Joy03 = "Player02Joystick01";
+            Joy04 = "Player02Joystick02";
         }
         
 
@@ -54,22 +54,22 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
 
         if(selectController.Selectjoystick01)
         {
-            if (Input.GetButtonDown("Player01Joystick03"))
+            if (Input.GetButtonDown(Joy01))
             {
                 PerformAction("RightPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player01Joystick04"))
+            if (Input.GetButtonDown(Joy02))
             {
                 PerformAction("RightKick");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player01Joystick01"))
+            if (Input.GetButtonDown(Joy03))
             {
                 PerformAction("LeftPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player01Joystick02"))
+            if (Input.GetButtonDown(Joy04))
             {
                 PerformAction("LeftKick");
                 Hits = false;
@@ -113,12 +113,24 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
 
         if (selectController.Selectjoystick01)
         {
-            RP = Input.GetButton("Player01Joystick03");
-            LP = Input.GetButton("Player01Joystick01");
-            RK = Input.GetButton("Player01Joystick04");
-            LK = Input.GetButton("Player01Joystick02");
-            vertical = -Input.GetAxis(verticalInput);
-            horizontal = Input.GetAxis(horizontalInput);
+            if(challengeData.CurrentRound <= 9)
+            {
+                RP = Input.GetButton("Player01Joystick03");
+                LP = Input.GetButton("Player01Joystick01");
+                RK = Input.GetButton("Player01Joystick04");
+                LK = Input.GetButton("Player01Joystick02");
+                vertical = -Input.GetAxis(verticalInput);
+                horizontal = Input.GetAxis(horizontalInput);
+            }
+            else if(challengeData.CurrentRound >= 10)
+            {
+                RP = Input.GetButton("Player02Joystick03");
+                LP = Input.GetButton("Player02Joystick01");
+                RK = Input.GetButton("Player02Joystick04");
+                LK = Input.GetButton("Player02Joystick02");
+                vertical = -Input.GetAxis(verticalInput);
+                horizontal = Input.GetAxis(horizontalInput);
+            }
         }
         else
         {
@@ -134,7 +146,7 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
         {
             if(player01Movement.faceRight)
             {
-                if(horizontal < 0f)
+                if(horizontal < -0.4f)
                 {
                     if(RP && RK && LK && specialMoveMultibuttonToggle[34].isEnabled) return TriggerAction("BackDownRightPunchRightKickLeftKickTrigger", specialMoveMultibuttonToggle[34].numberReset);
                     if(LP && RK && LK && specialMoveMultibuttonToggle[37].isEnabled) return TriggerAction("BackDownLeftPunchRightKickLeftKickTrigger", specialMoveMultibuttonToggle[37].numberReset);
@@ -161,7 +173,7 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
             }
             else if(player01Movement.faceLeft)
             {
-                if(horizontal < 0f)
+                if(horizontal < -0.4f)
                 {
                     if(RP && LP && specialMoveMultibuttonToggle[12].isEnabled) return TriggerAction("ForwardDownRightPunchLeftPunchTrigger",specialMoveMultibuttonToggle[12].numberReset);
                     if(RK && LK && specialMoveMultibuttonToggle[13].isEnabled) return TriggerAction("ForwardDownRightKickLeftKickTrigger",specialMoveMultibuttonToggle[13].numberReset);
@@ -192,7 +204,7 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
             if(RK && LP && specialMoveMultibuttonToggle[27].isEnabled) return TriggerAction("DownRightKickLeftPunchTrigger",specialMoveMultibuttonToggle[27].numberReset);
             
         }
-        else if(horizontal < 0f)
+        else if(horizontal < -0.4f)
         {
             if(player01Movement.faceRight)
             {
@@ -326,7 +338,7 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
             }
              else if(player01Movement.faceRight)
             {
-                if(Input.GetAxis(horizontalInput) < 0f)
+                if(Input.GetAxis(horizontalInput) < -0.4f)
                 {
                     anim.SetTrigger("BackSpecial" + actionName + "Trigger");
                 }
@@ -345,7 +357,7 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
                 {
                     anim.SetTrigger("BackSpecial" + actionName + "Trigger");
                 }
-                else if(Input.GetAxis(horizontalInput) < 0f)
+                else if(Input.GetAxis(horizontalInput) < -0.4f)
                 {
                     anim.SetTrigger("Special" + actionName + "Trigger");
                 }

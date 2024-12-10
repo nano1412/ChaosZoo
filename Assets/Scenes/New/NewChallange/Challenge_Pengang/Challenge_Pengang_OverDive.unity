@@ -3961,6 +3961,7 @@ MonoBehaviour:
   Joy04: 
   inputCount: 0
   NumberRPG: 0
+  Joystick: 0
   specialMoveToggles:
   - moveName: 0
     isEnabled: 1
@@ -9281,7 +9282,6 @@ MonoBehaviour:
   anim: {fileID: 647263147}
   rb: {fileID: 900800233}
   validTags:
-  - 632146S_AttackBox
   - 632146S_AttackBox
   - 632146S_AttackBox
   - 632146S_AttackBox
@@ -16821,6 +16821,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MenuManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897071520809054676, guid: fc0320d2c83994348a349d4645019126,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7073850216792954865, guid: fc0320d2c83994348a349d4645019126,
         type: 3}

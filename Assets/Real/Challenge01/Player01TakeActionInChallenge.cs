@@ -36,6 +36,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     public string Joy01, Joy02, Joy03, Joy04;
     public int inputCount = 0; // ตัวแปรสำหรับนับจำนวนอินพุต
     public bool NumberRPG = false;
+    public bool Joystick = false;
 
     [Header("Enable/Disable Actions")]
     public List<SpecialMoveToggle> specialMoveToggles = new List<SpecialMoveToggle>()
@@ -69,17 +70,19 @@ public class Player01TakeActionInChallenge : MonoBehaviour
             Joy02 = "Player01Joystick02";
             Joy03 = "Player01Joystick03";
             Joy04 = "Player01Joystick04";
+            Joystick = selectControllerInChallenge.Selectjoystick01 ? true : false;
         }
         else if(challengeData.CurrentRound >= 10)
         {
-            verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY1" : "Vertical";
-            horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
-            Joy01 = "Player01Joystick01";
-            Joy02 = "Player01Joystick02";
-            Joy03 = "Player01Joystick03";
-            Joy04 = "Player01Joystick04";
+            verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
+            horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
+            Joy01 = "Player02Joystick01";
+            Joy02 = "Player02Joystick02";
+            Joy03 = "Player02Joystick03";
+            Joy04 = "Player02Joystick04";
+            Joystick = true;
+            
         }
-        bool Joystick = selectControllerInChallenge.Selectjoystick01 ? true : false;
         
 
         HandleQCF();
@@ -87,16 +90,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         HandleHCB();
         HandleHCBF();
         
-        if(Input.GetAxis(verticalInput) < -0.4f)
-        {
-            holdTimeVertical += Time.deltaTime;
-            if(holdTimeVertical > 0.2f)
-            {
-                isQCInProgress = false;
-                isHCBInProgress = false;
-                holdbuttonVertical = true;
-            }
-        }
+
         if(Joystick)
         {
             if(-Input.GetAxis(verticalInput) < -0.4f)
@@ -109,35 +103,75 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     holdbuttonVertical = true;
                 }
             }
-        }
-
-        if(Input.GetAxis(horizontalInput) > 0.4f && player01Movement.faceRight)
-        {
-            holdTimeHorizontal += Time.deltaTime;
-            if(holdTimeHorizontal > 0.2f)
+            if(Input.GetAxis(horizontalInput) > 0.4f && player01Movement.faceRight)
             {
-                isQCInProgress = false;
-                isHCBInProgress = false;
-                holdbuttonHorizontal = true;
-            } 
-        }
-        if(Input.GetAxis(horizontalInput) < -0.4f && !player01Movement.faceRight)
-        {
-            holdTimeHorizontal += Time.deltaTime;
-            if(holdTimeHorizontal > 0.2f)
+                holdTimeHorizontal += Time.deltaTime;
+                if(holdTimeHorizontal > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonHorizontal = true;
+                } 
+            }
+            if(Input.GetAxis(horizontalInput) < -0.4f && !player01Movement.faceRight)
             {
-                isQCInProgress = false;
-                isHCBInProgress = false;
-                holdbuttonHorizontal = true;
-            } 
+                holdTimeHorizontal += Time.deltaTime;
+                if(holdTimeHorizontal > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonHorizontal = true;
+                } 
+            }
+            else if (Input.GetAxis(verticalInput) <= 0.1 && Input.GetAxis(horizontalInput) <= 0.1)
+            {
+                holdbuttonVertical = false;
+                holdbuttonHorizontal = false;
+                holdTimeVertical = 0;
+                holdTimeHorizontal = 0;
+            }
         }
-        else if (Input.GetAxis(verticalInput) == 0 && Input.GetAxis(horizontalInput) == 0)
+        else if(!Joystick)
         {
-            holdbuttonVertical = false;
-            holdbuttonHorizontal = false;
-            holdTimeVertical = 0;
-            holdTimeHorizontal = 0;
+            if(Input.GetAxis(verticalInput) < -0.4f)
+            {
+                holdTimeVertical += Time.deltaTime;
+                if(holdTimeVertical > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonVertical = true;
+                }
+            }
+            if(Input.GetAxis(horizontalInput) > 0.4f && player01Movement.faceRight)
+            {
+                holdTimeHorizontal += Time.deltaTime;
+                if(holdTimeHorizontal > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonHorizontal = true;
+                } 
+            }
+            if(Input.GetAxis(horizontalInput) < -0.4f && !player01Movement.faceRight)
+            {
+                holdTimeHorizontal += Time.deltaTime;
+                if(holdTimeHorizontal > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonHorizontal = true;
+                } 
+            }
+            else if (Input.GetAxis(verticalInput) == 0 && Input.GetAxis(horizontalInput) == 0)
+            {
+                holdbuttonVertical = false;
+                holdbuttonHorizontal = false;
+                holdTimeVertical = 0;
+                holdTimeHorizontal = 0;
+            }
         }
+        
 
 
         if (isPerformingAction || isQCInProgress || isHCBInProgress || player01Movement.isJump) return;
