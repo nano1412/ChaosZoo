@@ -8,13 +8,15 @@ public class ShildSpin_Player01 : MonoBehaviour
     public float speed = 5f; // ความเร็วในการเคลื่อนที่
     public int damage = 10; // ค่าความเสียหาย
     public float spinSpeed = 1f; // ความเร็วในการหมุน (องศาต่อวินาที)
-    public Player01Movement player01Movement;
+    //public Player01Movement player01Movement;
+    public Player01MovementInTrainingRoom player01Movement;
     public Player01TakeAction player01TakeAction;
 
     void Start()
     {
         transform.rotation = Quaternion.Euler(-90, 0, 0);
-        player01Movement = GameObject.FindGameObjectWithTag("Player01").GetComponent<Player01Movement>();
+        //player01Movement = GameObject.FindGameObjectWithTag("Player01").GetComponent<Player01Movement>();
+        player01Movement = GameObject.FindGameObjectWithTag("Player01").GetComponent<Player01MovementInTrainingRoom>();
         player01TakeAction = GameObject.FindGameObjectWithTag("PlayerCharacter01Tpose").GetComponent<Player01TakeAction>();
 
     }

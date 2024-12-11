@@ -7,14 +7,17 @@ public class RPG_Play01 : MonoBehaviour
     public Rigidbody rb; // Rigidbody ของ RPG
     public float speed = 5f; // ความเร็วในการเคลื่อนที่
     public int damage = 10; // ค่าความเสียหาย
-    public Player01Movement player01Movement;
-    public Player01TakeAction player01TakeAction;
+    //public Player01Movement player01Movement;
+    public Player01MovementInTrainingRoom player01Movement;
+    //public Player01TakeAction player01TakeAction;
+    public Player01TakeActionInTrainingRoom player01TakeAction;
     public Player02Health player02Health;
 
     void Start()
     {
-        player01Movement = GameObject.FindGameObjectWithTag("Player01").GetComponent<Player01Movement>();
-        player01TakeAction = GameObject.FindGameObjectWithTag("PlayerCharacter01Tpose").GetComponent<Player01TakeAction>();
+        //player01Movement = GameObject.FindGameObjectWithTag("Player01").GetComponent<Player01Movement>();
+        player01Movement = GameObject.FindGameObjectWithTag("Player01").GetComponent<Player01MovementInTrainingRoom>();
+        player01TakeAction = GameObject.FindGameObjectWithTag("PlayerCharacter01Tpose").GetComponent<Player01TakeActionInTrainingRoom>();
 
     }
 

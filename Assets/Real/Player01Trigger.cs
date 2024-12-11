@@ -13,8 +13,10 @@ public class Player01Trigger : MonoBehaviour
     public bool TakeActionMultiButton = false;
     public string animationName;
     public Player02Health player02Health;
-    public Player01TakeAction player01TakeAction;
-    public Player01TakeActionMultibutton player01TakeActionMultibutton;
+    //public Player01TakeAction player01TakeAction;
+    public Player01TakeActionInTrainingRoom player01TakeAction;
+    //public Player01TakeActionMultibutton player01TakeActionMultibutton;
+    public Player01TakeActionMultibuttonInTrainingRoom player01TakeActionMultibutton;
     public Player01CameraSpecial player01CameraSpecial;
     void Start()
     {
@@ -26,11 +28,13 @@ public class Player01Trigger : MonoBehaviour
     {
         if(TakeAction && !TakeActionMultiButton)
         {
-            Col.enabled = !Player01TakeAction.Hits;
+            //Col.enabled = !Player01TakeAction.Hits;
+            Col.enabled = !Player01TakeActionInTrainingRoom.Hits;
         }
         else if(!TakeAction && TakeActionMultiButton && animationName != "6LPRPLKRP_Capybara")
         {
-            Col.enabled = !Player01TakeActionMultibutton.Hits;
+            //Col.enabled = !Player01TakeActionMultibutton.Hits;
+            Col.enabled = !Player01TakeActionMultibuttonInTrainingRoom.Hits;
         }
         if(animationName == "6LPRPLKRP_Capybara")
         {
@@ -46,14 +50,16 @@ public class Player01Trigger : MonoBehaviour
             {
                 if (animationName == "632146S_Shark")
                 {
-                    GetComponentInParent<Player01TakeAction>().GrapHCBFShark();
+                    //GetComponentInParent<Player01TakeAction>().GrapHCBFShark();
+                    GetComponentInParent<Player01TakeActionInTrainingRoom>().GrapHCBFShark();
                     player02Health.TakeDamage(damage, force, animationName);
                     player01CameraSpecial.CameraAtciveSpecial();
                     Player01TakeAction.Hits = true;
                 }
                 else if (animationName == "63214P_Shark")
                 {
-                    GetComponentInParent<Player01TakeAction>().GrapHCBShark();
+                    //GetComponentInParent<Player01TakeAction>().GrapHCBShark();
+                    GetComponentInParent<Player01TakeActionInTrainingRoom>().GrapHCBFShark();
                     player02Health.TakeDamage(damage, force, animationName);
                     Player01TakeAction.Hits = true;
                 }
