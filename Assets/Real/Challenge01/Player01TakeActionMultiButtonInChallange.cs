@@ -29,26 +29,15 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
 
     void Update()
     {
-        if(challengeData.CurrentRound <= 9)
-        {
-            verticalInput = selectController.Selectjoystick01 ? "LeftAnalogY1" : "Vertical";
-            horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
-            Joy01 = "Player01Joystick03";
-            Joy02 = "Player01Joystick04";
-            Joy03 = "Player01Joystick01";
-            Joy04 = "Player01Joystick02";
-        }
-        else if(challengeData.CurrentRound >= 10)
-        {
-            verticalInput = selectController.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
-            horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
-            Joy01 = "Player02Joystick03";
-            Joy02 = "Player02Joystick04";
-            Joy03 = "Player02Joystick01";
-            Joy04 = "Player02Joystick02";
-        }
+        verticalInput = selectController.Selectjoystick01 ? "LeftAnalogY" : "Vertical";
+        horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX" : "Horizontal";
+        Joy01 = "PlayerJoystick03";
+        Joy02 = "PlayerJoystick04";
+        Joy03 = "PlayerJoystick01";
+        Joy04 = "PlayerJoystick02";
         
 
+        
         if(isPerformingAction || player01Movement.isJump) return;
         if (HandleMultibutton()) return;
 
@@ -113,24 +102,13 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
 
         if (selectController.Selectjoystick01)
         {
-            if(challengeData.CurrentRound <= 9)
-            {
-                RP = Input.GetButton("Player01Joystick03");
-                LP = Input.GetButton("Player01Joystick01");
-                RK = Input.GetButton("Player01Joystick04");
-                LK = Input.GetButton("Player01Joystick02");
-                vertical = -Input.GetAxis(verticalInput);
-                horizontal = Input.GetAxis(horizontalInput);
-            }
-            else if(challengeData.CurrentRound >= 10)
-            {
-                RP = Input.GetButton("Player02Joystick03");
-                LP = Input.GetButton("Player02Joystick01");
-                RK = Input.GetButton("Player02Joystick04");
-                LK = Input.GetButton("Player02Joystick02");
-                vertical = -Input.GetAxis(verticalInput);
-                horizontal = Input.GetAxis(horizontalInput);
-            }
+            RP = Input.GetButton("PlayerJoystick03");
+            LP = Input.GetButton("PlayerJoystick01");
+            RK = Input.GetButton("PlayerJoystick04");
+            LK = Input.GetButton("PlayerJoystick02");
+            vertical = -Input.GetAxis(verticalInput);
+            horizontal = Input.GetAxis(horizontalInput);
+            
         }
         else
         {

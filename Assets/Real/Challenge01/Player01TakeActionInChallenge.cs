@@ -62,27 +62,14 @@ public class Player01TakeActionInChallenge : MonoBehaviour
 
     void Update()
     {
-        if(challengeData.CurrentRound <= 9)
-        {
-            verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY1" : "Vertical";
-            horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
-            Joy01 = "Player01Joystick01";
-            Joy02 = "Player01Joystick02";
-            Joy03 = "Player01Joystick03";
-            Joy04 = "Player01Joystick04";
-            Joystick = selectControllerInChallenge.Selectjoystick01 ? true : false;
-        }
-        else if(challengeData.CurrentRound >= 10)
-        {
-            verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
-            horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
-            Joy01 = "Player02Joystick01";
-            Joy02 = "Player02Joystick02";
-            Joy03 = "Player02Joystick03";
-            Joy04 = "Player02Joystick04";
-            Joystick = true;
-            
-        }
+        verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY" : "Vertical";
+        horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX" : "Horizontal";
+        Joy01 = "PlayerJoystick01";
+        Joy02 = "PlayerJoystick02";
+        Joy03 = "PlayerJoystick03";
+        Joy04 = "PlayerJoystick04";
+        Joystick = selectControllerInChallenge.Selectjoystick01 ? true : false;
+
         
 
         HandleQCF();

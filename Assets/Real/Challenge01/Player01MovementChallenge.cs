@@ -55,46 +55,24 @@ public class Player01MovementChallenge : MonoBehaviour
             StartCoroutine(FaceLeft());
         }
 
-        if(challengeData.CurrentRound <= 9)
+        if(selectControllerInChallenge.SelectKeyBoard01)
         {
-            if(selectControllerInChallenge.SelectKeyBoard01)
-            {
-                horizontalInput = "Horizontal";
-                verticalInput = "Vertical";
-                walkThreshold = 0.1f;
-                verticalThreshold = 0.1f;
-                Joystick = false;
-                
-            }
-            if(selectControllerInChallenge.Selectjoystick01)
-            {
-                horizontalInput = "LeftAnalogX1";
-                verticalInput = "LeftAnalogY1";
-                walkThreshold = 0.4f;
-                verticalThreshold = 0.6f;
-                Joystick = true;
-            }
+            horizontalInput = "Horizontal";
+            verticalInput = "Vertical";
+            walkThreshold = 0.1f;
+            verticalThreshold = 0.1f;
+            Joystick = false;
+            
         }
-        else if(challengeData.CurrentRound >= 10)
+        if(selectControllerInChallenge.Selectjoystick01)
         {
-            if(selectControllerInChallenge.SelectKeyBoard01)
-            {
-                horizontalInput = "Horizontal";
-                verticalInput = "Vertical";
-                walkThreshold = 0.1f;
-                verticalThreshold = 0.1f;
-                Joystick = false;
-                
-            }
-            if(selectControllerInChallenge.Selectjoystick01)
-            {
-                horizontalInput = "LeftAnalogX2";
-                verticalInput = "LeftAnalogY2";
-                walkThreshold = 0.4f;
-                verticalThreshold = 0.6f;
-                Joystick = true;
-            }
+            horizontalInput = "LeftAnalogX";
+            verticalInput = "LeftAnalogY";
+            walkThreshold = 0.4f;
+            verticalThreshold = 0.6f;
+            Joystick = true;
         }
+    
 
         HandleCrouch();
         HandleMovement();

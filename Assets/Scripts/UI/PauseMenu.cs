@@ -18,6 +18,7 @@ public class PauseMenu : MonoBehaviour
     public bool pauseState;
 
     public VideoPlayer videoPlayer;
+    public Player02Movement_Overdrive player02Movement_Overdrive;
 
     // Start is called before the first frame update
     void Start()
@@ -145,5 +146,12 @@ public class PauseMenu : MonoBehaviour
             videoPlayer.Stop();
             videoPlayer.Play();
         }
+    }
+
+    public void SkipChallenge()
+    {
+        player02Movement_Overdrive.SkipPhaseController();
+        pauseMenuUI.SetActive(false);
+        pauseState = false;
     }
 }

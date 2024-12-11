@@ -319,4 +319,24 @@ public class Player02Movement_Overdrive : MonoBehaviour
         currentProgress = 0;
         currenthits = 0;
     }
+
+    public void SkipPhaseController()
+    {
+        if(challengeData.CurrentRound == 0 || challengeData.CurrentRound == 5)
+        {
+            StopCountingTime();
+            isValidTagCompleted = true;
+
+            for(int i = 0; i < 5; i++)
+            {
+                challengeData.boolList.Add(false);
+                challengeData.CurrentRound++;
+                getValueInChallenge.RedUpdate();    
+            }
+            selectControllerInChallenge.DisableScripts();
+            selectControllerInChallenge.ResetScene();
+            stopAttack = false;
+            StartCoroutine(ResetCurrenttext(2f));
+        }
+    }
 }
