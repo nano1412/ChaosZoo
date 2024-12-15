@@ -24,6 +24,7 @@ public class GetValueInChallenge : MonoBehaviour
     public GameObject ArcadeStick;
     public int CurrentIndex = 0;
     public ChalllengeScripttable challlengeScripttable;
+    public bool KeyboardInputOnly = false;
 
     void Update()
     {
@@ -36,16 +37,15 @@ public class GetValueInChallenge : MonoBehaviour
             JoyStick.SetActive(false);
             ArcadeStick.SetActive(false);
             keyboardInputTutorial.SetActive(true);
-            stickInputTutorial.SetActive(false);
         }
         else if(challlengeScripttable.CurrentRound == 5)
         {
             StartCoroutine(ChangelayoutToJoyStick());
         }
-        /*else if(challlengeScripttable.CurrentRound == 10)
+        else if(challlengeScripttable.CurrentRound == 10)
         {
             StartCoroutine(ChangelayoutToArcadeStrick());
-        }*/
+        }
     }
 
     public void GreenUpdate()
@@ -60,7 +60,6 @@ public class GetValueInChallenge : MonoBehaviour
         ValueGreenRed[CurrentIndex].Red.SetActive(true);
         CurrentIndex++;
         StartCoroutine(FailedActive());
-
     }
 
     IEnumerator SucessSetActive()
@@ -88,8 +87,14 @@ public class GetValueInChallenge : MonoBehaviour
         KeyBoard.SetActive(false);
         JoyStick.SetActive(true);
         ArcadeStick.SetActive(false);
-        keyboardInputTutorial.SetActive(false);
-        stickInputTutorial.SetActive(true);
+        if(!KeyboardInputOnly)
+        {
+            keyboardInputTutorial.SetActive(false);
+            stickInputTutorial.SetActive(true);
+        }
+
+
+        
     }
 
     IEnumerator ChangelayoutToArcadeStrick()
@@ -101,5 +106,11 @@ public class GetValueInChallenge : MonoBehaviour
         KeyBoard.SetActive(false);
         JoyStick.SetActive(false);
         ArcadeStick.SetActive(true);
+        if(!KeyboardInputOnly)
+        {
+            keyboardInputTutorial.SetActive(false);
+            stickInputTutorial.SetActive(true);
+        }
+        
     }
 }

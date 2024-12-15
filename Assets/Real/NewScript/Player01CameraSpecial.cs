@@ -41,6 +41,13 @@ public class Player01CameraSpecial : MonoBehaviour
         StartCoroutine(ResetCapybaraCamera(1f));
     }
 
+    public void SpecialPengang()
+    {
+        cameraSpecial.SetActive(true);
+        playerHealthBar01.SetActive(false);
+        playerHealthBar02.SetActive(false);
+        StartCoroutine(ResetCapybaraCamera(2f));
+    }
     IEnumerator ResetCamareSpecial()
     {
         yield return new WaitForSeconds(cooldown);

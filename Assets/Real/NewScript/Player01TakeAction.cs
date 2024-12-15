@@ -7,13 +7,17 @@ public class Player01TakeAction : MonoBehaviour
     public float defaultActionCooldown = 0.5f;
     public string nameCharacter;
     public GameObject player01;
+    public GameObject opponent;
+    public Player02Movement player02Movement;
     public Player01Movement player01Movement;
     public Player01CameraSpecial player01CameraSpecial;
     public Player01Health player01Health;
     public SelectController selectController;
+    public BoxCollider boxColliderPangeng;
     public bool isPerformingAction = false;
     public static bool Hits = false;
     public bool hits => Hits;
+    
 
     private Animator anim;
 
@@ -31,6 +35,7 @@ public class Player01TakeAction : MonoBehaviour
     public float holdTimeVertical;
     public float holdTimeHorizontal;
     public int inputCount = 0; // ตัวแปรสำหรับนับจำนวนอินพุต
+    public bool NumberRPG = false;
 
     [Header("Enable/Disable Actions")]
     public List<SpecialMoveToggle> specialMoveToggles = new List<SpecialMoveToggle>()
@@ -51,6 +56,8 @@ public class Player01TakeAction : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        opponent = GameObject.FindGameObjectWithTag("PlayerCharacter02Tpose");
+        player02Movement = GameObject.FindGameObjectWithTag("Player02").GetComponent<Player02Movement>();
     }
 
     void Update()
@@ -74,6 +81,20 @@ public class Player01TakeAction : MonoBehaviour
                 holdbuttonVertical = true;
             }
         }
+        if(Joystick)
+        {
+            if(-Input.GetAxis(verticalInput) < -0.4f)
+            {
+                holdTimeVertical += Time.deltaTime;
+                if(holdTimeVertical > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonVertical = true;
+                }
+            }
+        }
+        
         if(Input.GetAxis(horizontalInput) > 0.4f && player01Movement.faceRight)
         {
             holdTimeHorizontal += Time.deltaTime;
@@ -422,7 +443,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    inputState++;
+                    inputCount++;
                     return;
                 }
             }
@@ -433,7 +454,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    inputState++;
+                    inputCount++;
                     return;
                 }
             }
@@ -447,7 +468,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    inputState++;
+                    inputCount++;
                     return;
                 }
             }
@@ -458,7 +479,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    inputState++;
+                    inputCount++;
                     return;
                 }
             }
@@ -472,7 +493,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    inputState++;
+                    inputCount++;
                     return;
                 }
             }
@@ -483,11 +504,11 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    inputState++;
+                    inputCount++;
                 }
             }
         }
-        if(inputState == InputState.Backward && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
+        if(inputCount >= 2 && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
         {
             if(Joystick)
             {
@@ -568,7 +589,7 @@ public class Player01TakeAction : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
-                    inputCount++; // เพิ่มจำนวนการกด direction
+                    inputCount++;
                 }
             }
             else
@@ -786,6 +807,11 @@ public class Player01TakeAction : MonoBehaviour
     private void ActionQCF(string actionName)
     {
         anim.SetTrigger("QCF_" + actionName);
+        if(nameCharacter == "Pengang")
+        {
+            boxColliderPangeng.enabled = false;
+            StartCoroutine(ResetBoxCollider(1f));
+        }
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         StartCoroutine(ResetQCState());
@@ -794,6 +820,11 @@ public class Player01TakeAction : MonoBehaviour
     private void ActionQCB(string actionName)
     {
         anim.SetTrigger("QCB_" + actionName);
+        if(nameCharacter == "Pengang")
+        {
+            boxColliderPangeng.enabled = false;
+            StartCoroutine(ResetBoxCollider(1f));
+        }
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         StartCoroutine(ResetQCState());
@@ -803,21 +834,44 @@ public class Player01TakeAction : MonoBehaviour
         anim.SetTrigger("HCB_" + actionName);
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
-        StartCoroutine(ResetHCBFState());
+        StartCoroutine(ResetHCBFState(1f));
     }
     private void ActionHCBF(string actionName)
     {
         specialMoveEnergy -= 50;
-        player01CameraSpecial.CameraSetActive();
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         anim.SetTrigger("HCBF_"+ actionName);
         if(nameCharacter == "Shark")
         {
+            player01CameraSpecial.CameraSetActive();
             player01Health.SharkDrive = true;
+            Animator opponentAnimator = opponent.GetComponent<Animator>();
+            if (opponentAnimator != null)
+            {
+                opponentAnimator.enabled = false;
+                player02Movement.enabled = false;
+            }
+
             StartCoroutine(ResetBoolSharkdrive());
+            StartCoroutine(ResetHCBFState(1f));
         }
-        StartCoroutine(ResetHCBFState());
+        if(nameCharacter == "Pengang")
+        {
+            player01CameraSpecial.SpecialPengang();
+            NumberRPG = true;
+            boxColliderPangeng.enabled = false;
+
+            Animator opponentAnimator = opponent.GetComponent<Animator>();
+            if (opponentAnimator != null)
+            {
+                opponentAnimator.enabled = false;
+                player02Movement.enabled = false;
+            }
+            StartCoroutine(ResetMovement(1.8f));
+            StartCoroutine(ResetBoxCollider(3.2f));
+            StartCoroutine(ResetHCBFState(5f));
+        }
     }
     public void OnHits()
     {
@@ -860,13 +914,21 @@ public class Player01TakeAction : MonoBehaviour
         player01Movement.isPerformingAction = false;
     }
 
-    IEnumerator ResetHCBFState()
+    IEnumerator ResetHCBFState(float time)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(time);
         inputState = InputState.None;
         isHCBInProgress = false;
         isPerformingAction = false;
         player01Movement.isPerformingAction = false;
+        NumberRPG = false;
+
+        Animator opponentAnimator = opponent.GetComponent<Animator>();
+        if (opponentAnimator != null)
+        {
+            opponentAnimator.enabled = true;
+            player02Movement.enabled = true;
+        }
     }
     IEnumerator ResetGrap()
     {
@@ -878,6 +940,22 @@ public class Player01TakeAction : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         player01Health.SharkDrive = false;
+    }
+    IEnumerator ResetBoxCollider(float time)
+    {
+        yield return new WaitForSeconds(time);
+        boxColliderPangeng.enabled = true;
+    }
+
+    IEnumerator ResetMovement(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Animator opponentAnimator = opponent.GetComponent<Animator>();
+        if (opponentAnimator != null)
+        {
+            opponentAnimator.enabled = true;
+            player02Movement.enabled = true;
+        }
     }
 }
     

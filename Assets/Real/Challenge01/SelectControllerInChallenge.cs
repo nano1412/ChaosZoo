@@ -18,11 +18,15 @@ public class SelectControllerInChallenge : MonoBehaviour
 
     public bool SelectKeyBoard = true; // ค่าเริ่มต้นเป็นการใช้คีย์บอร์ด
     public bool Selectjoystick = false;
+    public bool Player02OverDrive = false;
+    public bool multibuttonScript = false;
     public ChalllengeScripttable challlengeScripttable;
 
     // ตัวแปรเพื่อเก็บสคริปต์ที่ต้องการปิดใช้งาน
     private Player01MovementChallenge movementScript;
     private Player01TakeActionInChallenge actionScript;
+    public Player01TakeActionMultiButtonInChallange actionMultiButton;
+    public Player02Movement_Overdrive player02Movement_Overdrive;
 
     public GameObject FinalResult;
     public TextMeshProUGUI scoreKeyBoard;
@@ -41,32 +45,45 @@ public class SelectControllerInChallenge : MonoBehaviour
         // เข้าถึงสคริปต์ที่ต้องการปิดใช้งาน
         movementScript = player01.GetComponent<Player01MovementChallenge>();
         actionScript = player01.GetComponentInChildren<Player01TakeActionInChallenge>();
+        actionMultiButton = player01.GetComponentInChildren<Player01TakeActionMultiButtonInChallange>();
     }
 
     void Update()
     {
         UpdateControlSettings();
 
-        /*if (challlengeScripttable.CurrentRound == 15)
+        /*if (challlengeScripttable.CurrentRound == 5)
         {
             Time.timeScale = 0;
             FinalResult.SetActive(true);
             UpdateScores();
         }*/
-        if (challlengeScripttable.CurrentRound == 10)
+        if (challlengeScripttable.CurrentRound == 15)
         {
             Time.timeScale = 0;
             FinalResult.SetActive(true);
             UpdateScores();
         }
+        /*if (challlengeScripttable.CurrentRound == 10)
+        {
+            Time.timeScale = 0;
+            FinalResult.SetActive(true);
+            UpdateScores();
+        }*/
     }
 
     public void ResetScene()
     {
         // Move players to their respective positions
         StartCoroutine(WaitForMovePlayers());
+        if(Player02OverDrive)
+        {
+            player02Movement_Overdrive.currentTagIndex = 0;
+            player02Movement_Overdrive.time = 0;
+        }
 
         // Resume the game by setting Time.timeScale back to 1
+        StartCoroutine(WaitForRedUpdate());
         Time.timeScale = 1;
     }
 
@@ -94,6 +111,7 @@ public class SelectControllerInChallenge : MonoBehaviour
         if (actionScript != null)
         {
             actionScript.enabled = false;
+            actionMultiButton.enabled = false;
         }
 
         Debug.Log("Scripts disabled");
@@ -108,7 +126,12 @@ public class SelectControllerInChallenge : MonoBehaviour
 
         if (actionScript != null)
         {
-            actionScript.enabled = true;
+            if(!multibuttonScript) actionScript.enabled = true;
+            else
+            {
+                actionMultiButton.enabled = true;
+            }
+        
         }
     }
 
@@ -132,17 +155,27 @@ public class SelectControllerInChallenge : MonoBehaviour
         yield return new WaitForSeconds(2f);
         EnabledScripts();
         MovePlayersToPositions();
+        if(Player02OverDrive)
+        {
+            player02Movement_Overdrive.isValidTagCompleted = false;
+        }
+    }
+
+    IEnumerator WaitForRedUpdate()
+    {
+        yield return new WaitForSeconds(2f);
+        player02Movement_Overdrive.ResetGreenRed();
     }
 
    private void UpdateScores()
     {
         int keyboardScore = CountTrueValues(0, 4);
         int joystickScore = CountTrueValues(5, 9);
-        //int acradeStickScore = CountTrueValues(10, 14);
+        int acradeStickScore = CountTrueValues(10, 14);
 
         scoreKeyBoard.text = "KeyBoard : " + keyboardScore.ToString() + "/5";
         scoreJoystick.text = "JoyStick : " + joystickScore.ToString() + "/5";
-        //scoreAcradestick.text = "AcradeStick : " + acradeStickScore.ToString() + "/5";
+        scoreAcradestick.text = "AcradeStick : " + acradeStickScore.ToString() + "/5";
     }
 
     private int CountTrueValues(int startIndex, int endIndex)
@@ -166,5 +199,18 @@ public class SelectControllerInChallenge : MonoBehaviour
     public void ChangeSceneToChallengeNext()
     {
         SceneManager.LoadScene(sceneToLoad);
+    }
+
+    public void RestartScene()
+    {
+        ClearChallengeData(challlengeScripttable);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    }
+
+    private void ClearChallengeData(ChalllengeScripttable challengeData)
+    {
+        challengeData.CurrentRound = 0;
+        challengeData.boolList.Clear();
     }
 }

@@ -10,6 +10,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     public Player01MovementChallenge player01Movement;
     public Player01CameraInChallange player01CameraInChallange;
     public SelectControllerInChallenge selectControllerInChallenge;
+    public BoxCollider boxColliderPangeng;
     public bool isPerformingAction = false;
     public static bool Hits = false;
     public bool hits => Hits;
@@ -32,7 +33,10 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     public ChalllengeScripttable challengeData;
     public string verticalInput;
     public string horizontalInput;
+    public string Joy01, Joy02, Joy03, Joy04;
     public int inputCount = 0; // ตัวแปรสำหรับนับจำนวนอินพุต
+    public bool NumberRPG = false;
+    public bool Joystick = false;
 
     [Header("Enable/Disable Actions")]
     public List<SpecialMoveToggle> specialMoveToggles = new List<SpecialMoveToggle>()
@@ -58,17 +62,14 @@ public class Player01TakeActionInChallenge : MonoBehaviour
 
     void Update()
     {
-        if(challengeData.CurrentRound <= 9)
-        {
-            verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
-            horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
-        }
-        else if(challengeData.CurrentRound >= 10)
-        {
-            verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY1" : "Vertical";
-            horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
-        }
-        bool Joystick = selectControllerInChallenge.Selectjoystick01 ? true : false;
+        verticalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogY" : "Vertical";
+        horizontalInput = selectControllerInChallenge.Selectjoystick01 ? "LeftAnalogX" : "Horizontal";
+        Joy01 = "PlayerJoystick01";
+        Joy02 = "PlayerJoystick02";
+        Joy03 = "PlayerJoystick03";
+        Joy04 = "PlayerJoystick04";
+        Joystick = selectControllerInChallenge.Selectjoystick01 ? true : false;
+
         
 
         HandleQCF();
@@ -76,65 +77,110 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         HandleHCB();
         HandleHCBF();
         
-        if(Input.GetAxis(verticalInput) < -0.4f)
+
+        if(Joystick)
         {
-            holdTimeVertical += Time.deltaTime;
-            if(holdTimeVertical > 0.2f)
+            if(-Input.GetAxis(verticalInput) < -0.4f)
             {
-                isQCInProgress = false;
-                isHCBInProgress = false;
-                holdbuttonVertical = true;
+                holdTimeVertical += Time.deltaTime;
+                if(holdTimeVertical > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonVertical = true;
+                }
+            }
+            if(Input.GetAxis(horizontalInput) > 0.4f && player01Movement.faceRight)
+            {
+                holdTimeHorizontal += Time.deltaTime;
+                if(holdTimeHorizontal > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonHorizontal = true;
+                } 
+            }
+            if(Input.GetAxis(horizontalInput) < -0.4f && !player01Movement.faceRight)
+            {
+                holdTimeHorizontal += Time.deltaTime;
+                if(holdTimeHorizontal > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonHorizontal = true;
+                } 
+            }
+            else if (Input.GetAxis(verticalInput) <= 0.1 && Input.GetAxis(horizontalInput) <= 0.1)
+            {
+                holdbuttonVertical = false;
+                holdbuttonHorizontal = false;
+                holdTimeVertical = 0;
+                holdTimeHorizontal = 0;
             }
         }
-        if(Input.GetAxis(horizontalInput) > 0.4f && player01Movement.faceRight)
+        else if(!Joystick)
         {
-            holdTimeHorizontal += Time.deltaTime;
-            if(holdTimeHorizontal > 0.2f)
+            if(Input.GetAxis(verticalInput) < -0.4f)
             {
-                isQCInProgress = false;
-                isHCBInProgress = false;
-                holdbuttonHorizontal = true;
-            } 
-        }
-        if(Input.GetAxis(horizontalInput) < -0.4f && !player01Movement.faceRight)
-        {
-            holdTimeHorizontal += Time.deltaTime;
-            if(holdTimeHorizontal > 0.2f)
+                holdTimeVertical += Time.deltaTime;
+                if(holdTimeVertical > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonVertical = true;
+                }
+            }
+            if(Input.GetAxis(horizontalInput) > 0.4f && player01Movement.faceRight)
             {
-                isQCInProgress = false;
-                isHCBInProgress = false;
-                holdbuttonHorizontal = true;
-            } 
+                holdTimeHorizontal += Time.deltaTime;
+                if(holdTimeHorizontal > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonHorizontal = true;
+                } 
+            }
+            if(Input.GetAxis(horizontalInput) < -0.4f && !player01Movement.faceRight)
+            {
+                holdTimeHorizontal += Time.deltaTime;
+                if(holdTimeHorizontal > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonHorizontal = true;
+                } 
+            }
+            else if (Input.GetAxis(verticalInput) == 0 && Input.GetAxis(horizontalInput) == 0)
+            {
+                holdbuttonVertical = false;
+                holdbuttonHorizontal = false;
+                holdTimeVertical = 0;
+                holdTimeHorizontal = 0;
+            }
         }
-        else if (Input.GetAxis(verticalInput) == 0 && Input.GetAxis(horizontalInput) == 0)
-        {
-            holdbuttonVertical = false;
-            holdbuttonHorizontal = false;
-            holdTimeVertical = 0;
-            holdTimeHorizontal = 0;
-        }
+        
 
 
         if (isPerformingAction || isQCInProgress || isHCBInProgress || player01Movement.isJump) return;
 
         if (selectControllerInChallenge.Selectjoystick01)
         {
-            if (Input.GetButtonDown("Player02Joystick01"))
+            if (Input.GetButtonDown(Joy01))
             {
                 PerformAction("Punch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player02Joystick02"))
+            if (Input.GetButtonDown(Joy02))
             {
                 PerformAction("Kick");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player02Joystick03"))
+            if (Input.GetButtonDown(Joy03))
             {
                 PerformAction("Slash");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player02Joystick04"))
+            if (Input.GetButtonDown(Joy04))
             {
                 PerformAction("HeavySlash");
                 Hits = false;
@@ -202,22 +248,22 @@ public class Player01TakeActionInChallenge : MonoBehaviour
             }
             else if (inputState == InputState.Forward && Time.time - lastInputTime <= inputBufferTime && isQCInProgress)
             {
-                if(Input.GetButtonDown("Player02Joystick01") && specialMoveToggles[0].isEnabled)
+                if(Input.GetButtonDown(Joy01) && specialMoveToggles[0].isEnabled)
                 {
                     ActionQCF("Punch");
                     Hits = false;
                 }
-                else if(Input.GetButtonDown("Player02Joystick02") && specialMoveToggles[1].isEnabled)
+                else if(Input.GetButtonDown(Joy02) && specialMoveToggles[1].isEnabled)
                 {
                     ActionQCF("Kick");
                     Hits = false;
                 }
-                else if(Input.GetButtonDown("Player02Joystick03") && specialMoveToggles[2].isEnabled)
+                else if(Input.GetButtonDown(Joy03) && specialMoveToggles[2].isEnabled)
                 {
                     ActionQCF("Slash");
                     Hits = false;
                 }
-                else if(Input.GetButtonDown("Player02Joystick04") && specialMoveToggles[3].isEnabled)
+                else if(Input.GetButtonDown(Joy04) && specialMoveToggles[3].isEnabled)
                 {
                     ActionQCF("HeavySlash");
                     Hits = false;
@@ -326,22 +372,22 @@ public class Player01TakeActionInChallenge : MonoBehaviour
             }
             else if (inputState == InputState.Backward && Time.time - lastInputTime <= inputBufferTime && isQCInProgress)
             {
-                if(Input.GetButtonDown("Player02Joystick01") && specialMoveToggles[4].isEnabled)
+                if(Input.GetButtonDown(Joy01) && specialMoveToggles[4].isEnabled)
                 {
                     ActionQCB("Punch");
                     Hits = false;
                 }
-                else if(Input.GetButtonDown("Player02Joystick02") && specialMoveToggles[5].isEnabled)
+                else if(Input.GetButtonDown(Joy02) && specialMoveToggles[5].isEnabled)
                 {
                     ActionQCB("Kick");
                     Hits = false;
                 }
-                else if(Input.GetButtonDown("Player02Joystick03") && specialMoveToggles[6].isEnabled)
+                else if(Input.GetButtonDown(Joy03) && specialMoveToggles[6].isEnabled)
                 {
                     ActionQCB("Slash");
                     Hits = false;
                 }
-                else if(Input.GetButtonDown("Player02Joystick04") && specialMoveToggles[7].isEnabled)
+                else if(Input.GetButtonDown(Joy04) && specialMoveToggles[7].isEnabled)
                 {
                     ActionQCB("HeavySlash");
                     Hits = false;
@@ -433,6 +479,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -443,6 +490,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -456,6 +504,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -466,6 +515,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -479,6 +529,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -489,32 +540,33 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                 }
             }
         }
-        if(inputState == InputState.Backward && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
+        if(inputCount >= 2 && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
         {
             if(Joystick)
             {
-                if(Input.GetButtonDown("Player02Joystick01") && specialMoveToggles[8].isEnabled)
+                if(Input.GetButtonDown(Joy01) && specialMoveToggles[8].isEnabled)
                 {
                     ActionHCB("Punch");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("Player02Joystick02") && specialMoveToggles[9].isEnabled)
+                else if(Input.GetButtonDown(Joy02) && specialMoveToggles[9].isEnabled)
                 {
                     ActionHCB("Kick");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("Player02Joystick03") && specialMoveToggles[10].isEnabled)
+                else if(Input.GetButtonDown(Joy03) && specialMoveToggles[10].isEnabled)
                 {
                     ActionHCB("Slash");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("Player02Joystick04") && specialMoveToggles[11].isEnabled)
+                else if(Input.GetButtonDown(Joy04) && specialMoveToggles[11].isEnabled)
                 {
                     ActionHCB("HeavySlash");
                     Hits = false;
@@ -553,6 +605,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         {
             inputState = InputState.None;
             isHCBInProgress = false;
+            inputCount = 0;
         }  
     }
 
@@ -580,6 +633,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -590,6 +644,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Forward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -603,6 +658,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -613,6 +669,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Down;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -626,6 +683,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -636,6 +694,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.Backward;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                 }
             }
         }
@@ -648,6 +707,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.ForwardAgain;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                     return;
                 }
             }
@@ -658,32 +718,33 @@ public class Player01TakeActionInChallenge : MonoBehaviour
                     inputState = InputState.ForwardAgain;
                     lastInputTime = Time.time;
                     isHCBInProgress = true;
+                    inputCount++;
                 }
             }
         }
-        if(inputState == InputState.ForwardAgain && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
+        if(inputCount >= 3 && Time.time - lastInputTime <= inputBufferTime && isHCBInProgress)
         {
             if(Joystick)
             {
-                if(Input.GetButtonDown("Player02Joystick01") && specialMoveToggles[12].isEnabled)
+                if(Input.GetButtonDown(Joy01) && specialMoveToggles[12].isEnabled)
                 {
                     ActionHCBF("Punch");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("Player02Joystick02") && specialMoveToggles[13].isEnabled)
+                else if(Input.GetButtonDown(Joy02) && specialMoveToggles[13].isEnabled)
                 {
                     ActionHCBF("Kick");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("Player02Joystick03") && specialMoveToggles[14].isEnabled)
+                else if(Input.GetButtonDown(Joy03) && specialMoveToggles[14].isEnabled)
                 {
                     ActionHCBF("Slash");
                     Hits = false;
                     return;
                 }
-                else if(Input.GetButtonDown("Player02Joystick04") && specialMoveToggles[15].isEnabled)
+                else if(Input.GetButtonDown(Joy04) && specialMoveToggles[15].isEnabled)
                 {
                     ActionHCBF("HeavySlash");
                     Hits = false;
@@ -723,6 +784,7 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         {
             inputState = InputState.None;
             isHCBInProgress = false;
+            inputCount = 0;
         }
     }
 
@@ -801,6 +863,11 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     private void ActionQCF(string actionName)
     {
         anim.SetTrigger("QCF_" + actionName);
+        if(nameCharacter == "Pengang")
+        {
+            boxColliderPangeng.enabled = false;
+            StartCoroutine(ResetBoxCollider(1f));
+        }
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         StartCoroutine(ResetQCState());
@@ -809,6 +876,11 @@ public class Player01TakeActionInChallenge : MonoBehaviour
     private void ActionQCB(string actionName)
     {
         anim.SetTrigger("QCB_" + actionName);
+        if(nameCharacter == "Pengang")
+        {
+            boxColliderPangeng.enabled = false;
+            StartCoroutine(ResetBoxCollider(1f));
+        }
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         StartCoroutine(ResetQCState());
@@ -818,27 +890,35 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         anim.SetTrigger("HCB_" + actionName);
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
-        StartCoroutine(ResetHCBFState());
+        StartCoroutine(ResetHCBFState(1f));
     }
     private void ActionHCBF(string actionName)
     {
         //specialMoveEnergy -= 50;
-        player01CameraInChallange.CameraSetActive();
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         anim.SetTrigger("HCBF_"+ actionName);
         if(nameCharacter == "Shark")
         {
             //player01Health.SharkDrive = true;
+            player01CameraInChallange.CameraSetActive();
             StartCoroutine(ResetBoolSharkdrive());
+            StartCoroutine(ResetHCBFState(1f));
         }
-        StartCoroutine(ResetHCBFState());
+        if(nameCharacter == "Pengang")
+        {
+            player01CameraInChallange.SpecialPengang();
+            NumberRPG = true;
+            boxColliderPangeng.enabled = false;
+
+            StartCoroutine(ResetBoxCollider(3.2f));
+            StartCoroutine(ResetHCBFState(5f));
+        }
     }
     public void OnHits()
     {
         StopCoroutine(ResetIsPerformingAction(0));
-        isPerformingAction = false;
-        player01Movement.isPerformingAction = true;
+        StartCoroutine(ResetCheckBool(0.25f));
     }
     public void GrapHCBShark()
     {
@@ -860,6 +940,12 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         isPerformingAction = false;
         player01Movement.isPerformingAction = false;
     }
+    IEnumerator ResetCheckBool(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        isPerformingAction = false;
+        player01Movement.isPerformingAction = false;
+    }
 
     IEnumerator ResetQCState()
     {
@@ -870,13 +956,14 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         player01Movement.isPerformingAction = false;
     }
 
-    IEnumerator ResetHCBFState()
+    IEnumerator ResetHCBFState(float time)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(time);
         inputState = InputState.None;
         isHCBInProgress = false;
         isPerformingAction = false;
         player01Movement.isPerformingAction = false;
+        NumberRPG = false;
     }
     IEnumerator ResetGrap()
     {
@@ -889,4 +976,11 @@ public class Player01TakeActionInChallenge : MonoBehaviour
         yield return new WaitForSeconds(5f);
         //player01Health.SharkDrive = false;
     }
+    IEnumerator ResetBoxCollider(float time)
+    {
+        yield return new WaitForSeconds(time);
+        boxColliderPangeng.enabled = true;
+    }
+
+    
 }

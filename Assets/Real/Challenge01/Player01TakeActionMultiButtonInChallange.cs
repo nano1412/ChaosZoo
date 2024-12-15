@@ -14,6 +14,9 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
     public static bool Hits = false;
     public bool hits => Hits;
     public int specialMoveEnergy = 100;
+    public ChalllengeScripttable challengeData;
+    public string horizontalInput , verticalInput;
+    public string Joy01, Joy02, Joy03, Joy04;
 
     private Animator anim;
     [Header("Enable/Disble ACtions")]
@@ -26,27 +29,36 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
 
     void Update()
     {
+        verticalInput = selectController.Selectjoystick01 ? "LeftAnalogY" : "Vertical";
+        horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX" : "Horizontal";
+        Joy01 = "PlayerJoystick03";
+        Joy02 = "PlayerJoystick04";
+        Joy03 = "PlayerJoystick01";
+        Joy04 = "PlayerJoystick02";
+        
+
+        
         if(isPerformingAction || player01Movement.isJump) return;
         if (HandleMultibutton()) return;
 
         if(selectController.Selectjoystick01)
         {
-            if (Input.GetButtonDown("Player02Joystick01"))
+            if (Input.GetButtonDown(Joy01))
             {
                 PerformAction("RightPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player02Joystick02"))
+            if (Input.GetButtonDown(Joy02))
             {
                 PerformAction("RightKick");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player02Joystick03"))
+            if (Input.GetButtonDown(Joy03))
             {
                 PerformAction("LeftPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player02Joystick04"))
+            if (Input.GetButtonDown(Joy04))
             {
                 PerformAction("LeftKick");
                 Hits = false;
@@ -54,22 +66,22 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Player02Bt01"))
+            if (Input.GetButtonDown("Player02Bt03"))
             {
                 PerformAction("RightPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player02Bt02"))
+            if (Input.GetButtonDown("Player02Bt04"))
             {
                 PerformAction("RightKick");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player02Bt03"))
+            if (Input.GetButtonDown("Player02Bt01"))
             {
                 PerformAction("LeftPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player02Bt04"))
+            if (Input.GetButtonDown("Player02Bt02"))
             {
                 PerformAction("LeftKick");
                 Hits = false;
@@ -81,8 +93,8 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
     {
         if(isPerformingAction) return false;
         
-        string verticalInput = selectController.Selectjoystick01 ? "LeftAnalogY2" : "Vertical";
-        string horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX2" : "Horizontal";
+        // string verticalInput = selectController.Selectjoystick01 ? "LeftAnalogY1" : "Vertical";
+        // string horizontalInput = selectController.Selectjoystick01 ? "LeftAnalogX1" : "Horizontal";
         bool Joystick = selectController.Selectjoystick01 ? true : false;
 
         bool RP = false, LP = false, RK = false, LK = false;
@@ -90,19 +102,20 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
 
         if (selectController.Selectjoystick01)
         {
-            RP = Input.GetButton("Player02Joystick01");
-            LP = Input.GetButton("Player02Joystick03");
-            RK = Input.GetButton("Player02Joystick02");
-            LK = Input.GetButton("Player02Joystick04");
+            RP = Input.GetButton("PlayerJoystick03");
+            LP = Input.GetButton("PlayerJoystick01");
+            RK = Input.GetButton("PlayerJoystick04");
+            LK = Input.GetButton("PlayerJoystick02");
             vertical = -Input.GetAxis(verticalInput);
             horizontal = Input.GetAxis(horizontalInput);
+            
         }
         else
         {
-            RP = Input.GetButton("Player02Bt01");
-            LP = Input.GetButton("Player02Bt03");
-            RK = Input.GetButton("Player02Bt02");
-            LK = Input.GetButton("Player02Bt04");
+            RP = Input.GetButton("Player02Bt03");
+            LP = Input.GetButton("Player02Bt01");
+            RK = Input.GetButton("Player02Bt04");
+            LK = Input.GetButton("Player02Bt02");
             vertical = Input.GetAxis(verticalInput);
             horizontal = Input.GetAxis(horizontalInput);
         }
@@ -111,7 +124,7 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
         {
             if(player01Movement.faceRight)
             {
-                if(horizontal < 0f)
+                if(horizontal < -0.4f)
                 {
                     if(RP && RK && LK && specialMoveMultibuttonToggle[34].isEnabled) return TriggerAction("BackDownRightPunchRightKickLeftKickTrigger", specialMoveMultibuttonToggle[34].numberReset);
                     if(LP && RK && LK && specialMoveMultibuttonToggle[37].isEnabled) return TriggerAction("BackDownLeftPunchRightKickLeftKickTrigger", specialMoveMultibuttonToggle[37].numberReset);
@@ -138,7 +151,7 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
             }
             else if(player01Movement.faceLeft)
             {
-                if(horizontal < 0f)
+                if(horizontal < -0.4f)
                 {
                     if(RP && LP && specialMoveMultibuttonToggle[12].isEnabled) return TriggerAction("ForwardDownRightPunchLeftPunchTrigger",specialMoveMultibuttonToggle[12].numberReset);
                     if(RK && LK && specialMoveMultibuttonToggle[13].isEnabled) return TriggerAction("ForwardDownRightKickLeftKickTrigger",specialMoveMultibuttonToggle[13].numberReset);
@@ -169,7 +182,7 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
             if(RK && LP && specialMoveMultibuttonToggle[27].isEnabled) return TriggerAction("DownRightKickLeftPunchTrigger",specialMoveMultibuttonToggle[27].numberReset);
             
         }
-        else if(horizontal < 0f)
+        else if(horizontal < -0.4f)
         {
             if(player01Movement.faceRight)
             {
@@ -303,7 +316,7 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
             }
              else if(player01Movement.faceRight)
             {
-                if(Input.GetAxis(horizontalInput) < 0f)
+                if(Input.GetAxis(horizontalInput) < -0.4f)
                 {
                     anim.SetTrigger("BackSpecial" + actionName + "Trigger");
                 }
@@ -322,7 +335,7 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
                 {
                     anim.SetTrigger("BackSpecial" + actionName + "Trigger");
                 }
-                else if(Input.GetAxis(horizontalInput) < 0f)
+                else if(Input.GetAxis(horizontalInput) < -0.4f)
                 {
                     anim.SetTrigger("Special" + actionName + "Trigger");
                 }
@@ -331,6 +344,7 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
                     anim.SetTrigger(actionName + "Trigger");
                 }
             }
+            StartCoroutine(ResetIsPerformingAction(0.5f));
         }
         else
         {
@@ -371,6 +385,11 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
             StartCoroutine(ResetIsPerformingAction(0.5f));
         }
     }
+    public void OnHits()
+    {
+        StopCoroutine(ResetIsPerformingAction(0));
+        StartCoroutine(ResetCheckBool(0.25f));
+    }
 
     IEnumerator ResetIsPerformingAction(float time)
     {
@@ -378,6 +397,12 @@ public class Player01TakeActionMultiButtonInChallange : MonoBehaviour
         isPerformingAction = false;
         player01Movement.isPerformingAction = false;
         //player01Health.KenInAir = false;
+    }
+    IEnumerator ResetCheckBool(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        isPerformingAction = false;
+        player01Movement.isPerformingAction = false;
     }
 }
 

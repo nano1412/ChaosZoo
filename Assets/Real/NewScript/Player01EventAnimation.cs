@@ -5,7 +5,9 @@ using UnityEngine;
 public class Player01EventAnimation : MonoBehaviour
 {   
     public Rigidbody rb;
-    public Player01Movement player01Movement;
+    //public Player01Movement player01Movement;
+    public Player01MovementInTrainingRoom player01Movement;
+    
     public float jumpForce = 0;
     public float forceAmount = 0;
     public float QCFHS_force = 0;
@@ -13,6 +15,10 @@ public class Player01EventAnimation : MonoBehaviour
     public float dashBackforce = 0;
     public float HurtForce = 0;
     public float forcehurt;
+    public GameObject Rpg;
+    public GameObject spawnPoint;
+    public GameObject Shild;
+    public GameObject spawnPointShild;
     public void JumpEvent()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -89,5 +95,41 @@ public class Player01EventAnimation : MonoBehaviour
             rb.AddForce(Vector3.right * forcehurt, ForceMode.Impulse);
         }
     }
+
+    public void SlideFront()
+    {
+        if(player01Movement.faceRight)
+        {
+            rb.AddForce(Vector3.right * dashforce, ForceMode.Impulse);
+        }
+        else
+        {
+            rb.AddForce(Vector3.left * dashforce, ForceMode.Impulse);
+        }
+    }
+    
+    public void SlideBack()
+    {
+        if(player01Movement.faceRight)
+        {
+            rb.AddForce(Vector3.left * dashBackforce, ForceMode.Impulse);
+        }
+        else
+        {
+            rb.AddForce(Vector3.right * dashBackforce, ForceMode.Impulse);
+        }
+    }
+
+    public void RPGTime()
+    {
+        Instantiate(Rpg, spawnPoint.transform.position, spawnPoint.transform.rotation);
+    }
+
+    public void ShildTime()
+    {
+        Instantiate(Shild, spawnPointShild.transform.position, spawnPointShild.transform.rotation);
+    }
+
+
 
 }

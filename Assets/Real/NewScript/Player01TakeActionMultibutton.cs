@@ -7,6 +7,8 @@ public class Player01TakeActionMultibutton : MonoBehaviour
     public float defaultActionCooldown = 0.5f;
     public List<string> nameAnimation = new List<string>();
     public GameObject player01;
+    public GameObject opponent;
+    public Player02Movement player02Movement;
     public Player01Movement player01Movement;
     public Player01Health player01Health;
     public Player01CameraSpecial player01CameraSpecial;
@@ -24,6 +26,8 @@ public class Player01TakeActionMultibutton : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        opponent = GameObject.FindGameObjectWithTag("PlayerCharacter02Tpose");
+        player02Movement = GameObject.FindGameObjectWithTag("Player02").GetComponent<Player02Movement>();
     }
 
     void Update()
@@ -33,22 +37,22 @@ public class Player01TakeActionMultibutton : MonoBehaviour
 
         if(selectController.Selectjoystick01)
         {
-            if (Input.GetButtonDown("Player01Joystick01"))
+            if (Input.GetButtonDown("Player01Joystick03"))
             {
                 PerformAction("RightPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player01Joystick02"))
+            if (Input.GetButtonDown("Player01Joystick04"))
             {
                 PerformAction("RightKick");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player01Joystick03"))
+            if (Input.GetButtonDown("Player01Joystick01"))
             {
                 PerformAction("LeftPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player01Joystick04"))
+            if (Input.GetButtonDown("Player01Joystick02"))
             {
                 PerformAction("LeftKick");
                 Hits = false;
@@ -56,22 +60,22 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Player01Bt01"))
+            if (Input.GetButtonDown("Player01Bt03"))
             {
                 PerformAction("RightPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player01Bt02"))
+            if (Input.GetButtonDown("Player01Bt04"))
             {
                 PerformAction("RightKick");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player01Bt03"))
+            if (Input.GetButtonDown("Player01Bt01"))
             {
                 PerformAction("LeftPunch");
                 Hits = false;
             }
-            if (Input.GetButtonDown("Player01Bt04"))
+            if (Input.GetButtonDown("Player01Bt02"))
             {
                 PerformAction("LeftKick");
                 Hits = false;
@@ -91,19 +95,19 @@ public class Player01TakeActionMultibutton : MonoBehaviour
 
         if (selectController.Selectjoystick01)
         {
-            RP = Input.GetButton("Player01Joystick01");
-            LP = Input.GetButton("Player01Joystick03");
-            RK = Input.GetButton("Player01Joystick02");
-            LK = Input.GetButton("Player01Joystick04");
+            RP = Input.GetButton("Player01Joystick03");
+            LP = Input.GetButton("Player01Joystick01");
+            RK = Input.GetButton("Player01Joystick04");
+            LK = Input.GetButton("Player01Joystick02");
             vertical = -Input.GetAxis(verticalInput);
             horizontal = Input.GetAxis(horizontalInput);
         }
         else
         {
-            RP = Input.GetButton("Player01Bt01");
-            LP = Input.GetButton("Player01Bt03");
-            RK = Input.GetButton("Player01Bt02");
-            LK = Input.GetButton("Player01Bt04");
+            RP = Input.GetButton("Player01Bt03");
+            LP = Input.GetButton("Player01Bt01");
+            RK = Input.GetButton("Player01Bt04");
+            LK = Input.GetButton("Player01Bt02");
             vertical = Input.GetAxis(verticalInput);
             horizontal = Input.GetAxis(horizontalInput);
         }
@@ -273,6 +277,16 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         if(nameAnimation[0] == "4RPLPRKLK_Ken" || nameAnimation[0] == "6RPLPRKLK_Capy")
         {
             player01CameraSpecial.SpecialCapybaraCamare();
+
+            Animator opponentAnimator = opponent.GetComponent<Animator>();
+            if (opponentAnimator != null)
+            {
+                opponentAnimator.enabled = false;
+                player02Movement.enabled = false;
+            }
+
+            StartCoroutine(ResetMovement(0.75f));
+
         }
         anim.SetTrigger(action);
         anim.SetBool("canWalk", false);
@@ -281,6 +295,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         isPerformingAction = true;
         player01Movement.isPerformingAction = true;
         
+
         StartCoroutine(ResetIsPerformingAction(2f));
     }
 
@@ -329,6 +344,7 @@ public class Player01TakeActionMultibutton : MonoBehaviour
                     anim.SetTrigger(actionName + "Trigger");
                 }
             }
+            StartCoroutine(ResetIsPerformingAction(0.5f));
         }
         else
         {
@@ -391,6 +407,16 @@ public class Player01TakeActionMultibutton : MonoBehaviour
         player01Movement.isPerformingAction = true;
     }
 
+    IEnumerator ResetMovement(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Animator opponentAnimator = opponent.GetComponent<Animator>();
+        if (opponentAnimator != null)
+        {
+            opponentAnimator.enabled = true;
+            player02Movement.enabled = true;
+        }
+    }
 }
 
 public enum SpeacialMoveMultibutton
