@@ -20,6 +20,10 @@ public class SceneChangerButton : MonoBehaviour
     public GameObject cameraCapybaraChallenge;
     public GameObject cameraKenChallenge;
     public GameObject cameraPengangChallenge;
+    public GameObject SelectMapShark;
+    public GameObject SelectMapCapybara;
+    public GameObject SelectMapKen;
+    public GameObject SelectMapPengang;
 
     void Start()
     {
@@ -129,6 +133,47 @@ public class SceneChangerButton : MonoBehaviour
         selectChallenge.SetActive(true);
     }
 
+    public void SharkSelectMap()
+    {
+        selectTrainingRoom.SetActive(false);
+        SelectMapShark.SetActive(true);
+        SelectMapCapybara.SetActive(false);
+        SelectMapKen.SetActive(false);
+        SelectMapPengang.SetActive(false);
+    }
+    public void CapybaraSelectMap()
+    {
+        selectTrainingRoom.SetActive(false);
+        SelectMapShark.SetActive(false);
+        SelectMapCapybara.SetActive(true);
+        SelectMapKen.SetActive(false);
+        SelectMapPengang.SetActive(false);
+    }
+    public void KenSelectMap()
+    {
+        selectTrainingRoom.SetActive(false);
+        SelectMapShark.SetActive(false);
+        SelectMapCapybara.SetActive(false);
+        SelectMapKen.SetActive(true);
+        SelectMapPengang.SetActive(false);
+    }
+    public void PengangSelectMap()
+    {
+        selectTrainingRoom.SetActive(false);
+        SelectMapShark.SetActive(false);
+        SelectMapCapybara.SetActive(false);
+        SelectMapKen.SetActive(false);
+        SelectMapPengang.SetActive(true);   
+    }
+    public void CloseAllSelectMap()
+    {
+        selectTrainingRoom.SetActive(true);
+        SelectMapShark.SetActive(false);
+        SelectMapCapybara.SetActive(false);
+        SelectMapKen.SetActive(false);
+        SelectMapPengang.SetActive(false);
+    }
+
     public void TrainingRoomShark()
     {
         SceneManager.LoadScene(sceneToLoad[3]);
@@ -147,6 +192,39 @@ public class SceneChangerButton : MonoBehaviour
     public void TrainingRoomPengang()
     {
         SceneManager.LoadScene(sceneToLoad[2]);
+    }
+
+    public void CityMapShark()
+    {
+        SceneManager.LoadScene(sceneToLoad[23]);
+    }
+    public void CityMapCapybara()
+    {
+        SceneManager.LoadScene(sceneToLoad[20]);
+    }
+    public void CityMapKen()
+    {
+        SceneManager.LoadScene(sceneToLoad[21]);
+    }
+    public void CityMapPengang()
+    {
+        SceneManager.LoadScene(sceneToLoad[22]);
+    }
+    public void floatingIslandShark()
+    {
+        SceneManager.LoadScene(sceneToLoad[27]);
+    }
+    public void floatingIslandCapybara()
+    {
+        SceneManager.LoadScene(sceneToLoad[24]);
+    }
+    public void floatingIslandKen()
+    {
+        SceneManager.LoadScene(sceneToLoad[25]);
+    }
+    public void floatingIslandPengang()
+    {
+        SceneManager.LoadScene(sceneToLoad[26]);
     }
     
     public void ChallengeShark01()
