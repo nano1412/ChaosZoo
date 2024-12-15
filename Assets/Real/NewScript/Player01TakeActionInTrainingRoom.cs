@@ -70,17 +70,7 @@ public class Player01TakeActionInTrainingRoom : MonoBehaviour
         HandleQCB();
         HandleHCB();
         HandleHCBF();
-        
-        if(Input.GetAxis(verticalInput) < -0.4f)
-        {
-            holdTimeVertical += Time.deltaTime;
-            if(holdTimeVertical > 0.2f)
-            {
-                isQCInProgress = false;
-                isHCBInProgress = false;
-                holdbuttonVertical = true;
-            }
-        }
+
         if(Joystick)
         {
             if(-Input.GetAxis(verticalInput) < -0.4f)
@@ -93,36 +83,76 @@ public class Player01TakeActionInTrainingRoom : MonoBehaviour
                     holdbuttonVertical = true;
                 }
             }
+            if(Input.GetAxis(horizontalInput) > 0.4f && player01Movement.faceRight)
+            {
+                holdTimeHorizontal += Time.deltaTime;
+                if(holdTimeHorizontal > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonHorizontal = true;
+                } 
+            }
+            if(Input.GetAxis(horizontalInput) < -0.4f && !player01Movement.faceRight)
+            {
+                holdTimeHorizontal += Time.deltaTime;
+                if(holdTimeHorizontal > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonHorizontal = true;
+                } 
+            }
+            else if (Input.GetAxis(verticalInput) <= 0.1 && Input.GetAxis(horizontalInput) <= 0.1)
+            {
+                holdbuttonVertical = false;
+                holdbuttonHorizontal = false;
+                holdTimeVertical = 0;
+                holdTimeHorizontal = 0;
+            }
+        }
+        else if(!Joystick)
+        {
+            if(Input.GetAxis(verticalInput) < -0.4f)
+            {
+                holdTimeVertical += Time.deltaTime;
+                if(holdTimeVertical > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonVertical = true;
+                }
+            }
+            if(Input.GetAxis(horizontalInput) > 0.4f && player01Movement.faceRight)
+            {
+                holdTimeHorizontal += Time.deltaTime;
+                if(holdTimeHorizontal > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonHorizontal = true;
+                } 
+            }
+            if(Input.GetAxis(horizontalInput) < -0.4f && !player01Movement.faceRight)
+            {
+                holdTimeHorizontal += Time.deltaTime;
+                if(holdTimeHorizontal > 0.2f)
+                {
+                    isQCInProgress = false;
+                    isHCBInProgress = false;
+                    holdbuttonHorizontal = true;
+                } 
+            }
+            else if (Input.GetAxis(verticalInput) == 0 && Input.GetAxis(horizontalInput) == 0)
+            {
+                holdbuttonVertical = false;
+                holdbuttonHorizontal = false;
+                holdTimeVertical = 0;
+                holdTimeHorizontal = 0;
+            }
         }
         
-        if(Input.GetAxis(horizontalInput) > 0.4f && player01Movement.faceRight)
-        {
-            holdTimeHorizontal += Time.deltaTime;
-            if(holdTimeHorizontal > 0.2f)
-            {
-                isQCInProgress = false;
-                isHCBInProgress = false;
-                holdbuttonHorizontal = true;
-            } 
-        }
-        if(Input.GetAxis(horizontalInput) < -0.4f && !player01Movement.faceRight)
-        {
-            holdTimeHorizontal += Time.deltaTime;
-            if(holdTimeHorizontal > 0.2f)
-            {
-                isQCInProgress = false;
-                isHCBInProgress = false;
-                holdbuttonHorizontal = true;
-            } 
-        }
-        else if (Input.GetAxis(verticalInput) <= 0.1 && Input.GetAxis(horizontalInput) <= 0.1)
-        {
-            holdbuttonVertical = false;
-            holdbuttonHorizontal = false;
-            holdTimeVertical = 0;
-            holdTimeHorizontal = 0;
-        }
-
+    
 
         if (isPerformingAction || isQCInProgress || isHCBInProgress || player01Movement.isJump) return;
 
